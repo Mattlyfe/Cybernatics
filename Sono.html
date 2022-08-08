@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<HTML>
+    <HEADER>
+        <TITLE>AniMaRev - Sono Bisque Doll wa Koi wo Suru</TITLE>
+        <META name="viewport" content="width=device=width, initial-scale=1.0"/>
+        <LINK rel="stylesheet" href="style Sono.css">
+    </HEADER>
+
+    <BODY onload="startTime()">       
+        <center>     
+            <ul class="navibar">
+                <li class ="not"><a href="Main.html">Home</a></li>
+                <li class ="not"><a href="Anime.html">Anime</a></li>
+                <li class ="active"><a href="Manga.html">Manga</a></li>
+                <li class ="not"><a href="About.html">About</a></li>
+            </ul>
+        </center>
+
+        <br>
+        <br>
+        <div class="updates">
+            <h1>Sono Bisque Doll wa Koi wo Suru</h1>
+            <div class="manga1pic">
+                <p>Sono Bisque Doll wa Koi wo Suru</p>
+            </div>
+            
+            <div class="description">
+                <h3>Engrossed in the family business of traditional doll making, Wakana Gojou is a reserved high school freshman without friends. Harboring painful memories of a childhood friend's disdain toward his interest, Gojou cannot relate to his classmates and their pastimes, eventually isolating himself. <br><br>
+
+                    Gojou has yet to perfect his crafting of dolls' faces, but is exceptionally skilled at making their clothes. His finesse with the sewing machine is soon discovered by his beautiful classmate Marin Kitagawa, whose boldness and honesty Gojou both admires and envies. Instantly, she shares with Gojou her own hobby: she likes to cosplay as characters from erotic video games.<br><br>
+                    
+                    However, Kitagawa cannot sew her own costumes, leading her to seek Gojou's expertise. Now, as he is dragged along to the charming girl's endless cosplay-related affairs, Kitagawa becomes his first friend who fully accepts him. Thus, although polar opposites, their relationship slowly blossoms through their aptitude in helping each other in the intricate world of cosplay.</h3>
+
+                <h1>Rating: 8/10</h1>
+
+                <h4>Sono Bisque Doll wa Koi wo Soru or My Dress-up Darling is a hit rom-com that was released back in 2018. The story started up like any gal girl befriending an introvert, but as the story goes on the development between the characters. You see Gojou change and Kitagawa as she falls in love to Gojou. Kitagawa shows the attitude that "you should be yourself" and "Enjoy your hobbies".
+                    But the slow development (like really slow development) made it really boring and atleast for me but overall the story itself is really good and can't wait to read more of it!. - Mattlyfe
+                </h4>
+            </div>
+        </div>
+
+        <p id="date">.</p>
+        <p id="time">.</p>
+    </BODY>
+
+    <SCRIPT>  
+        var today_date= new Date();
+        var month=today_date.getMonth();
+        var today=today_date.getDate();
+        var year=today_date.getFullYear();
+
+        var date = "Today's date is: " + month + "/" + today + "/" + year;
+        document.getElementById("date").innerHTML = date;
+
+        function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+
+        var time = "Today's time is: " + h + ":" + m + ":" + s;
+        document.getElementById('time').innerHTML =  time;
+        setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+        if (i < 10) {i = "0" + i};
+        return i;
+        }
+
+        function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+
+        var time = "Today's time is: " + h + ":" + m + ":" + s;
+        document.getElementById('time').innerHTML =  time;
+        setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+        if (i < 10) {i = "0" + i};
+        return i;
+        }
+    </SCRIPT>
+</HTML>

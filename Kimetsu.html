@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<HTML>
+    <HEADER>
+        <TITLE>AniMaRev - Kimetsu no Yaiba: Yuukaku-hen</TITLE>
+        <META name="viewport" content="width=device=width, initial-scale=1.0"/>
+        <LINK rel="stylesheet" href="style Kimetsu.css">
+    </HEADER>
+
+    <BODY onload="startTime()">       
+        <center>     
+            <ul class="navibar">
+                <li class ="not"><a href="Main.html">Home</a></li>
+                <li class ="active"><a href="Anime.html">Anime</a></li>
+                <li class ="not"><a href="Manga.html">Manga</a></li>
+                <li class ="not"><a href="About.html">About</a></li>
+            </ul>
+        </center>
+
+        <br>
+        <br>
+        <div class="updates">
+            <h1>Kimetsu no Yaiba: Yuukaku-hen</h1>
+            <div class="anime2pic">
+                <p>Kimetsu no Yaiba: Yuukaku-hen</p>
+            </div>
+            
+            <div class="description">
+                <h3>Season 2 is the second season of Koyoharu Gotoge's Kimetsu no Yaiba by ufotable. It is a direct continuation of the first season and is split into 2 cours, respectively subtitled Kimetsu no Yaiba: Mugen Train Arc and Kimetsu no Yaiba: Entertainment District Arc ( to reflect the story arcs they cover. <br> <br>
+
+                    The first cour contains an extended cut of the original 2020 Mugen Train movie, featuring all the movie's content in episodic format alongside brand new content made for the TV anime broadcast. The second cour is entirely new content.</h3>
+
+                <h1>Rating: 8/10</h1>
+
+                <h4>The sibling's story is by far the most tragic Demon Slayer has ever told, revealing the history that shaped Gyutaro into the sadistic demon he became. Demon Slayer's formula for making each of its villains sympathetic is predictable, but the Entertainment District Arc proves that it works. When the show builds an understanding of what drove these people to this point, each battle feels more meaningful, and the ultimate villain Muzan Kibutsuji feels more menacing for taking advantage of them.
+
+                    While the majority of the finale focuses on the demon siblings, we also get some nice development on Tanjiro and Nezuko's relationship, and this episode shows how the two have grown to be supportive of each other. This arc has seen Tanjiro mature as a person, particularly in how he accepts help from Nezuko and does not feel obligated to protect her. Overall, it's nice to see Nezuko given more authority as the story progresses.
+                    
+                    As one would expect from a finale, we get a few glimpses of where things will go in the future. With Uzui, who has taken too many wounds to fight, it quickly becomes clear that another Hashira is out of the picture. This creates a tense future for the Demon Slayer Corps, as their numbers continue to dwindle, while Muzan can always create more demons. It concludes the series on an intriguing note, one that appears to be a little more hopeful than where we left things at the end of Mugen Train. - Eyebols
+                </h4>
+            </div>
+        </div>
+
+        <p id="date">.</p>
+        <p id="time">.</p>
+    </BODY>
+
+    <SCRIPT>  
+        var today_date= new Date();
+        var month=today_date.getMonth();
+        var today=today_date.getDate();
+        var year=today_date.getFullYear();
+
+        var date = "Today's date is: " + month + "/" + today + "/" + year;
+        document.getElementById("date").innerHTML = date;
+
+        function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+
+        var time = "Today's time is: " + h + ":" + m + ":" + s;
+        document.getElementById('time').innerHTML =  time;
+        setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+        if (i < 10) {i = "0" + i};
+        return i;
+        }
+
+        function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+
+        var time = "Today's time is: " + h + ":" + m + ":" + s;
+        document.getElementById('time').innerHTML =  time;
+        setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+        if (i < 10) {i = "0" + i};
+        return i;
+        }
+    </SCRIPT>
+</HTML>
