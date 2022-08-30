@@ -11,6 +11,7 @@
 
 body{
    background-color: #f3f5f9;
+   background-image: url(sarap.png);
 }
 
 .wrapper{
@@ -104,4 +105,10 @@ body{
   .social_media{
     display: none !important;
   }
+}
+
+.lyod
+{
+  width: 30px;
+  height: 30px;
 }
