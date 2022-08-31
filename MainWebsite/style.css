@@ -2,9 +2,10 @@
 {
 	list-style:none;
 }
+
 #menu ul li
 {
-	background-image:url(IMG_2165.jpg);
+	background-color: #d4d4d4;
 	margin:2px;
 	margin-left:11px;
 	width:210px;
@@ -48,12 +49,13 @@
 }
 #menu
 {
-	background-color:green;
+	background-color: #29292a;
+
 }
 
 .left
 {
-    background-image:url(IMG_2165.jpg);
+    background-color: #d4d4d4;
     width:200px;
 	height:500px;
 }
@@ -63,7 +65,7 @@
 	background-image:url(../image/single.jpg);
 	margin:2px;
 	margin-left:11px;
-	width:210px;
+	width:100px;
 	height:35px;
 	text-align:center;
 	line-height:35px;
@@ -120,3 +122,27 @@
     background-color: #29292a;
     color: white;
   }
+
+.formSearch{
+  background-color: #d4d4d4;
+	margin:2px;
+	margin-left:7%;
+	width:500px;
+	height:35px;
+  text-align: center;
+	border-radius:100px;
+}
+
+.button{
+  margin:2px;
+	margin-left:11px;
+}
+
+.navbar-brand{
+  top: 30px;
+  position: relative;
+}
+
+.navibar{
+  background-color: red;
+}
