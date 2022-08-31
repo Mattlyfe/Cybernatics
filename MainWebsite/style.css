@@ -1,0 +1,122 @@
+#menu ul
+{
+	list-style:none;
+}
+#menu ul li
+{
+	background-image:url(IMG_2165.jpg);
+	margin:2px;
+	margin-left:11px;
+	width:210px;
+	height:35px;
+	text-align:center;
+	line-height:35px;
+	float:left;
+	position:relative;
+	z-index:1000;
+	border-radius:100px;
+}
+#menu ul li a
+{
+	text-decoration:none;
+	color:rgb(0, 0, 0);
+	display:block;
+}
+#menu ul li a:hover
+{
+	background-color:green;
+	border-radius:8px;
+}
+#menu ul ul
+{
+	position:absolute;
+	display:none;
+}
+#menu ul li:hover > ul
+{
+	display:block;
+}
+#menu ul ul ul
+{
+	margin-left:205px;
+	top:0px;
+}
+#menu ul ul ul li
+{
+	background-color:blue;
+	width:220px;
+}
+#menu
+{
+	background-color:green;
+}
+
+.left
+{
+    background-image:url(IMG_2165.jpg);
+    width:200px;
+	height:500px;
+}
+
+.left ul li
+{
+	background-image:url(../image/single.jpg);
+	margin:2px;
+	margin-left:11px;
+	width:210px;
+	height:35px;
+	text-align:center;
+	line-height:35px;
+	float:left;
+	position:relative;
+	z-index:1000;
+	border-radius:100px;
+}
+
+.left ul
+{
+	list-style:none;
+}
+
+.left ul li a
+{
+	text-decoration:none;
+	color:rgb(0, 0, 0);
+	display:block;
+}
+
+.left ul ul
+{
+	position:absolute;
+	display:none;
+}
+
+.left ul li:hover > ul
+{
+	display:block;
+    left: 150px;
+    top: -10px;
+}
+
+.left {
+    float: left;
+    margin: 0;
+    padding: 1em;
+  }
+
+  .content {
+    margin-left: 190px;
+    border-left: 1px solid #d4d4d4;
+    padding: 1em;
+    overflow: hidden;
+  }
+
+  li a.active {
+    background-color: #84e4e2;
+    color: white;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #29292a;
+    color: white;
+  }
