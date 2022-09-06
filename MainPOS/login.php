@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="loginstyles.css">
     </head>
     <body>
-        <form action="index.php" method="POST">
+        <form action="loginhandle.php" method="POST">
             <h2>Sandra Store Login</h2>
             <label>User Name</label>
             <input type="text" name="uname" placeholder="User Name">
