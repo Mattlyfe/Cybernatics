@@ -9,8 +9,8 @@
             <div class="sidebar">
                 <h2>Sandra's Store</span></h2>
                 <ul>
-                    <li><a href="#"><i class="fas fa-home"></i>Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-user"></i>User Registration</a></li>
+                    <li><a href="#"><span><img src=""></span></i>Dashboard</a></li>
+                    <li><a href="#"><span><img src="registration.png"></span></i>User Registration</a></li>
                     <li><a href="#"><i class="fas fa-address-card"></i>Inventory</a></li>
                     <li><a href="#"><i class="fas fa-project-diagram"></i>Purchase Order</a></li>
                     <li><a href="#"><i class="fas fa-blog"></i>POS</a></li>
