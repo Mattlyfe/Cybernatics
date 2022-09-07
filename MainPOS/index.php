@@ -22,7 +22,10 @@
                 </ul> 
             </div>
             <!--This section is for the main content of the current selected navigation-->
-            <div class="main_content">  
+            <div class="main_content">
+                <!--This section is for the to be shipped today widget-->
+                <div>
+                </div>
             </div>
         </div>
     </body>
