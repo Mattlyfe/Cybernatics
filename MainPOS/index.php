@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="styles.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+        <script defer src="activepage.js"></script>
     </head>
     <body>
         <div class="wrapper">
