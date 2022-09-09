@@ -114,7 +114,3 @@ body{
   width: 25px;
   height: 16px;
 }
-a:is(:link, :active, :visited).active{
-  color: aqua;
-  background-color: antiquewhite;
-}
