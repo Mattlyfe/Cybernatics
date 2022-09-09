@@ -3,7 +3,7 @@
     </head>
     <body>
         <?php
-            
+            include("sidenav.php");
         ?>
     </body>
 </html>
