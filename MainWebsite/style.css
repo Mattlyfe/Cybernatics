@@ -159,14 +159,17 @@
 .container-card-title-second,
 .text-of-order-one,
 .text-of-order-two {
+  position: relative;
     padding-right: 1rem;
     padding-left: 1rem;
+    left: 500px;
     border-style: solid;
+    width: 500px;
 }
 
 .container-card-title-second
 {
-  position: relative;
+  
   top: 50px;
 }
 
