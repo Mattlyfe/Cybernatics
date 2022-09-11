@@ -161,7 +161,8 @@
 .text-of-order-two {
     padding-right: 1rem;
     padding-left: 1rem;
-    border: 1px; 
+    border: 1px;
+    width: 500px;
 }
 
 
