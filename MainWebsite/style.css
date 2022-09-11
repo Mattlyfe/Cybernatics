@@ -159,11 +159,9 @@
 .container-card-title-second,
 .text-of-order-one,
 .text-of-order-two {
-  float: right;
     padding-right: 1rem;
     padding-left: 1rem;
-    background-color: #29292a;
-    width: 500px;
+    border-style: solid;
 }
 
 
