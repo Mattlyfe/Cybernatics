@@ -146,3 +146,61 @@
 .navibar{
   background-color: red;
 }
+
+.coffee-variety-title {
+    font-family: 'playfair display', sans-serif;
+    text-align: center;
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+    font-weight: bold;
+}
+
+.container-card-title-first,
+.container-card-title-second,
+.text-of-order-one,
+.text-of-order-two {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+
+.card {
+    position: relative;
+    text-align: center;
+}
+
+.center-text-coffee-one,
+.center-text-coffee-two,
+.center-text-coffee-four {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-family: 'playfair display', sans-serif;
+    font-size: 1rem;
+  
+}
+
+.center-text-coffee-three {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #093145;
+    font-family: 'playfair display', sans-serif;
+    font-size: 1.1rem;
+  
+}
+
+.coffee-price{
+    color:#2B2D42;
+    font-family: 'playfair display', sans-serif;
+    font-weight: bold;
+}
+
+
+.container-card-title {
+    width: 17.8rem;
+    height: 9rem;
+}
