@@ -118,7 +118,8 @@ body{
   position: relative;
   color: #fff;
   padding: 20px 10px 40px;
-  margin: 20px 0px;
+  margin: 50px 784px;
+  margin-left: 245px;
 }
 .card-box:hover {
   text-decoration: none;
@@ -138,10 +139,11 @@ body{
   margin: 0 0 8px 0;
   white-space: nowrap;
   padding: 0;
-  text-align: left;
+  text-align: center;
 }
 .card-box p {
   font-size: 15px;
+  text-align: center;
 }
 .card-box .icon {
   position: absolute;
@@ -155,7 +157,7 @@ body{
 .card-box .card-box-footer {
   position: absolute;
   left: 0px;
-  bottom: 0px;
+  bottom: 110px;
   text-align: center;
   padding: 3px 0;
   color: rgba(255, 255, 255, 0.8);
