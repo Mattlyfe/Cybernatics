@@ -2,8 +2,10 @@
 <html>
     <head>
         <title>Main POS</title>
-        <link rel="stylesheet" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        
     </head>
     <body>
         <?php
@@ -20,6 +22,15 @@
                     </div>
                 </div>
             <!--Status of Orders Widget-->
+            <div class="card text-center">
+            <div class="card-header">
+                Status of Orders
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            </div>
             <!--Feedback Widget-->
             <!--Stock Notification Widget-->
             <!--Chart of Orders from Online and Onsite Widget-->
