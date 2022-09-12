@@ -11,7 +11,7 @@
                 <h2>Sandra's Store</span></h2>
                 <ul>
                     <li><a href="index.php"><i class='bx bx-home-circle' ></i>Dashboard</a></li>
-                    <li><a href="#"><i class='bx bxs-user-plus'></i>User Registration</a></li>
+                    <li><a href="user_regBE.php"><i class='bx bxs-user-plus'></i>User Registration</a></li>
                     <li><a href="#"><i class='bx bx-food-menu' ></i></i>Inventory</a></li>
                     <li><a href="purchaseorder.php"><i class='bx bx-purchase-tag-alt'></i></i>Purchase Order</a></li>
                     <li><a href="pos.php"><i class='bx bx-scan'></i></i>POS</a></li>
