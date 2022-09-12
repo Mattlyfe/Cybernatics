@@ -14,13 +14,6 @@
         <!--Main Content of the Dashboard-->
         <div class="main_content">
             <!--To Be Shipped Widget-->
-                <div class="card-box bg-green">
-                <a href="#" class="card-box-footer"></a>
-                    <div class="inner">
-                        <h3> To Be Shipped Today </h3>
-                        <p> [placeholder] </p>
-                    </div>
-                </div>
             <!--Status of Orders Widget-->
             <div class="card text-center">
             <div class="card-header">
