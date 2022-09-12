@@ -32,6 +32,7 @@
             </div>
             </div>
             <!--Feedback Widget-->
+            
             <!--Stock Notification Widget-->
             <!--Chart of Orders from Online and Onsite Widget-->
             <div class="">
