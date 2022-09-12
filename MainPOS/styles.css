@@ -114,6 +114,9 @@ body{
   width: 25px;
   height: 16px;
 }
+.main_content{
+  margin-left: 237px;
+}
 .card-box {
   position: relative;
   color: #fff;
