@@ -21,8 +21,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                To Be Shipped</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">4 Orders To Be Shipped</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -38,8 +38,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Status of Orders</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Sana -> Pending Payment</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -51,7 +51,6 @@
                 <!--Feedback Widget-->
                 <!--Stock Notification Widget-->
                 <!--Chart of Orders from Online and Onsite Widget-->
-                
                 <!--Website Traffic Widget-->
             </div>
             <div>
