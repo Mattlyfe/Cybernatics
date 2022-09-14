@@ -13,33 +13,47 @@
         ?>
         <!--Main Content of the Dashboard-->
         <div class="main_content">
-            <!--To Be Shipped Widget-->
-            <div class="card text-center">
-            <div class="card-header">
-                Status of Orders
+            <div class="row">
+                <!--To Be Shipped Widget-->
+                <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <!--Status of Orders Widget-->
+                <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Earnings (Monthly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <!--Feedback Widget-->
+                <!--Stock Notification Widget-->
+                <!--Chart of Orders from Online and Onsite Widget-->
+                
+                <!--Website Traffic Widget-->
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            </div>
-            <!--Status of Orders Widget-->
-            <div class="card text-center">
-            <div class="card-header">
-                Status of Orders
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            </div>
-            <!--Feedback Widget-->
-            
-            <!--Stock Notification Widget-->
-            <!--Chart of Orders from Online and Onsite Widget-->
-            <div class="">
-            </div>
-            <!--Website Traffic Widget-->
             <div>
             </div>
         </div>
