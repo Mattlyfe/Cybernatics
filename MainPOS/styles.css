@@ -171,28 +171,33 @@ ol, ul{
   width: 100%;
   text-decoration: none;
 }
-.card-box:hover .card-box-footer {
-  background: rgba(0, 0, 0, 0.3);
-}
-.bg-blue {
-  background-color: #00c0ef !important;
-}
-.bg-green {
-  background-color: #00a65a !important;
-}
-.bg-orange {
-  background-color: #f39c12 !important;
-}
-.bg-red {
-  background-color: #d9534f !important;
-}
 .card{
   width: 273px;
-  
 }
 .row{
   display: flex;
   flex-wrap: wrap;
   margin-right: -0.75rem;
   margin-left: -0.75rem;
+}
+.col-xl-3{
+  margin-left: 61px;
+  margin-top: 30px;
+}
+.col-xl-8{
+  margin-left: 413px;
+}
+.border-left-primary{
+  border-top: 0.25rem solid #00c0ef!important;
+}
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e0e4e8;
+  border-radius: 0.35rem;
 }
