@@ -13,6 +13,11 @@
     padding-top: 50px;
     padding-left: 245px;
   }
+  table, tr
+  {
+    border-spacing: 10px;
+    border: 3px solid;
+  }
 </style>
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -135,7 +140,7 @@ function sum() {
 				$total=$row['total'];
 				$availableqty=$row['qty'];
 				if ($availableqty < 10) {
-				echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
+				echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66); border: 3px black solid;">';
 				}
 				else {
 				echo '<tr class="record">';
