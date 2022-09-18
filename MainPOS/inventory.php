@@ -4,20 +4,29 @@
 
 <link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
 
-<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <style type="text/css">
   body{
     padding-bottom: 40px;
   }
-  .test{
+  .invetb{
     padding-top: 50px;
     padding-left: 245px;
   }
-  table, tr
+  table, tr, td
   {
+    text-align: center;
+    padding: 10px;
     border-spacing: 10px;
-    border: 3px solid;
+    border: 3px black solid;
   }
+  th
+  {
+    background-color: #E0E0E0;
+    font-size: 17px;
+  }
+
+  
 </style>
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -40,7 +49,8 @@
         <?php
             include("sidenav.php");
         ?>
-
+        
+<!-- profit compu -->
 <script>
 function sum() {
             var txtFirstNumberValue = document.getElementById('txt1').value;
@@ -73,9 +83,10 @@ function sum() {
 			
         }
 </script>
-<div class="test">
+    <!-- end of profit compu -->
+<div class="invetb">
 <div style="margin-top: -19px; margin-bottom: 21px;">
-<a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="icon icon-circle-arrow-left icon-large"></i> Back</button></a>
+<a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="bi bi-arrow-bar-left"></i> Back</button></a>
 			<?php 
 			include('../MainPOS/connect.php');
 				$result = $db->prepare("SELECT * FROM products ORDER BY qty_sold DESC");
@@ -91,15 +102,15 @@ function sum() {
 
 			?>
 				<div style="text-align:center;">
-			Total Number of Products:  <font color="green" style="font:bold 22px 'Aleo';">[<?php echo $rowcount;?>]</font>
+			Total Number of Products:  <font color="green" style="font:bold 22px 'Josefin Sans', sans-serif;;">[<?php echo $rowcount;?>]</font>
 			</div>
 			
 			<div style="text-align:center;">
-			<font style="color:rgb(255, 95, 66);; font:bold 22px 'Aleo';">[<?php echo $rowcount123;?>]</font> Products are below QTY of 10 
+			<font style="color:rgb(255, 95, 66);; font:bold 22px 'Josefin Sans', sans-serif;;">[<?php echo $rowcount123;?>]</font> Products are below QTY of 10 
 			</div>
 </div>
-<input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
-<a rel="facebox" href="addproduct.php"><Button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="icon-plus-sign icon-large"></i> Add Product</button></a><br><br>
+<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
+<a rel="facebox" href="addproduct.php"><Button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="bi bi-plus-circle-fill"></i> Add Product</button></a><br><br>
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
@@ -140,7 +151,7 @@ function sum() {
 				$total=$row['total'];
 				$availableqty=$row['qty'];
 				if ($availableqty < 10) {
-				echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66); border: 3px black solid;">';
+				echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
 				}
 				else {
 				echo '<tr class="record">';
@@ -169,11 +180,11 @@ function sum() {
 			$total=$row['total'];
 			echo formatMoney($total, true);
 			?>
-			</td>			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['product_id']; ?>"><button class="btn btn-warning"><i class="icon-edit"></i> </button> </a>
-			<a href="#" id="<?php echo $row['product_id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="icon-trash"></i></button></a></td>
+			</td>			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['product_id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
+			<a href="#" id="<?php echo $row['product_id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 			</tr>
 			<?php
-				}
+                }
 			?>
 		
 		
