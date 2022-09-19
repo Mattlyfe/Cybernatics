@@ -11,7 +11,10 @@
   }
   .invetb{
     padding-top: 50px;
-    padding-left: 245px;
+    padding-left: 317px;
+	padding-right: 200px;
+	overflow-y: scroll;
+	overflow-x: scroll;
   }
   table, tr, td
   {
@@ -24,6 +27,7 @@
   {
     background-color: #E0E0E0;
     font-size: 17px;
+	padding: 5px;
   }
 
   

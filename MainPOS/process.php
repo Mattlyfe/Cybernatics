@@ -7,7 +7,7 @@ require_once('config.php');
 if(isset($_POST)){
     $first_name           = $_POST['first_name'];
     $last_name            = $_POST['last_name'];
-    $password             = sha1($_POST['password']);
+    $password             = $_POST['password'];
     $confirmpassword      = $_POST['confirmpassword'];
 
     $sql = "INSERT INTO users_BE (first_name, last_name, password) VALUES(?,?,?)";
