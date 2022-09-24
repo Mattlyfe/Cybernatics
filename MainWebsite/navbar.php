@@ -7,13 +7,13 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Cart</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Login</li>
-                    <li>Signup</li>
-                    <li>Products</li>
+                    <li><a href="#"></a>Home</li>
+                    <li><a href="#"></a>Cart</li>
+                    <li><a href="#"></a>About Us</li>
+                    <li><a href="#"></a>Contact Us</li>
+                    <li><a href="#"></a>Login</li>
+                    <li><a href="#"></a>Signup</li>
+                    <li><a href="product.php"></a>Products</li>
                 </ul>
             </nav>
         </div>
