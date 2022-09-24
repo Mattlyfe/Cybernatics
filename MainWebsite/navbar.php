@@ -7,7 +7,7 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="#"></a>Home</li>
+                    <li><a href="index.php"></a>Home</li>
                     <li><a href="#"></a>Cart</li>
                     <li><a href="#"></a>About Us</li>
                     <li><a href="#"></a>Contact Us</li>
