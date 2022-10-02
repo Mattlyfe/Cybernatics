@@ -6,8 +6,8 @@
   </head>
   <body>
     <nav>
-      <a href="home.php">Home</a>
-      <a href="#">Cart</a>
+      <a href="index.php">Home</a>
+      <a href="cart.php">Cart</a>
       <a href="#">About Us</a>
       <a href="#">Contact Us</a>
       <a href="#">Login</a>
