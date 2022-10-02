@@ -2,12 +2,63 @@
     <head>
         <?php
             include('includes/config.php');
+			$cid=intval($_GET['cid']);
         ?>
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/green.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="assets/css/owl.transitions.css">
+	<link href="assets/css/lightbox.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/rateit.css">
+	<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+
+	<link rel="stylesheet" href="assets/css/config.css">
+
+	<link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
+	<link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
+	<link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
+	<link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
+	<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <!-- Fonts --> 
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+		
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
     </head>
     <body>
+	<h3 class="section-title">shop by</h3>
+	            	<div class="sidebar-filter">
+		            	<!-- ============================================== SIDEBAR CATEGORY ============================================== -->
+<div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
+	<div class="widget-header m-t-20">
+		<h4 class="widget-title">Category</h4>
+	</div>
+	<div class="sidebar-widget-body m-t-10">
+	         <?php $sql=mysqli_query($con,"select id,categoryName  from category");
+while($row=mysqli_fetch_array($sql))
+{
+    ?>
+		<div class="accordion">
+	    	<div class="accordion-group">
+	            <div class="accordion-heading">
+	                <a href="product.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
+	                   <?php echo $row['categoryName'];?>
+	                </a>
+	            </div>  
+	        </div>
+	    </div>
+	    <?php } ?>
+	</div><!-- /.sidebar-widget-body -->
+</div><!-- /.sidebar-widget -->
+</div><!-- /.sidebar-filter -->
+	            </div><!-- /.sidebar-module-container -->
+            </div><!-- /.sidebar -->
     <?php 
-
-$cid=4;
 
     $sql=mysqli_query($con,"select categoryName  from category where id='$cid'");
 while($row=mysqli_fetch_array($sql))
@@ -41,8 +92,7 @@ while ($row=mysqli_fetch_array($ret))
 	<div class="product">		
 		<div class="product-image">
 			<div class="image">
-			<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img src= "admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"' alt="" width="200" height="300"></a>
-		</div><!-- /.product-image -->
+			<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img src= "admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"' alt="" width="200" height="300"></a>		</div><!-- /.product-image -->
 			
 		
 		<div class="product-info text-left">
@@ -52,8 +102,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">	
 				<span class="price">
-					PHP. <?php echo htmlentities($row['productPrice']);?>			</span>
-										     
+					Rs. <?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">Rs. <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 									
 			</div><!-- /.product-price -->
 			
