@@ -2,7 +2,7 @@
     <head>
         <?php
             include('includes/config.php');
-			include('includes/navbar.php');
+			include('navbar.php');
 			$cid=intval($_GET['cid']);
         ?>
 
