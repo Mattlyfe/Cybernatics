@@ -59,14 +59,15 @@ if(isset($_POST['submit']))
 	    <title>Product Details</title>
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
-	    <link rel="stylesheet" href="assets/css/green.css">
+
 	    <link rel="stylesheet" href="assets/css/owl.carousel.css">
 		<link rel="stylesheet" href="assets/css/owl.transitions.css">
 		<link href="assets/css/lightbox.css" rel="stylesheet">
 		<link rel="stylesheet" href="assets/css/animate.min.css">
-		<link rel="stylesheet" href="assets/css/rateit.css">
+		<!-- <link rel="stylesheet" href="assets/css/rateit.css"> -->
 		<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-		<link rel="stylesheet" href="assets/css/config.css">
+		<!-- <link rel="stylesheet" href="assets/css/config.css"> -->
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
         <!-- Fonts --> 
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -83,23 +84,6 @@ if(isset($_POST['submit']))
 <!-- ============================================== NAVBAR : END ============================================== -->
 
 <!-- ============================================== HEADER : END ============================================== -->
-	<?php
-	$ret=mysqli_query($con,"select category.categoryName as catname,subCategory.subcategory as subcatname,products.productName as pname from products join category on category.id=products.category join subcategory on subcategory.id=products.subCategory where products.id='$pid'");
-	while ($rw=mysqli_fetch_array($ret)) {
-
-	?>
-
-
-				<ul class="list-inline list-unstyled">
-					<li><a href="index.php">Home</a></li>
-					<li><?php echo htmlentities($rw['catname']);?></a></li>
-					<li><?php echo htmlentities($rw['subcatname']);?></li>
-					<li class='active'><?php echo htmlentities($rw['pname']);?></li>
-				</ul>
-				<?php }?>
-			</div><!-- /.breadcrumb-inner -->
-		</div><!-- /.container -->
-	</div><!-- /.breadcrumb -->
 	<div class="body-content outer-top-xs">
 		<div class='container'>
 			<div class='row single-product outer-bottom-sm '>
@@ -107,29 +91,9 @@ if(isset($_POST['submit']))
 					<div class="sidebar-module-container">
 
 
-					<!-- ==============================================CATEGORY============================================== -->
-<div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-	<h3 class="section-title">Category</h3>
-	<div class="sidebar-widget-body m-t-10">
-		<div class="accordion">
+<!-- ==============================================CATEGORY============================================== -->
 
-		            <?php $sql=mysqli_query($con,"select id,categoryName  from category");
-while($row=mysqli_fetch_array($sql))
-{
-    ?>
-	    	<div class="accordion-group">
-	            <div class="accordion-heading">
-	                <a href="category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
-	                   <?php echo $row['categoryName'];?>
-	                </a>
-	            </div>
-	          
-	        </div>
-	        <?php } ?>
-	    </div>
-	</div>
-</div>
-	<!-- ============================================== CATEGORY : END ============================================== -->
+<!-- ============================================== CATEGORY : END ============================================== -->
 
 <!-- ============================================== COLOR: END ============================================== -->
 				</div>
@@ -154,8 +118,6 @@ while($row=mysqli_fetch_array($ret))
                     <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" width="370" height="350" />
                 </a>
             </div>
-
-
 
 
             <div class="single-product-gallery-item" id="slide1">
@@ -245,7 +207,7 @@ $num=mysqli_num_rows($rt);
 								<div class="row">
 									<div class="col-sm-3">
 										<div class="stock-box">
-											<span class="label">Product Brand :</span>
+											<span class="label">Brand :</span>
 										</div>	
 									</div>
 									<div class="col-sm-9">
@@ -333,7 +295,7 @@ $num=mysqli_num_rows($rt);
 
 <?php $cid=$row['category'];
 			$subcid=$row['subCategory']; } ?>
-				<!-- ============================================== UPSELL PRODUCTS ============================================== -->
+<!-- ============================================== UPSELL PRODUCTS ============================================== -->
 
 <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
 			
@@ -359,25 +321,5 @@ $num=mysqli_num_rows($rt);
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
-	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
-	<script>
-		$(document).ready(function(){ 
-			$(".changecolor").switchstylesheet( { seperator:"color"} );
-			$('.show-theme-options').click(function(){
-				$(this).parent().toggleClass('open');
-				return false;
-			});
-		});
-
-		$(window).bind("load", function() {
-		   $('.show-theme-options').delay(2000).trigger('click');
-		});
-	</script>
-	<!-- For demo purposes – can be removed on production : End -->
-
-	
-
 </body>
 </html>
