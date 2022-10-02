@@ -3744,7 +3744,7 @@ a {
 }
 .cnt-homepage .single-product .product-tabs .nav-tab-cell-detail li a:hover,
 .cnt-homepage .single-product .product-tabs .nav-tab-cell-detail li a:focus {
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 .cnt-homepage .single-product .product-tabs .nav-tab-cell-detail li.active a {
   color: #fff;
