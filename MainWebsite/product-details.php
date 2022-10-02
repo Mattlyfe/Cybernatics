@@ -68,13 +68,6 @@ if(isset($_POST['submit']))
 		<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
 		<link rel="stylesheet" href="assets/css/config.css">
 
-		<link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-		<link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-		<link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-		<link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
         <!-- Fonts --> 
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -90,9 +83,6 @@ if(isset($_POST['submit']))
 <!-- ============================================== NAVBAR : END ============================================== -->
 
 <!-- ============================================== HEADER : END ============================================== -->
-	<div class="breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-inner">
 	<?php
 	$ret=mysqli_query($con,"select category.categoryName as catname,subCategory.subcategory as subcatname,products.productName as pname from products join category on category.id=products.category join subcategory on subcategory.id=products.subCategory where products.id='$pid'");
 	while ($rw=mysqli_fetch_array($ret)) {
