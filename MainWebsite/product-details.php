@@ -1,3 +1,4 @@
+<!-- paki bura to -->
 <?php 
 session_start();
 error_reporting(0);
