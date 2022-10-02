@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <?php
-			include('navbar.php');
+		    include('navbar.php');
         ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

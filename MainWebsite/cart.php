@@ -143,8 +143,8 @@ echo "<script>alert('Shipping Address has been updated');</script>";
 		<!-- ============================================== HEADER ============================================== -->
 <header class="header-style-1">
 <?php include('includes/top-header.php');?>
+<?php include('includes/main-header.php');?>
 <?php include('navbar.php');?>
-
 </header>
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
