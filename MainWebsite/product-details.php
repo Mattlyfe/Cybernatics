@@ -132,40 +132,7 @@ while($row=mysqli_fetch_array($ret))
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
-            <div class="single-product-gallery-item" id="slide3">
-                <a data-lightbox="image-1" data-title="Gallery" href="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>" />
-                </a>
-            </div>
-
         </div><!-- /.single-product-slider -->
-
-
-        <div class="single-product-gallery-thumbs gallery-thumbs">
-
-            <div id="owl-single-product-thumbnails">
-                <div class="item">
-                    <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide1">
-                        <img class="img-responsive"  alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" />
-                    </a>
-                </div>
-
-            <div class="item">
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide2">
-                        <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>"/>
-                    </a>
-                </div>
-                <div class="item">
-
-                    <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3" href="#slide3">
-                        <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>" height="200" />
-                    </a>
-                </div>
-
-                
-            </div><!-- /#owl-single-product-thumbnails -->
-
-        </div>
 
     </div>
 </div>     			
