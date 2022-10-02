@@ -1,7 +1,6 @@
 <html>
     <head>
         <?php
-            include("navbar.php");
             include('includes/config.php');
         ?>
     </head>
