@@ -31,6 +31,7 @@
 	<link rel="shortcut icon" href="assets/images/favicon.ico">
     </head>
     <body>
+	<?php include("navbar.php");?>
 	<h3 class="section-title">shop by</h3>
 	            	<div class="sidebar-filter">
 		            	<!-- ============================================== SIDEBAR CATEGORY ============================================== -->

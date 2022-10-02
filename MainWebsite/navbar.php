@@ -2,7 +2,6 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Navbar Menu Hover Effect</title>
     <link rel="stylesheet" href="navbarstyles.css">
   </head>
   <body>
