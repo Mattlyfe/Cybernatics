@@ -73,13 +73,7 @@ while($row=mysqli_fetch_array($sql))
 				</div><!-- /.caption -->
 			</div><!-- /.container-fluid -->
 		</div>
-</div>
-
-				<div class="search-result-container">
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane active " id="grid-container">
-							<div class="category-product  inner-top-vs">
-								<div class="row">									
+</div>							
 			<?php
 $ret=mysqli_query($con,"select * from products where category='$cid'");
 $num=mysqli_num_rows($ret);
@@ -138,6 +132,8 @@ while ($row=mysqli_fetch_array($ret))
 			</div>
 			</div>
 		</div>
+		</div><!-- /.action -->
+			
 	  <?php } } else {?>
 	
 		<div class="col-sm-6 col-md-4 wow fadeInUp"> <h3>No Product Found</h3>
