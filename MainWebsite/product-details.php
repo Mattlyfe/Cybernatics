@@ -1,4 +1,3 @@
-<!-- paki bura to -->
 <?php 
 session_start();
 error_reporting(0);
@@ -163,19 +162,13 @@ while($row=mysqli_fetch_array($ret))
                     </a>
                 </div>
 
-               
-               
                 
             </div><!-- /#owl-single-product-thumbnails -->
-
-            
 
         </div>
 
     </div>
 </div>     			
-
-
 
 
 					<div class='col-sm-6 col-md-7 product-info-block'>
@@ -225,8 +218,8 @@ $num=mysqli_num_rows($rt);
 
 									<div class="col-sm-6">
 										<div class="price-box">
-											<span class="price">PHP. <?php echo htmlentities($row['productPrice']);?></span>
-											<span class="price-strike">PHP.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+											<span class="price">PHP <?php echo htmlentities($row['productPrice']);?></span>
+											<span class="price-strike">PHP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 										</div>
 									</div>
 
@@ -267,32 +260,6 @@ $num=mysqli_num_rows($rt);
 						</div><!-- /.product-info -->
 					</div><!-- /.col-sm-7 -->
 				</div><!-- /.row -->
-
-				
-				<div class="product-tabs inner-bottom-xs  wow fadeInUp">
-					<div class="row">
-						<div class="col-sm-3">
-							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-							</ul><!-- /.nav-tabs #product-tabs -->
-						</div>
-						<div class="col-sm-9">
-
-							<div class="tab-content">
-								
-								<div id="description" class="tab-pane in active">
-									<div class="product-tab">
-										<p class="text"><?php echo $row['productDescription'];?></p>
-									</div>	
-								</div><!-- /.tab-pane -->
-																		
-							        </div><!-- /.product-tab -->
-								</div><!-- /.tab-pane -->
-
-							</div><!-- /.tab-content -->
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.product-tabs -->
 
 <?php $cid=$row['category'];
 			$subcid=$row['subCategory']; } ?>
