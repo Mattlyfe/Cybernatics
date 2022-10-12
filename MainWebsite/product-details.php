@@ -657,7 +657,7 @@ while($rw=mysqli_fetch_array($qry))
 			</div><!-- /.col -->
 			<div class="clearfix"></div>
 		</div>
-<?php include('includes/brands-slider.php');?>
+
 </div>
 </div>
 <?php include('includes/footer.php');?>

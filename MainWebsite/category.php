@@ -267,7 +267,6 @@ while ($row=mysqli_fetch_array($ret))
 
 			</div><!-- /.col -->
 		</div></div>
-		<?php include('includes/brands-slider.php');?>
 
 </div>
 </div>
