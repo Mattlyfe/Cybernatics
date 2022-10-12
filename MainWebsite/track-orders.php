@@ -83,8 +83,6 @@ include('includes/config.php');
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
 <div 
 
-
-</div>
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	
