@@ -31,8 +31,8 @@ mysqli_query($con,"insert into wishlist(userId,productId) values('".$_SESSION['i
 echo "<script>alert('Product aaded in wishlist');</script>";
 header('location:my-wishlist.php');
 
-}// ---------------------------- ALA DAPAT WISHLIST -----------------------
 }
+}// ---------------------------- ALA DAPAT WISHLIST -----------------------
 if(isset($_POST['submit']))
 {
 	$qty=$_POST['quality'];
