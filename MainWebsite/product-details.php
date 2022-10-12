@@ -32,7 +32,7 @@ echo "<script>alert('Product aaded in wishlist');</script>";
 header('location:my-wishlist.php');
 
 }
-}
+}// ---------------------------- ALA DAPAT WISHLIST -----------------------
 if(isset($_POST['submit']))
 {
 	$qty=$_POST['quality'];
@@ -143,70 +143,7 @@ while($row=mysqli_fetch_array($sql))
 	    </div>
 	</div>
 </div>
-	<!-- ============================================== CATEGORY : END ============================================== -->					<!-- ============================================== HOT DEALS ============================================== -->
-<div class="sidebar-widget hot-deals wow fadeInUp">
-	<h3 class="section-title">hot deals</h3>
-	<div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-xs">
-		
-								   <?php
-$ret=mysqli_query($con,"select * from products order by rand() limit 4 ");
-while ($rws=mysqli_fetch_array($ret)) {
 
-?>
-
-								        
-													<div class="item">
-					<div class="products">
-						<div class="hot-deal-wrapper">
-							<div class="image">
-								<img src="admin/productimages/<?php echo htmlentities($rws['id']);?>/<?php echo htmlentities($rws['productImage1']);?>"  width="200" height="334" alt="">
-							</div>
-							
-						</div><!-- /.hot-deal-wrapper -->
-
-						<div class="product-info text-left m-t-20">
-							<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($rws['id']);?>"><?php echo htmlentities($rws['productName']);?></a></h3>
-							<div class="rating rateit-small"></div>
-
-							<div class="product-price">	
-								<span class="price">
-									Rs. <?php echo htmlentities($rws['productPrice']);?>.00
-								</span>
-									
-							    <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>					
-							
-							</div><!-- /.product-price -->
-							
-						</div><!-- /.product-info -->
-
-						<div class="cart clearfix animate-effect">
-							<div class="action">
-								
-								<div class="add-cart-button btn-group">
-									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<?php if($row['productAvailability']=='In Stock'){?>
-										<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<i class="fa fa-shopping-cart"></i>													
-							</button>
-							<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-							<button class="btn btn-primary" type="button">Add to cart</button></a>
-								<?php } else {?>
-							<div class="action" style="color:red">Out of Stock</div>
-					<?php } ?>
-															
-								</div>
-								
-							</div><!-- /.action -->
-						</div><!-- /.cart -->
-					</div>	
-					</div>		
-					<?php } ?>        
-						
-	    
-    </div><!-- /.sidebar-widget -->
-</div>
-
-<!-- ============================================== COLOR: END ============================================== -->
 				</div>
 			</div><!-- /.sidebar -->
 <?php 
@@ -229,8 +166,6 @@ while($row=mysqli_fetch_array($ret))
                     <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" width="370" height="350" />
                 </a>
             </div>
-
-
 
 
             <div class="single-product-gallery-item" id="slide1">
@@ -293,23 +228,7 @@ while($row=mysqli_fetch_array($ret))
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
 							<h1 class="name"><?php echo htmlentities($row['productName']);?></h1>
-<?php $rt=mysqli_query($con,"select * from productreviews where productId='$pid'");
-$num=mysqli_num_rows($rt);
-{
-?>		
-							<div class="rating-reviews m-t-20">
-								<div class="row">
-									<div class="col-sm-3">
-										<div class="rating rateit-small"></div>
-									</div>
-									<div class="col-sm-8">
-										<div class="reviews">
-											<a href="#" class="lnk">(<?php echo htmlentities($num);?> Reviews)</a>
-										</div>
-									</div>
-								</div><!-- /.row -->		
-							</div><!-- /.rating-reviews -->
-<?php } ?>
+
 							<div class="stock-container info-container m-t-10">
 								<div class="row">
 									<div class="col-sm-3">
@@ -373,24 +292,10 @@ $num=mysqli_num_rows($rt);
 
 									<div class="col-sm-6">
 										<div class="price-box">
-											<span class="price">Rs. <?php echo htmlentities($row['productPrice']);?></span>
-											<span class="price-strike">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+											<span class="price">PHP<?php echo htmlentities($row['productPrice']);?></span>
+											<span class="price-strike">PHP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 										</div>
 									</div>
-
-
-
-
-									<div class="col-sm-6">
-										<div class="favorite-button m-t-10">
-											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="product-details.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist">
-											    <i class="fa fa-heart"></i>
-											</a>
-											
-											</a>
-										</div>
-									</div>
-
 								</div><!-- /.row -->
 							</div><!-- /.price-container -->
 
@@ -428,231 +333,13 @@ $num=mysqli_num_rows($rt);
 
 									
 								</div><!-- /.row -->
-							</div><!-- /.quantity-container -->
-
-							<div class="product-social-link m-t-20 text-right">
-								<span class="social-label">Share :</span>
-								<div class="social-icons">
-						            <ul class="list-inline">
-						                <li><a class="fa fa-facebook" href="http://facebook.com/transvelo"></a></li>
-						                <li><a class="fa fa-twitter" href="#"></a></li>
-						                <li><a class="fa fa-linkedin" href="#"></a></li>
-						                <li><a class="fa fa-rss" href="#"></a></li>
-						                <li><a class="fa fa-pinterest" href="#"></a></li>
-						            </ul><!-- /.social-icons -->
-						        </div>
-							</div>
-
-							
-
-							
+							</div><!-- /.quantity-container -->							
 						</div><!-- /.product-info -->
 					</div><!-- /.col-sm-7 -->
 				</div><!-- /.row -->
 
-				
-				<div class="product-tabs inner-bottom-xs  wow fadeInUp">
-					<div class="row">
-						<div class="col-sm-3">
-							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-							</ul><!-- /.nav-tabs #product-tabs -->
-						</div>
-						<div class="col-sm-9">
-
-							<div class="tab-content">
-								
-								<div id="description" class="tab-pane in active">
-									<div class="product-tab">
-										<p class="text"><?php echo $row['productDescription'];?></p>
-									</div>	
-								</div><!-- /.tab-pane -->
-
-								<div id="review" class="tab-pane">
-									<div class="product-tab">
-																				
-										<div class="product-reviews">
-											<h4 class="title">Customer Reviews</h4>
-<?php $qry=mysqli_query($con,"select * from productreviews where productId='$pid'");
-while($rvw=mysqli_fetch_array($qry))
-{
-?>
-
-											<div class="reviews" style="border: solid 1px #000; padding-left: 2% ">
-												<div class="review">
-													<div class="review-title"><span class="summary"><?php echo htmlentities($rvw['summary']);?></span><span class="date"><i class="fa fa-calendar"></i><span><?php echo htmlentities($rvw['reviewDate']);?></span></span></div>
-
-													<div class="text">"<?php echo htmlentities($rvw['review']);?>"</div>
-													<div class="text"><b>Quality :</b>  <?php echo htmlentities($rvw['quality']);?> Star</div>
-													<div class="text"><b>Price :</b>  <?php echo htmlentities($rvw['price']);?> Star</div>
-													<div class="text"><b>value :</b>  <?php echo htmlentities($rvw['value']);?> Star</div>
-                                                <div class="author m-t-15"><i class="fa fa-pencil-square-o"></i> <span class="name"><?php echo htmlentities($rvw['name']);?></span></div>													</div>
-											
-											</div>
-											<?php } ?><!-- /.reviews -->
-										</div><!-- /.product-reviews -->
-										<form role="form" class="cnt-form" name="review" method="post">
-
-										
-										<div class="product-add-review">
-											<h4 class="title">Write your own review</h4>
-											<div class="review-table">
-												<div class="table-responsive">
-													<table class="table table-bordered">	
-														<thead>
-															<tr>
-																<th class="cell-label">&nbsp;</th>
-																<th>1 star</th>
-																<th>2 stars</th>
-																<th>3 stars</th>
-																<th>4 stars</th>
-																<th>5 stars</th>
-															</tr>
-														</thead>	
-														<tbody>
-															<tr>
-																<td class="cell-label">Quality</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-															<tr>
-																<td class="cell-label">Price</td>
-																<td><input type="radio" name="price" class="radio" value="1"></td>
-																<td><input type="radio" name="price" class="radio" value="2"></td>
-																<td><input type="radio" name="price" class="radio" value="3"></td>
-																<td><input type="radio" name="price" class="radio" value="4"></td>
-																<td><input type="radio" name="price" class="radio" value="5"></td>
-															</tr>
-															<tr>
-																<td class="cell-label">Value</td>
-																<td><input type="radio" name="value" class="radio" value="1"></td>
-																<td><input type="radio" name="value" class="radio" value="2"></td>
-																<td><input type="radio" name="value" class="radio" value="3"></td>
-																<td><input type="radio" name="value" class="radio" value="4"></td>
-																<td><input type="radio" name="value" class="radio" value="5"></td>
-															</tr>
-														</tbody>
-													</table><!-- /.table .table-bordered -->
-												</div><!-- /.table-responsive -->
-											</div><!-- /.review-table -->
-											
-											<div class="review-form">
-												<div class="form-container">
-													
-														
-														<div class="row">
-															<div class="col-sm-6">
-																<div class="form-group">
-																	<label for="exampleInputName">Your Name <span class="astk">*</span></label>
-																<input type="text" class="form-control txt" id="exampleInputName" placeholder="" name="name" required="required">
-																</div><!-- /.form-group -->
-																<div class="form-group">
-																	<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
-																	<input type="text" class="form-control txt" id="exampleInputSummary" placeholder="" name="summary" required="required">
-																</div><!-- /.form-group -->
-															</div>
-
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="exampleInputReview">Review <span class="astk">*</span></label>
-
-<textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder="" name="review" required="required"></textarea>
-																</div><!-- /.form-group -->
-															</div>
-														</div><!-- /.row -->
-														
-														<div class="action text-right">
-															<button name="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
-														</div><!-- /.action -->
-
-													</form><!-- /.cnt-form -->
-												</div><!-- /.form-container -->
-											</div><!-- /.review-form -->
-
-										</div><!-- /.product-add-review -->										
-										
-							        </div><!-- /.product-tab -->
-								</div><!-- /.tab-pane -->
-
-				
-
-							</div><!-- /.tab-content -->
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.product-tabs -->
-
 <?php $cid=$row['category'];
 			$subcid=$row['subCategory']; } ?>
-				<!-- ============================================== UPSELL PRODUCTS ============================================== -->
-<section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Realted Products </h3>
-	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-	   
-		<?php 
-$qry=mysqli_query($con,"select * from products where subCategory='$subcid' and category='$cid'");
-while($rw=mysqli_fetch_array($qry))
-{
-
-			?>	
-
-
-		<div class="item item-carousel">
-			<div class="products">
-	<div class="product">		
-		<div class="product-image">
-			<div class="image">
-				<a href="product-details.php?pid=<?php echo htmlentities($rw['id']);?>"><img  src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($rw['id']);?>/<?php echo htmlentities($rw['productImage1']);?>" width="150" height="240" alt=""></a>
-			</div><!-- /.image -->			
-
-			                   		   
-		</div><!-- /.product-image -->
-			
-		
-		<div class="product-info text-left">
-			<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($rw['id']);?>"><?php echo htmlentities($rw['productName']);?></a></h3>
-			<div class="rating rateit-small"></div>
-			<div class="description"></div>
-
-			<div class="product-price">	
-				<span class="price">
-					Rs.<?php echo htmlentities($rw['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.
-										     <?php echo htmlentities($rw['productPriceBeforeDiscount']);?></span>
-									
-			</div><!-- /.product-price -->
-			
-		</div><!-- /.product-info -->
-					<div class="cart clearfix animate-effect">
-				<div class="action">
-					<ul class="list-unstyled">
-						<li class="add-cart-button btn-group">
-							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-								<i class="fa fa-shopping-cart"></i>													
-							</button>
-						<a href="product-details.php?page=product&action=add&id=<?php echo $rw['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
-													
-						</li>
-	                   
-		              
-					</ul>
-				</div><!-- /.action -->
-			</div><!-- /.cart -->
-			</div><!-- /.product -->
-      
-			</div><!-- /.products -->
-		</div><!-- /.item -->
-		<?php } ?>
-	
-		
-			</div><!-- /.home-owl-carousel -->
-</section><!-- /.section -->
-
-
-<!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
 			
 			</div><!-- /.col -->
 			<div class="clearfix"></div>
