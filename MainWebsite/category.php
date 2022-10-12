@@ -21,20 +21,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 	}
 	
 }
-// COde for Wishlist
-if(isset($_GET['pid']) && $_GET['action']=="wishlist" ){
-	if(strlen($_SESSION['login'])==0)
-    {   
-header('location:login.php');
-}
-else
-{
-mysqli_query($con,"insert into wishlist(userId,productId) values('".$_SESSION['id']."','".$_GET['pid']."')");
-echo "<script>alert('Product aaded in wishlist');</script>";
-header('location:my-wishlist.php');
 
-}
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -204,8 +191,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">	
 				<span class="price">
-					Rs. <?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs. <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+					PHP <?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">PHP <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 									
 			</div><!-- /.product-price -->
 			

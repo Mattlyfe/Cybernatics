@@ -20,19 +20,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 	}
 }
 $pid=intval($_GET['pid']);
-if(isset($_GET['pid']) && $_GET['action']=="wishlist" ){
-	if(strlen($_SESSION['login'])==0)
-    {   
-header('location:login.php');
-}
-else
-{
-mysqli_query($con,"insert into wishlist(userId,productId) values('".$_SESSION['id']."','$pid')");
-echo "<script>alert('Product aaded in wishlist');</script>";
-header('location:my-wishlist.php');
 
-}
-}// ---------------------------- ALA DAPAT WISHLIST -----------------------
 if(isset($_POST['submit']))
 {
 	$qty=$_POST['quality'];
