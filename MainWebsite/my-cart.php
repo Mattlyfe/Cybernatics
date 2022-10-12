@@ -402,6 +402,7 @@ echo "Your shopping Cart is empty";
 </div>			</div>
 		</div> 
 		</form>
+
 </div>
 </div>
 <?php include('includes/footer.php');?>
