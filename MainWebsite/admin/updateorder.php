@@ -102,7 +102,7 @@ $st='Delivered';
         </span></td>
     </tr>
 
-     <tr style=''>
+     <tr>
       <td class="fontkink1" >Remark:</td>
       <td class="fontkink" align="justify" ><span class="fontkink">
         <textarea cols="50" rows="7" name="remark"  required="required" ></textarea>
