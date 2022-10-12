@@ -100,8 +100,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 	            <!-- ================================== TOP NAVIGATION ================================== -->
 <!--Deleted Sub Categories Part-->
 <!-- ================================== TOP NAVIGATION : END ================================== -->	            <div class="sidebar-module-container">
-	            	<h3 class="section-title">shop by</h3>
-	            	<div class="sidebar-filter">
+
 		            	<!-- ============================================== SIDEBAR CATEGORY ============================================== -->
 <div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
 	<div class="widget-header m-t-20">
