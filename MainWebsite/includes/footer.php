@@ -43,9 +43,7 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr><td>Monday-Friday:</td><td class="pull-right">08.00 To 18.00</td></tr>
-					<tr><td>Saturday:</td><td class="pull-right">09.00 To 20.00</td></tr>
-					<tr><td>Sunday:</td><td class="pull-right">10.00 To 20.00</td></tr>
+					<tr><td>Monday-Sunday:</td><td class="pull-right">05.00 To 19.00</td></tr>
 				</tbody>
 			</table>
 		</div><!-- /.table-responsive -->
