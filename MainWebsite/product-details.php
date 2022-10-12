@@ -292,8 +292,8 @@ while($row=mysqli_fetch_array($ret))
 
 									<div class="col-sm-6">
 										<div class="price-box">
-											<span class="price">PHP<?php echo htmlentities($row['productPrice']);?></span>
-											<span class="price-strike">PHP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+											<span class="price">PHP <?php echo htmlentities($row['productPrice']);?></span>
+											<span class="price-strike">PHP <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 										</div>
 									</div>
 								</div><!-- /.row -->
