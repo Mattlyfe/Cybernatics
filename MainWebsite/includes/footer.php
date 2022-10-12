@@ -9,14 +9,14 @@
         <div class="logo">
             <a href="index.php">
                 
-<h3>Shopping Portal</h3>
+<h3>Sandra Store Aye</h3>
             </a>
         </div><!-- /.logo -->
     
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us"> Nam libero tempore, cum soluta nobis est ses  eligendi optio cumque cum soluta nobis est ses  eligendi optio cumque.</p>
+        <p class="about-us"> Ako po si Charles Matthew Sanchez I love you. Bili na kayo pls.</p>
     
         <div class="social-icons">
             
@@ -70,7 +70,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>Surigao City, Philippines</p>
+                    <p>Valenzuela City, Philippines</p>
                 </div>
             </li>
 
@@ -83,18 +83,6 @@
                 </div>
                 <div class="media-body">
                     <p>(011) 000000000000<br>(011) 000000000000</p>
-                </div>
-            </li>
-
-              <li class="media">
-                <div class="pull-left">
-                     <span class="icon fa-stack fa-lg">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                    </span>
-                </div>
-                <div class="media-body">
-                    <span><a href="https://www.campcodes.com/">www.campcodes.com</a></span>
                 </div>
             </li>
               
