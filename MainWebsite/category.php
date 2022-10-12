@@ -211,13 +211,6 @@ while ($row=mysqli_fetch_array($ret))
 					<?php } ?>
 													
 						</li>
-	                   
-		                <li class="lnk wishlist">
-							<a class="add-to-cart" href="category.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist" title="Wishlist">
-								 <i class="icon fa fa-heart"></i>
-							</a>
-						</li>
-
 						
 					</ul>
 				</div><!-- /.action -->
