@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2022 at 04:46 PM
+-- Generation Time: Oct 13, 2022 at 03:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -163,7 +163,7 @@ CREATE TABLE `products` (
   `productImage2` varchar(255) DEFAULT NULL,
   `productImage3` varchar(255) DEFAULT NULL,
   `shippingCharge` int(11) DEFAULT NULL,
-  `productAvailability` varchar(255) DEFAULT NULL,
+  `productAvailability` int(255) DEFAULT NULL,
   `postingDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -173,13 +173,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category`, `subCategory`, `productName`, `productCompany`, `productPrice`, `productPriceBeforeDiscount`, `productDescription`, `productImage1`, `productImage2`, `productImage3`, `shippingCharge`, `productAvailability`, `postingDate`, `updationDate`) VALUES
-(1, 4, 3, 'Bear Brand Swak', 'Bear Brand', 7, 0, '', 'BearBrand.jpeg', 'BearBrand.jpeg', 'BearBrand.jpeg', 0, 'In Stock', '2017-01-30 16:54:35', ''),
-(2, 4, 4, 'Tiger', 'Tiger Biscuits', 7, 0, '', 'tigerbisc.png', 'TigerBrands.jpeg', 'TigerBrands.jpeg', 0, 'In Stock', '2017-01-30 16:59:00', ''),
-(3, 4, 4, 'iCool', 'iCool', 10, 12, '', 'Icool.jpeg', 'Icool.jpeg', 'Icool.jpeg', 0, 'In Stock', '2017-02-04 04:03:15', ''),
-(4, 4, 4, 'Oreo', 'Oreo', 15, 17, '', 'oreobisc.png', 'lenovo-k6-power-k33a42-2.jpeg', 'lenovo-k6-power-k33a42-3.jpeg', 45, 'In Stock', '2017-02-04 04:04:43', ''),
-(5, 4, 4, 'Fita', 'Rebisco', 7, 0, '', 'fitabisc.png', 'lenovo-k5-note-pa330116in-2.jpeg', 'lenovo-k5-note-pa330116in-3.jpeg', 0, 'In Stock', '2017-02-04 04:06:17', ''),
-(6, 4, 4, 'Hansel', 'Hansel', 9, 0, '', 'hanselbisc.jpg', 'micromax-canvas-mega-4g-2.jpeg', 'micromax-canvas-mega-4g-3.jpeg', 35, 'In Stock', '2017-02-04 04:08:07', ''),
-(7, 4, 4, 'Magic Flakes', 'Rebisco', 8, 0, '', 'magicflakesbisc.png', 'samsung-galaxy-on5-sm-2.jpeg', 'samsung-galaxy-on5-sm-3.jpeg', 20, 'In Stock', '2017-02-04 04:10:17', '');
+(1, 4, 3, 'Bear Brand Swak', 'Bear Brand', 7, 0, '', 'BearBrand.jpeg', 'BearBrand.jpeg', 'BearBrand.jpeg', 0, 250, '2017-01-30 16:54:35', ''),
+(2, 4, 4, 'Tiger', 'Tiger Biscuits', 7, 0, '', 'tigerbisc.png', 'TigerBrands.jpeg', 'TigerBrands.jpeg', 0, 250, '2017-01-30 16:59:00', ''),
+(3, 4, 4, 'iCool', 'iCool', 10, 12, '', 'Icool.jpeg', 'Icool.jpeg', 'Icool.jpeg', 0, 250, '2017-02-04 04:03:15', ''),
+(4, 4, 4, 'Oreo', 'Oreo', 15, 17, '', 'oreobisc.png', 'lenovo-k6-power-k33a42-2.jpeg', 'lenovo-k6-power-k33a42-3.jpeg', 45, 250, '2017-02-04 04:04:43', ''),
+(5, 4, 4, 'Fita', 'Rebisco', 7, 0, '', 'fitabisc.png', 'lenovo-k5-note-pa330116in-2.jpeg', 'lenovo-k5-note-pa330116in-3.jpeg', 0, 250, '2017-02-04 04:06:17', ''),
+(6, 4, 4, 'Hansel', 'Hansel', 9, 0, '', 'hanselbisc.jpg', 'micromax-canvas-mega-4g-2.jpeg', 'micromax-canvas-mega-4g-3.jpeg', 35, 250, '2017-02-04 04:08:07', ''),
+(7, 4, 4, 'Magic Flakes', 'Rebisco', 8, 0, '', 'magicflakesbisc.png', 'samsung-galaxy-on5-sm-2.jpeg', 'samsung-galaxy-on5-sm-3.jpeg', 20, 250, '2017-02-04 04:10:17', '');
 
 -- --------------------------------------------------------
 

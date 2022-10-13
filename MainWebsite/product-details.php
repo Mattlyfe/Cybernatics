@@ -288,10 +288,11 @@ while($row=mysqli_fetch_array($ret))
 									</div>
 
 									<div class="col-sm-7">
-<?php if($row['productAvailability']=='In Stock'){?>
-										<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+													<?php if($row['productAvailability'] == 0){?>
+										<div class="action" style="color:red">Out of Stock</div>
+										
 													<?php } else {?>
-							<div class="action" style="color:red">Out of Stock</div>
+														<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
 					<?php } ?>
 									</div>
 

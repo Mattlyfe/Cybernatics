@@ -213,10 +213,10 @@ while ($row=mysqli_fetch_array($ret))
 			</div><!-- /.product-price -->
 			
 		</div><!-- /.product-info -->
-		<?php if($row['productAvailability']=='In Stock'){?>
-					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
-				<?php } else {?>
-						<div class="action" style="color:red">Out of Stock</div>
+		<?php if($row['productAvailability'] == 0){?>
+				<div class="action" style="color:red">Out of Stock</div>
+					<?php } else {?>
+						<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
 					<?php } ?>
 			</div><!-- /.product -->
       
@@ -269,10 +269,10 @@ while ($row=mysqli_fetch_array($ret))
 			</div><!-- /.product-price -->
 			
 		</div><!-- /.product-info -->
-				<?php if($row['productAvailability']=='In Stock'){?>
-					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
+				<?php if($row['productAvailability'] == 0){?>
+					<div class="action" style="color:red">Out of Stock</div>
 				<?php } else {?>
-						<div class="action" style="color:red">Out of Stock</div>
+					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
 					<?php } ?>
 			</div><!-- /.product -->
       
@@ -325,10 +325,10 @@ while ($row=mysqli_fetch_array($ret))
 			</div>
 			
 		</div>
-				<?php if($row['productAvailability']=='In Stock'){?>
-					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
+				<?php if($row['productAvailability'] == 0){?>
+					<div class="action" style="color:red">Out of Stock</div>
 				<?php } else {?>
-						<div class="action" style="color:red">Out of Stock</div>
+					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
 					<?php } ?>
 			</div>
       
@@ -382,10 +382,10 @@ while ($row=mysqli_fetch_array($ret))
 			</div>
 			
 		</div>
-				<?php if($row['productAvailability']=='In Stock'){?>
-					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
+				<?php if($row['productAvailability'] == 0){?>
+					<div class="action" style="color:red">Out of Stock</div>
 				<?php } else {?>
-						<div class="action" style="color:red">Out of Stock</div>
+					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
 					<?php } ?>
 			</div>
 			</div>
@@ -430,10 +430,10 @@ while ($row=mysqli_fetch_array($ret))
 			</div>
 			
 		</div>
-				<?php if($row['productAvailability']=='In Stock'){?>
-					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
+				<?php if($row['productAvailability'] == 0){?>
+					<div class="action" style="color:red">Out of Stock</div>
 				<?php } else {?>
-						<div class="action" style="color:red">Out of Stock</div>
+					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
 					<?php } ?>
 			</div>
 			</div>
@@ -493,11 +493,11 @@ while ($row=mysqli_fetch_array($ret))
 												</span>
 
 											</div><!-- /.product-price -->
-										<?php if($row['productAvailability']=='In Stock'){?>
-					<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
-				<?php } else {?>
-						<div class="action" style="color:red">Out of Stock</div>
-					<?php } ?>
+										<?php if($row['productAvailability'] == 0){?>
+											<div class="action" style="color:red">Out of Stock</div>
+										<?php } else {?>
+												<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
+											<?php } ?>
 										</div>
 									</div><!-- /.col -->
 								</div><!-- /.product-micro-row -->

@@ -212,14 +212,14 @@ while ($row=mysqli_fetch_array($ret))
 				<div class="action">
 					<ul class="list-unstyled">
 						<li class="add-cart-button btn-group">
-					<?php if($row['productAvailability']=='In Stock'){?>
-										<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+					<?php if($row['productAvailability'] == 0){?>
+						<div class="action" style="color:red">Out of Stock</div>
+								<?php } else {?>
+									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 								<i class="fa fa-shopping-cart"></i>													
 							</button>
 							<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
 							<button class="btn btn-primary" type="button">Add to cart</button></a>
-								<?php } else {?>
-							<div class="action" style="color:red">Out of Stock</div>
 					<?php } ?>
 													
 						</li>
