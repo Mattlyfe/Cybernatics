@@ -83,12 +83,9 @@ include('includes/config.php');
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
 <div 
 
-<<<<<<< HEAD
 </div>
 
 </div>
-=======
->>>>>>> 6b7be26d5ae9e7eb6117bca34d03537395d26d0f
 <?php include('includes/footer.php');?>
 </body>
 </html>
