@@ -21,10 +21,10 @@
         <div class="social-icons">
             
         <a href="http://facebook.com/transvelo" class='active'><i class="icon fa fa-facebook"></i></a>
-        <a href="#"><i class="icon fa fa-twitter"></i></a>
+        <!-- <a href="#"><i class="icon fa fa-twitter"></i></a>
         <a href="#"><i class="icon fa fa-linkedin"></i></a>
         <a href="#"><i class="icon fa fa-rss"></i></a>
-        <a href="#"><i class="icon fa fa-pinterest"></i></a>
+        <a href="#"><i class="icon fa fa-pinterest"></i></a> -->
 
         </div><!-- /.social-icons -->
     </div><!-- /.module-body -->
