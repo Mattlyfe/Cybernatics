@@ -95,34 +95,12 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 </div><!-- /.breadcrumb -->
 <div class="body-content outer-top-xs">
 	<div class='container'>
-		<div class='row outer-bottom-sm'>
+		
 			<div class='col-md-3 sidebar'>
 	            <!-- ================================== TOP NAVIGATION ================================== -->
 <!--Deleted Sub Categories Part-->
 <!-- ================================== TOP NAVIGATION : END ================================== -->	            <div class="sidebar-module-container">
-
-		            	<!-- ============================================== SIDEBAR CATEGORY ============================================== -->
-<div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
-	<div class="widget-header m-t-20">
-		<h4 class="widget-title">Category</h4>
-	</div>
-	<div class="sidebar-widget-body m-t-10">
-	         <?php $sql=mysqli_query($con,"select id,categoryName  from category");
-while($row=mysqli_fetch_array($sql))
-{
-    ?>
-		<div class="accordion">
-	    	<div class="accordion-group">
-	            <div class="accordion-heading">
-	                <a href="category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
-	                   <?php echo $row['categoryName'];?>
-	                </a>
-	            </div>  
-	        </div>
-	    </div>
-	    <?php } ?>
-	</div><!-- /.sidebar-widget-body -->
-</div><!-- /.sidebar-widget -->
+<!--DELETED NA YUNG TOP CATEGORY SA GILID-->
 
 
 
