@@ -95,7 +95,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 </div><!-- /.breadcrumb -->
 <div class="body-content outer-top-xs">
 	<div class='container'>
-		
+		<div class='row outer-bottom-sm'>
 			<div class='col-md-3 sidebar'>
 	            <!-- ================================== TOP NAVIGATION ================================== -->
 <!--Deleted Sub Categories Part-->
