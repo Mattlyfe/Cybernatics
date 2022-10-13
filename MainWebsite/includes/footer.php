@@ -43,7 +43,7 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr><td>Monday-Sunday:</td><td class="pull-right">05.00 To 19.00</td></tr>
+					<tr><td>Monday-Sunday:</td><td class="pull-right">05:00 AM To 07:00 PM</td></tr>
 				</tbody>
 			</table>
 		</div><!-- /.table-responsive -->
