@@ -16,11 +16,14 @@
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us"> Ako po si Charles Matthew Sanchez I love you. Bili na kayo pls.</p>
+        <p class="about-us"> Ako po si Cyber Celwin Popanes ang Leader.<br>
+                            Ako po si John Lyod Miranda ang Lead Programmer.<br>
+                            Ako po si Charles Matthew Sanchez ang Co lead Programmer. <br>
+                            Ako po si Charles Drew Lejarde.<br> Bili na kayo pls.</p>
     
         <div class="social-icons">
             
-        <a href="http://facebook.com/transvelo" class='active'><i class="icon fa fa-facebook"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100000482058253" class='active'><i class="icon fa fa-facebook"></i></a>
         <!-- <a href="#"><i class="icon fa fa-twitter"></i></a>
         <a href="#"><i class="icon fa fa-linkedin"></i></a>
         <a href="#"><i class="icon fa fa-rss"></i></a>
@@ -80,7 +83,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>(011) 000000000000<br>(011) 000000000000</p>
+                    <p>(011) 09562331515<br>(011) 000000000000</p>
                 </div>
             </li>
               
