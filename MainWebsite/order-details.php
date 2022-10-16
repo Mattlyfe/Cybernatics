@@ -55,7 +55,15 @@ window.print();
 <link href="anuj.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="../MainWebsite/css/trackPopup.css">
 	<script language="javascript" type="text/javascript">
-
+var popUpWin=0;
+function popUpWindow(URLStr, left, top, width, height)
+{
+ if(popUpWin)
+{
+if(!popUpWin.closed) popUpWin.close();
+}
+popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+}
 
 </script>
 
@@ -140,83 +148,9 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 					
 					<td>
-					<button type="submit" class="btn" onclick="openPopup()"> Track</button>
-					<div class="popup" id="popup">
-								<img src="../MainWebsite/image/trackIcon.png">
-								<div style="margin-left:50px;">
-				<form name="updateticket" id="updateticket" method="post"> 
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-					<tr height="50">
-					<td colspan="2" class="fontkink2" style="padding-left:0px;"><div class="fontpink2"> <b>Order Tracking Details !</b></div></td>
-					
-					</tr>
-					<tr height="30">
-					<td  class="fontkink1"><b>order Id:</b></td>
-					<td  class="fontkink"><?php echo $oid;?></td>
-					</tr>
-					<?php 
-				$ret = mysqli_query($con,"SELECT * FROM ordertrackhistory WHERE orderId='$oid'");
-				$num=mysqli_num_rows($ret);
-				if($num>0)
-				{
-				while($row=mysqli_fetch_array($ret))
-					{
-					?>
-						
-					<tr height="20">
-					<td class="fontkink1" ><b>At Date:</b></td>
-					<td  class="fontkink"><?php echo $row['postingDate'];?></td>
-					</tr>
-					<tr height="20">
-					<td  class="fontkink1"><b>Status:</b></td>
-					<td  class="fontkink"><?php echo $row['status'];?></td>
-					</tr>
-					<tr height="20">
-					<td  class="fontkink1"><b>Remark:</b></td>
-					<td  class="fontkink"><?php echo $row['remark'];?></td>
-					</tr>
-
-				
-					<tr>
-					<td colspan="2"><hr /></td>
-					</tr>
-				<?php } }
-				else{
-				?>
-				<tr>
-				<td colspan="2">Order Not Process Yet</td>
-				</tr>
-				<?php  }
-				$st='Delivered';
-				$rt = mysqli_query($con,"SELECT * FROM orders WHERE id='$oid'");
-					while($num=mysqli_fetch_array($rt))
-					{
-					$currrentSt=$num['orderStatus'];
-				}
-					if($st==$currrentSt)
-					{ ?>
-				<tr><td colspan="2"><b>
-					Product Delivered successfully </b></td>
-				<?php } 
-				
-				?>
-				</table>
-				</form>
-				</div>
-								<input type="button" onclick="closePopup()">Ok</button>
-							</div>
+					<a href="javascript:void(0);" onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']);?>');" title="Track order">
+					Track
 						</div>
-						<script>
-							let popup = document.getElementById("popup");
-
-							function openPopup(){
-								popup.classList.add("open-popup");
-							}
-							function closePopup(){
-								popup.classList.remove("open-popup");
-							}
-						</script>
 					</td>
 				</tr>
 <?php $cnt=$cnt+1; break;}  }?>
