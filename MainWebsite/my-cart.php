@@ -241,10 +241,10 @@ $_SESSION['sid']=$pd;
 				             
 			              </div>
 		            </td>
-					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "PHP"." ".$row['productPrice']; ?>.00</span></td>
-<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "PHP"." ".$row['shippingCharge']; ?>.00</span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['productPrice']; ?>.00</span></td>
+<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
 
-					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "PHP"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
+					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
 				</tr>
 
 				<?php } }
@@ -365,7 +365,7 @@ while($row=mysqli_fetch_array($query))
 				<th>
 					
 					<div class="cart-grand-total">
-						Grand Total<span class="inner-left-md"><?php echo "PHP"." ".$_SESSION['tp']="$totalprice". ".00"; ?></span>
+						Grand Total<span class="inner-left-md"><?php echo "&#8369"." ".$_SESSION['tp']="$totalprice". ".00"; ?></span>
 					</div>
 				</th>
 			</tr>
@@ -387,7 +387,40 @@ echo "Your shopping Cart is empty";
 </div>			</div>
 		</div> 
 		</form>
+		<script src="assets/js/jquery-1.11.1.min.js"></script>
+	
+	<script src="assets/js/bootstrap.min.js"></script>
+	
+	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	
+	<script src="assets/js/echo.min.js"></script>
+	<script src="assets/js/jquery.easing-1.3.min.js"></script>
+	<script src="assets/js/bootstrap-slider.min.js"></script>
+    <script src="assets/js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="assets/js/lightbox.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
 
+	<!-- For demo purposes – can be removed on production -->
+	
+	<script src="switchstylesheet/switchstylesheet.js"></script>
+	
+	<script>
+		$(document).ready(function(){ 
+			$(".changecolor").switchstylesheet( { seperator:"color"} );
+			$('.show-theme-options').click(function(){
+				$(this).parent().toggleClass('open');
+				return false;
+			});
+		});
+
+		$(window).bind("load", function() {
+		   $('.show-theme-options').delay(2000).trigger('click');
+		});
+	</script>
+	<!-- For demo purposes – can be removed on production : End -->
 </div>
 </div>
 <?php include('includes/footer.php');?>
