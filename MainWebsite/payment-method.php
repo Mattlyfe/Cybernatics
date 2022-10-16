@@ -33,6 +33,8 @@ else{
 	    <link rel="stylesheet" href="assets/css/green.css">
 	    <link rel="stylesheet" href="assets/css/owl.carousel.css">
 		<link rel="stylesheet" href="assets/css/owl.transitions.css">
+		<link rel="stylesheet" href="css/cardsstyles.css">
+		<link rel="stylesheet" href="css/paymentstyles.css">
 		<!--<link rel="stylesheet" href="assets/css/owl.theme.css">-->
 		<link href="assets/css/lightbox.css" rel="stylesheet">
 		<link rel="stylesheet" href="assets/css/animate.min.css">
@@ -93,11 +95,28 @@ else{
 	    <div class="panel-body">
 	    <form name="payment" method="post">
 			<ul>
-				<li><input type="radio" name="paymethod" value="COD" checked="checked"> COD</li>
-				<li><input type="radio" name="paymethod" value="Internet Banking"> Internet Banking</li>
-				<li><input type="radio" name="paymethod" value="Debit / Credit card"> Debit / Credit card <br /><br /></li>
+				<li><input type="radio" name="paymethod" value="Credit/Debit Card" checked="checked"> Credit or Debit Card</li>
+				<li>
+					<div class="cardbox">
+					<img class="cardstyles" src="/MainWebsite/image/cardsimage/visa.png">
+					<img class="cardstyles" src="/MainWebsite/image/cardsimage/mastercard.png">
+					</div>
+				</li>
+				<li><input type="radio" name="paymethod" value="E-Wallet"> E-Wallet</li>
+				<li>
+					<div class="cardbox">
+					<img class="epayments" src="/MainWebsite/image/cardsimage/GCash.png">
+					<img class="epayments" src="/MainWebsite/image/cardsimage/PayMaya.png">
+					</div>
+				</li>
+				<li><input type="radio" name="paymethod" value="Cash on Delivery"> Cash on Delivery</li>
+				<li>
+					<div class="cardbox">
+					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
+					</div>
+				</li>
 			</ul>
-	     <input type="submit" value="submit" name="submit" class="btn btn-primary">
+	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
 	    	
 
 	    </form>		
