@@ -62,6 +62,7 @@ if(isset($_GET['del']))
 											<th>Product Name</th>
 											<th>Category </th>
 											<th>Subcategory</th>
+											<th>Quantity</th>
 											<th>Company Name</th>
 											<th>Product Creation Date</th>
 											<th>Action</th>
@@ -79,6 +80,7 @@ while($row=mysqli_fetch_array($query))
 											<td><?php echo htmlentities($row['productName']);?></td>
 											<td><?php echo htmlentities($row['categoryName']);?></td>
 											<td> <?php echo htmlentities($row['subcategory']);?></td>
+											<td><?php echo htmlentities($row['productAvailability']);?></td>
 											<td><?php echo htmlentities($row['productCompany']);?></td>
 											<td><?php echo htmlentities($row['postingDate']);?></td>
 											<td>

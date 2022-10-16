@@ -385,7 +385,9 @@ while($row=mysqli_fetch_array($query))
 echo "Your shopping Cart is empty";
 		}?>
 </div>			</div>
+</div> 
 		</div> 
+</div> 
 		</form>
 		<script src="assets/js/jquery-1.11.1.min.js"></script>
 	
