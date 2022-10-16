@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 session_start();
 error_reporting(0);
 include('includes/config.php');
@@ -47,11 +47,12 @@ else{
 		foreach($value as $qty=> $val34){
 
 
-
 mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$_SESSION['id']."','$qty','$val34')");
 header('location:payment-method.php');
+
 }
 }
+// $query=mysqli_query($con,"update products set productAvailability = productAvailabity - '$quantity' where id = 1");
 }
 
 // code for billing address updation
