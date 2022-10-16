@@ -9,17 +9,14 @@
         <div class="logo">
             <a href="index.php">
                 
-<h3>Sandra Store Aye</h3>
+<h3>Sandra Store</h3>
             </a>
         </div><!-- /.logo -->
     
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us"> Ako po si Cyber Celwin Popanes ang Leader.<br>
-                            Ako po si John Lyod Miranda ang Lead Programmer.<br>
-                            Ako po si Charles Matthew Sanchez ang Co lead Programmer. <br>
-                            Ako po si Charles Drew Lejarde.<br> Bili na kayo pls.</p>
+        <p class="about-us"> Sandra Store.</p>
     
         <div class="social-icons">
             
