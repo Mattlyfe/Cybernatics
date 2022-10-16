@@ -120,7 +120,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 						     <i class="icon fa fa-dollar"></i>
 						</div>
 						<div class="col-xs-10">
-							<h4 class="info-box-heading green">CHARLES</h4>
+							<h4 class="info-box-heading green">Buy</h4>
 						</div>
 					</div>	
 					<h6 class="text">30 Day Money Back Guarantee.</h6>
@@ -134,7 +134,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 							<i class="icon fa fa-truck"></i>
 						</div>
 						<div class="col-xs-10">
-							<h4 class="info-box-heading orange">MATTHEW</h4>
+							<h4 class="info-box-heading orange">Deliver</h4>
 						</div>
 					</div>
 					<h6 class="text">free ship-on oder over PHP 600.00</h6>	
@@ -148,7 +148,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 							<i class="icon fa fa-gift"></i>
 						</div>
 						<div class="col-xs-10">
-							<h4 class="info-box-heading red">POGI</h4>
+							<h4 class="info-box-heading red">Sale</h4>
 						</div>
 					</div>
 					<h6 class="text">All items-sale up to 20% off </h6>	
