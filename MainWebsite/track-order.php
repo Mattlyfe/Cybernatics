@@ -20,10 +20,14 @@ window.print();
 <title>Order Tracking Details</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="anuj.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../MainWebsite/css/trackPopup.css">
 </head>
 <body>
-
-<div style="margin-left:50px;">
+<div class="container">
+            <button type="submit" class="btn" onclick="openPopup()">Click to check order status</button>
+            <div class="popup" id="popup">
+                <img src="../MainWebsite/image/trackIcon.png">
+                <div style="margin-left:50px;">
  <form name="updateticket" id="updateticket" method="post"> 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
@@ -86,6 +90,20 @@ $st='Delivered';
 </table>
  </form>
 </div>
+                <button type="button" onclick="closePopup()">Ok</button>
+            </div>
+        </div>
+        <script>
+            let popup = document.getElementById("popup");
+
+            function openPopup(){
+                popup.classList.add("open-popup");
+            }
+            function closePopup(){
+                popup.classList.remove("open-popup");
+            }
+        </script>
+
 
 </body>
 </html>

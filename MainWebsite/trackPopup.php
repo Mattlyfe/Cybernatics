@@ -5,13 +5,13 @@
         <title>
             Popup
         </title>
-        <link rel="stylesheet" href="../css/trackPopup.css">
+        <link rel="stylesheet" href="../MainWebsite/css/trackPopup.css">
     </head>
     <body>
         <div class="container">
-            <button type="submit" class="btn" onclick="openPopup()">Track</button>
+            <button type="submit" class="btn" onclick="openPopup()">Click to check order status</button>
             <div class="popup" id="popup">
-                <img src="trackIcon.png">
+                <img src="../MainWebsite/image/trackIcon.png">
                 <h2>Sample text</h2>
                 <p>Sample text again</p>
                 <button type="button" onclick="closePopup()">Ok</button>
