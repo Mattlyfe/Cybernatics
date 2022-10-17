@@ -130,7 +130,7 @@ while($row=mysqli_fetch_array($query))
 				<tr>
 					<td><?php echo $cnt;?></td>
 					<td class="cart-image">
-						<a class="entry-thumbnail" href="detail.html">
+						<a class="entry-thumbnail" href="product-details.html">
 						    <img src="admin/productimages/<?php echo $row['pname'];?>/<?php echo $row['pimg1'];?>" alt="" width="84" height="146">
 						</a>
 					</td>
@@ -153,7 +153,9 @@ while($row=mysqli_fetch_array($query))
 						</div>
 					</td>
 				</tr>
-<?php $cnt=$cnt+1; break;}  }?>
+				<?php $cnt=$cnt+1;} } else { ?>
+				<tr><td colspan="8">Either order id or  Registered email id is invalid</td></tr>
+				<?php } ?>
 
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->

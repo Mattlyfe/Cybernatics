@@ -42,17 +42,18 @@ else{
 	$quantity=$_POST['quantity'];
 	$pdd=$_SESSION['pid'];
 	$value=array_combine($pdd,$quantity);
+	$productavailability=$_POST['productAvailability'];
 
 
 		foreach($value as $qty=> $val34){
 
-
 mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$_SESSION['id']."','$qty','$val34')");
+// mysqli_query($con,"update products set productAvailability = $productavailabity-$quantity where id='".$_SESSION['sid']."'");
 header('location:payment-method.php');
 
 }
 }
-// $query=mysqli_query($con,"update products set productAvailability = productAvailabity - '$quantity' where id = 1");
+
 }
 
 // code for billing address updation
