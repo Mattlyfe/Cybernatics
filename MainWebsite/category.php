@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 		echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		}else{
 			$message="Product ID is invalid";
-		}
+		} 
 	}
 	
 }
@@ -181,9 +181,11 @@ while ($row=mysqli_fetch_array($ret))
 									<div class="action" style="color:red">Out of Stock</div>
 
 								<?php } else {?>
-								
-								<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-								<button class="btn btn-primary" type="button"><i class="fa fa-shopping-cart"></i> Add to cart</button></a>		
+									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">	
+									<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
+									<i class="fa fa-shopping-cart"></i>Add to Cart
+								</button></a>															
+
 
 					<?php } ?>
 													
