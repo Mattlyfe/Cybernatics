@@ -2512,6 +2512,7 @@ a {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   background: #575757 ;
+  
 }
 .product .cart .action ul li.lnk {
   margin: 10px 0px;
@@ -2575,6 +2576,7 @@ a {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   background: #575757 ;
+  
 }
 .cart .action.lnk {
   margin: 10px 0px;
@@ -4040,7 +4042,7 @@ a {
 .homepage-container .cart .action .add-cart-button .btn.btn-primary.icon {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  background: #575757 ;
+  background: #575757;
 }
 .wrapper .box {
   margin-left: auto;
