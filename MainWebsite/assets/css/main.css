@@ -2512,6 +2512,7 @@ a {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   background: #575757 ;
+  
 }
 .product .cart .action ul li.lnk {
   margin: 10px 0px;
@@ -2575,6 +2576,7 @@ a {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   background: #575757 ;
+  
 }
 .cart .action.lnk {
   margin: 10px 0px;
@@ -4040,7 +4042,7 @@ a {
 .homepage-container .cart .action .add-cart-button .btn.btn-primary.icon {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  background: #575757 ;
+  background: #575757;
 }
 .wrapper .box {
   margin-left: auto;
@@ -4742,6 +4744,7 @@ a {
 }
 .shopping-cart .shopping-cart-table table tbody tr td {
   vertical-align: middle;
+  border: 1px solid black;
 }
 .shopping-cart .shopping-cart-table table tbody tr .romove-item a {
   font-size: 18px;
@@ -4795,6 +4798,7 @@ a {
   padding: 16px;
   font-family: 'FjallaOneRegular';
   font-size: 15px;
+  border: 2px solid black;
 }
 .shopping-cart .shopping-cart-table .shopping-cart-btn span {
   padding: 20px 0px;

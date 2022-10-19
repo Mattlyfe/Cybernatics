@@ -22,9 +22,8 @@ window.print();
 <link href="anuj.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="../MainWebsite/css/trackPopup.css">
 </head>
-<body>
-<div class="container">
-            <button type="submit" class="btn" onclick="openPopup()">Click to check order status</button>
+<body onload="openPopup()">
+<div class="pop-upContainer">
             <div class="popup" id="popup">
                 <img src="../MainWebsite/image/trackIcon.png">
                 <div style="margin-left:50px;">
