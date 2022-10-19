@@ -24,7 +24,6 @@ window.print();
 </head>
 <body onload="openPopup()">
 <div class="pop-upContainer">
-
             <div class="popup" id="popup">
                 <img src="../MainWebsite/image/trackIcon.png">
                 <div style="margin-left:50px;">
