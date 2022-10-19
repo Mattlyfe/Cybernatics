@@ -186,7 +186,6 @@ while ($row=mysqli_fetch_array($ret))
 									<i class="fa fa-shopping-cart"></i>Add to Cart
 								</button></a>															
 
-
 					<?php } ?>
 													
 						</li>
