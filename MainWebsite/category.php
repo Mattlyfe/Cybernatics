@@ -183,7 +183,7 @@ while ($row=mysqli_fetch_array($ret))
 								<?php } else {?>
 									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">	
 									<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-									<i class="fa fa-shopping-cart"></i>Add to Cart
+									<i class="fa fa-shopping-cart"></i> Add to Cart
 								</button></a>															
 
 					<?php } ?>
