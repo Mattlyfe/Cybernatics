@@ -4855,6 +4855,7 @@ a {
 .shopping-cart .cart-shopping-total table tbody tr td .cart-checkout-btn button {
   float: right !important;
   margin-bottom: 8px;
+  margin-right: 30%;
 }
 .shopping-cart .cart-shopping-total table tbody tr td .cart-checkout-btn span {
   display: block;
@@ -4896,6 +4897,7 @@ a {
 .shopping-cart .cart-shopping-total table thead tr th .cart-grand-total {
   font-family: 'FjallaOneRegular';
   font-size: 22px;
+  margin-right: 10px;
 }
 .shopping-cart-table table tbody tr td .quant-input {
   display: inline-block;
