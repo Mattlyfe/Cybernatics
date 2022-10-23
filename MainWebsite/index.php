@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 			$message="Product ID is invalid";
 		}
 	}
-		echo "<script>alert('Product has been added to the cart')</script>";
+		// echo "<script>alert('Product has been added to the cart')</script>";
 		echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 }
 

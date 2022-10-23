@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
 
 			}
 		}
-			echo "<script>alert('Your Cart has been Updated');</script>";
+			
 		}
 	}
 // Code for Remove a Product from Cart
@@ -24,7 +24,7 @@ if(!empty($_SESSION['cart'])){
 			
 				unset($_SESSION['cart'][$key]);
 		}
-			echo "<script>alert('Your Cart has been Updated');</script>";
+		
 	}
 }
 // code for insert product in order table
@@ -65,10 +65,10 @@ header('location:payment-method.php');
 		$bcity=$_POST['billingcity'];
 		$bpincode=$_POST['billingpincode'];
 		$query=mysqli_query($con,"update users set billingAddress='$baddress',billingState='$bstate',billingCity='$bcity',billingPincode='$bpincode' where id='".$_SESSION['id']."'");
-		if($query)
-		{
-echo "<script>alert('Billing Address has been updated');</script>";
-		}
+// 		if($query)
+// 		{
+// echo "<script>alert('Billing Address has been updated');</script>";
+// 		}
 	}
 
 
@@ -80,10 +80,10 @@ echo "<script>alert('Billing Address has been updated');</script>";
 		$scity=$_POST['shippingcity'];
 		$spincode=$_POST['shippingpincode'];
 		$query=mysqli_query($con,"update users set shippingAddress='$saddress',shippingState='$sstate',shippingCity='$scity',shippingPincode='$spincode' where id='".$_SESSION['id']."'");
-		if($query)
-		{
-echo "<script>alert('Shipping Address has been updated');</script>";
-		}
+// 		if($query)
+// 		{
+// echo "<script>alert('Shipping Address has been updated');</script>";
+// 		}
 	}
 
 ?>
@@ -176,7 +176,7 @@ if(!empty($_SESSION['cart'])){
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th class="cart-romove item">Select</th>
+					<th class="cart-select item">Select</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
 					<th class="cart-qty item">Quantity</th>
@@ -221,7 +221,7 @@ if(!empty($_SESSION['cart'])){
 	?>
 
 				<tr>
-					<td class="romove-item"><input type="checkbox" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" /></td>
+					<td class="select-item"><input type="checkbox" name="orderselect" value="<?php echo htmlentities($row['id']);?>" /></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
 						    <img src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" alt="" width="114" height="146">
@@ -248,7 +248,7 @@ $_SESSION['sid']=$pd;
 <td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
 
 					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
-					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" />Remove<i class="fa fa-trash-o"></i></button></td>
+					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>"  class="fa fa-trash-o"></button></td>
 				</tr>
 
 				<?php } }

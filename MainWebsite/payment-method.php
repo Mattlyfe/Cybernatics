@@ -49,6 +49,19 @@ else{
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+		<script language="javascript" type="text/javascript">
+var popUpWin=0;
+function popUpWindow(URLStr, left, top, width, height)
+{
+ if(popUpWin)
+{
+if(!popUpWin.closed) popUpWin.close();
+}
+popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+900+',height='+1200+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+}
+
+</script>
 	</head>
     <body class="cnt-home">
 	
@@ -95,16 +108,11 @@ else{
 	    <div class="panel-body">
 	    <form name="payment" method="post">
 			<ul>
-				<li><input type="radio" name="paymethod" value="Credit/Debit Card" checked="checked"> Credit or Debit Card</li>
+				<li><a href="javascript:void(0);" onClick="popUpWindow('qr.php');" title="Track order">
+					<input type="radio" name="paymethod" value="E-Wallet"></a> E-Wallet</li>
 				<li>
 					<div class="cardbox">
-					<img class="cardstyles" src="/MainWebsite/image/cardsimage/visa.png">
-					<img class="cardstyles" src="/MainWebsite/image/cardsimage/mastercard.png">
-					</div>
-				</li>
-				<li><input type="radio" name="paymethod" value="E-Wallet"> E-Wallet</li>
-				<li>
-					<div class="cardbox">
+					
 					<img class="epayments" src="/MainWebsite/image/cardsimage/GCash.png">
 					<img class="epayments" src="/MainWebsite/image/cardsimage/PayMaya.png">
 					</div>
