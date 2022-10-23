@@ -2,6 +2,6 @@
 		<div class="container">
 			 
 
-			<b class="copyright">&copy; 2020 Shopping Portal by CampCodes </b> All rights reserved.
+			<b class="copyright">&copy; 2020 Sandra Store </b>
 		</div>
 	</div>
