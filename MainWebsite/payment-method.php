@@ -95,13 +95,6 @@ else{
 	    <div class="panel-body">
 	    <form name="payment" method="post">
 			<ul>
-				<li><input type="radio" name="paymethod" value="Credit/Debit Card" checked="checked"> Credit or Debit Card</li>
-				<li>
-					<div class="cardbox">
-					<img class="cardstyles" src="/MainWebsite/image/cardsimage/visa.png">
-					<img class="cardstyles" src="/MainWebsite/image/cardsimage/mastercard.png">
-					</div>
-				</li>
 				<li><input type="radio" name="paymethod" value="E-Wallet"> E-Wallet</li>
 				<li>
 					<div class="cardbox">
