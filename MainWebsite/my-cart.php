@@ -176,19 +176,19 @@ if(!empty($_SESSION['cart'])){
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th class="cart-romove item">Remove</th>
+					<th class="cart-romove item">Select</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
-			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
 					<th class="cart-sub-total item">Shipping Charge</th>
 					<th class="cart-total last-item">Grandtotal</th>
+					<th class="cart-romove item">Remove</th>
 				</tr>
 			</thead><!-- /thead -->
 			<tfoot>
 				<tr>
-					<td colspan="7">
+					<td colspan="8">
 						<div class="shopping-cart-btn">
 							<span class="">
 								<a href="index.php" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
@@ -248,6 +248,7 @@ $_SESSION['sid']=$pd;
 <td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
 
 					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
+					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" />Remove<i class="fa fa-trash-o"></i></button></td>
 				</tr>
 
 				<?php } }
@@ -326,7 +327,7 @@ while($row=mysqli_fetch_array($query))
 				<tr>
 					<td>
 						<div class="cart-checkout-btn pull-right">
-							<button type="submit" name="ordersubmit" class="btn btn-primary">PROCCED TO CHEKOUT</button>
+							<button type="submit" name="ordersubmit" class="btn btn-primary">PROCEED TO CHECKOUT</button>
 						
 						</div>
 					</td>
