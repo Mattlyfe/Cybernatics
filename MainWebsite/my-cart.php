@@ -221,7 +221,7 @@ if(!empty($_SESSION['cart'])){
 	?>
 
 				<tr>
-					<td class="romove-item" ><button style="height:10px;width:5px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" /><i class="fa fa-trash-o"></i></button></td>
+					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" />Remove<i class="fa fa-trash-o"></i></button></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
 						    <img src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" alt="" width="114" height="146">
