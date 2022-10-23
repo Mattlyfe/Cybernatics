@@ -18,7 +18,7 @@
     <br>
     <br>
     <h1>Please Scan the qr code using the Gcash or Paymaya App</h1>
-    <h1>Please send the proof payment to our <a href="https://m.me/Matttlyfee">messenger</h1>
+    <h1>Please send the proof payment to our <a href="https://www.facebook.com/Mattlyfee">Facebook Page</h1>
  </form>
 </div>
                 <button type="button" onclick="closePopup()">Ok</button>
