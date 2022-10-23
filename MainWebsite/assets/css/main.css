@@ -4854,6 +4854,7 @@ a {
 .shopping-cart .cart-shopping-total table tbody tr td .cart-checkout-btn button {
   float: right !important;
   margin-bottom: 8px;
+  margin-right: 30%;
 }
 .shopping-cart .cart-shopping-total table tbody tr td .cart-checkout-btn span {
   display: block;
