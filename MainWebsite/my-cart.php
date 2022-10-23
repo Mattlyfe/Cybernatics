@@ -221,7 +221,7 @@ if(!empty($_SESSION['cart'])){
 	?>
 
 				<tr>
-					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" />Remove<i class="fa fa-trash-o"></i></button></td>
+					<td class="romove-item"><input type="checkbox" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" /></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
 						    <img src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" alt="" width="114" height="146">
@@ -248,7 +248,7 @@ $_SESSION['sid']=$pd;
 <td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
 
 					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
-					<td class="romove-item"><input type="checkbox" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" /></td>
+					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" />Remove<i class="fa fa-trash-o"></i></button></td>
 				</tr>
 
 				<?php } }
