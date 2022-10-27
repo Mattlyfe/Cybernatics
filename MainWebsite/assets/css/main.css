@@ -1761,6 +1761,7 @@ a {
   text-align: center;
   cursor: default;
   height: 368px;
+  left: 15%;
 }
 #owl-main .owl-controls {
   display: inline-block;
@@ -2385,6 +2386,8 @@ a {
 }
 .info-boxes {
   margin-top: 30px;
+  padding-left: 30%;
+  margin-bottom: 30px;
 }
 .info-boxes .info-box {
   border: 5px solid #f2f2f0;
@@ -3126,6 +3129,7 @@ a {
   background-size: cover;
   height: 255px;
   position: relative;
+  left: 15%;
 }
 .category-carousel .item .caption {
   color: #636363;
@@ -3135,6 +3139,7 @@ a {
   top: 10%;
   z-index: 100;
   display: table-cell;
+  left: 23%;
 }
 .category-carousel .item .caption .big-text {
   font-size: 150px;

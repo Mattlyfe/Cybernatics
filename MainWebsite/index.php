@@ -82,12 +82,6 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 	<div class="container">
 		<div class="furniture-container homepage-container">
 		<div class="row">
-		
-			<div class="col-xs-12 col-sm-12 col-md-3 sidebar">
-				<!-- ================================== TOP NAVIGATION ================================== -->
-	<?php include('includes/side-menu.php');?>
-<!-- ================================== TOP NAVIGATION : END ================================== -->
-			</div><!-- /.sidemenu-holder -->	
 			
 			<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
 				<!-- ========================================== SECTION – HERO ========================================= -->
