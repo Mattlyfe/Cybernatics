@@ -108,16 +108,33 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 	    <div class="panel-body">
 	    <form name="payment" method="post">
 			<ul>
-				<li><a href="javascript:void(0);" onClick="popUpWindow('qr.php');" title="Track order">
+			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
+				<li><a href="javascript:void(0);" onclick="openPopup()" title="Track order">
 					<input type="radio" name="paymethod" value="E-Wallet"></a> E-Wallet</li>
 				<li>
 					<div class="cardbox">
-					
-					<img class="epayments" src="/MainWebsite/image/cardsimage/GCash.png">
+					<div class="popup" id="popup">
+					<form name="updateticket" id="updateticket" method="post"> 
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<a data-amount="10" data-fee="0" data-expiry="24" data-description="Payment for services rendered" data-href="https://getpaid.gcash.com/paynow" data-public-key="pk_c382e62a8ffd3aa372889750acf3e5f8" onclick="this.href = this.getAttribute('data-href')+'?public_key='+this.getAttribute('data-public-key')+'&amp;amount='+this.getAttribute('data-amount')+'&amp;fee='+this.getAttribute('data-fee')+'&amp;expiry='+this.getAttribute('data-expiry')+'&amp;description='+this.getAttribute('data-description');" href="https://getpaid.gcash.com/paynow?public_key=pk_c382e62a8ffd3aa372889750acf3e5f8&amp;amount=10&amp;fee=0&amp;expiry=24&amp;description=Payment for services rendered" target="_blank" class="x-getpaid-button"><img src="https://getpaid.gcash.com/assets/img/paynow.png"></a>
 					<img class="epayments" src="/MainWebsite/image/cardsimage/PayMaya.png">
+					</table>
+					</form>
 					</div>
+					</div>
+					
+					<script>
+            let popup = document.getElementById("popup");
+
+            function openPopup() {
+			document.getElementById("popup").style.display = "block";
+			}
+            function closePopup() {
+			document.getElementById("popup").style.display = "none";
+			}
+        </script>
 				</li>
-				<li><input type="radio" name="paymethod" value="Cash on Delivery"> Cash on Delivery</li>
+				<li><input type="radio" name="paymethod" onclick="closePopup()" value="Cash on Delivery"> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
