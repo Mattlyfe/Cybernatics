@@ -106,7 +106,7 @@ else{
 			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
-						<th class="cart-sub-total item">Shiping Charge</th>
+					<th class="cart-sub-total item">Shiping Charge</th>
 					<th class="cart-total">Grandtotal</th>
 					<th class="cart-total item">Payment Method</th>
 					<th class="cart-description item">Order Date</th>
@@ -150,7 +150,7 @@ while($row=mysqli_fetch_array($query))
 				</tr>
 <?php $cnt=$cnt+1;} ?>
 <tr>
-	<td colspan="9"><div class="cart-checkout-btn pull-right">
+	<td colspan="10"><div class="cart-checkout-btn pull-right">
 							<button type="submit" name="ordersubmit" class="btn btn-primary"><a href="payment-method.php">PROCCED To Payment</a></button>
 						
 						</div></td>
