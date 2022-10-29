@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+
 if(isset($_POST['submit'])){
 		if(!empty($_SESSION['cart'])){
 		foreach($_POST['quantity'] as $key => $val){
@@ -14,7 +15,8 @@ if(isset($_POST['submit'])){
 		}
 			
 		}
-	}
+	}	
+
 // Code for Remove a Product from Cart
 if(isset($_POST['remove_code']))
 	{
@@ -220,6 +222,7 @@ if(!empty($_SESSION['cart'])){
 // print_r($_SESSION['pid'])=$pdtid;exit;
 	?>
 
+
 				<tr>
 					<td class="select-item"><input type="checkbox" name="orderselect" value="<?php echo htmlentities($row['id']);?>" /></td>
 					<td class="cart-image">
@@ -240,12 +243,12 @@ $_SESSION['sid']=$pd;
 				                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 				                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 				                </div>
-				             <input type="text" value="<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>" name="quantity[<?php echo $row['id']; ?>]">
+				             <input onchange='calculateTotal()' type="number" value="<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>"  name="quantity[<?php echo $row['id']; ?>]">
 				             
 			              </div>
 		            </td>
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['productPrice']; ?>.00</span></td>
-<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
 
 					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
 					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>"  class="fa fa-trash-o"></button></td>
@@ -282,9 +285,6 @@ while($row=mysqli_fetch_array($query))
 					    <label class="info-title" for="Billing Address">Billing Address<span>*</span></label>
 					    <textarea class="form-control unicase-form-control text-input"  name="billingaddress" required="required"><?php echo $row['billingAddress'];?></textarea>
 					  </div>
-
-
-
 						<div class="form-group">
 					    <label class="info-title" for="Billing State ">Billing State  <span>*</span></label>
 			 <input type="text" class="form-control unicase-form-control text-input" id="bilingstate" name="bilingstate" value="<?php echo $row['billingState'];?>" required>
@@ -342,7 +342,7 @@ echo "Your shopping Cart is empty";
 		</div> 
 </div> 
 		</form>
-		<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	
 	<script src="assets/js/bootstrap.min.js"></script>
 	
@@ -361,6 +361,22 @@ echo "Your shopping Cart is empty";
 	<!-- For demo purposes – can be removed on production -->
 	
 	<script src="switchstylesheet/switchstylesheet.js"></script>
+	<script>
+		var iqnty = document.getElementsByClassName('cart-product-quantity').value;
+		var iprice = document.getElementsByClassName('cart-product-sub-total').value;
+		var itotal = document.getElementsByClassName('cart-product-grand-total').value;
+		var igrandtotal = document.getElementsByClassName('cart-grand-total').value;
+
+		function calculateTotal()
+		{
+			for(i=0; i<iprice.length; i++){
+				itotal[i].innerText=(iprice[i].value)*(iqnty[i].value);
+
+			}
+		}
+
+		calculateTotal();
+	</script>
 	
 	<script>
 		$(document).ready(function(){ 
