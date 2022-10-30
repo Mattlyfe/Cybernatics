@@ -181,10 +181,8 @@ while ($row=mysqli_fetch_array($ret))
 									<div class="action" style="color:red">Out of Stock</div>
 
 								<?php } else {?>
-									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">	
-									<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-									<i class="fa fa-shopping-cart"></i> Add to Cart
-								</button></a>															
+									
+									<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>															
 
 					<?php } ?>
 													
@@ -218,10 +216,9 @@ while ($row=mysqli_fetch_array($ret))
 </div>
 </div>
 <?php include('includes/footer.php');?>
-<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
-	
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
 	
@@ -236,21 +233,7 @@ while ($row=mysqli_fetch_array($ret))
 
 	<!-- For demo purposes – can be removed on production -->
 	
-	<script src="switchstylesheet/switchstylesheet.js"></script>
 	
-	<script>
-		$(document).ready(function(){ 
-			$(".changecolor").switchstylesheet( { seperator:"color"} );
-			$('.show-theme-options').click(function(){
-				$(this).parent().toggleClass('open');
-				return false;
-			});
-		});
-
-		$(window).bind("load", function() {
-		   $('.show-theme-options').delay(2000).trigger('click');
-		});
-	</script>
 	<!-- For demo purposes – can be removed on production : End -->
 
 </body>
