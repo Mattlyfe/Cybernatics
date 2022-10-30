@@ -1,193 +1,155 @@
-<?php 
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if(strlen($_SESSION['login'])==0)
-    {   
-header('location:login.php');
-}
-else{
+<html>
+    <head>
+    <link href="css/bootstrap.css" rel="stylesheet">
 
-?>
+<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- Meta -->
-		<meta charset="utf-8">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<meta name="description" content="">
-		<meta name="author" content="">
-	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-	    <meta name="robots" content="all">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style type="text/css">
+  body{
+    padding-bottom: 40px;
+  }
+  .invetb{
+    padding-top: 50px;
+    padding-left: 317px;
+	padding-right: 200px;
+	overflow-y: scroll;
+	overflow-x: scroll;
+  }
+  table, tr, td
+  {
+    text-align: center;
+    padding: 10px;
+    border-spacing: 10px;
+    border: 3px black solid;
+  }
+  th
+  {
+    background-color: #E0E0E0;
+    font-size: 17px;
+	padding: 5px;
+  }
 
-	    <title>Order History</title>
-	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	    <link rel="stylesheet" href="assets/css/main.css">
-	    <link rel="stylesheet" href="assets/css/green.css">
-	    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-		<link rel="stylesheet" href="assets/css/owl.transitions.css">
-		<!--<link rel="stylesheet" href="assets/css/owl.theme.css">-->
-		<link href="assets/css/lightbox.css" rel="stylesheet">
-		<link rel="stylesheet" href="assets/css/animate.min.css">
-		<link rel="stylesheet" href="assets/css/rateit.css">
-		<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  
+</style>
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
 
-		<!-- Demo Purpose Only. Should be removed in production -->
-		<link rel="stylesheet" href="assets/css/config.css">
+<script src="jeffartagame.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="lib/jquery.js" type="text/javascript"></script>
+<script src="src/facebox.js" type="text/javascript"></script>
 
-		<link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-		<link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-		<link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-		<link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
-	<script language="javascript" type="text/javascript">
-var popUpWin=0;
-function popUpWindow(URLStr, left, top, width, height)
-{
- if(popUpWin)
-{
-if(!popUpWin.closed) popUpWin.close();
-}
-popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
-}
+    </head>
+    <body>
+        <?php
+            include("sidenav.php");
+        ?>
 
-</script>
+<div class="invetb">
 
-	</head>
-    <body class="cnt-home">
-	
+<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
+
+<table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
+	<thead>
+		<tr>
+			<th width="12%"> Transaction No. </th>
+			<th width="9%"> Date Received </th>
+			<th width="14%"> Customer </th>
+			<th width="13%"> Remarks </th>
+			<th width="8%"> Total </th>
+			<th width="8%"> Action </th>
+		</tr>
+	</thead>
+	<tbody>
 		
-	
-		<!-- ============================================== HEADER ============================================== -->
-<header class="header-style-1">
-<?php include('includes/top-header.php');?>
-<?php include('includes/main-header.php');?>
-<?php include('includes/sidenav.php');?>
-</header>
-<!-- ============================================== HEADER : END ============================================== -->
-<div class="breadcrumb">
-	<div class="container">
-		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li class='active'>Shopping Cart</li>
-			</ul>
-		</div><!-- /.breadcrumb-inner -->
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
-
-<div class="body-content outer-top-xs">
-	<div class="container">
-		<div class="row inner-bottom-sm">
-			<div class="shopping-cart">
-				<div class="col-md-12 col-sm-12 shopping-cart-table ">
-	<div class="table-responsive">
-<form name="cart" method="post">	
-
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="cart-romove item">#</th>
-					<th class="cart-description item">Image</th>
-					<th class="cart-product-name item">Product Name</th>
-			
-					<th class="cart-qty item">Quantity</th>
-					<th class="cart-sub-total item">Price Per unit</th>
-					<th class="cart-sub-total item">Shipping Charge</th>
-					<th class="cart-total item">Grandtotal</th>
-					<th class="cart-total item">Payment Method</th>
-					<th class="cart-description item">Order Date</th>
-					<th class="cart-total last-item">Action</th>
-				</tr>
-			</thead><!-- /thead -->
-			
-			<tbody>
-
-<?php $query=mysqli_query($con,"select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.userId='".$_SESSION['id']."' and orders.paymentMethod is not null");
-$cnt=1;
-while($row=mysqli_fetch_array($query))
-{
-?>
-				<tr>
-					<td><?php echo $cnt;?></td>
-					<td class="cart-image">
-						<a class="entry-thumbnail" href="detail.html">
-						    <img src="admin/productimages/<?php echo $row['proid'];?>/<?php echo $row['pimg1'];?>" alt="" width="84" height="146">
-						</a>
-					</td>
-					<td class="cart-product-name-info">
-						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid'];?>">
-						<?php echo $row['pname'];?></a></h4>
-						
-						
-					</td>
-					<td class="cart-product-quantity">
-						<?php echo $qty=$row['qty']; ?>   
-		            </td>
-					<td class="cart-product-sub-total"><?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-sub-total"><?php echo $shippcharge=$row['shippingcharge']; ?>  </td>
-					<td class="cart-product-grand-total"><?php echo (($qty*$price)+$shippcharge);?></td>
-					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
-					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
-					
-					<td>
- <a href="javascript:void(0);" onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']);?>');" title="Track order">
-					Track</td>
-				</tr>
-<?php $cnt=$cnt+1;} ?>
-				
-			</tbody><!-- /tbody -->
-		</table><!-- /table -->
+			<?php
+			function formatMoney($number, $fractional=false) {
+					if ($fractional) {
+						$number = sprintf('%.2f', $number);
+					}
+					while (true) {
+						$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+						if ($replaced != $number) {
+							$number = $replaced;
+						} else {
+							break;
+						}
+					}
+					return $number;
+				}
+				include('../MainPOS/connect.php');
+				$result = $db->prepare("SELECT *, price * qty as total FROM products ORDER BY product_id DESC");
+				$result->execute();
+				for($i=0; $row = $result->fetch(); $i++){
+				$total=$row['total'];
+				$availableqty=$row['qty'];
+			?>
 		
-	</div>
+
+			<td><?php echo $row['product_code']; ?></td>
+			<td><?php echo $row['date_arrival']; ?></td>
+			<td><?php echo $row['gen_name']; ?></td>
+			<td><?php echo $row['product_name']; ?></td>
+			<td>
+			PHP. <?php
+			$total=$row['total'];
+			echo formatMoney($total, true);
+			?>
+			</td>
+			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['product_id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
+			<a href="#" id="<?php echo $row['product_id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
+			</tr>
+			<?php
+                }
+			?>
+		
+		
+		
+	</tbody>
+</table>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
 </div>
 
-		</div><!-- /.shopping-cart -->
-		</div> <!-- /.row -->
-		</form>
-	</div><!-- /.container -->
-</div><!-- /.body-content -->
-<?php include('includes/footer.php');?>
+<script src="js/jquery.js"></script>
+  <script type="text/javascript">
+$(function() {
 
-	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
-	<script src="assets/js/bootstrap.min.js"></script>
-	
-	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
-	<script src="assets/js/owl.carousel.min.js"></script>
-	
-	<script src="assets/js/echo.min.js"></script>
-	<script src="assets/js/jquery.easing-1.3.min.js"></script>
-	<script src="assets/js/bootstrap-slider.min.js"></script>
-    <script src="assets/js/jquery.rateit.min.js"></script>
-    <script type="text/javascript" src="assets/js/lightbox.min.js"></script>
-    <script src="assets/js/bootstrap-select.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
 
-	<!-- For demo purposes – can be removed on production -->
-	
-	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
-	<script>
-		$(document).ready(function(){ 
-			$(".changecolor").switchstylesheet( { seperator:"color"} );
-			$('.show-theme-options').click(function(){
-				$(this).parent().toggleClass('open');
-				return false;
-			});
-		});
+$(".delbutton").click(function(){
 
-		$(window).bind("load", function() {
-		   $('.show-theme-options').delay(2000).trigger('click');
-		});
-	</script>
-	<!-- For demo purposes – can be removed on production : End -->
+//Save the link in a variable called element
+var element = $(this);
+
+//Find the id of the link that was clicked
+var del_id = element.attr("id");
+
+//Built a url to send
+var info = 'id=' + del_id;
+ if(confirm("Sure you want to delete this Product? There is NO undo!"))
+		  {
+
+ $.ajax({
+   type: "GET",
+   url: "deleteproduct.php",
+   data: info,
+   success: function(){
+   
+   }
+ });
+         $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+		.animate({ opacity: "hide" }, "slow");
+
+ }
+
+return false;
+
+});
+
+});
+</script>
 </body>
 </html>
-<?php } ?>
