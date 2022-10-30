@@ -155,9 +155,7 @@ while ($row=mysqli_fetch_array($ret))
 					<?php if($row['productAvailability'] == 0){?>
 						<div class="action" style="color:red">Out of Stock</div>
 								<?php } else {?>
-									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">	
-									<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-									<i class="fa fa-shopping-cart"></i> Add to Cart
+									<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
 								</button></a>	
 					<?php } ?>
 													
