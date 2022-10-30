@@ -210,7 +210,7 @@ while ($row=mysqli_fetch_array($ret))
 		<?php if($row['productAvailability'] == 0){?>
 				<div class="action" style="color:red">Out of Stock</div>
 					<?php } else {?>
-						<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+						<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
 					<?php } ?>
 			</div><!-- /.product -->
       
