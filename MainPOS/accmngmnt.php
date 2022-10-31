@@ -49,8 +49,7 @@
                     include("config.php");
                     $cnt=1;
                     $stmt = $conn->prepare(
-                        "SELECT * FROM users_be"
-                    );
+                        "SELECT * FROM users_be");
                     $stmt->execute();
                     $users = $stmt->fetchAll();
                     foreach($users as $user){
