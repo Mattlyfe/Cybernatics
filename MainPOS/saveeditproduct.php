@@ -4,22 +4,21 @@ include('../MainPOS/connect.php');
 
 // new data
 $id = $_POST['memi'];
-$a = $_POST['code'];
-$z = $_POST['gen'];
-$b = $_POST['name'];
-$c = $_POST['exdate'];
-$d = $_POST['price'];
-$e = $_POST['qty'];
-$f = $_POST['o_price'];
-$g = $_POST['profit'];
-$h = $_POST['date_arrival'];
-$i = $_POST['sold'];
+$a = $_POST['productCode'];
+$z = $_POST['genName'];
+$b = $_POST['productName'];
+$c = $_POST['category'];
+$d = $_POST['productPrice'];
+$e = $_POST['oPrice'];
+$f = $_POST['profit'];
+$g = $_POST['productAvailability'];
+
 // query
 $sql = "UPDATE products 
-        SET product_code=?, gen_name=?, product_name=?, expiry_date=?, price=?, qty=?, o_price=?, profit=?, date_arrival=?, qty_sold=?
-		WHERE product_id=?";
+        SET productCode=?, genName=?, productName=?, category=?, productPrice=?, oPrice=?, profit=?, productAvailability=?
+		WHERE id=?";
 $q = $db->prepare($sql);
-$q->execute(array($a,$z,$b,$c,$d,$e,$f,$g,$h,$i,$id));
+$q->execute(array($a,$z,$b,$c,$d,$e,$f,$g,$id));
 header("location: inventory.php");
 
 ?>

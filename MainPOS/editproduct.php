@@ -12,13 +12,14 @@
 <hr>
 <div id="ac">
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
-<span>Product Code : </span><input type="text" style="width:265px; height:30px;"  name="code" value="<?php echo $row['productCode']; ?>" Required/><br>
-<span>Generic Name : </span><input type="text" style="width:265px; height:30px;"  name="gen" value="<?php echo $row['genName']; ?>" /><br>
-<span>Category / Description : </span><textarea style="width:265px; height:50px;" name="name" ><?php echo $row['productName']; ?> </textarea><br>
-<span>Selling Price : </span><input type="text" style="width:265px; height:30px;" id="txt1" name="price" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" Required/><br>
-<span>Original Price : </span><input type="text" style="width:265px; height:30px;" id="txt2" name="o_price" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" Required/><br>
+<span>Product Code : </span><input type="text" style="width:265px; height:30px;"  name="productCode" value="<?php echo $row['productCode']; ?>" Required/><br>
+<span>Generic Name : </span><input type="text" style="width:265px; height:30px;"  name="genName" value="<?php echo $row['genName']; ?>" /><br>
+<span>Product Name : </span><textarea style="width:265px; height:50px;" name="productName"><?php echo $row['productName']; ?> </textarea><br>
+<span>Category / Description : </span><textarea style="width:265px; height:50px;" name="category" ><?php echo $row['category']; ?> </textarea><br>
+<span>Selling Price : </span><input type="text" style="width:265px; height:30px;" id="txt1" name="productPrice" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" Required/><br>
+<span>Original Price : </span><input type="text" style="width:265px; height:30px;" id="txt2" name="oPrice" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" Required/><br>
 <span>Profit : </span><input type="text" style="width:265px; height:30px;" id="txt3" name="profit" value="<?php echo $row['profit']; ?>" readonly><br>
-<span>QTY Left: </span><input type="number" style="width:265px; height:30px;" min="0" name="qty" value="<?php echo $row['productAvailability']; ?>" /><br>
+<span>QTY: </span><input type="number" style="width:265px; height:30px;" min="0" name="productAvailability" value="<?php echo $row['productAvailability']; ?>" /><br>
 
 <div style="float:right; margin-right:10px;">
 
