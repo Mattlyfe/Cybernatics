@@ -19,7 +19,7 @@
                     <li><a href="orderhistory.php"><i class='bx bx-time' ></i></i>Order History</a></li>
                     <li><a href="#"><i class='bx bxs-report'></i>Sales Report</a></li>
                     <li><a href="#"><i class='bx bxs-chat' ></i>Messages</a></li>
-                    <li><a href="#"><i class='bx bxs-user-account'></i>Account Management</a></li>
+                    <li><a href="accmngmnt.php"><i class='bx bxs-user-account'></i>Account Management</a></li>
                 </ul> 
             </div>
         </div>
