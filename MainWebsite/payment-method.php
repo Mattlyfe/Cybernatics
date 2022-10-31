@@ -6,14 +6,7 @@ if(strlen($_SESSION['login'])==0)
     {   
 header('location:login.php');
 }
-else{
-	if (isset($_POST['submit'])) {
 
-		mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and paymentMethod is null ");
-		unset($_SESSION['cart']);
-		header('location:order-history.php');
-
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,7 +99,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 
 		<!-- panel-body  -->
 	    <div class="panel-body">
-	    <form name="payment" method="post">
+	    <form name="payment" method="post" action="upload.php" enctype="multipart/form-data">
 			<ul>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
 				<li>
@@ -117,6 +110,9 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<a data-amount="10" data-fee="0" data-expiry="24" data-description="Payment for services rendered" data-href="https://getpaid.gcash.com/paynow" data-public-key="pk_c382e62a8ffd3aa372889750acf3e5f8" onclick="this.href = this.getAttribute('data-href')+'?public_key='+this.getAttribute('data-public-key')+'&amp;amount='+this.getAttribute('data-amount')+'&amp;fee='+this.getAttribute('data-fee')+'&amp;expiry='+this.getAttribute('data-expiry')+'&amp;description='+this.getAttribute('data-description');" href="https://getpaid.gcash.com/paynow?public_key=pk_c382e62a8ffd3aa372889750acf3e5f8&amp;amount=10&amp;fee=0&amp;expiry=24&amp;description=Payment for services rendered" target="_blank" class="x-getpaid-button"><img src="https://getpaid.gcash.com/assets/img/paynow.png"></a>
 					<img class="epayments" src="/MainWebsite/image/cardsimage/PayMaya.png">
+
+					Select image to upload:
+					<input type="file" name="fileToUpload" id="fileToUpload">
 					</table>
 					</div>
 					</div>
@@ -196,4 +192,3 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 
 </body>
 </html>
-<?php } ?>
