@@ -154,10 +154,12 @@ function sum() {
 				$total=$row['total'];
 				$availableqty=$row['productAvailability'];
 				$category = $row['category'];
-
+				
+				
 				if ($category == 4){
 					$categoryName = 'Bisucits';
 				}
+
 				if ($availableqty < 10) {
 				echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
 				}
