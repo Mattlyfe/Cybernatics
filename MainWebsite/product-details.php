@@ -86,7 +86,7 @@ if(isset($_POST['submit']))
 	<div class="container">
 		<div class="breadcrumb-inner">
 <?php
-$ret=mysqli_query($con,"select category.categoryName as catname,subCategory.subcategory as subcatname,products.productName as pname from products join category on category.id=products.category join subcategory on subcategory.id=products.subCategory where products.id='$pid'");
+$ret=mysqli_query($con,"select category.categoryName as catname,products.productName as pname from products join category on category.id=products.category where products.id='$pid'");
 while ($rw=mysqli_fetch_array($ret)) {
 
 ?>
@@ -94,8 +94,7 @@ while ($rw=mysqli_fetch_array($ret)) {
 
 			<ul class="list-inline list-unstyled">
 				<li><a href="index.php">Home</a></li>
-				<li><?php echo htmlentities($rw['catname']);?></a></li>
-				<li><?php echo htmlentities($rw['subcatname']);?></li>
+				<li><?php echo htmlentities($rw['catname']);?></a></li> 
 				<li class='active'><?php echo htmlentities($rw['pname']);?></li>
 			</ul>
 			<?php }?>
@@ -304,7 +303,7 @@ while($row=mysqli_fetch_array($ret))
 				</div><!-- /.row -->
 
 <?php $cid=$row['category'];
-			$subcid=$row['subCategory']; } ?>
+			 } ?>
 			
 			</div><!-- /.col -->
 			<div class="clearfix"></div>
