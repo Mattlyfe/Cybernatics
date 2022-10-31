@@ -93,14 +93,14 @@ function sum() {
 <a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="bi bi-arrow-bar-left"></i> Back</button></a>
 			<?php 
 			include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT * FROM products ORDER BY qty_sold DESC");
+				$result = $db->prepare("SELECT * FROM products");
 				$result->execute();
 				$rowcount = $result->rowcount();
 			?>
-			
+
 			<?php 
 			include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT * FROM products where qty < 10 ORDER BY product_id DESC");
+				$result = $db->prepare("SELECT * FROM products where productAvailability < 10 ORDER BY id DESC");
 				$result->execute();
 				$rowcount123 = $result->rowcount();
 
@@ -118,16 +118,15 @@ function sum() {
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
+			<th width="12%"> Product Code </th>
 			<th width="12%"> Brand Name </th>
 			<th width="14%"> Generic Name </th>
 			<th width="13%"> Category / Description </th>
-			<th width="9%"> Date Received </th>
-			<th width="10%"> Expiry Date </th>
+			<th width="9%"> Date Added </th>
 			<th width="6%"> Original Price </th>
 			<th width="6%"> Selling Price </th>
 			<th width="6%"> QTY </th>
-			<th width="5%"> Qty Left </th>
-			<th width="8%"> Total </th>
+			<th width="6%"> Total </th>
 			<th width="8%"> Action </th>
 		</tr>
 	</thead>
@@ -149,11 +148,16 @@ function sum() {
 					return $number;
 				}
 				include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT *, price * qty as total FROM products ORDER BY product_id DESC");
+				$result = $db->prepare("SELECT *, productPrice * productAvailability as total FROM products ORDER BY id DESC");
 				$result->execute();
 				for($i=0; $row = $result->fetch(); $i++){
 				$total=$row['total'];
-				$availableqty=$row['qty'];
+				$availableqty=$row['productAvailability'];
+				$category = $row['category'];
+
+				if ($category == 4){
+					$categoryName = 'Bisucits';
+				}
 				if ($availableqty < 10) {
 				echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
 				}
@@ -161,31 +165,29 @@ function sum() {
 				echo '<tr class="record">';
 				}
 			?>
-		
-
-			<td><?php echo $row['product_code']; ?></td>
-			<td><?php echo $row['gen_name']; ?></td>
-			<td><?php echo $row['product_name']; ?></td>
+			<td><?php echo $row['productCode']; ?></td>
+			<td><?php echo $row['productName']; ?></td>
+			<td><?php echo $row['genName']; ?></td>
 					
-			<td><?php echo $row['date_arrival']; ?></td>
-			<td><?php echo $row['expiry_date']; ?></td>
+			<td><?php echo $categoryName; ?></td>
+			<td><?php echo $row['postingDate']; ?></td>
+
 			<td><?php
-			$oprice=$row['o_price'];
+			$oprice=$row['oPrice'];
 			echo formatMoney($oprice, true);
 			?></td>
 			<td><?php
-			$pprice=$row['price'];
+			$pprice=$row['productPrice'];
 			echo formatMoney($pprice, true);
 			?></td>
-			<td><?php echo $row['qty_sold']; ?></td>
-			<td><?php echo $row['qty']; ?></td>
+			<td><?php echo $row['productAvailability']; ?></td>
 			<td>
 			<?php
 			$total=$row['total'];
 			echo formatMoney($total, true);
 			?>
-			</td>			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['product_id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
-			<a href="#" id="<?php echo $row['product_id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
+			</td>			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
+			<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 			</tr>
 			<?php
                 }
