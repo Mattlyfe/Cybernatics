@@ -347,7 +347,7 @@ while ($row=mysqli_fetch_array($ret))
 	                   	<div class="owl-carousel homepage-owl-carousel custom-carousel outer-top-xs owl-theme" data-item="2">
 	   
 <?php
-$ret=mysqli_query($con,"select * from products where category=4 and subCategory=4");
+$ret=mysqli_query($con,"select * from products where category=4");
 while ($row=mysqli_fetch_array($ret)) 
 {
 ?>
@@ -395,7 +395,7 @@ while ($row=mysqli_fetch_array($ret))
 							<h3 class="section-title">Canned Goods</h3>
 		                   	<div class="owl-carousel homepage-owl-carousel custom-carousel outer-top-xs owl-theme" data-item="2">
 	<?php
-$ret=mysqli_query($con,"select * from products where category=4 and subCategory=6");
+$ret=mysqli_query($con,"select * from products where category=4");
 while ($row=mysqli_fetch_array($ret)) 
 {
 ?>
