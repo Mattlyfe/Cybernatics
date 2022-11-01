@@ -79,26 +79,26 @@
 					return $number;
 				}
 				include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT *, price * qty as total FROM products ORDER BY product_id DESC");
+				$result = $db->prepare("SELECT *, oprice * productAvailability as total FROM products ORDER BY id DESC");
 				$result->execute();
 				for($i=0; $row = $result->fetch(); $i++){
 				$total=$row['total'];
-				$availableqty=$row['qty'];
+				$productAvailability=$row['productAvailability'];
 			?>
 		
 
-			<td><?php echo $row['product_code']; ?></td>
-			<td><?php echo $row['date_arrival']; ?></td>
-			<td><?php echo $row['gen_name']; ?></td>
-			<td><?php echo $row['product_name']; ?></td>
+			<td><?php echo $row['id']; ?></td>
+			<td><?php echo $row['postingDate']; ?></td>
+			<td><?php echo $row['genName']; ?></td>
+			<td><?php echo $row['productName']; ?></td>
 			<td>
 			PHP. <?php
 			$total=$row['total'];
 			echo formatMoney($total, true);
 			?>
 			</td>
-			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['product_id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
-			<a href="#" id="<?php echo $row['product_id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
+			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
+			<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 			</tr>
 			<?php
                 }
