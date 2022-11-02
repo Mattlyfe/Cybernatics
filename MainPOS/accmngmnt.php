@@ -2,7 +2,7 @@
     require_once('config.php');
     if(isset($_REQUEST['del'])){
         $uid = intval($_GET['del']);
-        $query = "DELETE FROM users_be WHERE ID=:ID";
+        $query = "DELETE FROM users_be WHERE id=:ID";
         $query = $db->prepare($sql);
         $query -> bindParam(':ID',$uid, PDO::PARAM_STR);
         $query -> execute();
