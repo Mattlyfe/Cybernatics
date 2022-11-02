@@ -2,7 +2,7 @@
     require_once('config.php');
     if(isset($_REQUEST['del'])){
         $uid = intval($_GET['del']);
-        $query = "DELETE FROM users_be WHERE id=:ID";
+        $query = "DELETE FROM users_be WHERE ID=:ID";
         $query = $db->prepare($sql);
         $query -> bindParam(':ID',$uid, PDO::PARAM_STR);
         $query -> execute();
@@ -68,7 +68,7 @@
                                         <td><?php echo htmlentities($result->last_name);?></td>
                                         <td><?php echo htmlentities($result->password);?></td>
                                         <td>
-                                            <a href="update.php?id=<?php echo htmlentities($result->ID);?>"><button class="btn btn-primary btn-size"><span class="glyphicon glyphicon-pencil"></span></button></a>
+                                            <a href="update.php?ID=<?php echo htmlentities($result->ID)?>"><button class="btn btn-primary btn-size"><span class="glyphicon glyphicon-pencil"></span></button></a>
                                             <a href="index.php?del=<?php echo htmlentities($result->ID);?>"><button class="btn btn-danger btn-size" onClick="return confirm('Do you really want to delete');"><span class="glyphicon glyphicon-trash"></span></button></a>
                                         </td>
                                     </tr>
