@@ -13,7 +13,7 @@
  <form name="updateticket" id="updateticket" method="post"> 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-    <img src = "../MainWebsite/admin/images/qr.png">
+    <img src = "../MainWebsite/admin/images/qr.png" >
     <br>
     <br>
     <br>

@@ -103,16 +103,23 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 			<ul>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
 				<li>
-					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()"> E-Wallet</li>
+					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()" required="required"> E-Wallet</li>
 				<li>
 					<div class="cardbox">
 					<div class="popup" id="popup">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-					<a data-amount="10" data-fee="0" data-expiry="24" data-description="Payment for services rendered" data-href="https://getpaid.gcash.com/paynow" data-public-key="pk_c382e62a8ffd3aa372889750acf3e5f8" onclick="this.href = this.getAttribute('data-href')+'?public_key='+this.getAttribute('data-public-key')+'&amp;amount='+this.getAttribute('data-amount')+'&amp;fee='+this.getAttribute('data-fee')+'&amp;expiry='+this.getAttribute('data-expiry')+'&amp;description='+this.getAttribute('data-description');" href="https://getpaid.gcash.com/paynow?public_key=pk_c382e62a8ffd3aa372889750acf3e5f8&amp;amount=10&amp;fee=0&amp;expiry=24&amp;description=Payment for services rendered" target="_blank" class="x-getpaid-button"><img src="https://getpaid.gcash.com/assets/img/paynow.png"></a>
+					<img class="epayments" src="/MainWebsite/image/cardsimage/Gcash.png">					
 					<img class="epayments" src="/MainWebsite/image/cardsimage/PayMaya.png">
-
-					Select image to upload:
-					<input type="file" name="fileToUpload" id="fileToUpload">
+					<div class="qr">
+					<img src = "../MainWebsite/admin/images/qr.png" width="350" height="350">
+					<br>
+					Please Scan the qr code using the Gcash or Paymaya App
+					</div>
+					<br>
+					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
+	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="Reference No." required="required">
+					Upload Screenshot of Proof of payment:
+					<input type="file" name="fileToUpload" id="fileToUpload" required="required">
 					</table>
 					</div>
 					</div>
@@ -129,7 +136,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					</script>
 					
 				</li>
-				<li><input type="radio" name="paymethod" value="Cash on Delivery" onclick="closePopup()"> Cash on Delivery</li>
+				<li><input type="radio" name="paymethod" value="Cash on Delivery" onclick="closePopup()" required="required"> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
