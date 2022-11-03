@@ -8,6 +8,7 @@ header('location:login.php');
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -117,7 +118,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					</div>
 					<br>
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
-	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="Reference No." required="required">
+	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" required="required">
 					Upload Screenshot of Proof of payment:
 					<input type="file" name="fileToUpload" id="fileToUpload" required="required">
 					</table>
