@@ -67,8 +67,8 @@
                                         <td><?php echo htmlentities($result->first_name);?></td>
                                         <td><?php echo htmlentities($result->last_name);?></td>
                                         <td><?php echo htmlentities($result->password);?></td>
-                                        <td><a href="update.php?id=<?php echo htmlentities($result->id)?>"><button class="btn btn-primary btn-size"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
-                                        <td><a href="index.php?del=<?php echo htmlentities($result->id);?>"><button class="btn btn-danger btn-size" onClick="return confirm('Do you really want to delete');"><span class="glyphicon glyphicon-trash"></span></button></a></td>
+                                        <td><a href="update.php?id=<?php echo htmlentities($result->ID)?>"><button class="btn btn-primary btn-size"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+                                        <td><a href="index.php?del=<?php echo htmlentities($result->ID);?>"><button class="btn btn-danger btn-size" onClick="return confirm('Do you really want to delete');"><span class="glyphicon glyphicon-trash"></span></button></a></td>
                                     </tr>
                             <?php
                             $cnt++;    
