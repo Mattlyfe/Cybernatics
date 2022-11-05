@@ -40,7 +40,7 @@ if(strlen($_SESSION['login'])==0)
 header('location:login.php');
 }
 else{
-
+	
 	$quantity=$_POST['quantity'];
 	$pdd=$_SESSION['pid'];
 	$value=array_combine($pdd,$quantity);
