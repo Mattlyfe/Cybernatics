@@ -12,16 +12,16 @@
 <hr>
 <div id="ac">
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
-<span>Product Code : </span><input type="text" style="width:265px; height:30px;"  name="productCode" value="<?php echo $row['productCode']; ?>" Required/><br>
-<span>Generic Name : </span><input type="text" style="width:265px; height:30px;"  name="genName" value="<?php echo $row['genName']; ?>" /><br>
-<span>Product Name : </span><textarea style="width:265px; height:50px;" name="productName"><?php echo $row['productName']; ?> </textarea><br>
-<span>Category / Description : </span><textarea style="width:265px; height:50px;" name="category" ><?php echo $row['category']; ?> </textarea><br>
-<span>Selling Price : </span><input type="text" style="width:265px; height:30px;" id="txt1" name="productPrice" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" Required/><br>
-<span>Original Price : </span><input type="text" style="width:265px; height:30px;" id="txt2" name="oPrice" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" Required/><br>
-<span>Profit : </span><input type="text" style="width:265px; height:30px;" id="txt3" name="profit" value="<?php echo $row['profit']; ?>" readonly><br>
-<span>QTY: </span><input type="number" style="width:265px; height:30px;" min="0" name="productAvailability" value="<?php echo $row['productAvailability']; ?>" /><br>
+<span>Product Code : </span><input type="text" style="width:359px; height:40px;"  name="productCode" value="<?php echo $row['productCode']; ?>" Required/><br>
+<span>Generic Name : </span><input type="text" style="width:359px; height:40px;"  name="genName" value="<?php echo $row['genName']; ?>" /><br>
+<span>Product Name : </span><textarea style="width:359px; height:40px;;" name="productName"><?php echo $row['productName']; ?> </textarea><br>
+<span>Category / Description : </span><textarea style="width:359px; height:40px;" name="category" ><?php echo $row['category']; ?> </textarea><br>
+<span>Selling Price : </span><input type="text" style="width:359px; height:40px;" id="txt1" name="productPrice" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" Required/><br>
+<span>Original Price : </span><input type="text" style="width:359px; height:40px;" id="txt2" name="oPrice" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" Required/><br>
+<span>Profit : </span><input type="text" style="width:359px; height:40px;" id="txt3" name="profit" value="<?php echo $row['profit']; ?>" readonly><br>
+<span>QTY: </span><input type="number" style="width:359px; height:40px;" min="0" name="productAvailability" value="<?php echo $row['productAvailability']; ?>" /><br>
 
-<div style="float:right; margin-right:10px;">
+<div style="text-align: center; margin-top: 10px">
 
 <button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
 </div>
