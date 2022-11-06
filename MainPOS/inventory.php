@@ -188,8 +188,10 @@ function sum() {
 			$total=$row['total'];
 			echo formatMoney($total, true);
 			?>
-			</td>			\
-			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
+			</td>			
+			<td>
+			<a rel="facebox" title="Click to edit the product" href="uploadImage.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
+			<a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
 			<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 			</tr>
 			<?php
