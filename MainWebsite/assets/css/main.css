@@ -3153,7 +3153,7 @@ a {
   font-size: 40px;
   letter-spacing: -1px;
   text-transform: uppercase;
-  color: #666666;
+  color: #3498db;
 }
 .category-carousel .item .owl-controls {
   display: inline-block;
@@ -3300,11 +3300,11 @@ a {
   text-decoration: underline;
 }
 .search-result-container .category-product {
-  border-top: 1px solid #ececec;
   border-bottom: 1px solid #ececec;
 }
 .search-result-container .category-product .product {
   margin-bottom: 30px;
+  left: 60%;
 }
 .search-result-container .category-product .product .product-image .tag {
   width: 60px;
