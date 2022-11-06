@@ -1,9 +1,9 @@
 <?php
 session_start();
 include('includes/config.php');
-mysqli_query($con,"update orders set 	referenceNo=".$_POST['referenceno']." where id='".$_SESSION['id']."'");
+//mysqli_query($con,"update orders set 	referenceNo=".$_POST['referenceno']." where id='".$_SESSION['id']."'");
 
-$query = mysqli_query($con,"select referenceNo from orders where id='".$_SESSION['id']."'");
+//$query = mysqli_query($con,"select referenceNo from orders where id='".$_SESSION['id']."'");
 
 // $rNo = $row['referenceNo'];
 // mkdir("uploads/" + $rNo + "/",  0777, true);
