@@ -13,7 +13,7 @@
 
 <span>Quantity : </span><input type="number" style="width:359px; height:40px;" min="0" id="txt11" onkeyup="sum();" name="qty" Required ><br>
 <span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
-<div style="float:right; margin-right:10px;">
+<div style="text-align: center; margin-top: 10px">
 <button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save</button>
 </div>
 </div>

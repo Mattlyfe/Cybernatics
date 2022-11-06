@@ -10,6 +10,7 @@
     <body>
         <?php
             include("sidenav.php");
+            include('connect.php');
         ?>
         <!--Main Content of the Dashboard-->
         <div class="main_content">
@@ -20,9 +21,14 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                To Be Shipped</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">4 Orders To Be Shipped</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="text-align: center;">
+                                                <a> To Be Updated Orders </a></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
+                                                <?php 
+                                                    $nullOrder = $db->query("SELECT * FROM orders WHERE orderStatus is NULL")->rowCount();
+                                                    echo "<h4>$nullOrder orders haven't updated</h4>";
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -34,9 +40,14 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Status of Orders</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Sana -> Pending Payment</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="text-align: center;">
+                                                In Processed Orders</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
+                                                <?php 
+                                                    $processedOrder = $db->query("SELECT * FROM orders WHERE orderStatus = 'in Process'")->rowCount();
+                                                    echo "<h4>$processedOrder orders being processed</h4>";
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -48,36 +59,43 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Feedback Widget</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Sana -> Pending Payment</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="text-align: center;">
+                                                Delivered Orders</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
+                                                <?php 
+                                                    $deliveredOrder = $db->query("SELECT * FROM orders WHERE orderStatus = 'Delivered'")->rowCount();
+                                                    echo "<h4>$deliveredOrder orders been delivered</h4>";
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                <!--Stock Notification Widget-->
-                <div class="col-xl-8 col-lg-7">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Stock Notification</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Milo - Needs to be Restock</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                <div class="row">
+                    <!--Stock Notification Widget-->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2" style="margin-left: 348px;">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="text-align: center;">
+                                                   <a href="inventory.php"> Stock Notification </a></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
+                                                    <?php 
+                                                        $stockNotif = $db->query("SELECT * FROM products where productAvailability < 10")->rowCount();
+                                                        echo "<h4>$stockNotif products needed to be restocked soon</h4>";
+                                                    ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                </div>
                 <!--Chart of Orders from Online and Onsite Widget-->
-                <!--Website Traffic Widget-->
             </div>
-            <div>
-            </div>
+        </div>
         </div>
     </body>
 </html>
