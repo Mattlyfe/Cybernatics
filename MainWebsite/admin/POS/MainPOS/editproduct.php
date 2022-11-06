@@ -15,7 +15,47 @@
 <span>Product Code : </span><input type="text" style="width:359px; height:40px;"  name="productCode" value="<?php echo $row['productCode']; ?>" Required/><br>
 <span>Generic Name : </span><input type="text" style="width:359px; height:40px;"  name="genName" value="<?php echo $row['genName']; ?>" /><br>
 <span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"><?php echo $row['productName']; ?> </textarea><br>
-<span>Category / Description : </span><textarea style="width:359px; height:40px;" name="category" ><?php echo $row['category']; ?> </textarea><br>
+<span>Category : </span><select name ="category" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+	<?php
+	$cat= $row['category'];
+	if($cat== 3){?>
+    <option value="3" selected>Condiments</option>
+    <option value="4" >Cookies and Crackers</option>
+    <option value="5">Dairy</option>
+    <option  value="6">Fashion</option>
+	<?php
+	}
+	?>
+	<?php
+	if($cat== 4){?>
+    <option value="3">Condiments</option>
+    <option value="4" selected>Cookies and Crackers</option>
+    <option value="5">Dairy</option>
+    <option  value="6">Fashion</option>
+	<?php
+	}
+	?>
+
+	<?php
+	if($cat== 5){?>
+    <option value="3">Condiments</option>
+    <option value="4">Cookies and Crackers</option>
+    <option value="5" selected>Dairy</option>
+    <option  value="6">Fashion</option>
+	<?php
+	}
+	?>
+	
+	<?php
+	if($cat== 6){?>
+    <option value="3">Condiments</option>
+    <option value="4">Cookies and Crackers</option>
+    <option value="5">Dairy</option>
+    <option  value="6" selected>Fashion</option>
+	<?php
+	}
+	?>
+  </select><br><br>
 <span>Selling Price : </span><input type="text" style="width:359px; height:40px;" id="txt1" name="productPrice" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" Required/><br>
 <span>Original Price : </span><input type="text" style="width:359px; height:40px;" id="txt2" name="oPrice" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" Required/><br>
 <span>Profit : </span><input type="text" style="width:359px; height:40px;" id="txt3" name="profit" value="<?php echo $row['profit']; ?>" readonly><br>
