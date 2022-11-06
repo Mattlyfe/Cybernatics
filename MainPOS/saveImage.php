@@ -3,9 +3,9 @@ session_start();
 include('../MainPOS/connect.php');
 
 
-// $rNo = $row['referenceNo'];
-// mkdir("uploads/" + $rNo + "/",  0777, true);
-$target_dir = "uploads/";
+$id = $_POST['memi'];
+mkdir("uploads/$id/",  0777, true);
+$target_dir = "uploads/$id/";
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
@@ -41,8 +41,6 @@ if(isset($_POST["submit"])) {
   
 }
 //new data
-$id = $_POST['memi'];
-
 
 
 // query
