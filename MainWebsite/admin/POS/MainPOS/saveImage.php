@@ -9,9 +9,9 @@ $target_dir = "productimages/$id/";
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $countfiles = count($_FILES['file']['name']);
+    
 
-    for($i=0;$i<$countfiles;$i++){
+    for($i=0;$i<3;$i++){
     $filename = $_FILES['file']['name'][$i];
     $target_file = $target_dir.basename($filename);
 

@@ -369,8 +369,8 @@ echo "Your shopping Cart is empty";
 
 		function calculateTotal()
 		{
-			for(i=0; i<iprice.length; i++){
-				itotal[i].innerText=(iprice[i].value)*(iqnty[i].value);	
+			for(i=0; i<iprice.length; i++){	
+				itotal[i].innerText=(iprice[i].value)*(iqnty[i].value);
 			}
 			
 		}
