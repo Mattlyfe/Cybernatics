@@ -13,8 +13,6 @@
     padding-top: 50px;
     padding-left: 317px;
 	padding-right: 200px;
-	overflow-y: scroll;
-	overflow-x: scroll;
   }
   table, tr, td
   {
