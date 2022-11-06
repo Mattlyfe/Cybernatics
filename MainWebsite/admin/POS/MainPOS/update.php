@@ -40,7 +40,7 @@
             </div>
             <?php
             $userid=intval($_GET['ID']);
-            $sql = "SELECT first_name, last_name, password FROM users_be WHERE id=:uid";
+            $sql = "SELECT first_name, last_name, password FROM users_be WHERE ID=:uid";
             $query = $db->prepare($sql);
             $query->bindParam(':uid',$userid,PDO::PARAM_STR);
             $query->execute();
@@ -60,7 +60,7 @@
                             <input type="text" name="lastname" value="<?php echo htmlentities($result->last_name);?>" class="form-control" required>
                         </div>
                         <div class="col-md-4">
-                            <b>First Name</b>
+                            <b>Password</b>
                             <input type="password" name="password" value="<?php echo htmlentities($result->password);?>" class="form-control" required>
                         </div>
                     </div>
