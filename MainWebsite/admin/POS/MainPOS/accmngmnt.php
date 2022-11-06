@@ -2,7 +2,7 @@
     require_once('config.php');
     if(isset($_REQUEST['del'])){
         $uid = intval($_GET['del']);
-        $query = "DELETE FROM users_be WHERE ID=:id";
+        $sql = "DELETE FROM users_be WHERE ID=:id";
         $query = $db->prepare($sql);
         $query -> bindParam(':id',$uid, PDO::PARAM_STR);
         $query -> execute();
@@ -54,7 +54,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT first_name, last_name, password from users_be";
+                            $sql = "SELECT ID, first_name, last_name, password from users_be";
                             $query = $db->prepare($sql);
                             $query->execute();
                             $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -68,7 +68,7 @@
                                         <td><?php echo htmlentities($result->last_name);?></td>
                                         <td><?php echo htmlentities($result->password);?></td>
                                         <td><a href="update.php?id=<?php echo htmlentities($result->ID)?>"><button class="btn btn-primary btn-size"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
-                                        <td><a href="index.php?del=<?php echo htmlentities($result->ID);?>"><button class="btn btn-danger btn-size" onClick="return confirm('Do you really want to delete');"><span class="glyphicon glyphicon-trash"></span></button></a></td>
+                                        <td><a href="accmngmnt.php?del=<?php echo htmlentities($result->ID);?>"><button class="btn btn-danger btn-size" onClick="return confirm('Do you really want to delete');"><span class="glyphicon glyphicon-trash"></span></button></a></td>
                                     </tr>
                             <?php
                             $cnt++;    
