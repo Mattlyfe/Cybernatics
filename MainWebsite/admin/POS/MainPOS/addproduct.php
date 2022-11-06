@@ -6,7 +6,13 @@
 <span>Product Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" ><br>
 <span>Generic Name : </span><input type="text" style="width:359px; height:40px;" name="genName" Required/><br>
 <span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"> </textarea><br>
-<span>Category : </span><input type="number" style="width:359px; height:40px;" name="category" Required ><br>
+<span>Category : </span><select name ="category" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+    <option selected hidden>Choose...</option>
+    <option value="3">Condiments</option>
+    <option value="4">Cookies and Crackers</option>
+    <option value="5">Dairy</option>
+    <option  value="6">Fashion</option>
+  </select><br>
 <span>Selling Price : </span><input type="text" id="txt1" style="width:359px; height:40px;" name="productPrice" onkeyup="sum();" Required><br>
 <span>Original Price : </span><input type="text" id="txt2" style="width:359px; height:40px;" name="oPrice" onkeyup="sum();" Required><br>
 <span>Profit : </span><input type="text" id="txt3" style="width:359px; height:40px;" name="profit" readonly><br>

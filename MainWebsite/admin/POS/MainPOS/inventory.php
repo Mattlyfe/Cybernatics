@@ -156,8 +156,20 @@ function sum() {
 				$category = $row['category'];
 				
 				
+				if ($category == 3){
+					$categoryName = 'Condiments';
+				}
+
 				if ($category == 4){
-					$categoryName = 'Bisucits';
+					$categoryName = 'Cookies and Crackers';
+				}
+
+				if ($category == 5){
+					$categoryName = 'Dairy';
+				}
+
+				if ($category == 6){
+					$categoryName = 'Fashion';
 				}
 
 				if ($availableqty < 10) {
