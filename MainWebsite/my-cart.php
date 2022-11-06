@@ -227,7 +227,7 @@ if(!empty($_SESSION['cart'])){
 					<td class="select-item"><input type="checkbox" name="orderselect" value="<?php echo htmlentities($row['id']);?>" /></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
-						    <img src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" alt="" width="114" height="146">
+						    <img src="admin/POS/MainPOS/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" alt="" width="114" height="146">
 						</a>
 					</td>
 					<td class="cart-product-name-info">
