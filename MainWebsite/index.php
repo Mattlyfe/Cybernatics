@@ -192,8 +192,7 @@ drift.load('mfzdw3bw9zcu');
 			   <h3 class="new-product-title pull-left">Featured Products</h3>
 				<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
 					<li class="active"><a href="#all" data-toggle="tab">All</a></li>
-					<li><a href="#condiments" data-toggle="tab">Condiments</a></li>
-					<li><a href="#dairy" data-toggle="tab">Dairy</a></li>
+					
 				</ul><!-- /.nav-tabs -->
 			</div>
 
@@ -372,11 +371,11 @@ while ($row=mysqli_fetch_array($ret))
 				<div class="row">
 					<div class="col-md-6">
 	                   <section class="section">
-	                   	<h3 class="section-title">Biscuits & Condiments</h3>
+	                   	<h3 class="section-title">Condiments</h3>
 	                   	<div class="owl-carousel homepage-owl-carousel custom-carousel outer-top-xs owl-theme" data-item="2">
 	   
 <?php
-$ret=mysqli_query($con,"select * from products where category=4");
+$ret=mysqli_query($con,"select * from products where category=3");
 while ($row=mysqli_fetch_array($ret)) 
 {
 ?>
@@ -421,7 +420,7 @@ while ($row=mysqli_fetch_array($ret))
 					</div>
 					<div class="col-md-6">
 						<section class="section">
-							<h3 class="section-title">Canned Goods</h3>
+							<h3 class="section-title">Cookies and Crackers</h3>
 		                   	<div class="owl-carousel homepage-owl-carousel custom-carousel outer-top-xs owl-theme" data-item="2">
 	<?php
 $ret=mysqli_query($con,"select * from products where category=4");
@@ -467,6 +466,8 @@ while ($row=mysqli_fetch_array($ret))
 	
 				                   	</div>
 	                   </section>
+
+					</div>
 
 					</div>
 				</div>
