@@ -125,27 +125,27 @@ while($row=mysqli_fetch_array($ret))
         <div id="owl-single-product">
 
  <div class="single-product-gallery-item" id="slide1">
-                <a data-lightbox="image-1" data-title="<?php echo htmlentities($row['productName']);?>" href="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" width="370" height="350" />
+                <a data-lightbox="image-1" data-title="<?php echo htmlentities($row['productName']);?>" href="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>">
+                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" width="370" height="350" />
                 </a>
             </div>
 
 
             <div class="single-product-gallery-item" id="slide1">
-                <a data-lightbox="image-1" data-title="<?php echo htmlentities($row['productName']);?>" href="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" width="370" height="350" />
+                <a data-lightbox="image-1" data-title="<?php echo htmlentities($row['productName']);?>" href="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>">
+                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" width="370" height="350" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
             <div class="single-product-gallery-item" id="slide2">
-                <a data-lightbox="image-1" data-title="Gallery" href="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>" />
+                <a data-lightbox="image-1" data-title="Gallery" href="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>">
+                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
             <div class="single-product-gallery-item" id="slide3">
-                <a data-lightbox="image-1" data-title="Gallery" href="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>">
-                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>" />
+                <a data-lightbox="image-1" data-title="Gallery" href="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>">
+                    <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>" />
                 </a>
             </div>
 
@@ -157,19 +157,19 @@ while($row=mysqli_fetch_array($ret))
             <div id="owl-single-product-thumbnails">
                 <div class="item">
                     <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide1">
-                        <img class="img-responsive"  alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" />
+                        <img class="img-responsive"  alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" />
                     </a>
                 </div>
 
             <div class="item">
                     <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide2">
-                        <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>"/>
+                        <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage2']);?>"/>
                     </a>
                 </div>
                 <div class="item">
 
                     <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3" href="#slide3">
-                        <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>" height="200" />
+                        <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage3']);?>" height="200" />
                     </a>
                 </div>
 

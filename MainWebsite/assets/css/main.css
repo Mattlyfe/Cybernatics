@@ -3134,13 +3134,12 @@ a {
 }
 .category-carousel .item .caption {
   color: #636363;
-  left: 12%;
+  left: 20%;
   letter-spacing: -3px;
   position: absolute;
   top: 10%;
   z-index: 100;
   display: table-cell;
-  left: 23%;
 }
 .category-carousel .item .caption .big-text {
   font-size: 150px;
@@ -3153,7 +3152,7 @@ a {
   font-size: 40px;
   letter-spacing: -1px;
   text-transform: uppercase;
-  color: #666666;
+  color: #ff6c6c;
 }
 .category-carousel .item .owl-controls {
   display: inline-block;
@@ -3300,11 +3299,11 @@ a {
   text-decoration: underline;
 }
 .search-result-container .category-product {
-  border-top: 1px solid #ececec;
   border-bottom: 1px solid #ececec;
 }
 .search-result-container .category-product .product {
   margin-bottom: 30px;
+  left: 60%;
 }
 .search-result-container .category-product .product .product-image .tag {
   width: 60px;
