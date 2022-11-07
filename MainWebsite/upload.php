@@ -2,15 +2,10 @@
 session_start();
 include('includes/config.php');
 
-// $transactionId = $_POST['transactionId'];
-
-// mysqli_query($con,"update orders set 	referenceNo=".$_POST['referenceno']." where transactionId='$transactionId'");
-
-//$query = mysqli_query($con,"select referenceNo from orders where id='".$_SESSION['id']."'");
-
 $rNo = $_POST['referenceno'];
-mkdir("referenceno/$rNo/",  0777, true);
-$target_dir = "referenceno/$rNo/";
+$id = $_SESSION['id'];
+$target_dir = "referenceno/user id - $id/$rNo/";
+mkdir($target_dir,  0777, true);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -48,6 +43,7 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and paymentMethod is null ");
+    mysqli_query($con,"update order_header set referenceNo='".$_POST['referenceno']."' where transactionId='".$_POST['transactionNo']."'");
     unset($_SESSION['cart']);
     header('location:order-history.php');
   } else {

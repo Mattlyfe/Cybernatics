@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'includes/config.php';
-$oid=intval($_GET['oid']);
+$tId=intval($_GET['oid']);
  ?>
 <script language="javascript" type="text/javascript">
 function f2()
@@ -36,26 +36,24 @@ window.print();
     </tr>
     <tr height="30">
       <td  class="fontkink1"><b>order Id:</b></td>
-      <td  class="fontkink"><?php echo $oid;?></td>
+      <td  class="fontkink"><?php echo $tId;?></td>
     </tr>
     <?php 
-$ret = mysqli_query($con,"SELECT * FROM ordertrackhistory WHERE orderId='$oid'");
+$ret = mysqli_query($con,"SELECT * FROM order_header WHERE transactionId='$tId'");
 $num=mysqli_num_rows($ret);
 if($num>0)
 {
 while($row=mysqli_fetch_array($ret))
       {
      ?>
-		
-    
-    
+
       <tr height="20">
       <td class="fontkink1" ><b>At Date:</b></td>
-      <td  class="fontkink"><?php echo $row['postingDate'];?></td>
+      <td  class="fontkink"><?php echo $row['dateCreated'];?></td>
     </tr>
      <tr height="20">
       <td  class="fontkink1"><b>Status:</b></td>
-      <td  class="fontkink"><?php echo $row['status'];?></td>
+      <td  class="fontkink"><?php echo $row['orderStatus'];?></td>
     </tr>
      <tr height="20">
       <td  class="fontkink1"><b>Remark:</b></td>
@@ -74,7 +72,7 @@ else{
    </tr>
    <?php  }
 $st='Delivered';
-   $rt = mysqli_query($con,"SELECT * FROM orders WHERE id='$oid'");
+   $rt = mysqli_query($con,"SELECT * FROM order_header WHERE transactionId='$tId'");
      while($num=mysqli_fetch_array($rt))
      {
      $currrentSt=$num['orderStatus'];

@@ -102,6 +102,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 	    <div class="panel-body">
 	    <form name="payment" method="post" action="upload.php" enctype="multipart/form-data">
 			<ul>
+				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
 				<li>
 					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()" required="required"> E-Wallet</li>
@@ -118,7 +119,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					</div>
 					<br>
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
-	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" required="required">
+	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" required="required"  onkeypress='validate(event)'>
 					Upload Screenshot of Proof of payment:
 					<input type="file" name="fileToUpload" id="fileToUpload" required="required">
 					</table>
@@ -133,6 +134,23 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 						}
 						function closePopup() {
 						document.getElementById("popup").style.display = "none";
+						}
+						function validate(evt) {
+						var theEvent = evt || window.event;
+
+						// Handle paste
+						if (theEvent.type === 'paste') {
+							key = event.clipboardData.getData('text/plain');
+						} else {
+						// Handle key press
+							var key = theEvent.keyCode || theEvent.which;
+							key = String.fromCharCode(key);
+						}
+						var regex = /[0-9]|\./;
+						if( !regex.test(key) ) {
+							theEvent.returnValue = false;
+							if(theEvent.preventDefault) theEvent.preventDefault();
+						}
 						}
 					</script>
 					

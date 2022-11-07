@@ -43,12 +43,12 @@ else{
 	$quantity=$_POST['quantity'];
 	$pdd=$_SESSION['pid'];
 	mysqli_query($con,"insert into order_header(userId) values('".$_SESSION['id']."')");
-        $transactionId = mysqli_insert_id($con);
+	$transactionId = mysqli_insert_id($con);
 	$value=array_combine($pdd,$quantity);
 	foreach($value as $qty=> $val34){
 		mysqli_query($con,"update products set productAvailability=productavailability-$val34 where id='".$_SESSION['sid']."'");
 		mysqli_query($con,"insert into orders(userId,productId,quantity,transactionId) values('".$_SESSION['id']."','$qty','$val34','$transactionId')");
-		header('location:payment-method.php');
+		header('location:payment-method.php?transactionId='.$transactionId);
 	}
 }
 }

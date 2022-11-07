@@ -114,7 +114,7 @@ while($row=mysqli_fetch_array($query))
 {
 ?>
 				<tr>
-					<td><?php echo $tId=$row['tId']; ?></td>
+					<td># <?php echo $tId=$row['tId']; ?></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
 						    <img src="admin/POS/MainPOS/productimages/<?php echo $row['proid'];?>/<?php echo $row['pimg1'];?>" alt="" width="84" height="146">
@@ -136,7 +136,7 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 					
 					<td>
- <a href="javascript:void(0);" onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']);?>');" title="Track order">
+ <a href="javascript:void(0);" onClick="popUpWindow('track-order.php?tId=<?php echo htmlentities($row['tId']);?>');" title="Track order">
 					Track</td>
 				</tr>
 <?php $cnt=$cnt+1;} ?>
