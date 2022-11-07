@@ -1,13 +1,16 @@
 <?php
 session_start();
 include('includes/config.php');
-//mysqli_query($con,"update orders set 	referenceNo=".$_POST['referenceno']." where id='".$_SESSION['id']."'");
+
+// $transactionId = $_POST['transactionId'];
+
+// mysqli_query($con,"update orders set 	referenceNo=".$_POST['referenceno']." where transactionId='$transactionId'");
 
 //$query = mysqli_query($con,"select referenceNo from orders where id='".$_SESSION['id']."'");
 
-// $rNo = $row['referenceNo'];
-// mkdir("uploads/" + $rNo + "/",  0777, true);
-$target_dir = "uploads/test/";
+$rNo = $_POST['referenceno'];
+mkdir("referenceno/$rNo/",  0777, true);
+$target_dir = "referenceno/$rNo/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
