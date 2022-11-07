@@ -25,7 +25,7 @@
                                                 <a> To Be Updated Orders </a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
                                                 <?php 
-                                                    $nullOrder = $db->query("SELECT * FROM orders WHERE orderStatus is NULL")->rowCount();
+                                                    $nullOrder = $db->query("SELECT * FROM order_header WHERE orderStatus is NULL")->rowCount();
                                                     echo "<h4>$nullOrder orders haven't updated</h4>";
                                                 ?>
                                             </div>
@@ -44,7 +44,7 @@
                                                 In Processed Orders</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
                                                 <?php 
-                                                    $processedOrder = $db->query("SELECT * FROM orders WHERE orderStatus = 'in Process'")->rowCount();
+                                                    $processedOrder = $db->query("SELECT * FROM order_header WHERE orderStatus = 'in Process'")->rowCount();
                                                     echo "<h4>$processedOrder orders being processed</h4>";
                                                 ?>
                                             </div>
@@ -63,7 +63,7 @@
                                                 Delivered Orders</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align: center;">
                                                 <?php 
-                                                    $deliveredOrder = $db->query("SELECT * FROM orders WHERE orderStatus = 'Delivered'")->rowCount();
+                                                    $deliveredOrder = $db->query("SELECT * FROM order_header WHERE orderStatus = 'Delivered'")->rowCount();
                                                     echo "<h4>$deliveredOrder orders been delivered</h4>";
                                                 ?>
                                             </div>
