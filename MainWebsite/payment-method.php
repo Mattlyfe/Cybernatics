@@ -74,7 +74,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
+				<li><a href="index.php">Home</a></li>
 				<li class='active'>Payment Method</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
@@ -86,12 +86,13 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 			<div class="shopping-cart">
 				<div class="col-md-12 col-sm-12 shopping-cart-table ">
 	<div class="table-responsive">
-	
+		
+	<h1>Order # <?php echo intval($_GET['transactionId']); ?></h1>
 
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th class="cart-romove item">orderID</th>
+				<th class="cart-romove item">orderID</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
 			
@@ -111,7 +112,7 @@ while($row=mysqli_fetch_array($query))
 {
 ?>
 				<tr>
-					<td># <?php echo $tId=$row['tId']; ?></td>
+				<td># <?php echo $tId=$row['tId']; ?></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
 						    <img src="admin/POS/MainPOS/productimages/<?php echo $row['proid'];?>/<?php echo $row['pimg1'];?>" alt="" width="84" height="146">

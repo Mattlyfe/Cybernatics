@@ -237,7 +237,7 @@ $_SESSION['sid']=$pd;
 				                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 				                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 				                </div>
-				             <input type="number" value="<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>"  name="quantity[<?php echo $row['id']; ?>]" onchange="calculateTotal()">
+				             <input type="text" value="<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>"  name="quantity[<?php echo $row['id']; ?>]" onchange="calculateTotal()">
 				             
 			              </div>
 		            </td>
