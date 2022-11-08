@@ -44,7 +44,12 @@ header('location:login.php');
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
 
+		<!--JQuery 1.8.3-->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="http://code.jquery.com/jquery-1.8.3.min.js%22%3E</script>
 		<script language="javascript" type="text/javascript">
+
+			
 var popUpWin=0;
 function popUpWindow(URLStr, left, top, width, height)
 {
@@ -75,7 +80,69 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
+<div class="body-content outer-top-xs">
+	<div class="container">
+		<div class="row inner-bottom-sm">
+			<div class="shopping-cart">
+				<div class="col-md-12 col-sm-12 shopping-cart-table ">
+	<div class="table-responsive">
+	
 
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="cart-romove item">orderID</th>
+					<th class="cart-description item">Image</th>
+					<th class="cart-product-name item">Product Name</th>
+			
+					<th class="cart-qty item">Quantity</th>
+					<th class="cart-sub-total item">Price Per unit</th>
+					<th class="cart-sub-total item">Shipping Charge</th>
+					<th class="cart-total item">Grandtotal</th>
+					<th class="cart-description item">Order Date</th>
+					
+				</tr>
+			</thead><!-- /thead -->
+			
+			<tbody>
+
+<?php $query=mysqli_query($con,"select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.transactionId='".$_GET['transactionId']."'");
+while($row=mysqli_fetch_array($query))
+{
+?>
+				<tr>
+					<td># <?php echo $tId=$row['tId']; ?></td>
+					<td class="cart-image">
+						<a class="entry-thumbnail" href="detail.html">
+						    <img src="admin/POS/MainPOS/productimages/<?php echo $row['proid'];?>/<?php echo $row['pimg1'];?>" alt="" width="84" height="146">
+						</a>
+					</td>
+					<td class="cart-product-name-info">
+						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid'];?>">
+						<?php echo $row['pname'];?></a></h4>
+						
+						
+					</td>
+					<td class="cart-product-quantity">
+						<?php echo $qty=$row['qty']; ?>   
+		            </td>
+					<td class="cart-product-sub-total">₱ <?php echo  $price=$row['pprice']; ?>  </td>
+					<td class="cart-product-sub-total">₱ <?php echo $shippcharge=$row['shippingcharge']; ?>  </td>
+					<td class="cart-product-grand-total">₱ <?php echo (($qty*$price)+$shippcharge);?></td>
+					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
+				</tr>
+				</tbody><!-- /tbody -->
+		</table><!-- /table -->
+		
+	</div>
+</div>
+
+		</div><!-- /.shopping-cart -->
+		</div> <!-- /.row -->
+		
+	</div><!-- /.container -->
+</div><!-- /.body-content -->
+					<?php } ?>
 <div class="body-content outer-top-bd">
 	<div class="container">
 		<div class="checkout-box faq-page inner-bottom-sm">
@@ -105,8 +172,9 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
 				<li>
-					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()" required="required"> E-Wallet</li>
+					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()" required> E-Wallet</li>
 				<li>
+					
 					<div class="cardbox">
 					<div class="popup" id="popup">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -119,9 +187,9 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					</div>
 					<br>
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
-	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" required="required"  onkeypress='validate(event)'>
+	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" onkeypress='validate(event)' required>
 					Upload Screenshot of Proof of payment:
-					<input type="file" name="fileToUpload" id="fileToUpload" required="required">
+					<input type="file" name="fileToUpload" id="fileToUpload" required>
 					</table>
 					</div>
 					</div>
@@ -153,15 +221,23 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 						}
 						}
 					</script>
-					
+				
 				</li>
-				<li><input type="radio" name="paymethod" value="Cash on Delivery" onclick="closePopup()" required="required"> Cash on Delivery</li>
+				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
 					</div>
 				</li>
 			</ul>
+			<script>
+			$('#paymethod').change(function () {
+
+			$('#referenceno').prop('required', false);
+			$('#fileToUpload').prop('required', false);
+
+			});
+			</script>
 	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
 	    </form>		
 		</div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'includes/config.php';
-$tId=intval($_GET['oid']);
+$tId=intval($_GET['tId']);
  ?>
 <script language="javascript" type="text/javascript">
 function f2()
