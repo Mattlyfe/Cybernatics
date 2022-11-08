@@ -42,7 +42,7 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
       echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-      mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and paymentMethod is null ");
+      mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
       mysqli_query($con,"update order_header set referenceNo='".$_POST['referenceno']."' where transactionId='".$_POST['transactionNo']."'");
       unset($_SESSION['cart']);
       header('location:order-history.php');
@@ -53,7 +53,7 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
 }
 else{
   
-  mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and paymentMethod is null ");
+  mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);
   header('location:order-history.php');
 }

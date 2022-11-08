@@ -131,6 +131,7 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-grand-total">₱ <?php echo (($qty*$price)+$shippcharge);?></td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 				</tr>
+				<?php } ?>
 				</tbody><!-- /tbody -->
 		</table><!-- /table -->
 		
@@ -142,7 +143,7 @@ while($row=mysqli_fetch_array($query))
 		
 	</div><!-- /.container -->
 </div><!-- /.body-content -->
-					<?php } ?>
+					
 <div class="body-content outer-top-bd">
 	<div class="container">
 		<div class="checkout-box faq-page inner-bottom-sm">
