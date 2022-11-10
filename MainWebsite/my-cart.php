@@ -42,7 +42,7 @@ header('location:login.php');
 else{
 	$quantity=$_POST['quantity'];
 	$pdd=$_SESSION['pid'];
-	mysqli_query($con,"insert into order_header(userId) values('".$_SESSION['id']."')");
+	mysqli_query($con,"insert into order_header(userId, grandTotal) values('".$_SESSION['id']."', '".$_SESSION['tp']."')");
 	$transactionId = mysqli_insert_id($con);
 	$value=array_combine($pdd,$quantity);
 	foreach($value as $qty=> $val34){

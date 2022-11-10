@@ -40,6 +40,16 @@
 <script src="lib/jquery.js" type="text/javascript"></script>
 <script src="src/facebox.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('a[rel*=facebox]').facebox({
+      loadingImage : 'src/loading.gif',
+      closeImage   : 'src/closelabel1.png'
+    })
+  })
+  $(document).bind('afterClose.facebox');
+</script>
+
     </head>
     <body>
         <?php
@@ -49,62 +59,50 @@
 <div class="invetb">
 
 <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
-
+<br><br>
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
 			<th width="12%"> Transaction No. </th>
 			<th width="9%"> Date Received </th>
-			<th width="14%"> Customer </th>
-			<th width="13%"> Remarks </th>
+			<th width="14%"> Mode of Payment </th>
+			<th width="13%"> Reference no. </th>
 			<th width="8%"> Total </th>
 			<th width="8%"> Action </th>
 		</tr>
 	</thead>
 	<tbody>
-		
-			<?php
-			function formatMoney($number, $fractional=false) {
-					if ($fractional) {
-						$number = sprintf('%.2f', $number);
-					}
-					while (true) {
-						$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-						if ($replaced != $number) {
-							$number = $replaced;
-						} else {
-							break;
-						}
-					}
-					return $number;
-				}
-				include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT *, oprice * productAvailability as total FROM products ORDER BY id DESC");
-				$result->execute();
-				for($i=0; $row = $result->fetch(); $i++){
-				$total=$row['total'];
-				$productAvailability=$row['productAvailability'];
-			?>
-		
+	<?php include('config1.php');
+	$query=mysqli_query($con,"select distinct order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId where order_header.referenceNo is not null ");
 
-			<td><?php echo $row['id']; ?></td>
-			<td><?php echo $row['postingDate']; ?></td>
-			<td><?php echo $row['genName']; ?></td>
-			<td><?php echo $row['productName']; ?></td>
-			<td>
-			PHP. <?php
-			$total=$row['total'];
-			echo formatMoney($total, true);
-			?>
-			</td>
-			<td><a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i> </button> </a>
-			<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
-			</tr>
-			<?php
-                }
-			?>
-		
-		
+
+while($row=mysqli_fetch_array($query))
+{
+?>
+
+				<tr>
+					<td class="cart-product-name-info"> #<?php echo $tId = $row['transId'] ?></td>
+
+					<td class="cart-product-name-info">
+						
+						<?php echo $row['date'];?></a></h4>
+						
+					</td>
+
+					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
+
+					<td class="cart-product-sub-total"><?php echo $row['refNo']; ?>  </td>
+
+					<td class="cart-product-sub-total">₱<?php echo $row['gTotal']; ?>  </td>
+
+					<td>
+					<a rel="facebox" title="Click to check reciept" href="showProdHistory.php?id=<?php echo $row['transId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					</td>
+				</tr>
+
+
+<?php } ?>
+	
 		
 	</tbody>
 </table>
@@ -115,41 +113,5 @@
 </div>
 
 <script src="js/jquery.js"></script>
-  <script type="text/javascript">
-$(function() {
-
-
-$(".delbutton").click(function(){
-
-//Save the link in a variable called element
-var element = $(this);
-
-//Find the id of the link that was clicked
-var del_id = element.attr("id");
-
-//Built a url to send
-var info = 'id=' + del_id;
- if(confirm("Sure you want to delete this Product? There is NO undo!"))
-		  {
-
- $.ajax({
-   type: "GET",
-   url: "deleteproduct.php",
-   data: info,
-   success: function(){
-   
-   }
- });
-         $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-		.animate({ opacity: "hide" }, "slow");
-
- }
-
-return false;
-
-});
-
-});
-</script>
 </body>
 </html>

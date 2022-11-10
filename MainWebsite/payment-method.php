@@ -134,8 +134,8 @@ while($row=mysqli_fetch_array($query))
 				</tr>
 				<?php } ?>
 				</tbody><!-- /tbody -->
-		</table><!-- /table -->
-		
+		</table><!-- /table -->	
+		<h1>Grand total: ₱ <?php echo $_SESSION['tp']?><h1>
 	</div>
 </div>
 

@@ -52,7 +52,9 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
   }
 }
 else{
-  
+  $tNo = $_POST['transactionNo'];
+  mysqli_query($con,"update order_header set referenceNo= 'COD #$tNo' where transactionId='".$_POST['transactionNo']."'");
+
   mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);
   header('location:order-history.php');

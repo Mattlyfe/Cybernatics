@@ -91,7 +91,7 @@ function sum() {
 <a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="bi bi-arrow-bar-left"></i> Back</button></a>
 			<?php 
 			include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT * FROM products");
+				$result = $db->prepare("SELECT * FROM products ORDER BY id LIMIT 10 OFFSET 10");
 				$result->execute();
 				$rowcount = $result->rowcount();
 			?>
