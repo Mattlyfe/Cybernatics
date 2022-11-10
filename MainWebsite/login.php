@@ -206,7 +206,7 @@ echo htmlentities($_SESSION['errmsg']="");
 	<form class="register-form outer-top-xs" role="form" method="post" name="register" onSubmit="return valid();">
 <div class="form-group">
 	    	<label class="info-title" for="fullname">Full Name <span>*</span></label>
-	    	<input type="text" class="form-control unicase-form-control text-input" id="fullname" name="fullname" required="required">
+	    	<input type="text" class="form-control unicase-form-control text-input" id="fullname" name="fullname" required="required" onkeydown="return /[a-z ]/i.test(event.key)">
 	  	</div>
 
 
@@ -218,7 +218,7 @@ echo htmlentities($_SESSION['errmsg']="");
 
 <div class="form-group">
 	    	<label class="info-title" for="contactno">Contact No. <span>*</span></label>
-	    	<input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" maxlength="10" required >
+	    	<input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required >
 	  	</div>
 
 <div class="form-group">
