@@ -225,13 +225,19 @@ while($row=mysqli_fetch_array($query))
 					</script>
 				
 				</li>
+				<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
+				$row = mysqli_fetch_assoc($valid);
+				if ($row['valid'] == 1){ ?>
 				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
 					</div>
 				</li>
-			</ul>
+				
+			</ul><?php } else {?><br>
+				<li>Please <a href="my-account.php">Verify</a> your Account to do Cash on Delivery</li>
+			<?php } ?>
 			<script>
 			$('#paymethod').change(function () {
 
@@ -240,6 +246,7 @@ while($row=mysqli_fetch_array($query))
 
 			});
 			</script>
+			
 	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
 	    </form>		
 		</div>
