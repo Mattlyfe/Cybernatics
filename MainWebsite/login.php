@@ -224,7 +224,8 @@ echo htmlentities($_SESSION['errmsg']="");
 <div class="form-group">
 	    	<label class="info-title" for="password">Password. <span>*</span></label>
 	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required>
-	  	</div>
+			<input type="checkbox" onclick="myFunction()">Show Password
+		</div>
 
 
 <div id="message">
@@ -234,6 +235,18 @@ echo htmlentities($_SESSION['errmsg']="");
 			<p id="number" class="invalid">A <b>number</b></p>
 			<p id="length" class="invalid">Minimum <b>8 characters</b></p>
 		</div>
+
+<script>
+		function myFunction() {
+  		var x = document.getElementById("password");
+  		if (x.type === "password") {
+    	x.type = "text";
+  		} else {
+    	x.type = "password";
+  		}
+		}
+		</script>
+
 <script>
 			var myInput = document.getElementById("password");
 			var letter = document.getElementById("letter");
