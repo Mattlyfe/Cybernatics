@@ -12,7 +12,6 @@
 
 body{
    background-color: #f3f5f9;
-   overflow-y: hidden;
 }
 
 .wrapper{
@@ -46,6 +45,9 @@ body{
 .wrapper .sidebar ul li a{
   color: #bdb8d7;
   display: block;
+}
+a{
+  text-decoration: none;
 }
 ol, ul{
   padding-left: 0rem;

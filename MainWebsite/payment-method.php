@@ -173,15 +173,27 @@ while($row=mysqli_fetch_array($query))
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
-			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup()" required> Debit/Credit Card</li>
+			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup();cardPopup()" required> Debit/Credit Card</li>
 				<li>
 					<div class="cardbox">
-					<img class="cod" src="/MainWebsite/image/cardsimage/visa.jpg" > <br /><br />
+						<img class="cod" src="/MainWebsite/image/cardsimage/visa.jpg" > <br /><br />
+						<div class="cardPaymentpopUp" id="cardPaymentpopUp">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<label class="info-title">Name on Card</label>
+								<input type="text" class="form-control unicase-form-control text-input" required>
+								<label class="info-title">Credit Card Number</label>
+								<input type="text" class="form-control unicase-form-control text-input" required>
+								<label class="info-title">CVV</label>
+								<input type="text" class="form-control unicase-form-control text-input" required>
+								<label class="info-title">Exp Year</label>
+								<input type="text" class="form-control unicase-form-control text-input" required>
+							</table>
+						</div>
 					</div>
 				</li>
 
 				<li>
-					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()" required> E-Wallet</li>
+					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); closeCardPopup()" required> E-Wallet</li>
 				<li>
 					
 					<div class="cardbox">
@@ -211,6 +223,12 @@ while($row=mysqli_fetch_array($query))
 						}
 						function closePopup() {
 						document.getElementById("popup").style.display = "none";
+						}
+						function cardPopup(){
+							document.getElementById("cardPaymentpopUp").style.display = "block";
+						}
+						function closeCardPopup(){
+							document.getElementById("cardPaymentpopUp").style.display = "none";
 						}
 						function validate(evt) {
 						var theEvent = evt || window.event;

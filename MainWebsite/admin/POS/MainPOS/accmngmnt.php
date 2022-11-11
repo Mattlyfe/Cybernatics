@@ -54,21 +54,25 @@
         <?php
             include ('sidenav.php');
         ?>
+        
         <div class="invetb">
+        <div style="margin-top: -19px; margin-bottom: 21px;">
+			<h3>Active Accounts on the Store</h3>
+		</div>		
         <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search..." autocomplete="off" />
-        <br><br> 
-            <div class="row">
+        <br><br>
+        <div class="row" style="height:500px; overflow-y: scroll;">
                 <div class="col-md-12">
-                <h3>Active Accounts on the Store</h3> <hr/>
+                
                     <div class="table-responsive"> 
                     <div class="row" style="height:500px;">
                     <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
-			<th width="9%"> User ID</th>
-            <th width="10%"> User name </th>
-			<th width="14%"> First name </th>
+			<th width="12%"> User ID</th>
+			<th width="9%"> First name </th>
 			<th width="14%"> Last name </th>
+            <th width="14%"> Password </th>
 			<th width="8%"> Action </th>
 		</tr>
 	</thead>
@@ -84,13 +88,14 @@ while($row=mysqli_fetch_array($query))
 
                 <tr class="record">
 					<td class="cart-product-name-info"> #<?php echo $id = $row['ID'] ?></td>
-                    <td class="cart-product-name-info"><?php echo $row['user_name'];?></td>
+
 					<td class="cart-product-name-info"><?php echo $row['first_name'];?></td>
 					<td class="cart-product-sub-total"><?php echo $row['last_name']; ?>  </td>
+                    <td class="cart-product-sub-total"><?php echo $row['password']; ?>  </td>
 					<td>
-					<a rel="facebox" title="Click to edit" href="update.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i></button></a>
+					<a rel="facebox" title="Click to check reciept" href="update.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
 					
-                    <a href="#" id="<?php echo $row['ID']; ?>" class="delbutton" title="Click to Delete account"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
+                    <a href="#" id="<?php echo $row['ID']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 				</tr>
 
 
