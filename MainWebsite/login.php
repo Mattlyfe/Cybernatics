@@ -223,8 +223,9 @@ echo htmlentities($_SESSION['errmsg']="");
 
 <div class="form-group">
 	    	<label class="info-title" for="password">Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required >
+	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required>
 	  	</div>
+
 
 <div id="message">
 			<h3>Password must contain the following:</h3>
