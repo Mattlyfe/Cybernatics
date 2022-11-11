@@ -108,9 +108,21 @@ while($row=mysqli_fetch_array($query))
                     }?>
 					<td class="cart-product-sub-total"><?php echo $valid; ?>  </td>
 
-					<td class="cart-product-sub-total"><a rel="facebox" title="Click to check reciept" href="showValidIdFront.php?id=<?php echo $id; ?>"><img  src="validIDs/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['validPicFront']);?>" alt="" width="200" height="150"></a>  </td>
+                    <?php if($row['validPicFront'] == null){?>
+                        <td class="cart-product-sub-total"> No ID submitted yet
+                    <?php }
 
-					<td class="cart-product-sub-total"><a rel="facebox" title="Click to check reciept" href="showValidIdBack.php?id=<?php echo $id; ?>"><img  src="validIDs/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['validPicBack']);?>" alt="" width="200" height="150"></a>  </td>
+                     else{ ?>
+					<td class="cart-product-sub-total"><a rel="facebox" title="Click to check reciept" href="showValidIdFront.php?id=<?php echo $id; ?>"><img  src="validIDs/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['validPicFront']);?>" alt="" width="200" height="150"></a>  </td>
+                    <?php }?>
+
+                    <?php if($row['validPicFront'] == null){?>
+                        <td class="cart-product-sub-total"> No ID submitted yet
+                    <?php }
+
+                     else{ ?>
+					<td class="cart-product-sub-total"><a rel="facebox" title="Click to check reciept" href="showValidIdBack.php?id=<?php echo $id; ?>" ><img  src="validIDs/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['validPicBack']);?>" alt="" width="200" height="150"></a>  </td>
+                    <?php }?>
 
 					<td>
 					<a rel="facebox" title="Click to check reciept" href="updateCusAcc.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>

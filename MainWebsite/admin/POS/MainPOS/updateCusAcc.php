@@ -16,7 +16,7 @@
 <span>Name : </span><input type="text" style="width:359px; height:40px;"  name="name" value="<?php echo $row['name']; ?>" Required/><br>
 <span>E-Mail : </span><input type="text" style="width:359px; height:40px;"  name="email" value="<?php echo $row['email']; ?>" /><br>
 <span>Contact Number : </span><input type="text" style="width:359px; height:40px;" name="contactno" value="<?php echo $row['contactno']; ?>"/> <br>
-<span>Password : </span><input type="text" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
+<span>Password : </span><input type="password" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
 <span>Valid : </span><select name ="valid" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
 	<?php
 	$val= $row['valid'];
