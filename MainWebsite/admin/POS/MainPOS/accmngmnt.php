@@ -1,82 +1,143 @@
 <?php
     require_once('config.php');
-    if(isset($_REQUEST['del'])){
-        $uid = intval($_GET['del']);
-        $sql = "DELETE FROM users_be WHERE ID=:id";
-        $query = $db->prepare($sql);
-        $query -> bindParam(':id',$uid, PDO::PARAM_STR);
-        $query -> execute();
-
-        echo "<script>alert('Record Updated Successfully);</script>";
-        echo "<script>window.location.href='accmngmnt.php'</script>"; 
-    }
 ?>
 <html>
 <head>
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <style>
-        .container{
-            margin-left: 226px;
-            width: 1140px;
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <style type="text/css">
+
+        body{
+            padding-bottom: 40px;
         }
-        .btn-size{
-            padding: -5px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
+        .invetb{
+            padding-top: 50px;
+            padding-left: 317px;
+            padding-right: 200px;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+        table, tr, td
+        {
+            text-align: center;
+            padding: 10px;
+            border-spacing: 10px;
+            border: 3px black solid;
+        }
+        th
+        {
+            background-color: #E0E0E0;
+            font-size: 17px;
+            padding: 5px;
         }
     </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+<script src="jeffartagame.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="lib/jquery.js" type="text/javascript"></script>
+<script src="src/facebox.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('a[rel*=facebox]').facebox({
+      loadingImage : 'src/loading.gif',
+      closeImage   : 'src/closelabel.png'
+    })
+  })
+</script>
 </head>
     <body>
         <?php
             include ('sidenav.php');
         ?>
-        <div class="container">
+        <div class="invetb">
+
             <div class="row">
                 <div class="col-md-12">
                 <h3>Active Accounts on the Store</h3> <hr/>
                     <div class="table-responsive"> 
-                        <table id="mytable" class="table table-bordred table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Password</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $sql = "SELECT ID, first_name, last_name, password from users_be";
-                            $query = $db->prepare($sql);
-                            $query->execute();
-                            $results=$query->fetchAll(PDO::FETCH_OBJ);
-                            $cnt=1;
-                            if($query->rowCount() > 0){
-                                foreach($results as $result){
-                                    ?>
-                                    <tr>
-                                        <td><?php echo htmlentities($cnt);?></td>
-                                        <td><?php echo htmlentities($result->first_name);?></td>
-                                        <td><?php echo htmlentities($result->last_name);?></td>
-                                        <td><?php echo htmlentities($result->password);?></td>
-                                        <td><a href="update.php?id=<?php echo htmlentities($result->ID)?>"><button class="btn btn-primary btn-size"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
-                                        <td><a href="accmngmnt.php?del=<?php echo htmlentities($result->ID);?>"><button class="btn btn-danger btn-size" onClick="return confirm('Do you really want to delete');"><span class="glyphicon glyphicon-trash"></span></button></a></td>
-                                    </tr>
-                            <?php
-                            $cnt++;    
-                            }}?>
-                        </tbody>
-                    </table>
+                    <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
+	<thead>
+		<tr>
+			<th width="12%"> User ID</th>
+			<th width="9%"> First name </th>
+			<th width="14%"> Last name </th>
+            <th width="14%"> Password </th>
+			<th width="8%"> Action </th>
+		</tr>
+	</thead>
+    
+	<tbody>
+	<?php 
+	$query=mysqli_query($con,"select * from users_be");
+
+
+while($row=mysqli_fetch_array($query))
+{
+?>
+
+                <tr class="record">
+					<td class="cart-product-name-info"> #<?php echo $id = $row['ID'] ?></td>
+
+					<td class="cart-product-name-info"><?php echo $row['first_name'];?></td>
+					<td class="cart-product-sub-total"><?php echo $row['last_name']; ?>  </td>
+                    <td class="cart-product-sub-total"><?php echo $row['password']; ?>  </td>
+					<td>
+					<a rel="facebox" title="Click to check reciept" href="update.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					
+                    <a href="#" id="<?php echo $row['ID']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
+				</tr>
+
+
+<?php } ?>
+	
+
+	</tbody>
+</table>
+<div class="clearfix"></div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+<script src="js/jquery.js"></script>
+  <script type="text/javascript">
+$(function() {
+
+
+$(".delbutton").click(function(){
+
+//Save the link in a variable called element
+var element = $(this);
+
+//Find the id of the link that was clicked
+var del_id = element.attr("id");
+
+//Built a url to send
+var info = 'id=' + del_id;
+ if(confirm("Sure you want to delete this Acount? There is NO undo!"))
+		  {
+
+ $.ajax({
+   type: "GET",
+   url: "deletecusacc.php",
+   data: info,
+   success: function(){
+   
+   }
+ });
+         $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+		.animate({ opacity: "hide" }, "slow");
+
+ }
+
+return false;
+
+});
+
+});
+  </script>

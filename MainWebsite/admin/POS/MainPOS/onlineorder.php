@@ -151,9 +151,10 @@
                 <tbody>
                         <?php
                             include('../MainPOS/connect.php');
-                            $res = $db->prepare("SELECT orders.transactionId,date_format(order_header.dateCreated,'%Y-%m-%d') as 'date_created',sum(products.productPrice) as 'total',orders.orderStatus,orders.orderDate from orders
+                            $res = $db->prepare("SELECT orders.transactionId,date_format(order_header.dateCreated,'%Y-%m-%d') as 'date_created',sum(products.productPrice) as 'total',orders.orderStatus,orders.orderDate,order_header.remark from orders
                             left join products on products.id = orders.productId 
                             left join order_header on order_header.transactionId = orders.transactionId
+                            where orders.orderStatus<>'Received'
                             group by orders.transactionId");
 
                             $res->execute();
@@ -162,10 +163,43 @@
                                 ?>
                                     <td><?php echo 'OL-0'.$row['transactionId']; ?></td>
                                     <td><?php echo $row['date_created']; ?></td>
-                                    <td><?php echo 'Paid' ?></td>
+                                    <td><?php echo $row['remark'] ?></td>
                                     <td><?php echo formatMoney($row['total'], true) ?></td>
                                     <td><?php echo $row['orderStatus']; ?></td>
                                     <td>
+                                        
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="<?php echo '#editModals'.$row['transactionId']; ?>"><i class="bi bi-wallet"></i></button>
+                                    <div class="modal fade"  id="<?php echo 'editModals'.$row['transactionId']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Current Status: <span style="color:green"><?php echo $row['remark']?></span></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php 
+                                                $pendActive = '';
+                                                $pdActive = '';
+                                                
+                                                if($row['remark'] == "Pending Payment"){
+                                                    $pendActive = 'disabled';
+                                                }
+                                                if($row['remark'] == "Paid"){
+                                                    $pdActive = 'disabled';
+                                                }
+                                                
+                                                ?>
+                                                <div class="row">
+                                                    <div class="col-6"><button onclick="changeRemark(<?php echo $row['transactionId']?>,'Pending Payment')" class="btn btn-primary w-100 m-1 <?php echo $pendActive ?>">Pending Payment</button></div>
+                                                    <div class="col-6"><button onclick="changeRemark(<?php echo $row['transactionId']?>,'Paid')" class="btn btn-primary w-100 m-1 <?php echo $pdActive ?>">Paid</button></div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="<?php echo '#editModal'.$row['transactionId']; ?>"><i class="bi bi-pass"></i></button>
                                     <div class="modal fade"  id="<?php echo 'editModal'.$row['transactionId']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -241,7 +275,16 @@
 
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript">
-	
+	function changeRemark(id,remark){
+        let serializeData = `id=${id}&remark=${remark}`
+        $.post('OnlineOrder/changeRemark.php',serializeData,function(response){
+            swal('Success',response,'success')
+            setTimeout(() => {
+                window.location.href = 'onlineorder.php'
+            }, 1500);
+            
+        })
+    }
     function changeStatus(id,status){
         let serializeData = `id=${id}&status=${status}`
         $.post('OnlineOrder/changeStatus.php',serializeData,function(response){

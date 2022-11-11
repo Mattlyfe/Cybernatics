@@ -87,7 +87,7 @@ $st='Delivered';
 </table>
  </form>
 </div>
-                <button type="button" onclick="closePopup()">Ok</button>
+                <button type="button" onclick="self.close()">Ok</button>
             </div>
         </div>
         <script>
