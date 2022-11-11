@@ -41,9 +41,10 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      $rNoimg= basename( $target_file);
       echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
       mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
-      mysqli_query($con,"update order_header set referenceNo='".$_POST['referenceno']."' where transactionId='".$_POST['transactionNo']."'");
+      mysqli_query($con,"update order_header set referenceNo='".$_POST['referenceno']."',  rNoImg='$rNoimg' where transactionId='".$_POST['transactionNo']."'");
       unset($_SESSION['cart']);
       header('location:order-history.php');
     } else {

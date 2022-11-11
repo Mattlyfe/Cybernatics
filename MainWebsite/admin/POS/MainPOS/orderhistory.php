@@ -103,7 +103,7 @@ while($row=mysqli_fetch_array($query))
 				</tr>
 
 
-<?php } ?>
+<?php } $query -> close();?>
 	
 		
 	</tbody>
