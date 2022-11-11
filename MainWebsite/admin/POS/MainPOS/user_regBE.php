@@ -27,6 +27,9 @@ require_once('config.php');
                         <label for="last_name"><b>Last Name</b></label>
                         <input class="form-control" type="text" name="last_name" id="last_name" required>
 
+                        <label for="last_name"><b>User Name</b></label>
+                        <input class="form-control" type="text" name="user_name" id="user_name" required>
+
                         <label for="password"><b>Password</b>
                         <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' />              
                         </label>
@@ -65,6 +68,7 @@ require_once('config.php');
 
                     var first_name      = $('#first_name').val();
                     var last_name       = $('#last_name').val();
+                    var user_name       = $('#user_name').val();
                     var password        = $('#password').val();
                     var confirmpassword = $('#confirmpassword').val();
 
@@ -73,7 +77,7 @@ require_once('config.php');
                     $.ajax({
                         type: 'POST',
                         url:  'process.php',
-                        data: {first_name: first_name, last_name: last_name, password: password, confirmpassword: confirmpassword},
+                        data: {first_name: first_name, last_name: last_name, user_name: user_name, password: password, confirmpassword: confirmpassword},
                         success: function(data){
                             Swal.fire({
                             'title' : 'Successful.',

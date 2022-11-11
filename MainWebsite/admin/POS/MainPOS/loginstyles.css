@@ -4,7 +4,7 @@ body {
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
-	background-image: url(/MainPOS/img/supermarket.jpg);
+	background-image: url(/MainWebsite/admin/POS/MainPOS/img/supermarket.jpg);
 	background-size: 1350px;
 }
 
