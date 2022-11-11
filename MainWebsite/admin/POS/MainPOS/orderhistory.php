@@ -64,7 +64,7 @@
 	<thead>
 		<tr>
 			<th width="12%"> Transaction No. </th>
-      '<th width="12%"> Ordered By </th>
+      <th width="12%"> Ordered By </th>
 			<th width="9%"> Date Received </th>
 			<th width="14%"> Mode of Payment </th>
 			<th width="13%"> Reference no. </th>
