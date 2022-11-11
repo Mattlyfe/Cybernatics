@@ -11,8 +11,9 @@
 <center><h4><i class="icon-edit icon-large"></i> Edit Account:</h4></center>
 <hr>
 <div id="ac">
-<span>First name : </span><input type="text" style="width:359px; height:40px;"  name="First name" value="<?php echo $row['first_name']; ?>" Required/><br>
-<span>Last name : </span><input type="text" style="width:359px; height:40px;"  name="Last name" value="<?php echo $row['last_name']; ?>" /><br>
+<input type="hidden" name="memi" value="<?php echo $id; ?>" />
+<span>First name : </span><input type="text" style="width:359px; height:40px;"  name="first_name" value="<?php echo $row['first_name']; ?>" Required/><br>
+<span>Last name : </span><input type="text" style="width:359px; height:40px;"  name="last_name" value="<?php echo $row['last_name']; ?>" /><br>
 <span>Password : </span><input type="text" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
 
 
