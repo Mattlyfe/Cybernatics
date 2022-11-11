@@ -236,6 +236,7 @@ echo htmlentities($_SESSION['errmsg']="");
 			<p id="length" class="invalid">Minimum <b>8 characters</b></p>
 		</div>
 
+
 <script>
 		function myFunction() {
   		var x = document.getElementById("password");
@@ -304,6 +305,8 @@ echo htmlentities($_SESSION['errmsg']="");
 			}
 			}
 		</script>
+
+		
 		
 <div class="form-group">
 	    	<label class="info-title" for="confirmpassword">Confirm Password. <span>*</span></label>
@@ -312,7 +315,21 @@ echo htmlentities($_SESSION['errmsg']="");
 
 
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button" id="submit">Sign Up</button>
+
+		  <script>
+                    var check = function() {
+                    if (document.getElementById('password').value ==
+                        document.getElementById('confirmpassword').value) {
+                        document.getElementById('message').style.color = 'green';
+                        document.getElementById('message').innerHTML = 'Password matched';
+                    } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerHTML = 'Password not match';
+                    }
+                }</script>
 	</form>
+
+	
 	<span class="checkout-subtitle outer-top-xs">Sign Up Today And You'll Be Able To :  </span>
 	<div class="checkbox">
 	  	<label class="checkbox">

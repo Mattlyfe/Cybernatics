@@ -22,16 +22,17 @@ require_once('config.php');
                         <h1>Registration</h1>
                         <hr class="mb-3">
                         <label for="first_name"><b>First Name</b></label>
-                        <input class="form-control" type="text" name="first_name" id="first_name" required>
+                        <input class="form-control" type="text" name="first_name" id="first_name" required onkeydown="return /[a-z ]/i.test(event.key)">
                         
                         <label for="last_name"><b>Last Name</b></label>
-                        <input class="form-control" type="text" name="last_name" id="last_name" required>
+                        <input class="form-control" type="text" name="last_name" id="last_name" required onkeydown="return /[a-z ]/i.test(event.key)">
 
                         <label for="last_name"><b>User Name</b></label>
                         <input class="form-control" type="text" name="user_name" id="user_name" required>
 
                         <label for="password"><b>Password</b>
-                        <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' />              
+                        <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' />  
+                        <input type="checkbox" onclick="myFunction()">Show Password            
                         </label>
 
                         <label for="confirmpassword"><b>Confirm Password</b>
@@ -44,14 +45,25 @@ require_once('config.php');
                     </div>
                     
                     <script>
+                        function myFunction() {
+                        var x = document.getElementById("password");
+                        if (x.type === "password") {
+                        x.type = "text";
+                        } else {
+                        x.type = "password";
+                        }
+                        }
+		            </script>
+
+                    <script>
                     var check = function() {
                     if (document.getElementById('password').value ==
                         document.getElementById('confirmpassword').value) {
                         document.getElementById('message').style.color = 'green';
-                        document.getElementById('message').innerHTML = 'password match';
+                        document.getElementById('message').innerHTML = 'Password matched';
                     } else {
                         document.getElementById('message').style.color = 'red';
-                        document.getElementById('message').innerHTML = 'not matching';
+                        document.getElementById('message').innerHTML = 'Password not match';
                     }
                 }</script>
                 </div>

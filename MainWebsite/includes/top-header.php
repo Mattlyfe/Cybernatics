@@ -31,7 +31,7 @@ else{ ?>
 <div class="cnt-block">
 				<ul class="list-unstyled list-inline">
 					<li class="dropdown dropdown-small">
-						<a href="track-orders.php" class="dropdown-toggle" ><span class="key">Track Order</b></a>
+						<a href="order-history.php" class="dropdown-toggle" ><span class="key">Track Order</b></a>
 						
 					</li>
 
