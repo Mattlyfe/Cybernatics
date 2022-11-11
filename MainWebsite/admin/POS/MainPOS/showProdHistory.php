@@ -64,5 +64,35 @@ while($row=mysqli_fetch_array($query))
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
 		<h1>Grand total: ₱ <?php echo $gtotal?><h1>
-        
+
+        <center><h4><i class="icon-edit icon-large"></i> Order # <?php echo$id?> Shipping Address</h4></center>
+<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="cart-romove item">Name</th>
+					<th class="cart-description item">Shipping Address</th>
+					<th class="cart-product-name item">Barangay</th>
+					<th class="cart-qty item">City</th>
+				</tr>
+			</thead><!-- /thead -->
+			
+			<tbody>
+            <?php
+ $query=mysqli_query($con,"select users.id as id,users.name as name, users.billingAddress addr, users.billingState as brgy, users.billingCity as city, orders.userid as uid from users join orders on orders.userid=users.id where orders.transactionId=$id");?>
+<?php
+while($row=mysqli_fetch_array($query))
+{
+?>
+				<tr>
+					<td># <?php echo $uId=$row['id']; ?></td>
+					<td><?php echo $row['addr']; ?></td>    
+					<td><?php echo $row['brgy']; ?></td> 
+					<td><?php echo $row['city']; ?></td>    
+				</tr>
+                
+<?php } ?>
+
+				
+			</tbody><!-- /tbody -->
+		</table><!-- /table -->
         <input type="submit" name="submit" value="Go back" class="btn btn-warning"></form>
