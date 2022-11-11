@@ -58,7 +58,7 @@
 
 <div class="invetb">
 
-<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
+<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Order..." autocomplete="off" />
 <br><br>
 <div class="row" style="height:500px; overflow-y: scroll;">
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
