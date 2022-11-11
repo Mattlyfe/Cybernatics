@@ -7,16 +7,6 @@ if(strlen($_SESSION['login'])==0)
 header('location:login.php');
 }
 else{
-	if(isset($_POST['update']))
-	{
-		$name=$_POST['name'];
-		$contactno=$_POST['contactno'];
-		$query=mysqli_query($con,"update users set name='$name',contactno='$contactno' where id='".$_SESSION['id']."'");
-		if($query)
-		{
-echo "<script>alert('Your info has been updated');</script>";
-		}
-	}
 
 
 date_default_timezone_set('Asia/Kolkata');// change according timezone
@@ -169,7 +159,7 @@ while($row=mysqli_fetch_array($query))
 {
 ?>
 
-					<form class="register-form" role="form" method="post">
+					<form class="register-form" action="uploadVId.php" role="form" method="post" enctype="multipart/form-data">
 <div class="form-group">
 					    <label class="info-title" for="name">Name<span>*</span></label>
 					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['name'];?>" id="name" name="name" required="required">
@@ -190,8 +180,16 @@ while($row=mysqli_fetch_array($query))
 				if ($row['valid'] == 0){ ?>
 					  <div class="form-group">
 					  
-				Upload Valid ID For verification:
-					<input type="file" name="fileToUpload" id="fileToUpload" required>
+				Upload Valid ID For verification (Front and Back):
+					<input type="file" name="file[]" id="file" required multiple>
+					<button type="submit" name="imgSubmit" class="btn-upper btn btn-primary checkout-page-button">Upload Images</button>
+				</div>
+				<?php } 
+				else if ($row['valid'] == 1){ ?>
+					  <div class="form-group">
+					  
+				Account Verification In progress.
+					
 				</div>
 				<?php } ?>
 					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>

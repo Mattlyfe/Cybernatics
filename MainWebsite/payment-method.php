@@ -227,7 +227,7 @@ while($row=mysqli_fetch_array($query))
 				</li>
 				<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
 				$row = mysqli_fetch_assoc($valid);
-				if ($row['valid'] == 1){ ?>
+				if ($row['valid'] == 2){ ?>
 				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
