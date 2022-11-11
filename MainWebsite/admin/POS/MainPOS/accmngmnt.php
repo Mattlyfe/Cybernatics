@@ -65,10 +65,10 @@
                     <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
-			<th width="12%"> User ID</th>
-			<th width="9%"> First name </th>
+			<th width="9%"> User ID</th>
+            <th width="10%"> User name </th>
+			<th width="14%"> First name </th>
 			<th width="14%"> Last name </th>
-            <th width="14%"> Password </th>
 			<th width="8%"> Action </th>
 		</tr>
 	</thead>
@@ -84,10 +84,9 @@ while($row=mysqli_fetch_array($query))
 
                 <tr class="record">
 					<td class="cart-product-name-info"> #<?php echo $id = $row['ID'] ?></td>
-
+                    <td class="cart-product-name-info"><?php echo $row['user_name'];?></td>
 					<td class="cart-product-name-info"><?php echo $row['first_name'];?></td>
 					<td class="cart-product-sub-total"><?php echo $row['last_name']; ?>  </td>
-                    <td class="cart-product-sub-total"><?php echo $row['password']; ?>  </td>
 					<td>
 					<a rel="facebox" title="Click to check reciept" href="update.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
 					

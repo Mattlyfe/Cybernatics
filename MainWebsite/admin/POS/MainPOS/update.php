@@ -12,9 +12,11 @@
 <hr>
 <div id="ac">
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
+<input type="hidden" name="pass" value="<?php echo $row['password']; ?>" />
+<span>Username : </span><input type="text" style="width:359px; height:40px;"  name="user_name" value="<?php echo $row['user_name']; ?>" /><br>
 <span>First name : </span><input type="text" style="width:359px; height:40px;"  name="first_name" value="<?php echo $row['first_name']; ?>" Required/><br>
 <span>Last name : </span><input type="text" style="width:359px; height:40px;"  name="last_name" value="<?php echo $row['last_name']; ?>" /><br>
-<span>Password : </span><input type="text" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
+<span>Password : </span><input type="password" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
 
 
 <div style="text-align: center; margin-top: 10px">
