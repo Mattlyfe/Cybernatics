@@ -39,6 +39,7 @@
 					<th class="cart-total item">Payment Method</th>
 					<th class="cart-description item">Order Date</th>
                     <th class="cart-description item">Order Status</th>
+					
 					<th class="cart-description item">Reference No. Pic</th>
 				</tr>
 			</thead><!-- /thead -->
