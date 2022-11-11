@@ -154,6 +154,7 @@
                             $res = $db->prepare("SELECT orders.transactionId,date_format(order_header.dateCreated,'%Y-%m-%d') as 'date_created',sum(products.productPrice) as 'total',orders.orderStatus,orders.orderDate,order_header.remark from orders
                             left join products on products.id = orders.productId 
                             left join order_header on order_header.transactionId = orders.transactionId
+                            where orders.orderStatus<>'Received'
                             group by orders.transactionId");
 
                             $res->execute();
@@ -167,7 +168,7 @@
                                     <td><?php echo $row['orderStatus']; ?></td>
                                     <td>
                                         
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="<?php echo '#editModals'.$row['transactionId']; ?>"><i class="bi bi-pass"></i></button>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="<?php echo '#editModals'.$row['transactionId']; ?>"><i class="bi bi-wallet"></i></button>
                                     <div class="modal fade"  id="<?php echo 'editModals'.$row['transactionId']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
