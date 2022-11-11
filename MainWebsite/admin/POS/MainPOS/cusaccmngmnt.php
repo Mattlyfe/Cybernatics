@@ -57,8 +57,8 @@
             include ('sidenav.php');
         ?>
         <div class="invetb">
-        <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search..." autocomplete="off" />
-<br><br>
+       <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search..." autocomplete="off" />
+<br><br> 
         <div class="row" style="height:500px; overflow-y: scroll;">
                 <div class="col-md-12">
                 <h3>Active Accounts on the Online Store</h3> <hr/>
