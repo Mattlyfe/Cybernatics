@@ -14,7 +14,7 @@
                 <img src="../MainWebsite/image/trackIcon.png">
                 <h2>Sample text</h2>
                 <p>Sample text again</p>
-                <button type="button" onclick="closePopup()">Ok</button>
+                <button type="button" onclick="window.close()">Ok</button>
             </div>
         </div>
         <script>
