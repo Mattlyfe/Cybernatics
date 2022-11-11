@@ -43,6 +43,7 @@ header('location:login.php');
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 		<!--JQuery 1.8.3-->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -173,10 +174,13 @@ while($row=mysqli_fetch_array($query))
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
-			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup();cardPopup()" required> Debit/Credit Card</li>
+			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup()" required> Debit/Credit Card</li>
 				<li>
 					<div class="cardbox">
-						<img class="cod" src="/MainWebsite/image/cardsimage/visa.jpg" > <br /><br />
+					<div class="icon-container">
+						<i class="fa fa-cc-visa" style="color:blue;"></i>
+						<i class="fa fa-cc-mastercard" style="color:red;"></i>
+					</div>
 						<div class="cardPaymentpopUp" id="cardPaymentpopUp">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<label class="info-title">Name on Card</label>
