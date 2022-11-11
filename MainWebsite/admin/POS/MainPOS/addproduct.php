@@ -13,11 +13,11 @@
     <option value="5">Dairy</option>
     <option  value="6">Fashion</option>
   </select><br>
-<span>Selling Price : </span><input type="text" id="txt1" style="width:359px; height:40px;" name="productPrice" onkeyup="sum();" Required><br>
-<span>Original Price : </span><input type="text" id="txt2" style="width:359px; height:40px;" name="oPrice" onkeyup="sum();" Required><br>
+<span>Selling Price : </span><input type="text" id="txt1" style="width:359px; height:40px;" name="productPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+<span>Original Price : </span><input type="text" id="txt2" style="width:359px; height:40px;" name="oPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
 <span>Profit : </span><input type="text" id="txt3" style="width:359px; height:40px;" name="profit" readonly><br>
 
-<span>Quantity : </span><input type="number" style="width:359px; height:40px;" min="0" id="txt11" onkeyup="sum();" name="qty" Required ><br>
+<span>Quantity : </span><input type="number" style="width:359px; height:40px;" min="0" id="txt11" onkeyup="sum();" name="qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required ><br>
 <span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
 <div style="text-align: center; margin-top: 10px">
 <button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save</button>

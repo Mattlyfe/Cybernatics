@@ -68,6 +68,7 @@
 			<th width="12%"> User ID</th>
 			<th width="9%"> Name </th>
 			<th width="14%"> E-Mail </th>
+            <th width="14%"> Contact No. </th>
 			<th width="13%"> Validity </th>
 			<th width="8%"> Valid ID (front) </th>
             <th width="8%"> Valid ID (back) </th>
@@ -94,6 +95,7 @@ while($row=mysqli_fetch_array($query))
 					</td>
 
 					<td class="cart-product-sub-total"><?php echo $row['email']; ?>  </td>
+                    <td class="cart-product-sub-total">0<?php echo $row['contactno']; ?>  </td>
                     
                     <?php $validity = $row['valid'];
                     if($validity == 0){

@@ -56,10 +56,10 @@
 	}
 	?>
   </select><br>
-<span>Selling Price : </span><input type="text" style="width:359px; height:40px;" id="txt1" name="productPrice" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" Required/><br>
-<span>Original Price : </span><input type="text" style="width:359px; height:40px;" id="txt2" name="oPrice" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" Required/><br>
+<span>Selling Price : </span><input type="text" style="width:359px; height:40px;" id="txt1" name="productPrice" value="<?php echo $row['productPrice']; ?>" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/><br>
+<span>Original Price : </span><input type="text" style="width:359px; height:40px;" id="txt2" name="oPrice" value="<?php echo $row['oPrice']; ?>" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/><br>
 <span>Profit : </span><input type="text" style="width:359px; height:40px;" id="txt3" name="profit" value="<?php echo $row['profit']; ?>" readonly><br>
-<span>QTY: </span><input type="number" style="width:359px; height:40px;" min="0" name="productAvailability" value="<?php echo $row['productAvailability']; ?>" /><br>
+<span>QTY: </span><input type="number" style="width:359px; height:40px;" min="0" name="productAvailability" value="<?php echo $row['productAvailability']; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/><br>
 
 <div style="text-align: center; margin-top: 10px">
 
