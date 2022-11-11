@@ -20,6 +20,7 @@
                     <li><a href="salesrep.php"><i class='bx bxs-report'></i>Sales Report</a></li>
                     <li><a href="#"><i class='bx bxs-chat' ></i>Messages</a></li>
                     <li><a href="accmngmnt.php"><i class='bx bxs-user-account'></i>Account Management</a></li>
+                    <li><a href="cusaccmngmnt.php"><i class='bx bxs-user-account'></i>Customer Account Management</a></li>
                 </ul> 
             </div>
         </div>
