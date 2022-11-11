@@ -89,9 +89,9 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-name-info"><?php echo $row['first_name'];?></td>
 					<td class="cart-product-sub-total"><?php echo $row['last_name']; ?>  </td>
 					<td>
-					<a rel="facebox" title="Click to check reciept" href="update.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					<a rel="facebox" title="Click to edit" href="update.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i></button></a>
 					
-                    <a href="#" id="<?php echo $row['ID']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
+                    <a href="#" id="<?php echo $row['ID']; ?>" class="delbutton" title="Click to Delete account"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 				</tr>
 
 
