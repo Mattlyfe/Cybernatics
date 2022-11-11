@@ -12,12 +12,7 @@
 
 body{
    background-color: #f3f5f9;
-}
-a{
-  text-decoration: none;
-}
-.centerBox{
-  margin: auto;width: 60%;padding: 10px;
+   overflow-y: hidden;
 }
 
 .wrapper{
@@ -177,7 +172,7 @@ ol, ul{
   text-decoration: none;
 }
 .card{
-  width: 314px;
+  width: 273px;
 }
 .row{
   display: flex;

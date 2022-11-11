@@ -4,14 +4,14 @@ include('../MainPOS/connect.php');
 
 
 $id = $_POST['memi'];
-mkdir("productimages/$id/",  0777, true);
-$target_dir = "productimages/$id/";
+mkdir("uploads/$id/",  0777, true);
+$target_dir = "uploads/$id/";
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    
+    $countfiles = count($_FILES['file']['name']);
 
-    for($i=0;$i<3;$i++){
+    for($i=0;$i<$countfiles;$i++){
     $filename = $_FILES['file']['name'][$i];
     $target_file = $target_dir.basename($filename);
 
