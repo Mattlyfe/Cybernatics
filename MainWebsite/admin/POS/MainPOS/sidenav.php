@@ -8,7 +8,7 @@
     <body>
         <div class="wrapper">
             <div class="sidebar">
-                <h2>Sandra's Store</span></h2>
+                <h3>Sandra's Store</span></h3>
                 <ul>
                     <li><a href="index.php"><i class='bx bx-home-circle' ></i>Dashboard</a></li>
                     <li><a href="user_regBE.php"><i class='bx bxs-user-plus'></i>User Registration</a></li>
