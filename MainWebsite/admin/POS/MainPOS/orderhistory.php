@@ -83,7 +83,7 @@ while($row=mysqli_fetch_array($query))
 ?>
 
 				<tr>
-					<td class="cart-product-name-info"> #<?php echo $tId = $row['transId'] ?></td>
+					<td class="cart-product-name-info"> OL-0<?php echo $tId = $row['transId'] ?></td>
           <td class="cart-product-name-info"> ID<?php echo $uId = $row['uid'] ?> - <?php echo $row['uname'] ?></td>
 
 					<td class="cart-product-name-info">
