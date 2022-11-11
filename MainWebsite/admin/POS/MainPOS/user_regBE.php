@@ -22,10 +22,10 @@ require_once('config.php');
                         <h1>Registration</h1>
                         <hr class="mb-3">
                         <label for="first_name"><b>First Name</b></label>
-                        <input class="form-control" type="text" name="first_name" id="first_name" required>
+                        <input class="form-control" type="text" name="first_name" id="first_name" required onkeydown="return /[a-z ]/i.test(event.key)">
                         
                         <label for="last_name"><b>Last Name</b></label>
-                        <input class="form-control" type="text" name="last_name" id="last_name" required>
+                        <input class="form-control" type="text" name="last_name" id="last_name" required onkeydown="return /[a-z ]/i.test(event.key)">
 
                         <label for="password"><b>Password</b>
                         <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' /> 
