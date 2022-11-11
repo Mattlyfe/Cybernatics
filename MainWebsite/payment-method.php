@@ -190,7 +190,7 @@ while($row=mysqli_fetch_array($query))
 					<br>
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
 	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" onkeypress='validate(event)' required>
-					Upload Screenshot of Proof of payment:
+					<label class="info-title" for="referenceno">Upload Screenshot of Proof of payment:<span>*</span></label>
 					<input type="file" name="fileToUpload" id="fileToUpload" required>
 					</table>
 					</div>
@@ -235,8 +235,10 @@ while($row=mysqli_fetch_array($query))
 					</div>
 				</li>
 				
-			</ul><?php } else {?><br>
-				<li>Please <a href="my-account.php">Verify</a> your Account to do Cash on Delivery</li>
+			</ul><?php } else if($row['valid'] == 0) {?><br>
+				<li>Please <b><a href="my-account.php">Verify</a></b> your Account to do <b>Cash on Delivery</b></li><br /><br />
+			<?php } else if($row['valid'] == 1) {?><br>
+				<li>Please wait for your account to be <b>Validated</b> to do <b>Cash on Delivery</b></li><br /><br />
 			<?php } ?>
 			<script>
 			$('#paymethod').change(function () {
