@@ -18,8 +18,6 @@
             padding-top: 50px;
             padding-left: 317px;
             padding-right: 200px;
-            overflow-y: scroll;
-            overflow-x: scroll;
         }
         table, tr, td
         {
@@ -67,6 +65,7 @@
                 <div class="col-md-12">
                 
                     <div class="table-responsive"> 
+                    <div class="row" style="height:500px;">
                     <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
