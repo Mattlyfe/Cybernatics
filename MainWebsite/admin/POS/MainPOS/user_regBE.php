@@ -14,7 +14,7 @@ require_once('config.php');
         ?>
         </div>
         <div class="main_content">
-            <form action="user_regBE.php" method="post">
+            <form action="user_regBE.php" method="post" name="register">
                 <div class="container">
                     
                 <div class="row">
@@ -53,7 +53,20 @@ require_once('config.php');
                         x.type = "password";
                         }
                         }
-		            </script>
+		           </script>
+
+                    <!-- <script>
+                            function valid()
+                            {
+                            if(document.register.password.value!= document.register.confirmpassword.value)
+                            {
+                            alert("Password and Confirm Password Field do not match  !!");
+                            document.register.confirmpassword.focus();
+                            return false;
+                            }
+                            return true;
+                            }
+                    </script> -->
 
                     <script>
                     var check = function() {

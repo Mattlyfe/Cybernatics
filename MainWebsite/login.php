@@ -15,7 +15,7 @@ if($query)
 	echo "<script>alert('You are successfully register');</script>";
 }
 else{
-echo "<script>alert('Not register something went worng');</script>";
+echo "<script>alert('Not register something went wrong');</script>";
 }
 }
 // Code for User login
@@ -248,6 +248,7 @@ echo htmlentities($_SESSION['errmsg']="");
 		}
 		</script>
 
+
 <script>
 			var myInput = document.getElementById("password");
 			var letter = document.getElementById("letter");
@@ -311,22 +312,11 @@ echo htmlentities($_SESSION['errmsg']="");
 <div class="form-group">
 	    	<label class="info-title" for="confirmpassword">Confirm Password. <span>*</span></label>
 	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required >
+			<span id='message'></span>
 	  	</div>
 
 
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button" id="submit">Sign Up</button>
-
-		  <script>
-                    var check = function() {
-                    if (document.getElementById('password').value ==
-                        document.getElementById('confirmpassword').value) {
-                        document.getElementById('message').style.color = 'green';
-                        document.getElementById('message').innerHTML = 'Password matched';
-                    } else {
-                        document.getElementById('message').style.color = 'red';
-                        document.getElementById('message').innerHTML = 'Password not match';
-                    }
-                }</script>
 	</form>
 
 	
