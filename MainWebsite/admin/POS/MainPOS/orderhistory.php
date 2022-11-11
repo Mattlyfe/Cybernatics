@@ -73,7 +73,7 @@
 	</thead>
 	<tbody>
 	<?php include('config1.php');
-	$query=mysqli_query($con,"select distinct order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId where order_header.referenceNo is not null ");
+	$query=mysqli_query($con,"select distinct order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId where order_header.referenceNo is not null order by transId DESC");
 
 
 while($row=mysqli_fetch_array($query))

@@ -190,7 +190,7 @@ while($row=mysqli_fetch_array($query))
 					<br>
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
 	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" onkeypress='validate(event)' required>
-					Upload Screenshot of Proof of payment:
+					<label class="info-title" for="referenceno">Upload Screenshot of Proof of payment:<span>*</span></label>
 					<input type="file" name="fileToUpload" id="fileToUpload" required>
 					</table>
 					</div>
@@ -225,13 +225,21 @@ while($row=mysqli_fetch_array($query))
 					</script>
 				
 				</li>
+				<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
+				$row = mysqli_fetch_assoc($valid);
+				if ($row['valid'] == 2){ ?>
 				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
 					</div>
 				</li>
-			</ul>
+				
+			</ul><?php } else if($row['valid'] == 0) {?><br>
+				<li>Please <b><a href="my-account.php">Verify</a></b> your Account to do <b>Cash on Delivery</b></li><br /><br />
+			<?php } else if($row['valid'] == 1) {?><br>
+				<li>Please wait for your account to be <b>Validated</b> to do <b>Cash on Delivery</b></li><br /><br />
+			<?php } ?>
 			<script>
 			$('#paymethod').change(function () {
 
@@ -240,6 +248,7 @@ while($row=mysqli_fetch_array($query))
 
 			});
 			</script>
+			
 	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
 	    </form>		
 		</div>

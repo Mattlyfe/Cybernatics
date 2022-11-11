@@ -25,7 +25,10 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		$result->execute();
 		$row=$result->fetch(PDO::FETCH_ASSOC);
 
-		if ($result->rowCount() > 0) {
+		$result = mysqli_query($con, $sql);
+
+		if (mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
             if ($row['user_name'] === $uname && $row['password'] === $pass) {
             	$_SESSION['user_name'] = $row['user_name'];
             	$_SESSION['name'] = $row['name'];
