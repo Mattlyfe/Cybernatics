@@ -29,7 +29,7 @@ body{
   overflow-y: scroll;
 }
 
-.wrapper .sidebar h2{
+.wrapper .sidebar h3{
   color: #fff;
   text-transform: uppercase;
   text-align: center;
