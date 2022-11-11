@@ -113,6 +113,7 @@ function sum() {
 </div>
 <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
 <a rel="facebox" href="addproduct.php"><Button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="bi bi-plus-circle-fill"></i> Add Product</button></a><br><br>
+<div class="row" style="height:500px; overflow-y: scroll;">
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
@@ -217,7 +218,7 @@ function sum() {
 </div>
 </div>
 </div>
-
+</div>
 <script src="js/jquery.js"></script>
   <script type="text/javascript">
 $(function() {
