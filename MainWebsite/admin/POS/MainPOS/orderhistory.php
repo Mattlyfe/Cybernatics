@@ -64,6 +64,7 @@
 	<thead>
 		<tr>
 			<th width="12%"> Transaction No. </th>
+      '<th width="12%"> Ordered By </th>
 			<th width="9%"> Date Received </th>
 			<th width="14%"> Mode of Payment </th>
 			<th width="13%"> Reference no. </th>
@@ -73,7 +74,7 @@
 	</thead>
 	<tbody>
 	<?php include('config1.php');
-	$query=mysqli_query($con,"select distinct order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId where order_header.referenceNo is not null order by transId DESC");
+	$query=mysqli_query($con,"select distinct orders.userId as uid, users.name as uname, order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId  join users on users.id=orders.userId where order_header.referenceNo is not null order by transId DESC");
 
 
 while($row=mysqli_fetch_array($query))
@@ -82,6 +83,7 @@ while($row=mysqli_fetch_array($query))
 
 				<tr>
 					<td class="cart-product-name-info"> #<?php echo $tId = $row['transId'] ?></td>
+          <td class="cart-product-name-info"> UID<?php echo $uId = $row['uid'] ?> - <?php echo $row['uname'] ?></td>
 
 					<td class="cart-product-name-info">
 						
@@ -101,7 +103,7 @@ while($row=mysqli_fetch_array($query))
 				</tr>
 
 
-<?php } ?>
+<?php } $query -> close();?>
 	
 		
 	</tbody>
