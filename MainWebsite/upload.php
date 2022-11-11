@@ -52,9 +52,18 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
     }
   }
 }
-else{
+else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Cash on Delivery"){
   $tNo = $_POST['transactionNo'];
   mysqli_query($con,"update order_header set referenceNo= 'COD #$tNo' where transactionId='".$_POST['transactionNo']."'");
+
+  mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
+  unset($_SESSION['cart']);
+  header('location:order-history.php');
+}
+
+else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Debit/Credit Card"){
+  $tNo = $_POST['transactionNo'];
+  mysqli_query($con,"update order_header set referenceNo= 'Credit/Debit #$tNo' where transactionId='".$_POST['transactionNo']."'");
 
   mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);

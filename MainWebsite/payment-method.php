@@ -173,6 +173,13 @@ while($row=mysqli_fetch_array($query))
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
+			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup()" required> Debit/Credit Card</li>
+				<li>
+					<div class="cardbox">
+					<img class="cod" src="/MainWebsite/image/cardsimage/visa.jpg" > <br /><br />
+					</div>
+				</li>
+
 				<li>
 					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup()" required> E-Wallet</li>
 				<li>

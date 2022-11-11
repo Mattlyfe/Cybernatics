@@ -64,7 +64,7 @@
 	<thead>
 		<tr>
 			<th width="12%"> Transaction No. </th>
-      '<th width="12%"> Ordered By </th>
+      <th width="12%"> Ordered By </th>
 			<th width="9%"> Date Received </th>
 			<th width="14%"> Mode of Payment </th>
 			<th width="13%"> Reference no. </th>
@@ -73,11 +73,33 @@
 		</tr>
 	</thead>
 	<tbody>
-	<?php include('config1.php');
-	$query=mysqli_query($con,"select distinct orders.userId as uid, users.name as uname, order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId  join users on users.id=orders.userId where order_header.referenceNo is not null order by transId DESC");
+    <?php
+  //define total number of results you want per page  
+    $results_per_page = 10;  
+    include('config1.php');
+    //find the total number of results stored in the database  
+    $query=mysqli_query($con,"select distinct orders.userId as uid, users.name as uname, order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId  join users on users.id=orders.userId where order_header.referenceNo is not null order by transId DESC");
+    $number_of_result = mysqli_num_rows($query);  
+    //determine the total number of pages available  
+    $number_of_page = ceil ($number_of_result / $results_per_page);
+
+      //determine which page number visitor is currently on  
+    if (!isset ($_GET['page']) ) {  
+        $page = 1;  
+    } else {  
+        $page = $_GET['page'];  
+    }  
+  
+    //determine the sql LIMIT starting number for the results on the displaying page  
+    $page_first_result = ($page-1) * $results_per_page;  
+
+    $query="select distinct orders.userId as uid, users.name as uname, order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId  join users on users.id=orders.userId where order_header.referenceNo is not null order by transId DESC LIMIT " .$page_first_result.',' .$results_per_page;
+    $result = mysqli_query($con, $query);  
+    ?>
+	<?php 
 
 
-while($row=mysqli_fetch_array($query))
+while($row=mysqli_fetch_array($result))
 {
 ?>
 
@@ -101,13 +123,17 @@ while($row=mysqli_fetch_array($query))
 					<a rel="facebox" title="Click to check reciept" href="showProdHistory.php?id=<?php echo $row['transId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
 					</td>
 				</tr>
-
+        
 
 <?php } ?>
-	
+
 		
 	</tbody>
 </table>
+<?php
+        for($page = 1; $page<= $number_of_page; $page++) {  
+        echo '<a href = "orderhistory.php?page=' . $page . '">' . $page . ' </a>';  
+    }  ?>
 <div class="clearfix"></div>
 </div>
 </div>
