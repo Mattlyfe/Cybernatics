@@ -15,7 +15,7 @@ if($query)
 	echo "<script>alert('You are successfully register');</script>";
 }
 else{
-echo "<script>alert('Not register something went worng');</script>";
+echo "<script>alert('Not register something went wrong');</script>";
 }
 }
 // Code for User login
@@ -27,7 +27,7 @@ $query=mysqli_query($con,"SELECT * FROM users WHERE email='$email' and password=
 $num=mysqli_fetch_array($query);
 if($num>0)
 {
-$extra="my-cart.php";
+$extra="index.php";
 $_SESSION['login']=$_POST['email'];
 $_SESSION['id']=$num['id'];
 $_SESSION['username']=$num['name'];
@@ -248,6 +248,7 @@ echo htmlentities($_SESSION['errmsg']="");
 		}
 		</script>
 
+
 <script>
 			var myInput = document.getElementById("password");
 			var letter = document.getElementById("letter");
@@ -299,7 +300,7 @@ echo htmlentities($_SESSION['errmsg']="");
 			if(myInput.value.length >= 8) {
 				length.classList.remove("invalid");
 				length.classList.add("valid");
-			} else {
+			} else {submit
 				length.classList.remove("valid");
 				length.classList.add("invalid");
 			}
@@ -311,22 +312,11 @@ echo htmlentities($_SESSION['errmsg']="");
 <div class="form-group">
 	    	<label class="info-title" for="confirmpassword">Confirm Password. <span>*</span></label>
 	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required >
+			<span id='message'></span>
 	  	</div>
 
 
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button" id="submit">Sign Up</button>
-
-		  <script>
-                    var check = function() {
-                    if (document.getElementById('password').value ==
-                        document.getElementById('confirmpassword').value) {
-                        document.getElementById('message').style.color = 'green';
-                        document.getElementById('message').innerHTML = 'Password matched';
-                    } else {
-                        document.getElementById('message').style.color = 'red';
-                        document.getElementById('message').innerHTML = 'Password not match';
-                    }
-                }</script>
 	</form>
 
 	

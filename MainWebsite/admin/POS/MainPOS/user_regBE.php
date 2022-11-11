@@ -14,7 +14,7 @@ require_once('config.php');
         ?>
         </div>
         <div class="main_content">
-            <form action="user_regBE.php" method="post">
+            <form action="user_regBE.php" method="post" name="register">
                 <div class="container">
                     
                 <div class="row">
@@ -22,13 +22,14 @@ require_once('config.php');
                         <h1>Registration</h1>
                         <hr class="mb-3">
                         <label for="first_name"><b>First Name</b></label>
-                        <input class="form-control" type="text" name="first_name" id="first_name" required>
+                        <input class="form-control" type="text" name="first_name" id="first_name" required onkeydown="return /[a-z ]/i.test(event.key)">
                         
                         <label for="last_name"><b>Last Name</b></label>
-                        <input class="form-control" type="text" name="last_name" id="last_name" required>
+                        <input class="form-control" type="text" name="last_name" id="last_name" required onkeydown="return /[a-z ]/i.test(event.key)">
 
                         <label for="password"><b>Password</b>
-                        <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' />              
+                        <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' /> 
+                        <input type="checkbox" onclick="myFunction()">Show Password             
                         </label>
 
                         <label for="confirmpassword"><b>Confirm Password</b>
@@ -40,6 +41,30 @@ require_once('config.php');
                     </div>
                     </div>
                     
+                    <script>
+                        function myFunction() {
+                        var x = document.getElementById("password");
+                        if (x.type === "password") {
+                        x.type = "text";
+                        } else {
+                        x.type = "password";
+                        }
+                        }
+		           </script>
+
+                    <!-- <script>
+                            function valid()
+                            {
+                            if(document.register.password.value!= document.register.confirmpassword.value)
+                            {
+                            alert("Password and Confirm Password Field do not match  !!");
+                            document.register.confirmpassword.focus();
+                            return false;
+                            }
+                            return true;
+                            }
+                    </script> -->
+
                     <script>
                     var check = function() {
                     if (document.getElementById('password').value ==
