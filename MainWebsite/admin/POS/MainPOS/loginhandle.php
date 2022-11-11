@@ -1,6 +1,6 @@
 <?php 
 session_start(); 
-include "db_conn.php";
+include "config.php";
 
 if (isset($_POST['uname']) && isset($_POST['password'])) {
 
@@ -21,12 +21,11 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
         header("Location: login.php?error=Password is required");
 	    exit();
 	}else{
-		$sql = "SELECT * FROM users WHERE user_name='$uname' AND password='$pass'";
+		$result = $db->prepare("SELECT * FROM users_be WHERE user_name='$uname' AND password='$pass'");
+		$result->execute();
+		$row=$result->fetch(PDO::FETCH_ASSOC);
 
-		$result = mysqli_query($con, $sql);
-
-		if (mysqli_num_rows($result) === 1) {
-			$row = mysqli_fetch_assoc($result);
+		if ($result->rowCount() > 0) {
             if ($row['user_name'] === $uname && $row['password'] === $pass) {
             	$_SESSION['user_name'] = $row['user_name'];
             	$_SESSION['name'] = $row['name'];
