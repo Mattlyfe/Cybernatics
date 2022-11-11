@@ -57,9 +57,14 @@
         ?>
 
 <div class="invetb">
-
-<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Order..." autocomplete="off" />
-<br><br>
+<div style="margin-top: -19px; margin-bottom: 21px;">
+			<h3>Order History</h3>
+		</div>	
+<div class="mb-4">
+		<span>Transaction No. :</span> 
+		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Transaction Number" autocomplete="off" />
+		
+		</div><br><br>
 <div class="row" style="height:500px; overflow-y: scroll;">
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
@@ -83,7 +88,7 @@ while($row=mysqli_fetch_array($query))
 ?>
 
 				<tr>
-					<td class="cart-product-name-info"> #<?php echo $tId = $row['transId'] ?></td>
+					<td class="cart-product-name-info"> OL-0<?php echo $tId = $row['transId'] ?></td>
           <td class="cart-product-name-info"> ID<?php echo $uId = $row['uid'] ?> - <?php echo $row['uname'] ?></td>
 
 					<td class="cart-product-name-info">
@@ -106,7 +111,26 @@ while($row=mysqli_fetch_array($query))
 
 <?php } ?>
 	
-		
+<script>
+		function search() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("resultTable");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+				}
+			}
+		}
+</script>
 	</tbody>
 </table>
 <div class="clearfix"></div>
