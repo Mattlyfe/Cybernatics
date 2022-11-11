@@ -70,7 +70,12 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
+					<?php if($row['paym']  == "E-Wallet"){?>
                     <td class="cart-product-sub-total"><a rel="facebox" title="Click to check reciept" href="showReciept.php?id=<?php echo$tId; ?>" ><img  src="referenceno/user id - <?php echo htmlentities($row['uid']);?>/<?php echo htmlentities($row['rNo']);?>/<?php echo htmlentities($row['rnoimg']);?>" alt="" width="200" height="150"></a>  </td>
+					<?php }
+					else {?>
+					<td class="cart-product-sub-total"> COD </td>
+					<?php } ?>
 				</tr>
                 
 <?php } $query -> close();?>
