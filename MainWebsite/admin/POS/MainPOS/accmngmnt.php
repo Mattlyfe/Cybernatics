@@ -56,11 +56,16 @@
         <?php
             include ('sidenav.php');
         ?>
+        
         <div class="invetb">
-
-            <div class="row">
+        <div style="margin-top: -19px; margin-bottom: 21px;">
+			<h3>Active Accounts on the Store</h3>
+		</div>		
+        <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search..." autocomplete="off" />
+        <br><br>
+        <div class="row" style="height:500px; overflow-y: scroll;">
                 <div class="col-md-12">
-                <h3>Active Accounts on the Store</h3> <hr/>
+                
                     <div class="table-responsive"> 
                     <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
