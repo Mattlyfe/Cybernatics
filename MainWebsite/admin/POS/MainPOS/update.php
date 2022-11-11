@@ -39,8 +39,8 @@
                 <h3>Update Store Account</h3>
             </div>
             <?php
-            $userid=intval($_GET['id']);
-            $sql = "SELECT id, first_name, last_name, password FROM users_be WHERE id=:uid";
+            $userid=intval($_GET['ID']);
+            $sql = "SELECT first_name, last_name, password FROM users_be WHERE id=:uid";
             $query = $db->prepare($sql);
             $query->bindParam(':uid',$userid,PDO::PARAM_STR);
             $query->execute();
