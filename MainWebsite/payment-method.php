@@ -184,13 +184,13 @@ while($row=mysqli_fetch_array($query))
 						<div class="cardPaymentpopUp" id="cardPaymentpopUp">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<label class="info-title">Name on Card</label>
-								<input type="text" class="form-control unicase-form-control text-input" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="nameOnCard" name="nameOnCard" required>
 								<label class="info-title">Credit Card Number</label>
-								<input type="text" class="form-control unicase-form-control text-input" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="cardNo" name="cardNo" required>
 								<label class="info-title">CVV</label>
-								<input type="text" class="form-control unicase-form-control text-input" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="cvv" name="cvv" required>
 								<label class="info-title">Exp Year</label>
-								<input type="text" class="form-control unicase-form-control text-input" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="expYear" name="expYear" required>
 							</table>
 						</div>
 					</div>
@@ -274,6 +274,11 @@ while($row=mysqli_fetch_array($query))
 
 			$('#referenceno').prop('required', false);
 			$('#fileToUpload').prop('required', false);
+
+			$('#nameOnCard').prop('required', false);
+			$('#cardNo').prop('required', false);
+			$('#cvv').prop('required', false);
+			$('#expYear').prop('required', false);
 
 			});
 			</script>
