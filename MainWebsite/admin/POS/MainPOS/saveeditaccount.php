@@ -24,7 +24,7 @@ else{
     SET user_name=?, role=?, first_name=?, last_name=?, password=?
     WHERE ID=?";
     $q = $db->prepare($sql);
-    $q->execute(array($uname,$role,$fname,$lname,md5($newpw),$id));
+    $q->execute(array($uname,$role,$fname,$lname,md5($oldpw),$id));
     header("location: accmngmnt.php");
 }
 
