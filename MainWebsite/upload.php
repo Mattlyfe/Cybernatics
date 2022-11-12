@@ -79,7 +79,7 @@ if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
             exit();
         }
         else{
-            $sql = "SELECT * FROM card_account WHERE card_name = $cardname AND card_number = $cardnum AND card_cvv = $cardcvv AND card_expire = $cardexp";
+            $sql = "SELECT * FROM card_account WHERE card_name = '$cardname' AND card_number = '$cardnum' AND card_cvv = '$cardcvv' AND card_expire = '$cardexp'";
             $results = mysqli_query($con, $sql);
             if (mysqli_num_rows($results) === 1){
                 $row = mysqli_fetch_assoc($results);
