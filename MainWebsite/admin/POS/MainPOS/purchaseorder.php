@@ -128,12 +128,14 @@ if (empty($_SESSION['user_name'])) {
 			<h3>Purchase Order</h3>
 		</div>		
 		<div class="mb-4">
-		<span>Order No. :</span> 
+		<span>Order No. :</span>
+		<?php if($_SESSION['role'] != "supplier"){?>
 		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Order Number" autocomplete="off" />
 		<button type="button" class="btn btn-info" style="float:right" data-toggle="modal" data-target="#exampleModal">
 			<i class="bi bi-plus-circle-fill"></i> Add Order
 		</button>
-		
+		<?php } else{?> <br> <br>
+			<?php } ?>
 		</div>
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-xl modal-dialog-centered">
@@ -292,7 +294,9 @@ if (empty($_SESSION['user_name'])) {
 															<th > Quantity </th>
 															<th > Price </th>
 															<th > Amount </th>
+															<?php if($_SESSION['role'] != "supplier"){?>
 															<th > Action </th>
+															<?php }?>
 														</tr>
 													</thead>
 													<tbody>
@@ -332,12 +336,17 @@ if (empty($_SESSION['user_name'])) {
 															<td><?php echo $row['productCode'];?></td>
 															<td><?php echo $row['productName']; ?></td>
 															<td><?php echo $row['genName']; ?></td>
+															<?php if($_SESSION['role'] != "supplier"){?>
 															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['productPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>"></td>
+															<?php } else{?>
+															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['productPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>" readonly></td>
+															<?php } ?>
 															<td><?php $pprice=$row['productPrice']; echo formatMoney($pprice, true); ?></td>
-															<td><input class="tableInput" id="editAmount_<?php echo $row['p_id']; ?>" type="text" name='initial_amount[]' value="<?php $amount=$row['productPrice'] * $row['quantity']; echo $amount; ?>"></td>
-															
+															<td><input class="tableInput" id="editAmount_<?php echo $row['p_id']; ?>" type="text" name='initial_amount[]' value="<?php $amount=$row['productPrice'] * $row['quantity']; echo $amount; ?>" readonly></td>
+															<?php if($_SESSION['role'] != "supplier"){?>
 															<td><button type="button" onclick="deleteRowEdit(<?php echo $row['p_id']; ?>)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
-															</tr>
+															<?php } ?>
+														</tr>
 															<div style="display:none">
 																<input type="text" name='po_id' value='<?php echo $po_id;?>'>
 															</div>
@@ -349,13 +358,15 @@ if (empty($_SESSION['user_name'])) {
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+													<?php if($_SESSION['role'] != "supplier"){?>
 													<button type="submit" class="btn btn-primary">Update</button>
+													<?php } ?>
 												</div>
 											</form>
 										</div>
 									</div>
 								</div>
-
+								<?php if($_SESSION['role'] != "supplier"){ ?>						
 								<button type="button" data-toggle="modal" data-target="<?php echo '#deleteModal'.$po_id; ?>" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
 								<div class="modal fade" id="<?php echo 'deleteModal'.$po_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered" role="document">
@@ -381,6 +392,7 @@ if (empty($_SESSION['user_name'])) {
 										</div>
 									</div>
 								</div>
+								<?php } ?>
 							</td>
 						</tr>
 					<?php
