@@ -46,7 +46,7 @@
 			
 			<tbody>
             <?php include('config1.php');
- $query=mysqli_query($con,"select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
+ $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
 <?php
 while($row=mysqli_fetch_array($query))
 {$gtotal = $row['gtotal'];
