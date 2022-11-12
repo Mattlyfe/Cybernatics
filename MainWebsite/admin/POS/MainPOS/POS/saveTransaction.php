@@ -4,7 +4,7 @@ include('../connect.php');
 $total_amount = $_POST['post_total_amount'];
 $cash_tendered = $_POST['post_cash_tendered'];
 $changed = $_POST['post_changed'];
-$user = $_SESSION['id'];
+$user = $_SESSION['uid'];
 $mop = $_POST['mop'];
 $codes = $_POST['post_codes'];
 $quantity = $_POST['post_quantity'];

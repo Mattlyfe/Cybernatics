@@ -29,7 +29,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
             if ($row['user_name'] === $uname && $row['password'] === $pass) {
             	$_SESSION['user_name'] = $row['user_name'];
             	$_SESSION['name'] = $row['name'];
-            	$_SESSION['id'] = $row['id'];
+            	$_SESSION['uid'] = $row['id'];
 				$_SESSION['role'] = $row['role'];
 
 				if($row['role'] == "supplier"){
