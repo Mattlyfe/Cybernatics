@@ -91,6 +91,13 @@ if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
                     mysqli_query($con,"update order_header set remark='Pending Payment', referenceNo= 'Credit/Debit #$tNo' where transactionId='".$_POST['transactionNo']."'");
                   
                     mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
+                    
+                    $amount = $row['card_amount'];
+                    $gtotal = $_POST['gTotal'];
+                    $total = $amount - $gtotal;
+                    
+                    mysqli_query($con, "update card_account set card_amount = '$total'");
+
                     unset($_SESSION['cart']);
                     header('location:order-history.php');
                   }
