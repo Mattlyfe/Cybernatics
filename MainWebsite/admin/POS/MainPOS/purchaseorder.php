@@ -221,9 +221,10 @@ if (empty($_SESSION['user_name'])) {
 									<td><?php echo $row['productCode'];?></td>
 									<td><?php echo $row['productName']; ?></td>
 									<td><?php echo $row['genName']; ?></td>
-									<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['id']; ?>,<?php echo $row['productPrice']; ?>)" id="quantity_<?php echo $row['id']; ?>" type="number" placeholder="0"></td>
-									<td><?php $pprice=$row['productPrice']; echo formatMoney($pprice, true); ?></td>
-									<td><input class="tableInput" id="amount_<?php echo $row['id']; ?>" type="text" name='initial_amount[]' value="0"></td>
+									<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['id']; ?>,<?php echo $row['oPrice']; ?>); this.value = 
+ !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" id="quantity_<?php echo $row['id']; ?>" type="number" placeholder="0" min="0" ></td>
+									<td><?php $pprice=$row['oPrice']; echo formatMoney($pprice, true); ?></td>
+									<td><input class="tableInput" id="amount_<?php echo $row['id']; ?>" type="text" name='initial_amount[]' value="0" readonly></td>
 									
 									<td><button onclick="deleteRow(this)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
 									</tr>
@@ -273,7 +274,7 @@ if (empty($_SESSION['user_name'])) {
 							<td><?php echo $row['po_status']; ?></td>
 							<td><?php echo formatMoney($row['total_amount'], true) ?></td> 
 							<td>
-								<button type="button" data-toggle="modal" data-target="<?php echo '#editModal'.$row['id']; ?>" class="btn btn-warning"><i class="bi bi-pass"></i></button>
+								<button type="button" data-toggle="modal" data-target="<?php echo '#editModal'.$row['id']; ?>" class="btn btn-success"><i class="bi bi-pass"></i></button>
 								<div class="modal fade" id="<?php echo 'editModal'.$row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 									<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 										<div class="modal-content">
@@ -309,6 +310,7 @@ if (empty($_SESSION['user_name'])) {
 														products.productCode,
 														products.productName,
 														products.genName,
+														products.oPrice,
 														products.productPrice,
 														purchase_order_items.quantity,
 														purchase_orders.total_amount
@@ -337,12 +339,12 @@ if (empty($_SESSION['user_name'])) {
 															<td><?php echo $row['productName']; ?></td>
 															<td><?php echo $row['genName']; ?></td>
 															<?php if($_SESSION['role'] != "supplier"){?>
-															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['productPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>"></td>
+															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>"></td>
 															<?php } else{?>
-															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['productPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>" readonly></td>
+															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>" readonly></td>
 															<?php } ?>
-															<td><?php $pprice=$row['productPrice']; echo formatMoney($pprice, true); ?></td>
-															<td><input class="tableInput" id="editAmount_<?php echo $row['p_id']; ?>" type="text" name='initial_amount[]' value="<?php $amount=$row['productPrice'] * $row['quantity']; echo $amount; ?>" readonly></td>
+															<td><?php $pprice=$row['oPrice']; echo formatMoney($pprice, true); ?></td>
+															<td><input class="tableInput" id="editAmount_<?php echo $row['p_id']; ?>" type="text" name='initial_amount[]' value="<?php $amount=$row['oPrice'] * $row['quantity']; echo $amount; ?>" readonly></td>
 															<?php if($_SESSION['role'] != "supplier"){?>
 															<td><button type="button" onclick="deleteRowEdit(<?php echo $row['p_id']; ?>)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
 															<?php } ?>
@@ -366,6 +368,71 @@ if (empty($_SESSION['user_name'])) {
 										</div>
 									</div>
 								</div>
+
+								<button type="button" class="btn btn-warning" data-toggle="modal" data-target="<?php echo '#editStatusModal'.$po_id; ?>"><i class="bi bi-truck"></i></button>
+                                    <div class="modal fade"  id="<?php echo 'editStatusModal'.$po_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+										<form method="POST">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+												<?php
+												$result = $db->prepare("SELECT * FROM purchase_orders
+												where id = $po_id;");
+												$result->execute();
+												$row = $result->fetch();
+											?>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Current Status: <span style="color:green"><?php echo $row['po_status']?></span></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php 
+                                                $penActive = '';
+                                                $fdActive = '';
+                                                $prepActive = '';
+                                                $odActive = '';
+                                                $pacActive = '';
+                                                $rcActive = '';
+
+                                                if($row['po_status'] == "Pending"){
+                                                    $penActive = 'disabled';
+                                                }
+                                                if($row['po_status'] == "For Delivery"){
+                                                    $fdActive = 'disabled';
+                                                }
+                                                if($row['po_status'] == "Preparing"){
+                                                    $prepActive = 'disabled';
+                                                }
+                                                if($row['po_status'] == "Out For Delivery"){
+                                                    $odActive = 'disabled';
+                                                }
+                                                if($row['po_status'] == "Packing"){
+                                                    $pacActive = 'disabled';
+                                                }
+                                                if($row['po_status'] == "Received"){
+                                                    $rcActive = 'disabled';
+                                                }
+                                                
+                                                ?>
+                                                <div class="row">
+                                                    <div class="col-6"><button onclick="changeStatus(<?php echo $row['id']?>,'Pending')" class="btn btn-primary w-100 m-1 <?php echo $penActive ?>">Pending</button></div>
+                                                    <div class="col-6"><button onclick="changeStatus(<?php echo $row['id']?>,'For Delivery')" class="btn btn-primary w-100 m-1 <?php echo $fdActive ?>">For Delivery</button></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6"><button onclick="changeStatus(<?php echo $row['id']?>,'Preparing')" class="btn btn-primary w-100 m-1 <?php echo $prepActive ?>">Preparing</button></div>
+                                                    <div class="col-6"><button onclick="changeStatus(<?php echo $row['id']?>,'Out For Delivery')" class="btn btn-primary w-100 m-1 <?php echo $odActive ?>">Out For Delivery</button></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6"><button onclick="changeStatus(<?php echo $row['id']?>,'Packing')" class="btn btn-primary w-100 m-1 <?php echo $pacActive ?>">Packing</button></div>
+                                                    <div class="col-6"><button onclick="changeStatus(<?php echo $row['id']?>,'Received')" class="btn btn-primary w-100 m-1 <?php echo $rcActive ?>">Received</button></div>
+                                                </div>
+                                            </div>
+											</form>
+                                            </div>
+                                        </div>
+                                    </div>
+
 								<?php if($_SESSION['role'] != "supplier"){ ?>						
 								<button type="button" data-toggle="modal" data-target="<?php echo '#deleteModal'.$po_id; ?>" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
 								<div class="modal fade" id="<?php echo 'deleteModal'.$po_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -393,7 +460,9 @@ if (empty($_SESSION['user_name'])) {
 									</div>
 								</div>
 								<?php } ?>
+								
 							</td>
+							
 						</tr>
 					<?php
 					}
@@ -408,6 +477,18 @@ if (empty($_SESSION['user_name'])) {
 
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript">
+
+	function changeStatus(id,status){
+        let serializeData = `id=${id}&status=${status}`
+        $.post('PurchaseOrder/changeStatus.php',serializeData,function(response){
+            swal('Success',response,'success')
+            setTimeout(() => {
+                window.location.href = 'purchaseorder.php'
+            }, 1500);
+            
+        })
+    }
+
 	$(function() {
 
 
@@ -442,6 +523,8 @@ if (empty($_SESSION['user_name'])) {
 	});
 
 	});
+
+	
 	</script>
 	</body>
 	</html>
