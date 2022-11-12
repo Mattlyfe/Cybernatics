@@ -67,7 +67,7 @@ drift.load('mfzdw3bw9zcu');
       <td  class="fontkink"><?php echo $tId;?></td>
     </tr>
     <?php 
-$ret = mysqli_query($con,"SELECT * FROM order_header WHERE transactionId='$tId'");
+$ret = mysqli_query($con,"SELECT order_header.transactionId as tranId, order_header.dateCreated as dateC, orders.orderStatus as orderS, order_header.remark as remark FROM order_header join orders on orders.transactionId=order_header.transactionId WHERE order_header.transactionId='$tId'");
 $num=mysqli_num_rows($ret);
 if($num>0)
 {
@@ -77,11 +77,11 @@ while($row=mysqli_fetch_array($ret))
 
       <tr height="20">
       <td class="fontkink1" ><b>At Date:</b></td>
-      <td  class="fontkink"><?php echo $row['dateCreated'];?></td>
+      <td  class="fontkink"><?php echo $row['dateC'];?></td>
     </tr>
      <tr height="20">
       <td  class="fontkink1"><b>Status:</b></td>
-      <td  class="fontkink"><?php echo $row['orderStatus'];?></td>
+      <td  class="fontkink"><?php echo $row['orderS'];?></td>
     </tr>
      <tr height="20">
       <td  class="fontkink1"><b>Remark:</b></td>
@@ -100,7 +100,7 @@ else{
    </tr>
    <?php  }
 $st='Delivered';
-   $rt = mysqli_query($con,"SELECT * FROM order_header WHERE transactionId='$tId'");
+   $rt = mysqli_query($con,"SELECT * FROM orders WHERE transactionId='$tId'");
      while($num=mysqli_fetch_array($rt))
      {
      $currrentSt=$num['orderStatus'];
