@@ -28,6 +28,7 @@ else{
 <!DOCTYPE html>
 <html>
     <head>
+    <title>Admin| Account Registration</title>
     </head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <body>

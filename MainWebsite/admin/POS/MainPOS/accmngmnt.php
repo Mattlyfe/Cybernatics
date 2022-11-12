@@ -27,6 +27,7 @@ else{
 ?>
 <html>
 <head>
+<title>Admin| Account Management</title>
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">

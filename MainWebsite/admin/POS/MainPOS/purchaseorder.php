@@ -13,6 +13,7 @@ if (empty($_SESSION['user_name'])) {
 } else { ?>
 <html>
 		<head>
+		<title>Admin| Purchase Order</title>
 		<link href="css/bootstrap.css" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
