@@ -100,8 +100,8 @@ else{
 			<th width="14%"> E-Mail </th>
             <th width="14%"> Contact No. </th>
 			<th width="13%"> Validity </th>
-			<th width="8%"> Valid ID (front) </th>
-            <th width="8%"> Valid ID (back) </th>
+			<th width="8%"> Valid ID </th>
+            <th width="8%"> Valid ID </th>
 			<th width="8%"> Action </th>
 		</tr>
 	</thead>

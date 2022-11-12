@@ -5,16 +5,17 @@ $query = mysqli_query($con,"select * from users where id = $id");?>
 { ?>
 <style>
 html, body {
-    height: 100%;
+    height: auto;
+    width: auto;
     margin: 0;
     padding: 0;
 }
 
 img {
-    max-width: 100%;
-max-height: 100vh;
-width: auto;
-margin: auto;
+    max-width: 1000px;
+    max-height: 1000px;
+    width: auto;
+    margin: auto;
 }
 </style>
 

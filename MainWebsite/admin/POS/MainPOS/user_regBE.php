@@ -39,7 +39,7 @@ else{
         ?>
         </div>
         <div class="main_content">
-            <form action="user_regBE.php" method="post" name="register" id="register">
+            <form action="user_regBE.php" method="post" name="register" id="register" onSubmit="return valid();">
                 <div class="container">
                     
                 <div class="row">
@@ -85,20 +85,7 @@ else{
                         x.type = "password";
                         }
                         }
-		           </script>
-
-                    <!-- <script>
-                            function valid()
-                            {
-                            if(document.register.password.value!= document.register.confirmpassword.value)
-                            {
-                            alert("Password and Confirm Password Field do not match  !!");
-                            document.register.confirmpassword.focus();
-                            return false;
-                            }
-                            return true;
-                            }
-                    </script> -->
+		           </script>        
 
                     <script>
                     var check = function() {

@@ -18,19 +18,20 @@ if(isset($_POST['submit'])){
 }
 
 $id=$_GET['id'];
-$query = mysqli_query($con,"select order_header.referenceNo as rNo, order_header.rNoImg, orders.userId as uid from order_header join orders on orders.transactionId=order_header.transactionId where order_header.transactionId=$id");?>
+$query = mysqli_query($con,"select distinct order_header.referenceNo as rNo, order_header.rNoImg, orders.userId as uid from order_header join orders on orders.transactionId=order_header.transactionId where order_header.transactionId=$id");?>
 <?php while($row=mysqli_fetch_array($query))
 { ?>
 <style>
 html, body {
-    height: 100%;
+    height: auto;
+    width: auto;
     margin: 0;
     padding: 0;
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 1000px;
+    max-height: 1000px;
     width: auto;
     margin: auto;
 }

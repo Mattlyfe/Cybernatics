@@ -35,7 +35,7 @@
                         echo "<li><a href='onlineorder.php'><i class='bx bx-notepad'></i>Online Orders</a></li>";
                         echo "<li><a href='orderhistory.php'><i class='bx bx-time' ></i></i>Order History</a></li>";
                         echo "<li><a href='salesrep.php'><i class='bx bxs-report'></i>Sales Report</a></li>";
-                        echo "<li><a href='#'><i class='bx bxs-chat' ></i>Messages</a></li>";
+                        echo "<li><a href='https://app.drift.com/conversations' target='_blank'><i class='bx bxs-chat' ></i>Messages</a></li>";
                         echo "<li><a href='accmngmnt.php'><i class='bx bxs-user-account'></i>Account Management</a></li>";
                         echo "<li><a href='cusaccmngmnt.php'><i class='bx bxs-user-account'></i>Customer Account Management</a></li>";
                         echo "<li><a href='logout.php'><i class='bi bi-box-arrow-left' ></i> Log-Out</a></li>";
