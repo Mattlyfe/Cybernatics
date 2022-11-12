@@ -201,6 +201,7 @@ while($row=mysqli_fetch_array($query))
 	    <form name="payment" method="post" action="upload.php" enctype="multipart/form-data">
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
+				<input type="text" name="gTotal" id="gTotal" value="<?php echo intval($_SESSION['tp']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
 			<link rel="stylesheet" href="../MainWebsite/css/credit.css">
 			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup(); debit()" required> Debit/Credit Card</li>
