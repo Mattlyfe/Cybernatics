@@ -93,6 +93,7 @@ else{
 	<thead>
 		<tr>
 			<th width="7%"> User ID</th>
+            <th width="9%"> Role </th>
             <th width="9%"> Username </th>
 			<th width="12%"> First name </th>
 			<th width="12%"> Last name </th>
@@ -111,6 +112,7 @@ while($row=mysqli_fetch_array($query))
 
                 <tr class="record">
 					<td class="cart-product-name-info"> #<?php echo $id = $row['ID'] ?></td>
+                    <td class="cart-product-name-info"><?php echo $row['role'];?></td>
                     <td class="cart-product-name-info"><?php echo $row['user_name'];?></td>
 					<td class="cart-product-name-info"><?php echo $row['first_name'];?></td>
 					<td class="cart-product-sub-total"><?php echo $row['last_name']; ?>  </td>
