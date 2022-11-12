@@ -18,7 +18,8 @@ else{
 <html>
 		<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
-
+        <title>Admin| Point of Sales</title>
+        <link rel="shortcut icon" href="img/icon logo.png">
 	<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -139,7 +140,8 @@ else{
                         <div class="row align-items-center">
                             <div class="col-12 d-flex justify-content-center">
                                 <button id="minusBtn" type="button" class="btn btn-danger m-1"><i class="bi bi-dash"></i></button>
-                                <input id="selectedQuantity" style="text-align:center;" type="" name="selected_quantity" value="0" size="5">
+                                <input id="selectedQuantity" style="text-align:center;" type="number" name="selected_quantity" value="0" size="5" min="0" oninput="this.value = 
+ !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                                 <button id="addBtn" type="button" class="btn btn-primary m-1"><i class="bi bi-plus"></i></button>
                             </div>
                         </div>
@@ -170,7 +172,8 @@ else{
                         <input name="selected_id" style="display:none" type="text">
                         <label>Old Price: <span style="font-size:20px; font-weight:bold" name="selected_price"></label><br/>
                         <label>Input New Price</label>
-                        <input style="text-align:right;" placeholder="0" class="w-100" name="selected_price" type="number">
+                        <input style="text-align:right;" placeholder="0" class="w-100" name="selected_price" type="number" min="0" oninput="this.value = 
+ !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                         
                     </div>
                     <div class="modal-footer">
@@ -356,7 +359,7 @@ else{
                                 </div>
                                 <div class="col pt-2 m-1" style="height:auto; border:solid black 1px; text-align:center">
                                     <h4>Cash Tendered</h4>
-                                    <input style="text-align:center" id="cash_tendered" type="number" name="cash_tendered" size=35 value="0">
+                                    <input style="text-align:center" id="cash_tendered" type="number" name="cash_tendered" size=35 value="0" min="0">
                                     <div class="row m-2">
                                         <div class="col-4">
                                             <input class="touchButton btn btn-success w-100" type="button" value="<?php echo $total_amount_due ?>">
@@ -445,7 +448,8 @@ else{
             document.getElementById('selectedQuantity').value++
         });
         $('#minusBtn').click(function(){
-            document.getElementById('selectedQuantity').value--
+            if(document.getElementById('selectedQuantity').value > 0){
+            document.getElementById('selectedQuantity').value--}
         });
         $("#table tr").click(function(){
             $(this).addClass('selected').siblings().removeClass('selected');    

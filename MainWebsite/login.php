@@ -104,7 +104,7 @@ exit();
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="shortcut icon" href="image/icons/icon logo.png">
 		<link rel="stylesheet" href="../MainWebsite/css/passcheck.css">
 <script type="text/javascript">
 function valid()
@@ -223,8 +223,8 @@ echo htmlentities($_SESSION['errmsg']="");
 
 <div class="form-group">
 	    	<label class="info-title" for="password">Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required>
-			<input type="checkbox" onclick="myFunction()">Show Password
+	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required onkeyup='check();'>
+			<input type="checkbox" onclick="myFunction()"> Show Password
 		</div>
 
 
@@ -311,12 +311,24 @@ echo htmlentities($_SESSION['errmsg']="");
 		
 <div class="form-group">
 	    	<label class="info-title" for="confirmpassword">Confirm Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required >
-			<span id='message'></span>
+	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required onkeyup='check();'>
+			<span id='confirmMessage'></span>
 	  	</div>
 
 
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button" id="submit">Sign Up</button>
+
+		  <script>
+                    var check = function() {
+                    if (document.getElementById('password').value ==
+                        document.getElementById('confirmpassword').value) {
+                        document.getElementById('confirmMessage').style.color = 'green';
+                        document.getElementById('confirmMessage').innerHTML = 'Password matched';
+                    } else {
+                        document.getElementById('confirmMessage').style.color = 'red';
+                        document.getElementById('confirmMessage').innerHTML = 'Password not match';
+                    }
+                }</script>
 	</form>
 
 	

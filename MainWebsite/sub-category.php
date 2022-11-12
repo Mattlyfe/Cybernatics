@@ -68,7 +68,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="shortcut icon" href="image/icons/icon logo.png">
 
 		<!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
 		<!--[if lt IE 9]>

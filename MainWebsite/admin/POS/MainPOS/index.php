@@ -22,7 +22,8 @@ else{
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Main POS</title>
+        <title>Admin| Dashboard</title>
+        <link rel="shortcut icon" href="img/icon logo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" href="styles.css">
@@ -36,6 +37,9 @@ else{
         <!--Main Content of the Dashboard-->
         <div class="main_content">
             <div class="row">
+            <div style="margin-top: 19px; margin-bottom: 21px;">
+			<h3>Dashboard</h3>
+		</div>	
                 <!--To Be Shipped Widget-->
                 <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">

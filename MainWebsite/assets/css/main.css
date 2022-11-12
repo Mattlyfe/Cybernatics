@@ -1234,7 +1234,6 @@ a {
   border-radius: 0;
   background: rgba(0, 0, 0, 0);
   margin: 0;
-  left: 15%;
 }
 .header-style-1 .header-nav .navbar-default .navbar-collapse {
   padding: 0;
@@ -1762,7 +1761,6 @@ a {
   text-align: center;
   cursor: default;
   height: 368px;
-  left: 15%;
 }
 #owl-main .owl-controls {
   display: inline-block;
@@ -2387,19 +2385,23 @@ a {
 }
 .info-boxes {
   margin-top: 30px;
-  padding-left: 30%;
+  padding-left: relative;
   margin-bottom: 30px;
+  text-align: center;
 }
 .info-boxes .info-box {
   border: 5px solid #f2f2f0;
   padding: 12px 13px;
+  text-align: center;
 }
 .info-boxes .info-box .icon {
   font-size: 35px;
+  text-align: center;
 }
 .info-boxes .info-box .info-box-heading {
   font-size: 35px;
   line-height: 30px;
+  text-align: center;
   text-transform: uppercase;
   font-family: 'BebasNeueBold';
   margin-top: 5px;
@@ -2416,6 +2418,7 @@ a {
   font-weight: 500;
   font-size: 13px;
   margin: 0px;
+  text-align: center;
 }
 .scroll-tabs {
   margin-bottom: 19px;
@@ -3130,7 +3133,6 @@ a {
   background-size: cover;
   height: 255px;
   position: relative;
-  left: 15%;
 }
 .category-carousel .item .caption {
   color: #636363;
@@ -3303,7 +3305,6 @@ a {
 }
 .search-result-container .category-product .product {
   margin-bottom: 30px;
-  left: 60%;
 }
 .search-result-container .category-product .product .product-image .tag {
   width: 60px;
