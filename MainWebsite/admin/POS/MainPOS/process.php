@@ -8,12 +8,13 @@ if(isset($_POST)){
     $first_name           = $_POST['first_name'];
     $last_name            = $_POST['last_name'];
     $user_name            = $_POST['user_name'];
+    $role                 = $_POST['role'];
     $password             = $_POST['password'];
     $confirmpassword      = $_POST['confirmpassword'];
 
-    $sql = "INSERT INTO users_BE (first_name, last_name, user_name, password) VALUES(?,?,?,?)";
+    $sql = "INSERT INTO users_BE (first_name, last_name, user_name, role, password) VALUES(?,?,?,?,?)";
     $stmtinsert = $db->prepare($sql);
-    $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $password]);
+    $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $role, $password]);
     if($result){
         echo 'Successfully saved.';
     }else{
