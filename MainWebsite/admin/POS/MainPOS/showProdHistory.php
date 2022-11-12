@@ -99,7 +99,7 @@ while($row=mysqli_fetch_array($query))
 			
 			<tbody>
             <?php
- $query=mysqli_query($con,"select users.id as id,users.name as name, users.billingAddress addr, users.billingState as brgy, users.billingCity as city, orders.userid as uid from users join orders on orders.userid=users.id where orders.transactionId=$id");?>
+ $query=mysqli_query($con,"select distinct users.id as id,users.name as name, users.billingAddress addr, users.billingState as brgy, users.billingCity as city, orders.userid as uid from users join orders on orders.userid=users.id where orders.transactionId=$id");?>
 <?php
 while($row=mysqli_fetch_array($query))
 {
