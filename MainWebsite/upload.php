@@ -43,8 +43,8 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
       $rNoimg= basename( $target_file);
       echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-      mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
-      mysqli_query($con,"update order_header set referenceNo='".$_POST['referenceno']."',  rNoImg='$rNoimg' where transactionId='".$_POST['transactionNo']."'");
+      mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
+      mysqli_query($con,"update order_header set remark='Pending Payment',referenceNo='".$_POST['referenceno']."',  rNoImg='$rNoimg' where transactionId='".$_POST['transactionNo']."'");
       unset($_SESSION['cart']);
       header('location:order-history.php');
     } else {
@@ -54,18 +54,18 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
 }
 else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Cash on Delivery"){
   $tNo = $_POST['transactionNo'];
-  mysqli_query($con,"update order_header set referenceNo= 'COD #$tNo' where transactionId='".$_POST['transactionNo']."'");
+  mysqli_query($con,"update order_header set remark='Pending Payment', referenceNo= 'COD #$tNo' where transactionId='".$_POST['transactionNo']."'");
 
-  mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
+  mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);
   header('location:order-history.php');
 }
 
 else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Debit/Credit Card"){
   $tNo = $_POST['transactionNo'];
-  mysqli_query($con,"update order_header set referenceNo= 'Credit/Debit #$tNo' where transactionId='".$_POST['transactionNo']."'");
+  mysqli_query($con,"update order_header set remark='Pending Payment', referenceNo= 'Credit/Debit #$tNo' where transactionId='".$_POST['transactionNo']."'");
 
-  mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
+  mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);
   header('location:order-history.php');
 }

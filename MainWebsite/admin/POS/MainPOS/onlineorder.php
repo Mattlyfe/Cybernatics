@@ -172,7 +172,8 @@ else{
                             left join products on products.id = orders.productId 
                             left join order_header on order_header.transactionId = orders.transactionId
                             where orders.orderStatus<>'Received'
-                            group by orders.transactionId");
+                            group by orders.transactionId
+                            order by orders.transactionId DESC");
 
                             $res->execute();
                             for($i=0; $row = $res->fetch(); $i++){
