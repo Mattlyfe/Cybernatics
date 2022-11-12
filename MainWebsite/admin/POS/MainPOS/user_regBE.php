@@ -32,6 +32,7 @@ else{
     <link rel="shortcut icon" href="img/icon logo.png">
     </head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../MainPOS/user_regForm.css">
     <body>
         <div class="accCreate_notif">
         <?php
@@ -44,6 +45,7 @@ else{
                     
                 <div class="row">
                     <div class="col-sm-3">
+                        <img src="/MainWebsite/admin/POS/MainPOS/img/user_iconLogo.png" alt="user_iconLogo">
                         <h1>Registration</h1>
                         <hr class="mb-3">
                         <label for="first_name"><b>First Name</b></label>
@@ -61,12 +63,11 @@ else{
                             <option value="cashier" >Cashier</option>
                             <option value="supplier">Supplier</option>
                         </select><br>
-
+                        <br>
                         <label for="password"><b>Password</b>
                         <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' /> 
                         <input type="checkbox" onclick="myFunction()">Show Password             
                         </label>
-
                         <label for="confirmpassword"><b>Confirm Password</b>
                         <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" required onkeyup='check();' />
                         <span id='message'></span>
