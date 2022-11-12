@@ -20,13 +20,13 @@ include "config.php";
             exit();
         }
         else{
-            $sql = "SELECT * FROM shopping WHERE card_name = $cardname AND card_number = $cardnum AND card_cvv = $cardcvv AND card_expire = $cardexp";
+            $sql = "SELECT * FROM card_account WHERE card_name = $cardname AND card_number = $cardnum AND card_cvv = $cardcvv AND card_expire = $cardexp";
             $results = mysqli_query($conn, $sql);
             if (mysqli_num_rows($results) === 1){
                 $row = mysqli_fetch_assoc($results);
                 if ($row['card_name'] === $cardname || $row['card_number'] === $cardnum 
                 || $row['card_cvv'] === $cardcvv || $row['card_expire'] === $cardexp){
-                    
+
                 }
             }
         }
