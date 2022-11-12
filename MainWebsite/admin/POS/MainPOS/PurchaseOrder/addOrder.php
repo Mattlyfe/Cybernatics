@@ -9,7 +9,7 @@ $initial = $_POST['initial_amount'];
 $p_id = $_POST['p_id'];
 $total_amount = 0;
 $ordered_quantity = $_POST['ordered_quantity'];
-$user = $_SESSION['id'];
+$user = $_SESSION['uid'];
 foreach($initial as $amount){
     $total_amount += $amount;
 }
