@@ -70,7 +70,7 @@ drift.load('mfzdw3bw9zcu');
 		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" href="image/icons/icon logo.png">
+		<link rel="shortcut icon" href="assets/images/favicon.ico">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 		<!--JQuery 1.8.3-->
@@ -198,7 +198,7 @@ while($row=mysqli_fetch_array($query))
 
 		<!-- panel-body  -->
 	    <div class="panel-body">
-	    
+	    <form name="payment" method="post" action="upload.php" enctype="multipart/form-data">
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
@@ -226,11 +226,11 @@ while($row=mysqli_fetch_array($query))
 					</div>
 					</form>
 				</li>
-			
+
 				<li>
 					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); closeCardPopup(); ewallet()" required> E-Wallet</li>
 				<li>
-				<form name="payment" method="post" action="upload.php" enctype="multipart/form-data">
+					
 					<div class="cardbox">
 					<div class="popup" id="popup">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -249,7 +249,7 @@ while($row=mysqli_fetch_array($query))
 					</table>
 					</div>
 					</div>
-				</form>
+					
 					<script>
 						let popup = document.getElementById("popup");
 						let popup1 = document.getElementById("cardPaymentpopUp");
@@ -358,7 +358,7 @@ while($row=mysqli_fetch_array($query))
 			</script>
 			
 	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
-		
+	    </form>		
 		</div>
 		<!-- panel-body  -->
 
