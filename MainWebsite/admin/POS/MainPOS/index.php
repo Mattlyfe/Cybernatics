@@ -36,6 +36,9 @@ else{
         <!--Main Content of the Dashboard-->
         <div class="main_content">
             <div class="row">
+            <div style="margin-top: 19px; margin-bottom: 21px;">
+			<h3>Dashboard</h3>
+		</div>	
                 <!--To Be Shipped Widget-->
                 <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
