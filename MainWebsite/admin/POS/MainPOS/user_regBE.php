@@ -72,10 +72,10 @@ else{
                         <span id='message'></span>
                         </label>
                         <hr class="mb-3">
-                        <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register">
+                        <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register" onclick="myPasscheck()">
                     </div>
                     </div>
-                    
+
                     <script>
                         function myFunction() {
                         var x = document.getElementById("password");
