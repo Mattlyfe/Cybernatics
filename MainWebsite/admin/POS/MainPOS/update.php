@@ -14,7 +14,12 @@
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
 <input type="hidden" name="pass" value="<?php echo $row['password']; ?>" />
 <span>Username : </span><input type="text" style="width:359px; height:40px;"  name="user_name" value="<?php echo $row['user_name']; ?>" /><br>
-<span>Role : </span><input type="text" style="width:359px; height:40px;"  name="role" value="<?php echo $row['role']; ?>" /><br>
+<span for="role">Role : </span>
+                        <select name="role" class="custom-select my-1 mr-sm-2" id="role">
+                            <option value="admin" selected>Admin</option>
+                            <option value="cashier" >Cashier</option>
+                            <option value="supplier">Supplier</option>
+                        </select><br>
 <span>First name : </span><input type="text" style="width:359px; height:40px;"  name="first_name" value="<?php echo $row['first_name']; ?>" Required/><br>
 <span>Last name : </span><input type="text" style="width:359px; height:40px;"  name="last_name" value="<?php echo $row['last_name']; ?>" /><br>
 <span>Password : </span><input type="password" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
