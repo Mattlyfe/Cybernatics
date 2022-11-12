@@ -8,6 +8,7 @@ mysqli_query($con,"UPDATE userlog  SET logout = '$ldate' WHERE userEmail = '".$_
 $_SESSION['login']="";
 $_SESSION['id']="";
 $_SESSION['username']="";
+unset($_SESSION['cart']);
 $_SESSION['errmsg']="You have successfully logout";
 ?>
 <script language="javascript">
