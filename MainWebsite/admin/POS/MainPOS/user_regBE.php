@@ -72,7 +72,7 @@ else{
                         <span id='message'></span>
                         </label>
                         <hr class="mb-3">
-                        <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register" onclick="myPasscheck()">
+                        <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register">
                     </div>
                     </div>
 
@@ -118,7 +118,7 @@ else{
                     var confirmpassword = $('#confirmpassword').val();
 
                     e.preventDefault();
-
+                    if(password == confirmpassword){
                     $.ajax({
                         type: 'POST',
                         url:  'process.php',
@@ -139,6 +139,7 @@ else{
                         }
                     });            
                 }
+            }
             });
         });
         </script>
