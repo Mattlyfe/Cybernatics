@@ -174,30 +174,31 @@ while($row=mysqli_fetch_array($query))
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
-			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup()" required> Debit/Credit Card</li>
+			<link rel="stylesheet" href="../MainWebsite/css/credit.css">
+			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup(); debit()" required> Debit/Credit Card</li>
 				<li>
 					<div class="cardbox">
+					<div class="cardPaymentpopUp" id="cardPaymentpopUp">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<div class="icon-container">
 						<i class="fa fa-cc-visa" style="color:blue;"></i>
 						<i class="fa fa-cc-mastercard" style="color:red;"></i>
 					</div>
-						<div class="cardPaymentpopUp" id="cardPaymentpopUp">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<label class="info-title">Name on Card</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="nameOnCard" name="nameOnCard" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="nameOnCard" name="nameOnCard"  required>
 								<label class="info-title">Credit Card Number</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="cardNo" name="cardNo" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="cardNo" name="cardNo" onkeypress='validate(event)' maxlength="19" required>
 								<label class="info-title">CVV</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="cvv" name="cvv" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="cvv" name="cvv" onkeypress='validate(event)' maxlength="3" required>
 								<label class="info-title">Exp Year</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="expYear" name="expYear" required>
+								<input type="text" class="form-control unicase-form-control text-input" id="expYear" name="expYear" onkeypress='validate(event)'  onkeyup="modifyInput(this)" maxlength="5" required>
 							</table>
 						</div>
 					</div>
 				</li>
 
 				<li>
-					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); closeCardPopup()" required> E-Wallet</li>
+					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); closeCardPopup(); ewallet()" required> E-Wallet</li>
 				<li>
 					
 					<div class="cardbox">
@@ -221,6 +222,7 @@ while($row=mysqli_fetch_array($query))
 					
 					<script>
 						let popup = document.getElementById("popup");
+						let popup1 = document.getElementById("cardPaymentpopUp");
 
 						function openPopup() {
 						document.getElementById("popup").style.display = "block";
@@ -245,19 +247,42 @@ while($row=mysqli_fetch_array($query))
 							var key = theEvent.keyCode || theEvent.which;
 							key = String.fromCharCode(key);
 						}
-						var regex = /[0-9]|\./;
+						var regex = /[0-9]|\//;
 						if( !regex.test(key) ) {
 							theEvent.returnValue = false;
 							if(theEvent.preventDefault) theEvent.preventDefault();
 						}
 						}
+
+						$('#cardNo').on('keyup', function(e){
+						// get value of the input field
+						var val = $(this).val();
+						var newval = '';
+						// write regex to remove any space
+						val = val.replace(/\s/g, '');
+						// iterate through each numver
+						for(var i = 0; i < val.length; i++) {
+							// add space if modulus of 4 is 0
+							if(i%4 == 0 && i > 0) newval = newval.concat(' ');
+							// concatenate the new value
+							newval = newval.concat(val[i]);
+						}
+						// update the final value in the html input
+						$(this).val(newval);
+					});
+					function modifyInput(ele) {
+  
+					if (ele.value.length === 2) {
+						ele.value = ele.value + '/'
+					}
+				}					
 					</script>
 				
 				</li>
 				<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
 				$row = mysqli_fetch_assoc($valid);
 				if ($row['valid'] == 2){ ?>
-				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup()" required> Cash on Delivery</li>
+				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup(); closeCardPopup(); cod()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
@@ -269,18 +294,37 @@ while($row=mysqli_fetch_array($query))
 			<?php } else if($row['valid'] == 1) {?><br>
 				<li>Please wait for your account to be <b>Validated</b> to do <b>Cash on Delivery</b></li><br /><br />
 			<?php } ?>
+
 			<script>
-			$('#paymethod').change(function () {
+			function debit(){
+				$('#referenceno').prop('required', false);
+				$('#fileToUpload').prop('required', false);
 
-			$('#referenceno').prop('required', false);
-			$('#fileToUpload').prop('required', false);
+				$('#nameOnCard').prop('required', true);
+				$('#cardNo').prop('required', true);
+				$('#cvv').prop('required', true);
+				$('#expYear').prop('required', true);
+			}
 
-			$('#nameOnCard').prop('required', false);
-			$('#cardNo').prop('required', false);
-			$('#cvv').prop('required', false);
-			$('#expYear').prop('required', false);
+			function ewallet(){
+				$('#referenceno').prop('required', true);
+				$('#fileToUpload').prop('required', true);
 
-			});
+				$('#nameOnCard').prop('required', false);
+				$('#cardNo').prop('required', false);
+				$('#cvv').prop('required', false);
+				$('#expYear').prop('required', false);
+			}
+			function cod(){
+
+				$('#referenceno').prop('required', false);
+				$('#fileToUpload').prop('required', false);
+					
+				$('#nameOnCard').prop('required', false);
+				$('#cardNo').prop('required', false);
+				$('#cvv').prop('required', false);
+				$('#expYear').prop('required', false);
+			}
 			</script>
 			
 	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
