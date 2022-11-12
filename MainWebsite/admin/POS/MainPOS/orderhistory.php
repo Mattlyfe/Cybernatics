@@ -127,7 +127,37 @@ while($row=mysqli_fetch_array($query))
 
 
 <?php } ?>
-	
+<?php 
+	$query=mysqli_query($con,"select distinct transactions.id as transId, transactions.date_created as date, transactions.mop as paym, transactions.total_amount as gTotal from transactions join transaction_items on transaction_items.transaction_id=transactions.id order by transId DESC");
+
+
+while($row=mysqli_fetch_array($query))
+{
+?>
+
+				<tr>
+					<td class="cart-product-name-info"> IS-0<?php echo $tId = $row['transId'] ?></td>
+          <td class="cart-product-name-info"> ID<?php echo $uId = $row['uid'] ?> - <?php echo $row['uname'] ?></td>
+
+					<td class="cart-product-name-info">
+						
+						<?php echo $row['date'];?></a></h4>
+						
+					</td>
+
+					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
+
+					<td class="cart-product-sub-total">In-Store #<?php echo $tId; ?>  </td>
+
+					<td class="cart-product-sub-total">₱<?php echo $row['gTotal']; ?>  </td>
+
+					<td>
+					<a rel="facebox" title="Click to check reciept" href="showProdHistory.php?id=<?php echo $row['transId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					</td>
+				</tr>
+
+
+<?php } ?>
 <script>
 		function search() {
 			var input, filter, table, tr, td, i, txtValue;
