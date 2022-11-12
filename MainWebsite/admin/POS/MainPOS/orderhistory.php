@@ -1,3 +1,20 @@
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if($_SESSION['role'] == "supplier" ){
+    header("Location: purchaseorder.php");
+}
+
+else{
+?>
 <html>
     <head>
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -142,3 +159,4 @@ while($row=mysqli_fetch_array($query))
 <script src="js/jquery.js"></script>
 </body>
 </html>
+<?php } ?>

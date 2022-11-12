@@ -1,3 +1,20 @@
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if($_SESSION['role'] == "supplier" ){
+    header("Location: purchaseorder.php");
+}
+
+else{
+?>
 <html>
 		<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
@@ -79,6 +96,9 @@
     ?>
     
 	<div class="row invetb" >
+	<div style="margin-top: -19px; margin-bottom: 21px;">
+			<h3>Sales Report</h3>
+		</div>	
 		<div class="col-12 mt-1">
 		<div class="row mt-1">
 			<!-- <div id="chart" class="col"></div> -->
@@ -230,3 +250,4 @@
     </style>
 	</body>
 	</html>
+	<?php } ?>

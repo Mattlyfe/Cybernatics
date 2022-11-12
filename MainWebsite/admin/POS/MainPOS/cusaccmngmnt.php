@@ -1,5 +1,24 @@
 <?php
-    require_once('config1.php');
+require_once('config1.php');
+if(!isset($_SESSION)) 
+{ 
+    @session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if($_SESSION['role'] == "cashier" ){
+    header("Location: index.php");
+}
+
+else if($_SESSION['role'] == "supplier" ){
+    header("Location: purchaseorder.php");
+}
+
+else{
 ?>
 <html>
 <head>
@@ -187,3 +206,4 @@ return false;
 </script>
     </body>
 </html>
+<?php } ?>

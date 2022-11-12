@@ -1,3 +1,20 @@
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if($_SESSION['role'] == "supplier" ){
+    header("Location: purchaseorder.php");
+}
+
+else{
+?>
 <html>
     <head>
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -88,7 +105,9 @@ function sum() {
     <!-- end of profit compu -->
 <div class="invetb">
 <div style="margin-top: -19px; margin-bottom: 21px;">
-<a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="bi bi-arrow-bar-left"></i> Back</button></a>
+			<h3>Inventory</h3>
+		</div>	
+<div style="margin-top: -19px; margin-bottom: 21px;">
 			<?php 
 			include('../MainPOS/connect.php');
 				$result = $db->prepare("SELECT * FROM products ORDER BY id LIMIT 10 OFFSET 10");
@@ -258,3 +277,4 @@ return false;
 </script>
 </body>
 </html>
+<?php } ?>

@@ -1,3 +1,20 @@
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if($_SESSION['role'] == "supplier" ){
+    header("Location: purchaseorder.php");
+}
+
+else{
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -99,3 +116,4 @@
         </div>
     </body>
 </html>
+<?php } ?>

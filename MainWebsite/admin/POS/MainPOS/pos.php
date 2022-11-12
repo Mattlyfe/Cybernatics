@@ -1,5 +1,19 @@
 <?php 
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if($_SESSION['role'] == "supplier" ){
+    header("Location: purchaseorder.php");
+}
+
+else{
 ?>
 <html>
 		<head>
@@ -102,6 +116,9 @@ session_start();
     ?>
     
 	<div class="invetb">
+    <div style="margin-top: -19px; margin-bottom: 21px;">
+			<h3>Point of Sales</h3>
+		</div>	
         <div class="row">
             <div class="col-3">
                 <button type="button" data-toggle="modal" data-target="#changeQuantity"  class="btn btn-secondary w-100"><i class="bi bi-plus-slash-minus"></i> Change Quantity</button>
@@ -599,3 +616,4 @@ session_start();
     </style>
 	</body>
 	</html>
+    <?php } ?>
