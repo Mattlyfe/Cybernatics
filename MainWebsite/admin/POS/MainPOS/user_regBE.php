@@ -92,10 +92,10 @@ else{
                     if (document.getElementById('password').value ==
                         document.getElementById('confirmpassword').value) {
                         document.getElementById('message').style.color = 'green';
-                        document.getElementById('message').innerHTML = 'password match';
+                        document.getElementById('message').innerHTML = 'Password matched';
                     } else {
                         document.getElementById('message').style.color = 'red';
-                        document.getElementById('message').innerHTML = 'not matching';
+                        document.getElementById('message').innerHTML = 'Password not match';
                     }
                 }</script>
                 </div>
