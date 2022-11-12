@@ -9,6 +9,10 @@ else
     session_start(); 
 }
 
+if (empty($_SESSION['user_name'])) {
+    header('Location: login.php');
+} else {
+
 if($_SESSION['role'] == "supplier" ){
     header("Location: purchaseorder.php");
 }
@@ -277,4 +281,5 @@ return false;
 </script>
 </body>
 </html>
-<?php } ?>
+<?php } 
+}?>

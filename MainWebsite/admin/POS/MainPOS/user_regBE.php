@@ -2,13 +2,17 @@
 require_once('config.php');
 if(!isset($_SESSION)) 
 { 
-    @session_start(); 
+    session_start(); 
 }
 else
 {
     session_destroy();
     session_start(); 
 }
+
+if (empty($_SESSION['user_name'])) {
+    header('Location: login.php');
+} else {
 
 if($_SESSION['role'] == "cashier" ){
     header("Location: index.php");
@@ -33,7 +37,7 @@ else{
         ?>
         </div>
         <div class="main_content">
-            <form action="user_regBE.php" method="post" name="register">
+            <form action="user_regBE.php" method="post" name="register" id="register">
                 <div class="container">
                     
                 <div class="row">
@@ -46,37 +50,14 @@ else{
                         <label for="last_name"><b>Last Name</b></label>
                         <input class="form-control" type="text" name="last_name" id="last_name" required onkeydown="return /[a-z ]/i.test(event.key)">
 
-                        <label for="last_name"><b>User Name</b></label>
+                        <label for="user_name"><b>User Name</b></label>
                         <input class="form-control" type="text" name="user_name" id="user_name" required>
 
-                        <label for="last_name"><b>Role</b></label>
-                        <select name ="role" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                            <?php
-                            $cat= $row['role'];
-                            if($cat== 1){?>
+                        <label for="role"><b>Role</b></label>
+                        <select name="role" class="custom-select my-1 mr-sm-2" id="role">
                             <option value="admin" selected>Admin</option>
                             <option value="cashier" >Cashier</option>
                             <option value="supplier">Supplier</option>
-                            <?php
-                            }
-                            ?>
-                            <?php
-                            if($cat== 2){?>
-                            <option value="1" >Admin</option>
-                            <option value="2" selected>Cashier</option>
-                            <option value="3">Supplier</option>
-                            <?php
-                            }
-                            ?>
-
-                            <?php
-                            if($cat== 3){?>
-                            <option value="1" >Admin</option>
-                            <option value="2" >Cashier</option>
-                            <option value="3" selected>Supplier</option>
-                            <?php
-                            }
-                            ?>
                         </select><br>
 
                         <label for="password"><b>Password</b>
@@ -158,7 +139,7 @@ else{
                             'title' : 'Successful.',
                             'text'  : data,
                             'type'  : 'success'
-                                        })
+                                        }) , $("#register")[0].reset();
                         },
                         error: function(data){
                             Swal.fire({
@@ -174,4 +155,5 @@ else{
         </script>
     </body>
 </html>
-<?php } ?>
+<?php } 
+}?>

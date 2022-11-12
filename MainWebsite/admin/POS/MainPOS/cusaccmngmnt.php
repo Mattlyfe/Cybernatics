@@ -2,13 +2,17 @@
 require_once('config1.php');
 if(!isset($_SESSION)) 
 { 
-    @session_start(); 
+    session_start(); 
 }
 else
 {
     session_destroy();
     session_start(); 
 }
+
+if (empty($_SESSION['user_name'])) {
+    header('Location: login.php');
+} else {
 
 if($_SESSION['role'] == "cashier" ){
     header("Location: index.php");
@@ -206,4 +210,5 @@ return false;
 </script>
     </body>
 </html>
-<?php } ?>
+<?php }
+} ?>

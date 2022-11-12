@@ -1,4 +1,17 @@
-	<html>
+<?php if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+else
+{
+    session_destroy();
+    session_start(); 
+}
+
+if (empty($_SESSION['user_name'])) {
+    header('Location: login.php');
+} else { ?>
+<html>
 		<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
 
@@ -151,7 +164,7 @@
 						</div>
 						<div class="col-6">
 						Expected Delivery Date: 
-						<input type="" style="width:100%; border:solid black 1px; border-radius:5px" name="delivery_date" placeholder="MM-DD-YYYY">
+						<input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="delivery_date" placeholder="MM-DD-YYYY">
 						</div>
 					
 				</div>
@@ -420,3 +433,5 @@
 	</script>
 	</body>
 	</html>
+	<?php }
+	?>

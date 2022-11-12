@@ -11,6 +11,10 @@ else
     session_start(); 
 }
 
+if (empty($_SESSION['user_name'])) {
+    header('Location: login.php');
+} else {
+
 if($_SESSION['role'] == "cashier" ){
     header("Location: index.php");
 }
@@ -164,4 +168,5 @@ return false;
 });
   </script>
   </html>
-  <?php } ?>
+  <?php } 
+  }?>
