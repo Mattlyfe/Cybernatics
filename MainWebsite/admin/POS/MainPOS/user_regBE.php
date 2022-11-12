@@ -30,6 +30,7 @@ else{
     <head>
     <title>Admin| Account Registration</title>
     <link rel="shortcut icon" href="img/icon logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     </head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <body>
