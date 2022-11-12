@@ -14,7 +14,7 @@ if(isset($_POST)){
 
     $sql = "INSERT INTO users_BE (first_name, last_name, user_name, role, password) VALUES(?,?,?,?,?)";
     $stmtinsert = $db->prepare($sql);
-    $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $role, $password]);
+    $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $role, md5($password)]);
     if($result){
         echo 'Successfully saved.';
     }else{
