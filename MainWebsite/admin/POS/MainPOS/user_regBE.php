@@ -28,6 +28,8 @@ else{
 <!DOCTYPE html>
 <html>
     <head>
+    <title>Admin| Account Registration</title>
+    <link rel="shortcut icon" href="img/icon logo.png">
     </head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <body>

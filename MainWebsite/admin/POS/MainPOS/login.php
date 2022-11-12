@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>User Login</title>
+        <link rel="shortcut icon" href="img/icon logo.png">
         <link rel="stylesheet" type="text/css" href="loginstyles.css">
         <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
     </head>
