@@ -95,7 +95,7 @@ drift.load('mfzdw3bw9zcu');
 		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="shortcut icon" href="image/icons/icon logo.png">
 		<link rel="stylesheet" href="../MainWebsite/css/passcheck.css">
 <script type="text/javascript">
 function valid()

@@ -93,7 +93,7 @@ drift.load('mfzdw3bw9zcu');
 
         <!-- Fonts --> 
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
+		<link rel="shortcut icon" href="image/icons/icon logo.png">
 	</head>
     <body class="cnt-home">
 	
