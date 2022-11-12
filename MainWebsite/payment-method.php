@@ -205,6 +205,7 @@ while($row=mysqli_fetch_array($query))
 			<link rel="stylesheet" href="../MainWebsite/css/credit.css">
 			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup(); debit()" required> Debit/Credit Card</li>
 				<li>
+					
 					<div class="cardbox">
 					<div class="cardPaymentpopUp" id="cardPaymentpopUp">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -223,6 +224,7 @@ while($row=mysqli_fetch_array($query))
 							</table>
 						</div>
 					</div>
+					
 				</li>
 
 				<li>

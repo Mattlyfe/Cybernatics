@@ -67,7 +67,7 @@ drift.load('mfzdw3bw9zcu');
       <td  class="fontkink"><?php echo $tId;?></td>
     </tr>
     <?php 
-$ret = mysqli_query($con,"SELECT order_header.transactionId as tranId, order_header.dateCreated as dateC, orders.orderStatus as orderS, order_header.remark as remark FROM order_header join orders on orders.transactionId=order_header.transactionId WHERE order_header.transactionId='$tId'");
+$ret = mysqli_query($con,"SELECT distinct order_header.transactionId as tranId, order_header.dateCreated as dateC, orders.orderStatus as orderS, order_header.remark as remark FROM order_header join orders on orders.transactionId=order_header.transactionId WHERE order_header.transactionId='$tId'");
 $num=mysqli_num_rows($ret);
 if($num>0)
 {
