@@ -126,7 +126,7 @@ var info = 'id=' + del_id;
 
  $.ajax({
    type: "GET",
-   url: "deletecusacc.php",
+   url: "deleteacc.php",
    data: info,
    success: function(){
    
