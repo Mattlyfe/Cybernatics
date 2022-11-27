@@ -33,7 +33,7 @@ else{
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     </head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="../MainPOS/user_regForm.css">
+    <link rel="stylesheet" href="user_regForm.css">
     <body>
         <div class="accCreate_notif">
         <?php
@@ -46,7 +46,7 @@ else{
                     
                 <div class="row">
                     <div class="col-sm-3">
-                        <img src="/MainWebsite/admin/POS/MainPOS/img/user_iconLogo.png" alt="user_iconLogo">
+                        <img src="img/user_iconLogo.png" alt="user_iconLogo">
                         <h1>Registration</h1>
                         <hr class="mb-3">
                         <label for="first_name"><b>First Name</b></label>
@@ -60,8 +60,7 @@ else{
 
                         <label for="role"><b>Role</b></label>
                         <select name="role" class="custom-select my-1 mr-sm-2" id="role">
-                            <option value="admin" selected>Admin</option>
-                            <option value="cashier" >Cashier</option>
+                            <option value="cashier" selected>Cashier</option>
                             <option value="supplier">Supplier</option>
                         </select><br>
                         <br>

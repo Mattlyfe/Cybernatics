@@ -1,11 +1,11 @@
 <?php
 session_start();
-include('../MainPOS/connect.php');
+include('connect.php');
 
 
 $id = $_POST['memi'];
-mkdir("uploads/$id/",  0777, true);
-$target_dir = "uploads/$id/";
+mkdir("productimages/$id/",  0777, true);
+$target_dir = "productimages/$id/";
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
@@ -46,7 +46,7 @@ SET productImage1=?, productImage2=?, productImage3=?
 WHERE id=?";
 $q = $db->prepare($sql);
 $q->execute(array($a,$z,$b,$id));
-header("location: inventory.php");
+echo '<script>window.location = "inventory.php"</script>';
 }
 
 ?>

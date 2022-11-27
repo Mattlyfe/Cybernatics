@@ -14,53 +14,73 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
+    //echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
-    echo "File is not an image.";
+    //echo "File is not an image.";
     $uploadOk = 0;
   }
 
 
   // Check if file already exists
   if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
+    //echo "Sorry, file already exists.";
     $uploadOk = 0;
   }
 
   // Allow certain file formats
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
   && $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
   }
 
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+    //echo "Sorry, your file was not uploaded.";
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
       $rNoimg= basename( $target_file);
-      echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+      $ttl = $_POST['gTotal1'];
+      //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
       mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
-      mysqli_query($con,"update order_header set remark='Pending Payment',referenceNo='".$_POST['referenceno']."',  rNoImg='$rNoimg' where transactionId='".$_POST['transactionNo']."'");
+      mysqli_query($con,"update order_header set grandTotal='$ttl', remark='Pending Payment',referenceNo='".$_POST['referenceno']."',  rNoImg='$rNoimg' where transactionId='".$_POST['transactionNo']."'");
+      
+      $que=mysqli_query($con,"select * from orders where transactionId='".$_POST['transactionNo']."'");
+    while($row=mysqli_fetch_array($que)){
+        $qty =$row['quantity'];
+        $prodid = $row['productId'];
+        mysqli_query($con,"update products set productAvailability=productavailability- $qty where id= '$prodid'");
+    }
       unset($_SESSION['cart']);
-      header('location:order-history.php');
+      
+      echo '<script>window.location = "order-history.php"</script>';
+      exit;
     } else {
-      echo "Sorry, there was an error uploading your file.";
+      //echo "Sorry, there was an error uploading your file.";
     }
   }
 }
 else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Cash on Delivery"){
   $tNo = $_POST['transactionNo'];
-  mysqli_query($con,"update order_header set remark='Pending Payment', referenceNo= 'COD #$tNo' where transactionId='".$_POST['transactionNo']."'");
+  $ttl = $_POST['gTotal1'];
+    mysqli_query($con,"update order_header set grandTotal='$ttl', remark='Pending Payment', referenceNo= 'COD #$tNo' where transactionId='".$_POST['transactionNo']."'");
+    
+    $que=mysqli_query($con,"select * from orders where transactionId='".$_POST['transactionNo']."'");
+    while($row=mysqli_fetch_array($que)){
+        $qty =$row['quantity'];
+        $prodid = $row['productId'];
+        mysqli_query($con,"update products set productAvailability=productavailability- $qty where id= '$prodid'");
+    }
 
   mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);
-  header('location:order-history.php');
+      
+      echo '<script>window.location = "order-history.php"</script>';
+      exit;
 }
-if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
+else if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
     && isset($_POST['cvv'])&& isset($_POST['expYear'])){
         
         function validate($data){
@@ -88,18 +108,28 @@ if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
 
                   if(isset($_POST["submit"]) && $_POST['paymethod'] == "Debit/Credit Card"){
                     $tNo = $_POST['transactionNo'];
-                    mysqli_query($con,"update order_header set remark='Pending Payment', referenceNo= 'Credit/Debit #$tNo' where transactionId='".$_POST['transactionNo']."'");
+                    $ttl = $_POST['gTotal1'];
+                    mysqli_query($con,"update order_header set grandTotal='$ttl', remark='Pending Payment', referenceNo= 'Credit/Debit #$tNo' where transactionId='".$_POST['transactionNo']."'");
+                  
+                  $que=mysqli_query($con,"select * from orders where transactionId='".$_POST['transactionNo']."'");
+                    while($row=mysqli_fetch_array($que)){
+                        $qty =$row['quantity'];
+                        $prodid = $row['productId'];
+                        mysqli_query($con,"update products set productAvailability=productavailability- $qty where id= '$prodid'");
+                    }
                   
                     mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
                     
                     $amount = $row['card_amount'];
-                    $gtotal = $_POST['gTotal'];
+                    $gtotal = $_POST['gTotal1'];
                     $total = $amount - $gtotal;
                     
                     mysqli_query($con, "update card_account set card_amount = '$total'");
 
                     unset($_SESSION['cart']);
-                    header('location:order-history.php');
+      
+                    echo '<script>window.location = "order-history.php"</script>';
+                    exit;
                   }
                 }
             }

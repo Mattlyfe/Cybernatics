@@ -31,7 +31,7 @@ if(isset($_POST["imgSubmit"])) {
  
 }
 mysqli_query($con, "update users set valid=1, validPicFront='$front', validPicBack='$back' where id='$id'");
-header("location: my-account.php");
+echo '<script>window.location = "my-account.php"</script>';
 
 }
 
@@ -39,12 +39,13 @@ if(isset($_POST['update']))
 	{
 		$name=$_POST['name'];
 		$contactno=$_POST['contactno'];
-		$query=mysqli_query($con,"update users set name='$name',contactno='$contactno' where id='".$_SESSION['id']."'");
+		$email=$_POST['email'];
+		$query=mysqli_query($con,"update users set name='$name',contactno='$contactno', email='$email' where id='".$_SESSION['id']."'");
 		if($query)
 		{
             echo "<script>alert('Your info has been updated');</script>";
             
 		}
-        header("location: my-account.php");
+        echo '<script>window.location = "my-account.php"</script>';
 	}
 ?>

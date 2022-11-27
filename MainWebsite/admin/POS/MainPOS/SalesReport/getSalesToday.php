@@ -24,6 +24,10 @@ LEFT JOIN transaction_items ON transaction_items.transaction_id = transactions.i
 WHERE
     DATE_FORMAT(transactions.date_created, '%Y-%m-%d') = '$date_today') A;";
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 $q = $db->prepare($query);
 $q->execute();
 

@@ -20,7 +20,16 @@ else{
     <link href="css/bootstrap.css" rel="stylesheet">
 	<title>Admin| Order History</title>
 	<link rel="shortcut icon" href="img/icon logo.png">
-<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+<!--link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css"-->
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <style type="text/css">
@@ -50,14 +59,12 @@ else{
 
   
 </style>
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
 
 <script src="jeffartagame.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/application.js" type="text/javascript" charset="utf-8"></script>
 <link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
 <script src="lib/jquery.js" type="text/javascript"></script>
 <script src="src/facebox.js" type="text/javascript"></script>
-
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('a[rel*=facebox]').facebox({
@@ -88,7 +95,7 @@ else{
 	<thead>
 		<tr>
 			<th width="12%"> Transaction No. </th>
-      <th width="12%"> Ordered By </th>
+      		<th width="12%"> Ordered By </th>
 			<th width="9%"> Date Received </th>
 			<th width="14%"> Mode of Payment </th>
 			<th width="13%"> Reference no. </th>
@@ -127,17 +134,18 @@ while($row=mysqli_fetch_array($query))
 				</tr>
 
 
-<?php } ?>
 <?php 
+} 
 	$query=mysqli_query($con,"select distinct transactions.id as transId, transactions.date_created as date, transactions.mop as paym, transactions.total_amount as gTotal from transactions join transaction_items on transaction_items.transaction_id=transactions.id order by transId DESC");
 
 
 while($row=mysqli_fetch_array($query))
 {
+    $tId = $row['transId'];
 ?>
 
 				<tr>
-					<td class="cart-product-name-info"> IS-0<?php echo $tId = $row['transId'] ?></td>
+					<td class="cart-product-name-info"> TR#<?php echo $row['transId']; ?></td>
           <td class="cart-product-name-info"> Instore</td>
 
 					<td class="cart-product-name-info">
@@ -153,12 +161,15 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total">₱<?php echo $row['gTotal']; ?>  </td>
 
 					<td>
-					<a rel="facebox" title="Click to check reciept" href="showProdHistory.php?id=<?php echo $row['transId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					<a rel="facebox" title="Click to check reciept" href="showProdHistoryIS.php?id=<?php echo $row['transId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
 					</td>
 				</tr>
-
-
-<?php } ?>
+				
+<?php 
+} 
+?>
+	</tbody>
+</table>
 <script>
 		function search() {
 			var input, filter, table, tr, td, i, txtValue;
@@ -179,8 +190,6 @@ while($row=mysqli_fetch_array($query))
 			}
 		}
 </script>
-	</tbody>
-</table>
 <div class="clearfix"></div>
 </div>
 </div>
@@ -190,4 +199,6 @@ while($row=mysqli_fetch_array($query))
 <script src="js/jquery.js"></script>
 </body>
 </html>
-<?php } ?>
+<?php 
+} 
+?>

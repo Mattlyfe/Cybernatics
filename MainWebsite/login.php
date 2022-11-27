@@ -9,12 +9,13 @@ $name=$_POST['fullname'];
 $email=$_POST['emailid'];
 $contactno=$_POST['contactno'];
 $password=md5($_POST['password']);
-$query=mysqli_query($con,"insert into users(name,email,contactno,password) values('$name','$email','$contactno','$password')");
+$query=mysqli_query($con,"insert into users(name,email,contactno,password,valid) values('$name','$email','$contactno','$password', 0)");
 if($query)
 {
-	echo "<script>alert('You are successfully register');</script>";
+	echo "<script>alert('You are successfully registered');</script>";
 }
 else{
+
 echo "<script>alert('Not register something went wrong');</script>";
 }
 }
@@ -105,7 +106,7 @@ exit();
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="image/icons/icon logo.png">
-		<link rel="stylesheet" href="../MainWebsite/css/passcheck.css">
+		<link rel="stylesheet" href="css/passcheck.css">
 <script type="text/javascript">
 function valid()
 {
@@ -138,7 +139,36 @@ error:function (){}
 
 	</head>
     <body class="cnt-home">
-	
+	<!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100776989531652");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 		
 	
 		<!-- ============================================== HEADER ============================================== -->
@@ -223,8 +253,8 @@ echo htmlentities($_SESSION['errmsg']="");
 
 <div class="form-group">
 	    	<label class="info-title" for="password">Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required onkeyup='check();'>
-			<input type="checkbox" onclick="myFunction()"> Show Password
+	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required onkeyup='check();'>
+			<input type="checkbox" id="showPass" onclick="myFunction()"> Show Password
 		</div>
 
 
@@ -240,7 +270,7 @@ echo htmlentities($_SESSION['errmsg']="");
 <script>
 		function myFunction() {
   		var x = document.getElementById("password");
-  		if (x.type === "password") {
+  		if (x.type === "password"){
     	x.type = "text";
   		} else {
     	x.type = "password";
@@ -297,7 +327,7 @@ echo htmlentities($_SESSION['errmsg']="");
 			}
 			
 			// Validate length
-			if(myInput.value.length >= 8) {
+			if(myInput.value.length >= 8) { 
 				length.classList.remove("invalid");
 				length.classList.add("valid");
 			} else {submit
@@ -311,8 +341,9 @@ echo htmlentities($_SESSION['errmsg']="");
 		
 <div class="form-group">
 	    	<label class="info-title" for="confirmpassword">Confirm Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required onkeyup='check();'>
+	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" maxlength="16" required onkeyup='check();'>
 			<span id='confirmMessage'></span>
+			
 	  	</div>
 
 
@@ -335,13 +366,13 @@ echo htmlentities($_SESSION['errmsg']="");
 	<span class="checkout-subtitle outer-top-xs">Sign Up Today And You'll Be Able To :  </span>
 	<div class="checkbox">
 	  	<label class="checkbox">
-		  	Speed your way through the checkout.
+		Speed your way through the checkout.
 		</label>
 		<label class="checkbox">
 		Track your orders easily.
 		</label>
 		<label class="checkbox">
- Keep a record of all your purchases.
+        Keep a record of all your purchases.
 		</label>
 	</div>
 </div>	

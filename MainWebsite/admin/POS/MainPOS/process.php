@@ -12,7 +12,7 @@ if(isset($_POST)){
     $password             = $_POST['password'];
     $confirmpassword      = $_POST['confirmpassword'];
 
-    $sql = "INSERT INTO users_BE (first_name, last_name, user_name, role, password) VALUES(?,?,?,?,?)";
+    $sql = "INSERT INTO users_be (first_name, last_name, user_name, role, password) VALUES(?,?,?,?,?)";
     $stmtinsert = $db->prepare($sql);
     $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $role, md5($password)]);
     if($result){

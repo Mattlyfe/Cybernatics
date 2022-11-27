@@ -9,7 +9,7 @@
     <body>
         <form action="loginhandle.php" method="POST">
             <div>
-                <img src="/MainWebsite/admin/POS/MainPOS/img/storelogo.png" alt="" class="storeLogo">
+                <img src="img/storelogo.png" alt="" class="storeLogo">
             </div>
             <h2>Employee Login</h2>
             <?php if(isset($_GET['error'])) {?>

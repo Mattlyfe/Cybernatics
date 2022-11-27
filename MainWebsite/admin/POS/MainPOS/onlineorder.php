@@ -167,6 +167,7 @@ else{
                         <th > Remarks </th>
                         <th > Total </th>
                         <th > Status </th>
+                        <th > Receipt </th>
                         <th > Action </th>
                     </tr>
                 </thead>
@@ -189,6 +190,7 @@ else{
                                     <td><?php echo $row['remark'] ?></td>
                                     <td><?php echo formatMoney($row['total'], true) ?></td>
                                     <td><?php echo $row['orderStatus']; ?></td>
+                                    <td><a rel="facebox" title="Click to check reciept" href="showProdHistory.php?id=<?php echo $row['transactionId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a></td>
                                     <td>
                                         
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="<?php echo '#editModals'.$row['transactionId']; ?>"><i class="bi bi-wallet"></i></button>

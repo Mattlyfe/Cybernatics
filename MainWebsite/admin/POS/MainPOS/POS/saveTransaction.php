@@ -12,17 +12,19 @@ $price = $_POST['post_price'];
 // foreach($initial as $amount){
 //     $total_amount += $amount;
 // }
+date_default_timezone_set('Asia/Taipei');
+$date = date("Y-m-d G:i:s");
 
-$query = "INSERT INTO transactions (total_amount,mop,cash_tendered,changed,user_id) VALUES (:total_amount,:mop,:cash_tendered,:changed,:user_id)";
+$query = "INSERT INTO transactions (total_amount,mop,cash_tendered,changed,user_id,date_created) VALUES (:total_amount,:mop,:cash_tendered,:changed,:user_id,:date_created)";
 $q = $db->prepare($query);
-$q->execute(array(':total_amount'=>$total_amount,':mop'=>$mop,':cash_tendered'=>$cash_tendered,':changed'=>$changed,':user_id'=>$user));
+$q->execute(array(':total_amount'=>$total_amount,':mop'=>$mop,':cash_tendered'=>$cash_tendered,':changed'=>$changed,':user_id'=>$user, ':date_created'=>$date));
 $last_id = $db->lastInsertId();
 
 $arr_codes = preg_split ("/\,/", $codes);
 $arr_qty = preg_split ("/\,/", $quantity);
 $arr_price = preg_split ("/\,/", $price);
 
-$query = "INSERT INTO transaction_items (product_code,transaction_id,quantity,product_price) VALUES (:product_code,:transaction_id,:quantity,:prices)";
+$query = "INSERT INTO transaction_items (product_code,transaction_id,quantity,product_price,date_created) VALUES (:product_code,:transaction_id,:quantity,:prices,:date_created)";
 $q = $db->prepare($query);
 
 
@@ -37,7 +39,7 @@ for($i = 0; $i < count($arr_codes); $i++){
 }
 
 foreach($output as $e){
-       $q->execute(array(':product_code'=>$e['code'],':transaction_id'=>$last_id,':quantity'=>$e['qty'],':prices'=>$e['price']));
+       $q->execute(array(':product_code'=>$e['code'],':transaction_id'=>$last_id,':quantity'=>$e['qty'],':prices'=>$e['price'], ':date_created'=>$date));
 }
 
 echo "TR#".$last_id;

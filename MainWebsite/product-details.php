@@ -2,34 +2,50 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if(isset($_GET['action']) && $_GET['action']=="add"){
-	$id=intval($_GET['id']);
-	if(isset($_SESSION['cart'][$id])){
-		$_SESSION['cart'][$id]['quantity']++;
+$pid=intval($_GET['pid']);
+
+if(isset($_POST['add'])){
+	
+	if(isset($_SESSION['cart'][$pid])){
+		$quantity=$_POST['quantity'];
+		$_SESSION['cart'][$pid]['quantity']+=$quantity;
 	}else{
-		$sql_p="SELECT * FROM products WHERE id={$id}";
+	    $quantity=$_POST['quantity'];
+		$sql_p="SELECT * FROM products WHERE id=$pid";
 		$query_p=mysqli_query($con,$sql_p);
 		if(mysqli_num_rows($query_p)!=0){
 			$row_p=mysqli_fetch_array($query_p);
-			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
+			$_SESSION['cart'][$row_p['id']]=array("quantity" => $quantity, "price" => $row_p['productPrice']);
 					// echo "<script>alert('Product has been added to the cart')</script>";
-		echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
+		
 		}else{
 			$message="Product ID is invalid";
 		}
 	}
+	echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 }
-$pid=intval($_GET['pid']);
 
-if(isset($_POST['submit']))
+
+if(isset($_POST['buynow'])) 
 {
-	$qty=$_POST['quality'];
-	$price=$_POST['price'];
-	$value=$_POST['value'];
-	$name=$_POST['name'];
-	$summary=$_POST['summary'];
-	$review=$_POST['review'];
-	mysqli_query($con,"insert into productreviews(productId,quality,price,value,name,summary,review) values('$pid','$qty','$price','$value','$name','$summary','$review')");
+	
+if(strlen($_SESSION['login'])==0)
+    {   
+header('location:login.php');
+}
+else{
+    date_default_timezone_set('Asia/Taipei');
+    $date = date("Y-m-d G:i:s");
+	$quantity=$_POST['quantity'];
+	$pdd=$_SESSION['pid'];
+	$pr = $_POST['price'];
+	$gtotal = ($pr * $quantity);
+	mysqli_query($con,"insert into order_header(userId, grandTotal, dateCreated) values('".$_SESSION['id']."', '$gtotal', '$date')");
+	$transactionId = mysqli_insert_id($con);
+	mysqli_query($con,"update products set productAvailability=productavailability-$quantity where id='$pid'");
+	mysqli_query($con,"insert into orders(userId,productId,quantity,transactionId,orderDate) values('".$_SESSION['id']."','$pid','$quantity','$transactionId', '$date')");
+	header('location:payment-method.php?transactionId='.$transactionId);
+}
 }
 
 
@@ -45,34 +61,7 @@ if(isset($_POST['submit']))
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
 	    <title>Product Details</title>
-				<!-- Start of Async Drift Code -->
-				<script>
-"use strict";
-
-!function() {
-  var t = window.driftt = window.drift = window.driftt || [];
-  if (!t.init) {
-    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-    t.factory = function(e) {
-      return function() {
-        var n = Array.prototype.slice.call(arguments);
-        return n.unshift(e), t.push(n), t;
-      };
-    }, t.methods.forEach(function(e) {
-      t[e] = t.factory(e);
-    }), t.load = function(t) {
-      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-      var i = document.getElementsByTagName("script")[0];
-      i.parentNode.insertBefore(o, i);
-    };
-  }
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('mfzdw3bw9zcu');
-</script>
-<!-- End of Async Drift Code -->
+			
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -96,6 +85,37 @@ drift.load('mfzdw3bw9zcu');
 		<link rel="shortcut icon" href="image/icons/icon logo.png">
 	</head>
     <body class="cnt-home">
+        
+        <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100776989531652");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 	
 <header class="header-style-1">
 
@@ -113,6 +133,7 @@ drift.load('mfzdw3bw9zcu');
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
+		    <form name="proddet" method="post">
 <?php
 $ret=mysqli_query($con,"select category.categoryName as catname,products.productName as pname from products join category on category.id=products.category where products.id='$pid'");
 while ($rw=mysqli_fetch_array($ret)) {
@@ -218,7 +239,7 @@ while($row=mysqli_fetch_array($ret))
 
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
-							<h1 class="name"><?php echo htmlentities($row['productName']);?></h1>
+							<h1 class="name"><?php $pd=$row['id']; echo htmlentities($row['productName']);?></h1>
 
 							<div class="stock-container info-container m-t-10">
 								<div class="row">
@@ -283,7 +304,7 @@ while($row=mysqli_fetch_array($ret))
 
 									<div class="col-sm-6">
 										<div class="price-box">
-											<span class="price">PHP <?php echo htmlentities($row['productPrice']);?></span>
+											<span class="price">PHP <?php echo htmlentities($price = $row['productPrice']);?></span>
 											<span class="price-strike">PHP <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 										</div>
 									</div>
@@ -304,22 +325,22 @@ while($row=mysqli_fetch_array($ret))
 									
 									<div class="col-sm-2">
 										<div class="cart-quantity">
-											<div class="quant-input">
-								                <div class="arrows">
-								                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-								                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-								                </div>
-								                <input type="text" value="1">
+											<div class="quant-input">    
+											<?php $max =$row['productAvailability'];
+												 echo '<input type="number" name="quantity" min="0" max="'.$max.'" value="1" oninput="'; ?>this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 							              </div>
 							            </div>
 									</div>
+									
+								
 
 									<div class="col-sm-7">
 													<?php if($row['productAvailability'] == 0){?>
 										<div class="action" style="color:red">Out of Stock</div>
 										
 													<?php } else {?>
-														<div class="action"><a href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="lnk btn btn-primary">Add to Cart</a></div>
+														<button type="submit" name="buynow" class="btn btn-primary">Buy now!</button>
+														<button type="submit" name="add" class="btn btn-primary">Add to Cart</button>
 					<?php } ?>
 									</div>
 
@@ -339,6 +360,7 @@ while($row=mysqli_fetch_array($ret))
 
 </div>
 </div>
+</form>
 <?php include('includes/footer.php');?>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>

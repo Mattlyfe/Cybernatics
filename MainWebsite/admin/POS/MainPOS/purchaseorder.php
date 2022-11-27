@@ -16,12 +16,13 @@ if (empty($_SESSION['user_name'])) {
 		<title>Admin| Purchase Order</title>
 		<link rel="shortcut icon" href="img/icon logo.png">
 		<link href="css/bootstrap.css" rel="stylesheet">
-
+    
 	<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	
 	<style type="text/css">
 	body{
 		padding-bottom: 40px;
@@ -61,9 +62,7 @@ if (empty($_SESSION['user_name'])) {
 	
 	</style>
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
-
 	<script src="jeffartagame.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
 	<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
 	<script src="lib/jquery.js" type="text/javascript"></script>
 	<script src="src/facebox.js" type="text/javascript"></script>
@@ -131,8 +130,9 @@ if (empty($_SESSION['user_name'])) {
 		</div>		
 		<div class="mb-4">
 		<span>Order No. :</span>
-		<?php if($_SESSION['role'] != "supplier"){?>
+		
 		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Order Number" autocomplete="off" />
+		<?php if($_SESSION['role'] != "supplier"){?>
 		<button type="button" class="btn btn-info" style="float:right" data-toggle="modal" data-target="#exampleModal">
 			<i class="bi bi-plus-circle-fill"></i> Add Order
 		</button>
@@ -149,18 +149,18 @@ if (empty($_SESSION['user_name'])) {
 			</button>
 			</div>
 			<div class="modal-body">
-				<form action="PurchaseOrder/addOrder.php" method="post">
+				<form action="PurchaseOrder/addOrder.php" method="POST">
 				<div class="row mb-3">
 					
 						<div class="col-6">
 						Supplier:
-						<input type="" style="width:100%; border:solid black 1px; border-radius:5px" name="supplier_name" placeholder="Supplier Name">
+						<input type="" style="width:100%; border:solid black 1px; border-radius:5px" name="supplier_name" placeholder="Supplier Name" required>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-6">
 						Mode Of Payment:
-						<select style="width:100%; border:solid black 1px; border-radius:5px" name="mop" class="form-control form-control-sm">
+						<select style="width:100%; border:solid black 1px; border-radius:5px" name="mop" class="form-control form-control-sm" required>
 							<option>Cash</option>
 							<option>Gcash</option>
 							<option>Paymaya</option>
@@ -168,7 +168,7 @@ if (empty($_SESSION['user_name'])) {
 						</div>
 						<div class="col-6">
 						Expected Delivery Date: 
-						<input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="delivery_date" placeholder="MM-DD-YYYY">
+						<input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="delivery_date" placeholder="MM-DD-YYYY" required>
 						</div>
 					
 				</div>
@@ -181,6 +181,7 @@ if (empty($_SESSION['user_name'])) {
 									<th > Category </th>
 									<th > Product Name </th>
 									<th > Quantity </th>
+									<th > Recommended Quantity to order </th>
 									<th > Price </th>
 									<th > Amount </th>
 									<th > Action </th>
@@ -209,9 +210,21 @@ if (empty($_SESSION['user_name'])) {
 									$availableqty=$row['productAvailability'];
 									$category = $row['category'];
 
-									if ($category == 4){
-										$categoryName = 'Bisucits';
-									}
+									if ($category == 3){
+                    					$categoryName = 'Condiments';
+                    				}
+                    
+                    				if ($category == 4){
+                    					$categoryName = 'Cookies and Crackers';
+                    				}
+                    
+                    				if ($category == 5){
+                    					$categoryName = 'Dairy';
+                    				}
+                    
+                    				if ($category == 6){
+                    					$categoryName = 'Beverages';
+                    				}
 									if ($availableqty < 10) {
 										echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
 									}
@@ -221,10 +234,15 @@ if (empty($_SESSION['user_name'])) {
 									?>
 									<td style="display:none"><input type="text" name='p_id[]' value='<?php echo $row['id'];?>'></td>
 									<td><?php echo $row['productCode'];?></td>
+									<td><?php echo $categoryName ?></td>
 									<td><?php echo $row['productName']; ?></td>
-									<td><?php echo $row['genName']; ?></td>
 									<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['id']; ?>,<?php echo $row['oPrice']; ?>); this.value = 
  !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" id="quantity_<?php echo $row['id']; ?>" type="number" placeholder="0" min="0" ></td>
+                                    <?php
+                                    $qty = $row['productAvailability'];
+                                    $maintaining = 1000;
+                                    $eoq = ($maintaining - $qty);?>
+                                    <td> <?php echo $eoq; ?> pcs </td>
 									<td><?php $pprice=$row['oPrice']; echo formatMoney($pprice, true); ?></td>
 									<td><input class="tableInput" id="amount_<?php echo $row['id']; ?>" type="text" name='initial_amount[]' value="0" readonly></td>
 									
@@ -246,11 +264,10 @@ if (empty($_SESSION['user_name'])) {
 		</div>
 		</div>
 	</div>  
-
 	<table class="hoverTable w-100" id="result" data-responsive="table" style="text-align: left;">
 		<thead>
 			<tr>
-				<th > Order No. </th>
+				<th class="order-by-desc"> Order No. </th>
 				<th > Supplier </th>
 				<th > Date Created </th>
 				<th > Delivery Date </th>
@@ -262,7 +279,13 @@ if (empty($_SESSION['user_name'])) {
 		<tbody>
 				<?php
 					include('../MainPOS/connect.php');
-					$res = $db->prepare("SELECT * FROM purchase_orders ORDER BY id DESC");
+					
+				 	if($_SESSION['role'] != "supplier"){
+					    $res = $db->prepare("SELECT * FROM purchase_orders ORDER BY id DESC");
+				 	}
+				 	else{
+				 	    $res = $db->prepare("SELECT * FROM purchase_orders WHERE supplier_name='".$_SESSION['user_name']."' ORDER BY id DESC");
+					}
 
 					$res->execute();
 					for($x=0; $row = $res->fetch(); $x++){
@@ -277,99 +300,99 @@ if (empty($_SESSION['user_name'])) {
 							<td><?php echo formatMoney($row['total_amount'], true) ?></td> 
 							<td>
 								<button type="button" data-toggle="modal" data-target="<?php echo '#editModal'.$row['id']; ?>" class="btn btn-success"><i class="bi bi-pass"></i></button>
-								<div class="modal fade" id="<?php echo 'editModal'.$row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-									<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<form method="POST" action="PurchaseOrder/updateOrder.php">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLongTitle">Edit Purchase Order</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-												<table class="hoverTable w-100" id="resultEdit" data-responsive="table" style="text-align: left;">
-													<thead>
-														<tr>
-															<th > Product Code </th>
-															<th > Category </th>
-															<th > Product Name </th>
-															<th > Quantity </th>
-															<th > Price </th>
-															<th > Amount </th>
-															<?php if($_SESSION['role'] != "supplier"){?>
-															<th > Action </th>
-															<?php }?>
-														</tr>
-													</thead>
-													<tbody>
-													<?php
-														$po_id = $row['id'];
-														$result = $db->prepare("SELECT 
-														products.id as p_id,
-														products.productAvailability,
-														products.category,
-														products.productCode,
-														products.productName,
-														products.genName,
-														products.oPrice,
-														products.productPrice,
-														purchase_order_items.quantity,
-														purchase_orders.total_amount
-														FROM products 
-														left join purchase_order_items on purchase_order_items.product_id = products.id
-														left join purchase_orders on purchase_orders.id = purchase_order_items.purchase_order_id
-														where purchase_orders.id = $po_id;");
-
-														$result->execute();
-														for($y=0; $row = $result->fetch(); $y++){
-															$availableqty=$row['productAvailability'];
-															$category = $row['category'];
-
-															if ($category == 4){
-																$categoryName = 'Bisucits';
-															}
-															if ($availableqty < 10) {
-																echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
-															}
-															else {
-																echo '<tr class="record">';
-															} 
-															?>
-															<td style="display:none"><input type="text" name='p_id[]' value='<?php echo $row['p_id'];?>'></td>
-															<td><?php echo $row['productCode'];?></td>
-															<td><?php echo $row['productName']; ?></td>
-															<td><?php echo $row['genName']; ?></td>
-															<?php if($_SESSION['role'] != "supplier"){?>
-															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>"></td>
-															<?php } else{?>
-															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>" readonly></td>
-															<?php } ?>
-															<td><?php $pprice=$row['oPrice']; echo formatMoney($pprice, true); ?></td>
-															<td><input class="tableInput" id="editAmount_<?php echo $row['p_id']; ?>" type="text" name='initial_amount[]' value="<?php $amount=$row['oPrice'] * $row['quantity']; echo $amount; ?>" readonly></td>
-															<?php if($_SESSION['role'] != "supplier"){?>
-															<td><button type="button" onclick="deleteRowEdit(<?php echo $row['p_id']; ?>)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
-															<?php } ?>
-														</tr>
-															<div style="display:none">
-																<input type="text" name='po_id' value='<?php echo $po_id;?>'>
-															</div>
-															<?php
-														}
-													?>
-													</tbody>
-												</table>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-													<?php if($_SESSION['role'] != "supplier"){?>
-													<button type="submit" class="btn btn-primary">Update</button>
-													<?php } ?>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
+    								<div class="modal fade" id="<?php echo 'editModal'.$row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    									<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    										<div class="modal-content">
+    											<form method="POST" action="PurchaseOrder/updateOrder.php">
+    												<div class="modal-header">
+    													<h5 class="modal-title" id="exampleModalLongTitle">Edit Purchase Order</h5>
+    													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    													<span aria-hidden="true">&times;</span>
+    													</button>
+    												</div>
+    												<div class="modal-body">
+    												<table class="hoverTable w-100" id="resultEdit" data-responsive="table" style="text-align: left;">
+    													<thead>
+    														<tr>
+    															<th > Product Code </th>
+    															<th > Category </th>
+    															<th > Product Name </th>
+    															<th > Quantity </th>
+    															<th > Price </th>
+    															<th > Amount </th>
+    															<?php if($_SESSION['role'] != "supplier"){?>
+    															<th > Action </th>
+    															<?php }?>
+    														</tr>
+    													</thead>
+    													<tbody>
+    													<?php
+    														$po_id = $row['id'];
+    														$result = $db->prepare("SELECT 
+    														products.id as p_id,
+    														products.productAvailability,
+    														products.category,
+    														products.productCode,
+    														products.productName,
+    														products.genName,
+    														products.oPrice,
+    														products.productPrice,
+    														purchase_order_items.quantity,
+    														purchase_orders.total_amount
+    														FROM products 
+    														left join purchase_order_items on purchase_order_items.product_id = products.id
+    														left join purchase_orders on purchase_orders.id = purchase_order_items.purchase_order_id
+    														where purchase_orders.id = $po_id;");
+    
+    														$result->execute();
+    														for($y=0; $row = $result->fetch(); $y++){
+    															$availableqty=$row['productAvailability'];
+    															$category = $row['category'];
+    
+    															if ($category == 4){
+    																$categoryName = 'Bisucits';
+    															}
+    															if ($availableqty < 10) {
+    																echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
+    															}
+    															else {
+    																echo '<tr class="record">';
+    															} 
+    															?>
+    															<td style="display:none"><input type="text" name='p_id[]' value='<?php echo $row['p_id'];?>'></td>
+    															<td><?php echo $row['productCode'];?></td>
+    															<td><?php echo $row['productName']; ?></td>
+    															<td><?php echo $row['genName']; ?></td>
+    															<?php if($_SESSION['role'] != "supplier"){?>
+    															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>"></td>
+    															<?php } else{?>
+    															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>" readonly></td>
+    															<?php } ?>
+    															<td><?php $pprice=$row['oPrice']; echo formatMoney($pprice, true); ?></td>
+    															<td><input class="tableInput" id="editAmount_<?php echo $row['p_id']; ?>" type="text" name='initial_amount[]' value="<?php $amount=$row['oPrice'] * $row['quantity']; echo $amount; ?>" readonly></td>
+    															<?php if($_SESSION['role'] != "supplier"){?>
+    															<td><button type="button" onclick="deleteRowEdit(<?php echo $row['p_id']; ?>)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
+    															<?php } ?>
+    														</tr>
+    															<div style="display:none">
+    																<input type="text" name='po_id' value='<?php echo $po_id;?>'>
+    															</div>
+    															<?php
+    														}
+    													?>
+    													</tbody>
+    												</table>
+    												</div>
+    												<div class="modal-footer">
+    													<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    													<?php if($_SESSION['role'] != "supplier"){?>
+    													<button type="submit" class="btn btn-primary">Update</button>
+    													<?php } ?>
+    												</div>
+    											</form>
+    										</div>
+    									</div>
+    								</div>
 
 								<button type="button" class="btn btn-warning" data-toggle="modal" data-target="<?php echo '#editStatusModal'.$po_id; ?>"><i class="bi bi-truck"></i></button>
                                     <div class="modal fade"  id="<?php echo 'editStatusModal'.$po_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -461,7 +484,9 @@ if (empty($_SESSION['user_name'])) {
 										</div>
 									</div>
 								</div>
-								<?php } ?>
+								<?php 
+								} 
+								?>
 								
 							</td>
 							
@@ -479,20 +504,18 @@ if (empty($_SESSION['user_name'])) {
 
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript">
-
-	function changeStatus(id,status){
-        let serializeData = `id=${id}&status=${status}`
-        $.post('PurchaseOrder/changeStatus.php',serializeData,function(response){
-            swal('Success',response,'success')
-            setTimeout(() => {
-                window.location.href = 'purchaseorder.php'
-            }, 1500);
-            
-        })
-    }
-
+	
+    function changeStatus(id,status){
+            let serializeData = `id=${id}&status=${status}`
+            $.post('PurchaseOrder/changeStatus.php',serializeData,function(response){
+                swal('Success',response,'success')
+                setTimeout(() => {
+                    window.location.href = 'purchaseorder.php'
+                }, 1500);
+                
+            })
+        }
 	$(function() {
-
 
 	$(".delbutton").click(function(){
 

@@ -1,5 +1,5 @@
 <?php
-	include('../MainPOS/connect.php');
+	include('connect.php');
 	$id=$_GET['id'];
 	$result = $db->prepare("SELECT * FROM products WHERE id= :userid");
 	$result->bindParam(':userid', $id);

@@ -3,7 +3,7 @@
 $db_host		= 'localhost';
 $db_user		= 'root';
 $db_pass		= '';
-$db_database	= 'useraccounts_be'; 
+$db_database	= 'shopping'; 
 
 /* End config */
 
@@ -15,7 +15,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS' ,'');
-define('DB_NAME', 'useraccounts_be');
+define('DB_NAME', 'shopping');
 $con = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
 // Check connection
 if (mysqli_connect_errno())

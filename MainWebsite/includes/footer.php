@@ -20,7 +20,7 @@
     
         <div class="social-icons">
             
-        <a href=""   class='active'><i class="icon fa fa-facebook"></i></a>
+        <a href="https://www.facebook.com/people/Sandras-Store-Valenzuela/100087731323059/" target="_blank" rel="noopener noreferrer"  class='active'><i class="icon fa fa-facebook"></i></a>
         <!-- <a href="#"><i class="icon fa fa-twitter"></i></a>
         <a href="#"><i class="icon fa fa-linkedin"></i></a>
         <a href="#"><i class="icon fa fa-rss"></i></a>
@@ -80,7 +80,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>(011) 09562331515<br>(011) 000000000000</p>
+                    <p>(+63) 09562331515<br>(011) 000000000000</p>
                 </div>
             </li>
               
