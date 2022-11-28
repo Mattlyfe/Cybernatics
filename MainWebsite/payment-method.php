@@ -180,14 +180,15 @@ while($row=mysqli_fetch_array($query))
 				</tbody><!-- /tbody -->
 		</table><!-- /table -->	
 		<?php
-		if($row=mysqli_fetch_array($query) != 1){ 
+		if($row = intval(mysqli_num_rows($query)) != 1){ 
 			?>
 			<h2>Shipping Fee: ₱ 60.00 </h2>
 			<h1>Grand total: ₱ <?php echo $total = (intval($_SESSION['tp'])+60); ?>.00</h1>
 		
 		<?php }
 		else{ $g1total = ($gtotal + 60);?>
-			<h1>Grand total: ₱ <?php echo $total = $g1total; ?></h1>
+			<h2>Shipping Fee: ₱ 60.00 </h2><s></s>
+			<h1>Grand total: ₱ <?php echo $total = $g1total; ?>.00</h1>
 		<?php } ?>
 	</div>
 </div>
