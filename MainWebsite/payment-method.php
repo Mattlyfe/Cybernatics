@@ -314,6 +314,7 @@ while($row=mysqli_fetch_array($query))
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
 	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" onkeypress='validate(event)' required>
 					<label class="info-title" for="referenceno">Upload Screenshot of Proof of payment:<span>*</span></label>
+					<h6>Note: Please only upload image files (.jpg, .png, .jpeg)</h6>
 					<input type="file" name="fileToUpload" id="fileToUpload" required>
 					</table>
 					</div>
