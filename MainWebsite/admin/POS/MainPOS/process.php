@@ -1,5 +1,6 @@
 <?php
 require_once('config.php');
+error_reporting(0);
 ?>
 
 <?php 
@@ -12,16 +13,32 @@ if(isset($_POST)){
     $password             = $_POST['password'];
     $confirmpassword      = $_POST['confirmpassword'];
 
-    $sql = "INSERT INTO users_be (first_name, last_name, user_name, role, password) VALUES(?,?,?,?,?)";
-    $stmtinsert = $db->prepare($sql);
-    $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $role, md5($password)]);
-    if($result){
-        echo 'Successfully saved.';
-    }else{
-        echo 'There were errors while saving the data.';
-    }
-}else{
-    echo 'No data';
-}
+    $query=mysqli_query($con,"select * from users_be where user_name = '$user_name'");
+    $row=mysqli_fetch_array($query);
+    if($password == $confirmpassword){
+    if($user_name != $row['user_name']){
 
+        $sql = "INSERT INTO users_be (first_name, last_name, user_name, role, password) VALUES(?,?,?,?,?)";
+        $stmtinsert = $db->prepare($sql);
+        $result = $stmtinsert->execute([$first_name, $last_name, $user_name, $role, md5($password)]);
+
+        if($result){
+            echo '<script>alert("Account Created!");</script>';
+            echo '<script>window.location="user_regBE.php";</script>';
+        }else{
+            echo '<script>alert("There was an error.");</script>';
+            echo '<script>window.location="user_regBE.php";</script>';
+        }
+    }
+    else{
+        echo '<script>alert("Account Exists!");</script>';
+        echo '<script>window.location="user_regBE.php";</script>';
+    }
+
+
+}else{
+    echo '<script>alert("Incorrect Password or Confirm Password!");</script>';
+    echo '<script>window.location="user_regBE.php";</script>';
+}
+}
 ?>

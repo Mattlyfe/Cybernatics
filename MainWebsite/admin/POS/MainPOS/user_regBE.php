@@ -41,7 +41,7 @@ else{
         ?>
         </div>
         <div class="main_content">
-            <form action="user_regBE.php" method="post" name="register" id="register" onSubmit="return valid();">
+            <form action="process.php" method="post" name="register" id="register">
                 <div class="container">
                     
                 <div class="row">
@@ -73,7 +73,7 @@ else{
                         <span id='message'></span>
                         </label>
                         <hr class="mb-3">
-                        <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register">
+                        <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register" disabled>
                     </div>
                     </div>
 
@@ -94,56 +94,17 @@ else{
                         document.getElementById('confirmpassword').value) {
                         document.getElementById('message').style.color = 'green';
                         document.getElementById('message').innerHTML = 'Password matched';
+                        document.querySelector('#accregister').disabled = false;
                     } else {
                         document.getElementById('message').style.color = 'red';
                         document.getElementById('message').innerHTML = 'Password not match';
+                        document.querySelector('#accregister').disabled = true;
                     }
                 }</script>
                 </div>
             </form>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        <script type="text/javascript">
-        $(function(){
-            $('#accregister').click(function(e){
-
-                var valid = this.form.checkValidity();
-                if(valid){
-
-                    var first_name      = $('#first_name').val();
-                    var last_name       = $('#last_name').val();
-                    var user_name       = $('#user_name').val();
-                    var role            = $('#role').val();
-                    var password        = $('#password').val();
-                    var confirmpassword = $('#confirmpassword').val();
-
-                    e.preventDefault();
-                    if(password == confirmpassword){
-                    $.ajax({
-                        type: 'POST',
-                        url:  'process.php',
-                        data: {first_name: first_name, last_name: last_name, user_name: user_name, role: role, password: password, confirmpassword: confirmpassword},
-                        success: function(data){
-                            Swal.fire({
-                            'title' : 'Successful.',
-                            'text'  : data,
-                            'type'  : 'success'
-                                        }) , $("#register")[0].reset();
-                        },
-                        error: function(data){
-                            Swal.fire({
-                            'title' : 'Error.',
-                            'text'  : 'There were errors while creating your account.',
-                            'type'  : 'error.'
-                                        })
-                        }
-                    });            
-                }
-            }
-            });
-        });
-        </script>
+        
     </body>
 </html>
 <?php } 
