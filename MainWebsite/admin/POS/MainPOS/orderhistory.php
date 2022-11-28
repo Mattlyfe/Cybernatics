@@ -87,7 +87,7 @@ else{
 		</div>	
 <div class="mb-4">
 		<span>Transaction No. :</span> 
-		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Transaction Number" autocomplete="off" />
+		<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Order..." autocomplete="off" />
 		
 		</div><br><br>
 <div class="row" style="height:500px; overflow-y: scroll;">
