@@ -214,6 +214,7 @@ while($row=mysqli_fetch_array($query))
 					  
 				Upload Valid ID For verification (Front and Back):
 					<input type="file" name="file[]" id="file" required multiple>
+					<h6>Note: Please only upload image files (.jpg, .png, .jpeg)</h6>
 					<button type="submit" name="imgSubmit" class="btn-upper btn btn-primary checkout-page-button">Upload Images</button>
 				</div>
 				<?php } 
