@@ -143,7 +143,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
-					<th class="cart-total item">Grandtotal</th>
+					<th class="cart-total item">Subtotal</th>
 					<th class="cart-description item">Order Date</th>
 					
 				</tr>
@@ -173,18 +173,21 @@ while($row=mysqli_fetch_array($query))
 						
 		            </td>
 					<td class="cart-product-sub-total">₱ <?php echo  $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-grand-total">₱ <?php echo $gtotal =(($qty*$price)+60);?></td>
+					<td class="cart-product-grand-total">₱ <?php echo $gtotal =($qty*$price);?></td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 				</tr>
 				<?php } ?>
 				</tbody><!-- /tbody -->
 		</table><!-- /table -->	
 		<?php
-		if($row=mysqli_fetch_array($query) == 1){ ?>
-		<h1>Grand total: ₱ <?php echo $total = $gtotal; ?><h1>
+		if($row=mysqli_fetch_array($query) != 1){ 
+			?>
+			<h2>Shipping Fee: ₱ 60.00 </h2>
+			<h1>Grand total: ₱ <?php echo $total = (intval($_SESSION['tp'])+60); ?>.00</h1>
+		
 		<?php }
-		else{ ?>
-		<h1>Grand total: ₱ <?php echo $total = intval($_SESSION['tp']); ?><h1>
+		else{ $g1total = ($gtotal + 60);?>
+			<h1>Grand total: ₱ <?php echo $total = $g1total; ?></h1>
 		<?php } ?>
 	</div>
 </div>
