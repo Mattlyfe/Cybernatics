@@ -8,7 +8,13 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
   $rNo = $_POST['referenceno'];
   $id = $_SESSION['id'];
   $target_dir = "admin/POS/MainPOS/referenceno/user id - $id/$rNo/";
-  mkdir($target_dir,  0777, true);
+
+  if(!file_exists($target_dir) || !is_dir($target_dir)){
+    mkdir("$target_dir",  0777, true);
+  }
+  else{
+    rmdir($target_dir);
+  }
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
