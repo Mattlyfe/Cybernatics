@@ -58,6 +58,9 @@ if (empty($_SESSION['user_name'])) {
 	input{
 		padding:3px;
 	}
+	.modal{
+		--bs-modal-width: 5001px;
+	}
 
 	
 	</style>
