@@ -136,11 +136,34 @@ function sum() {
                 </button>
             </div>
             <div class="modal-body d-flex flex-column text-center">
-                
+				<form method="post">
+				<span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="genCode" id="genCode"><br>
+					<?php 
+					if(isset($_POST['codeSubmit'])){
+						$code = $_POST['genCode']; ?>
+						
+						<script>
+							
+							let codeSubmit = document.getElementById('codeSubmit');
+
+							codeSubmit.onClick = window.open('barcode_gen.php?genCode=<?php echo $code;?>','popUpWindow','height=500,width=400,left=100,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=yes');
+
+							
+						</script>
+
+					<?php 
+					} 
+					?>
+
+					<br>
+				<button class="btn btn-success btn-block btn-large" style="width:267px;" name="codeSubmit" id="codeSumbit"><i class="icon icon-save icon-large"></i> Save</button>
+				</form>
                <form action="saveproduct.php" method="post">
 <center><h4><i class="icon-plus-sign icon-large"></i> Add Product</h4></center>
 <hr>
 <div id="ac">
+
+
 <span>Product Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" ><br>
 <span>Generic Name : </span><input type="text" style="width:359px; height:40px;" name="genName" Required/><br>
 <span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"> </textarea><br>
@@ -418,6 +441,20 @@ return false;
 
 });
 </script>
+
+<script language="javascript" type="text/javascript">
+var popUpWin=0;
+function popUpWindow(URLStr, left, top, width, height)
+{
+ if(popUpWin)
+{
+if(!popUpWin.closed) popUpWin.close();
+}
+popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+}
+
+</script>
+
 </body>
 </html>
 <?php 
