@@ -4902,8 +4902,9 @@ a {
 .shopping-cart .cart-shopping-total table thead tr th .cart-sub-total,
 .shopping-cart .cart-shopping-total table thead tr th .cart-grand-total {
   font-family: 'FjallaOneRegular';
-  font-size: 22px;
-  margin-right: 10px;
+  font-size: 30px;
+  margin-left: 2px;
+  margin-right: 30px;
 }
 .shopping-cart-table table tbody tr td .quant-input {
   display: inline-block;
