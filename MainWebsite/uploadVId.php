@@ -55,10 +55,11 @@ if(isset($_POST["imgSubmit"])) {
 
 if(isset($_POST['update']))
 	{
-		$name=$_POST['name'];
+		$first_name=$_POST['first_name'];
+    $last_name=$_POST['last_name'];
 		$contactno=$_POST['contactno'];
 		$email=$_POST['email'];
-		$query=mysqli_query($con,"update users set name='$name',contactno='$contactno', email='$email' where id='".$_SESSION['id']."'");
+		$query=mysqli_query($con,"update users set first_name='$first_name', last_name='$last_name',contactno='$contactno', email='$email' where id='".$_SESSION['id']."'");
 		if($query)
 		{
             echo "<script>alert('Your info has been updated');</script>";

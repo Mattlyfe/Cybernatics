@@ -192,20 +192,24 @@ while($row=mysqli_fetch_array($query))
 ?>
 
 					<form class="register-form" action="uploadVId.php" role="form" method="post" enctype="multipart/form-data">
-<div class="form-group">
-					    <label class="info-title" for="name">Name<span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['name'];?>" id="name" name="name" required="required">
-					  </div>
+					<div class="form-group">
+					    <label class="info-title" for="name">First name<span>*</span></label>
+					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['first_name'];?>" id="first_name" name="first_name" maxlength="16" required="required">
+					</div>
+
+					<div class="form-group">
+					    <label class="info-title" for="name">Last name<span>*</span></label>
+					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['last_name'];?>" id="last_name" name="last_name" maxlength="16" required="required">
+					</div>
 
 
-
-						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-			 <input type="email" class="form-control unicase-form-control text-input" id="email" name="email" value="<?php echo $row['email'];?>">
-					  </div>
+					<div class="form-group">
+						<label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+						<input type="email" class="form-control unicase-form-control text-input" id="email" name="email" value="<?php echo $row['email'];?>">
+					</div>
 					  <div class="form-group">
 					    <label class="info-title" for="Contact No.">Contact No. <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" required="required" value="<?php echo $row['contactno'];?>"  maxlength="10">
+					    <input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" required="required" value="<?php echo $row['contactno'];?>"  maxlength="11">
 					  </div>
 					  <?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
 				$row = mysqli_fetch_assoc($valid);

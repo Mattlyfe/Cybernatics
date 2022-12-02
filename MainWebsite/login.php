@@ -5,11 +5,12 @@ include('includes/config.php');
 // Code user Registration
 if(isset($_POST['submit']))
 {
-$name=$_POST['fullname'];
+$first_name=$_POST['first_name'];
+$last_name=$_POST['last_name'];
 $email=$_POST['emailid'];
 $contactno=$_POST['contactno'];
 $password=md5($_POST['password']);
-$query=mysqli_query($con,"insert into users(name,email,contactno,password,valid) values('$name','$email','$contactno','$password', 0)");
+$query=mysqli_query($con,"insert into users(first_name,last_name,email,contactno,password,valid) values('$first_name','$last_name','$email','$contactno','$password', 0)");
 if($query)
 {
 	echo "<script>alert('You are successfully registered');</script>";
@@ -31,7 +32,7 @@ if($num>0)
 $extra="index.php";
 $_SESSION['login']=$_POST['email'];
 $_SESSION['id']=$num['id'];
-$_SESSION['username']=$num['name'];
+$_SESSION['username']=$num['first_name'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=1;
 $log=mysqli_query($con,"insert into userlog(userEmail,userip,status) values('".$_SESSION['login']."','$uip','$status')");
@@ -219,7 +220,7 @@ echo htmlentities($_SESSION['errmsg']="");
 		</div>
 	  	<div class="form-group">
 		    <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-		 <input type="password" name="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
+		 <input type="password" name="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" maxlength="16" >
 		</div>
 		<div class="radio outer-xs">
 		  	<a href="forgot-password.php" class="forgot-password pull-right">Forgot your Password?</a>
@@ -234,9 +235,14 @@ echo htmlentities($_SESSION['errmsg']="");
 	<h4 class="checkout-subtitle">create a new account</h4>
 	<p class="text title-tag-line">Create your own Shopping account.</p>
 	<form class="register-form outer-top-xs" role="form" method="post" name="register" onSubmit="return valid();">
-<div class="form-group">
-	    	<label class="info-title" for="fullname">Full Name <span>*</span></label>
-	    	<input type="text" class="form-control unicase-form-control text-input" id="fullname" name="fullname" required="required" onkeydown="return /[a-z ]/i.test(event.key)">
+		<div class="form-group">
+	    	<label class="info-title" for="firstname">First Name <span>*</span></label>
+	    	<input type="text" class="form-control unicase-form-control text-input" id="first_name" name="first_name" maxlength="16" required="required" onkeydown="return /[a-z ]/i.test(event.key)">
+	  	</div>
+
+		  <div class="form-group">
+	    	<label class="info-title" for="lastname">Last Name <span>*</span></label>
+	    	<input type="text" class="form-control unicase-form-control text-input" id="last_name" name="last_name" maxlength="16" required="required" onkeydown="return /[a-z ]/i.test(event.key)">
 	  	</div>
 
 
