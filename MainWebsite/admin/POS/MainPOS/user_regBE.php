@@ -50,13 +50,13 @@ else{
                         <h1>Registration</h1>
                         <hr class="mb-3">
                         <label for="first_name"><b>First Name</b></label>
-                        <input class="form-control" type="text" name="first_name" id="first_name" required onkeydown="return /[a-z ]/i.test(event.key)">
+                        <input class="form-control" type="text" name="first_name" id="first_name" maxlength="16" required onkeydown="return /[a-z ]/i.test(event.key)">
                         
                         <label for="last_name"><b>Last Name</b></label>
-                        <input class="form-control" type="text" name="last_name" id="last_name" required onkeydown="return /[a-z ]/i.test(event.key)">
+                        <input class="form-control" type="text" name="last_name" id="last_name" maxlength="16" required onkeydown="return /[a-z ]/i.test(event.key)">
 
                         <label for="user_name"><b>User Name</b></label>
-                        <input class="form-control" type="text" name="user_name" id="user_name" required>
+                        <input class="form-control" type="text" name="user_name" id="user_name" maxlength="16" required>
 
                         <label for="role"><b>Role</b></label>
                         <select name="role" class="custom-select my-1 mr-sm-2" id="role">
@@ -65,11 +65,11 @@ else{
                         </select><br>
                         <br>
                         <label for="password"><b>Password</b>
-                        <input class="form-control" type="password" name="password" id="password" required onkeyup='check();' /> 
+                        <input class="form-control" type="password" name="password" id="password" maxlength="16" required onkeyup='check();' /> 
                         <input type="checkbox" onclick="myFunction()">Show Password             
                         </label>
                         <label for="confirmpassword"><b>Confirm Password</b>
-                        <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" required onkeyup='check();' />
+                        <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" maxlength="16" required onkeyup='check();' />
                         <span id='message'></span>
                         </label>
                         <hr class="mb-3">
