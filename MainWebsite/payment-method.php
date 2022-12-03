@@ -7,6 +7,20 @@ if(strlen($_SESSION['login'])==0)
 header('location:login.php');
 }
 
+// code for billing address updation
+	if(isset($_POST['update']))
+	{
+		$baddress=$_POST['billingaddress'];
+		$bstate=$_POST['bilingstate'];
+		$bcity=$_POST['billingcity'];
+		$bpincode=$_POST['billingpincode'];
+		$query=mysqli_query($con,"update users set billingAddress='$baddress',billingState='$bstate',billingCity='$bcity',billingPincode='$bpincode' where id='".$_SESSION['id']."'");
+// 		if($query)
+// 		{
+// echo "<script>alert('Billing Address has been updated');</script>";
+// 		}
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,34 +36,36 @@ header('location:login.php');
 	    <meta name="robots" content="all">
 
 	    <title>Shopping Portal | Payment Method</title>
-				<!-- Start of Async Drift Code -->
-				<script>
-"use strict";
+				<!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
 
-!function() {
-  var t = window.driftt = window.drift = window.driftt || [];
-  if (!t.init) {
-    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-    t.factory = function(e) {
-      return function() {
-        var n = Array.prototype.slice.call(arguments);
-        return n.unshift(e), t.push(n), t;
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100776989531652");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
       };
-    }, t.methods.forEach(function(e) {
-      t[e] = t.factory(e);
-    }), t.load = function(t) {
-      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-      var i = document.getElementsByTagName("script")[0];
-      i.parentNode.insertBefore(o, i);
-    };
-  }
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('mfzdw3bw9zcu');
-</script>
-<!-- End of Async Drift Code -->
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -121,14 +137,13 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-				<th class="cart-romove item">orderID</th>
+					<th class="cart-romove item">orderID</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
 			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
-					<th class="cart-sub-total item">Shipping Charge</th>
-					<th class="cart-total item">Grandtotal</th>
+					<th class="cart-total item">Subtotal</th>
 					<th class="cart-description item">Order Date</th>
 					
 				</tr>
@@ -136,7 +151,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 			
 			<tbody>
 
-<?php $query=mysqli_query($con,"select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.transactionId='".$_GET['transactionId']."'");
+<?php $query=mysqli_query($con,"select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.transactionId='".$_GET['transactionId']."'");
 while($row=mysqli_fetch_array($query))
 {
 ?>
@@ -155,26 +170,103 @@ while($row=mysqli_fetch_array($query))
 					</td>
 					<td class="cart-product-quantity">
 						<?php echo $qty=$row['qty']; ?>   
+						
 		            </td>
 					<td class="cart-product-sub-total">₱ <?php echo  $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-sub-total">₱ <?php echo $shippcharge=$row['shippingcharge']; ?>  </td>
-					<td class="cart-product-grand-total">₱ <?php echo (($qty*$price)+$shippcharge);?></td>
+					<td class="cart-product-grand-total">₱ <?php echo $gtotal =($qty*$price);?></td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 				</tr>
 				<?php } ?>
 				</tbody><!-- /tbody -->
 		</table><!-- /table -->	
-		<h1>Grand total: ₱ <?php echo $_SESSION['tp']?><h1>
-	</div>
-</div>
 
-		</div><!-- /.shopping-cart -->
-		</div> <!-- /.row -->
+		<!-- 
+		<?php
+		if($row = intval(mysqli_num_rows($query)) != 1){ 
+			?>
+			<h2>Shipping Fee: ₱ 60.00 </h2>
+			<h1>Grand total: ₱ <?php echo $total = (intval($_SESSION['tp'])+60); ?>.00</h1>
 		
-	</div><!-- /.container -->
-</div><!-- /.body-content -->
+		<?php }
+		else{ $g1total = ($gtotal + 60);?>
+			<h2>Shipping Fee: ₱ 60.00 </h2><s></s>
+			<h1>Grand total: ₱ <?php echo $total = $g1total; ?>.00</h1>
+		<?php } ?> -->
+	</div>
+	<div class="col-md-4 cart-shopping-total">
+	<table class="table table-bordered">
+			
+				<th>
+					<div class="cart-grand-total">
+					<?php
+					if($row = intval(mysqli_num_rows($query)) != 1){ 
+						?>
+						<h4>Shipping Fee: ₱ 60.00 </h4>
+						<h2>Grand total: ₱ <?php echo $total = (intval($_SESSION['tp'])+60); ?>.00</h2>
 					
-<div class="body-content outer-top-bd">
+					<?php }
+					else{ $g1total = ($gtotal + 60);?>
+						<h4>Shipping Fee: ₱ 60.00 </h4><s></s>
+						<h2>Grand total: ₱ <?php echo $total = $g1total; ?>.00</h2>
+					<?php } ?>
+					</div>
+				</th>
+
+	</table>
+		</div>	
+</div>
+<form name="ship" method="post">
+	<div class="col-md-4 col-sm-12 estimate-ship-tax">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					<span class="estimate-title">Shipping Address</span>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<td>
+						<div class="form-group">
+<?php
+$query=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
+while($row=mysqli_fetch_array($query))
+{
+?>
+
+<div class="form-group">
+					    <label class="info-title" for="Billing Address">Address<span>*</span></label>
+					    <textarea class="form-control unicase-form-control text-input"  name="billingaddress" required="required"><?php echo $row['billingAddress'];?></textarea>
+					  </div>
+						<div class="form-group">
+					    <label class="info-title" for="Billing State ">Baranggay<span>*</span></label>
+			 <input type="text" class="form-control unicase-form-control text-input" id="bilingstate" name="bilingstate" value="<?php echo $row['billingState'];?>" required>
+					  </div>
+					  <div class="form-group">
+					    <label class="info-title" for="Billing City">City<span>*</span></label>
+					    <input type="text" class="form-control unicase-form-control text-input" id="billingcity" name="billingcity" required="required" value="Valenzuela City" readonly >
+					  </div>
+ <div class="form-group">
+					    <label class="info-title" for="Billing Pincode">Baranggay Zip Code<span>*</span></label>
+					    <input type="text" class="form-control unicase-form-control text-input" id="billingpincode" name="billingpincode" required="required" value="<?php echo $row['billingPincode'];?>" >
+					  </div>
+
+
+					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
+			
+					<?php } ?>
+		
+						</div>
+					
+					</td>
+				</tr>
+		</tbody><!-- /tbody -->
+	</table><!-- /table -->
+</div>				
+</form>
+
+<div class="col-md-2">
 	<div class="container">
 		<div class="checkout-box faq-page inner-bottom-sm">
 			<div class="row">
@@ -202,8 +294,10 @@ while($row=mysqli_fetch_array($query))
 			<ul>
 				<input type="text" name="transactionNo" id="transactionNo" value="<?php echo intval($_GET['transactionId']); ?>" readonly hidden>
 				<input type="text" name="gTotal" id="gTotal" value="<?php echo intval($_SESSION['tp']); ?>" readonly hidden>
-			<link rel="stylesheet" href="../MainWebsite/css/qr.css">
-			<link rel="stylesheet" href="../MainWebsite/css/credit.css">
+				
+				<input type="text" name="gTotal1" id="gTotal1" value="<?php echo $total; ?>" readonly hidden>
+			<link rel="stylesheet" href="css/qr.css">
+			<link rel="stylesheet" href="css/credit.css">
 			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup(); debit()" required> Debit/Credit Card</li>
 				<li>
 					<div class="cardbox">
@@ -233,10 +327,10 @@ while($row=mysqli_fetch_array($query))
 					<div class="cardbox">
 					<div class="popup" id="popup">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-					<img class="epayments" src="/MainWebsite/image/cardsimage/Gcash.png">					
-					<img class="epayments" src="/MainWebsite/image/cardsimage/PayMaya.png">
+					<img class="epayments" src="image/cardsimage/GCash.png">					
+					<img class="epayments" src="image/cardsimage/PayMaya.png">
 					<div class="qr">
-					<img src = "../MainWebsite/admin/images/qr.png" width="350" height="350">
+					<img src = "admin/images/qr.png" width="350" height="350">
 					<br>
 					Please Scan the qr code using the Gcash or Paymaya App
 					</div>
@@ -244,6 +338,7 @@ while($row=mysqli_fetch_array($query))
 					<label class="info-title" for="referenceno">Reference No. <span>*</span></label>
 	    			<input type="text" class="form-control unicase-form-control text-input" id="referenceno" name="referenceno" onkeypress='validate(event)' required>
 					<label class="info-title" for="referenceno">Upload Screenshot of Proof of payment:<span>*</span></label>
+					<h6>Note: Please only upload image files (.jpg, .png, .jpeg)</h6>
 					<input type="file" name="fileToUpload" id="fileToUpload" required>
 					</table>
 					</div>
@@ -314,7 +409,7 @@ while($row=mysqli_fetch_array($query))
 				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup(); closeCardPopup(); cod()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
-					<img class="cod" src="/MainWebsite/image/cardsimage/cod.jpg" > <br /><br />
+					<img class="cod" src="image/cardsimage/cod.jpg" > <br /><br />
 					</div>
 				</li>
 				
@@ -360,7 +455,7 @@ while($row=mysqli_fetch_array($query))
 	    </form>		
 		</div>
 		<!-- panel-body  -->
-
+</div>
 	</div><!-- row -->
 </div>
 <!-- checkout-step-01  -->
@@ -372,6 +467,16 @@ while($row=mysqli_fetch_array($query))
 		</div><!-- /.checkout-box -->
 	</div><!-- /.container -->
 </div><!-- /.body-content -->
+
+		</div><!-- /.shopping-cart -->
+		</div> <!-- /.row -->
+		
+	</div><!-- /.container -->
+</div><!-- /.body-content -->
+
+
+
+
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	

@@ -5,31 +5,44 @@ include('includes/config.php');
 
 if(isset($_POST['change']))
 {
-   $email=$_POST['email'];
+    $email=$_POST['email'];
     $contact=$_POST['contact'];
+    $pw=$_POST['password'];
+    $cpw=$_POST['confirmpassword'];
     $password=md5($_POST['password']);
-$query=mysqli_query($con,"SELECT * FROM users WHERE email='$email' and contactno='$contact'");
-$num=mysqli_fetch_array($query);
-if($num>0)
-{
-$extra="forgot-password.php";
-mysqli_query($con,"update users set password='$password' WHERE email='$email' and contactno='$contact' ");
-$host=$_SERVER['HTTP_HOST'];
-$uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-$_SESSION['errmsg']="Password Changed Successfully";
-exit();
+    if($pw == $cpw){
+        $query=mysqli_query($con,"SELECT * FROM users WHERE email='$email' and contactno='$contact'");
+        $num=mysqli_fetch_array($query);
+            if($num>0)
+            {
+            $extra="forgot-password.php";
+            mysqli_query($con,"update users set password='$password' WHERE email='$email' and contactno='$contact' ");
+            $host=$_SERVER['HTTP_HOST'];
+            $uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+            header("location:http://$host$uri/$extra");
+            $_SESSION['errmsg']="Password Changed Successfully";
+            exit();
+            }
+            else
+            {
+            $extra="forgot-password.php";
+            $host  = $_SERVER['HTTP_HOST'];
+            $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+            header("location:http://$host$uri/$extra");
+            $_SESSION['errmsg']="Invalid email id or Contact no";
+            exit();
+        }
+        }
+        else{
+            $extra="forgot-password.php";
+            $host  = $_SERVER['HTTP_HOST'];
+            $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+            header("location:http://$host$uri/$extra");
+            $_SESSION['errmsg']="Password does not match Confirm Password";
+            exit();
+        }
 }
-else
-{
-$extra="forgot-password.php";
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-$_SESSION['errmsg']="Invalid email id or Contact no";
-exit();
-}
-}
+
 
 
 ?>
@@ -49,6 +62,8 @@ exit();
 
 	    <title>Shopping Portal | Forgot Password</title>
 
+        <link rel="stylesheet" href="css/passcheck.css">
+        
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    
@@ -146,16 +161,26 @@ echo htmlentities($_SESSION['errmsg']="");
 		</div>
 	  	<div class="form-group">
 		    <label class="info-title" for="exampleInputPassword1">Contact no <span>*</span></label>
-		 <input type="text" name="contact" class="form-control unicase-form-control text-input" id="contact" required>
+		 <input type="text" name="contact" class="form-control unicase-form-control text-input" id="contact" maxlength="11" required>
 		</div>
 <div class="form-group">
-	    	<label class="info-title" for="password">Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  required >
+	    	<label class="info-title" for="password">New Password. <span>*</span></label>
+	    	<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  maxlength="16" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" onkeyup='check();' required onkeyup='check();'>
+	    	<input type="checkbox" onclick="myFunction()"> Show Password
 	  	</div>
-
+	  	
+<div id="message">
+			<h3>Password must contain the following:</h3>
+			<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+			<p id="capital" class="invalid">An <b>uppercase</b> letter</p>
+			<p id="number" class="invalid">A <b>number</b></p>
+			<p id="length" class="invalid">Minimum <b>8 characters</b></p>
+		</div>
+	  	
 <div class="form-group">
-	    	<label class="info-title" for="confirmpassword">Confirm Password. <span>*</span></label>
-	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required >
+	    	<label class="info-title" for="confirmpassword">Confirm New Password. <span>*</span></label>
+	    	<input type="password" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword" required onkeyup='check();'>
+	    	<span id='confirmMessage'></span>
 	  	</div>
 
 
@@ -191,6 +216,88 @@ echo htmlentities($_SESSION['errmsg']="");
 	<!-- For demo purposes – can be removed on production -->
 	
 	<script src="switchstylesheet/switchstylesheet.js"></script>
+	
+	 <script>
+                    var check = function() {
+                    if (document.getElementById('password').value ==
+                        document.getElementById('confirmpassword').value) {
+                        document.getElementById('confirmMessage').style.color = 'green';
+                        document.getElementById('confirmMessage').innerHTML = 'Password matched';
+                    } else {
+                        document.getElementById('confirmMessage').style.color = 'red';
+                        document.getElementById('confirmMessage').innerHTML = 'Password not match';
+                    }
+                }</script>
+	
+	<script>
+			var myInput = document.getElementById("password");
+			var letter = document.getElementById("letter");
+			var capital = document.getElementById("capital");
+			var number = document.getElementById("number");
+			var length = document.getElementById("length");
+			// When the user clicks on the password field, show the message box
+			myInput.onfocus = function() {
+			document.getElementById("message").style.display = "block";
+			}
+
+			// When the user clicks outside of the password field, hide the message box
+			myInput.onblur = function() {
+			document.getElementById("message").style.display = "none";
+			}
+			// When the user starts to type something inside the password field
+			myInput.onkeyup = function() {
+			// Validate lowercase letters
+			var lowerCaseLetters = /[a-z]/g;
+			if(myInput.value.match(lowerCaseLetters)) {  
+				letter.classList.remove("invalid");
+				letter.classList.add("valid");
+			} else {
+				letter.classList.remove("valid");
+				letter.classList.add("invalid");
+			}
+			
+			// Validate capital letters
+			var upperCaseLetters = /[A-Z]/g;
+			if(myInput.value.match(upperCaseLetters)) {  
+				capital.classList.remove("invalid");
+				capital.classList.add("valid");
+			} else {
+				capital.classList.remove("valid");
+				capital.classList.add("invalid");
+			}
+
+			// Validate numbers
+			var numbers = /[0-9]/g;
+			if(myInput.value.match(numbers)) {  
+				number.classList.remove("invalid");
+				number.classList.add("valid");
+			} else {
+				number.classList.remove("valid");
+				number.classList.add("invalid");
+			}
+			
+			// Validate length
+			if(myInput.value.length >= 8) { 
+				length.classList.remove("invalid");
+				length.classList.add("valid");
+			} else {submit
+				length.classList.remove("valid");
+				length.classList.add("invalid");
+			}
+			}
+		</script>
+
+	
+	<script>
+		function myFunction() {
+  		var x = document.getElementById("password");
+  		if (x.type === "password") {
+    	x.type = "text";
+  		} else {
+    	x.type = "password";
+  		}
+		}
+		</script>
 	
 	<script>
 		$(document).ready(function(){ 

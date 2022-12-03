@@ -19,8 +19,9 @@ $sql=mysqli_query($con,"SELECT password FROM  users where password='".md5($_POST
 $num=mysqli_fetch_array($sql);
 if($num>0)
 {
- $con=mysqli_query($con,"update students set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where id='".$_SESSION['id']."'");
+ $con=mysqli_query($con,"update users set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where id='".$_SESSION['id']."'");
 echo "<script>alert('Password Changed Successfully !!');</script>";
+echo "<script>window.location='my-account.php';</script>";
 }
 else
 {
@@ -42,34 +43,37 @@ else
 	    <meta name="robots" content="all">
 
 	    <title>My Account</title>
-				<!-- Start of Async Drift Code -->
-				<script>
-"use strict";
+			
+			<!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
 
-!function() {
-  var t = window.driftt = window.drift = window.driftt || [];
-  if (!t.init) {
-    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-    t.factory = function(e) {
-      return function() {
-        var n = Array.prototype.slice.call(arguments);
-        return n.unshift(e), t.push(n), t;
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100776989531652");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
       };
-    }, t.methods.forEach(function(e) {
-      t[e] = t.factory(e);
-    }), t.load = function(t) {
-      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-      var i = document.getElementsByTagName("script")[0];
-      i.parentNode.insertBefore(o, i);
-    };
-  }
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('mfzdw3bw9zcu');
-</script>
-<!-- End of Async Drift Code -->
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -96,7 +100,7 @@ drift.load('mfzdw3bw9zcu');
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="image/icons/icon logo.png">
-		<link rel="stylesheet" href="../MainWebsite/css/passcheck.css">
+		<link rel="stylesheet" href="css/passcheck.css">
 <script type="text/javascript">
 function valid()
 {
@@ -188,20 +192,24 @@ while($row=mysqli_fetch_array($query))
 ?>
 
 					<form class="register-form" action="uploadVId.php" role="form" method="post" enctype="multipart/form-data">
-<div class="form-group">
-					    <label class="info-title" for="name">Name<span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['name'];?>" id="name" name="name" required="required">
-					  </div>
+					<div class="form-group">
+					    <label class="info-title" for="name">First name<span>*</span></label>
+					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['first_name'];?>" id="first_name" name="first_name" maxlength="16" required="required">
+					</div>
+
+					<div class="form-group">
+					    <label class="info-title" for="name">Last name<span>*</span></label>
+					    <input type="text" class="form-control unicase-form-control text-input" value="<?php echo $row['last_name'];?>" id="last_name" name="last_name" maxlength="16" required="required">
+					</div>
 
 
-
-						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-			 <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" value="<?php echo $row['email'];?>" readonly>
-					  </div>
+					<div class="form-group">
+						<label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+						<input type="email" class="form-control unicase-form-control text-input" id="email" name="email" value="<?php echo $row['email'];?>">
+					</div>
 					  <div class="form-group">
 					    <label class="info-title" for="Contact No.">Contact No. <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" required="required" value="<?php echo $row['contactno'];?>"  maxlength="10">
+					    <input type="text" class="form-control unicase-form-control text-input" id="contactno" name="contactno" required="required" value="<?php echo $row['contactno'];?>"  maxlength="11">
 					  </div>
 					  <?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
 				$row = mysqli_fetch_assoc($valid);
@@ -210,6 +218,7 @@ while($row=mysqli_fetch_array($query))
 					  
 				Upload Valid ID For verification (Front and Back):
 					<input type="file" name="file[]" id="file" required multiple>
+					<h6>Note: Please only upload image files (.jpg, .png, .jpeg)</h6>
 					<button type="submit" name="imgSubmit" class="btn-upper btn btn-primary checkout-page-button">Upload Images</button>
 				</div>
 				<?php } 
@@ -220,7 +229,7 @@ while($row=mysqli_fetch_array($query))
 					
 				</div>
 				<?php } ?>
-					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
+					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button" onclick="vid()">Update</button>
 					</form>
 					<?php } ?>
 				</div>	
@@ -248,14 +257,17 @@ while($row=mysqli_fetch_array($query))
 					<form class="register-form" role="form" method="post" name="chngpwd" onSubmit="return valid();">
 <div class="form-group">
 					    <label class="info-title" for="Current Password">Current Password<span>*</span></label>
-					    <input type="password" class="form-control unicase-form-control text-input" id="cpass" name="cpass" required="required">
+					    <input type="password" class="form-control unicase-form-control text-input" id="cpass" name="cpass" maxlength="16" required="required">
 					  </div>
 
 
 
 						<div class="form-group">
 					    <label class="info-title" for="New Password">New Password <span>*</span></label>
-						<input type="password" class="form-control unicase-form-control text-input" id="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required >					  </div>
+						<input type="password" class="form-control unicase-form-control text-input" id="newpass" name="newpass"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" maxlength="16" required >
+						<input type="checkbox" onclick="myFunction()"> Show Password
+						</div>
+
 					  <div id="message">
 							<h3>Password must contain the following:</h3>
 							<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -265,13 +277,12 @@ while($row=mysqli_fetch_array($query))
 						</div>
 					  <div class="form-group">
 					    <label class="info-title" for="Confirm Password">Confirm Password <span>*</span></label>
-					    <input type="password" class="form-control unicase-form-control text-input" id="cnfpass" name="cnfpass" required="required" >
+					    <input type="password" class="form-control unicase-form-control text-input" id="cnfpass" name="cnfpass" required="required" maxlength="16" onkeyup='check();'>
+					   <span id='confirmMessage'></span>
 					  </div>
 					  <button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button">Change </button>
+
 					</form> 
-
-
-
 
 						      </div>
 						    </div>
@@ -288,7 +299,7 @@ while($row=mysqli_fetch_array($query))
 </div>
 </div>
 <script>
-	var myInput = document.getElementById("password");
+	var myInput = document.getElementById("newpass");
 	var letter = document.getElementById("letter");
 	var capital = document.getElementById("capital");
 	var number = document.getElementById("number");
@@ -345,6 +356,28 @@ while($row=mysqli_fetch_array($query))
 	}
 </script>
 
+<script>
+		function myFunction() {
+  		var x = document.getElementById("newpass");
+  		if (x.type === "password") {
+    	x.type = "text";
+  		} else {
+    	x.type = "password";
+  		}
+		}
+</script>
+<script>
+    var check = function() {
+        if (document.getElementById('newpass').value ==
+            document.getElementById('cnfpass').value) {
+            document.getElementById('confirmMessage').style.color = 'green';
+            document.getElementById('confirmMessage').innerHTML = 'Password matched';
+        } else {
+            document.getElementById('confirmMessage').style.color = 'red';
+            document.getElementById('confirmMessage').innerHTML = 'Password not match';
+            }
+}</script>
+
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	
@@ -378,6 +411,12 @@ while($row=mysqli_fetch_array($query))
 		$(window).bind("load", function() {
 		   $('.show-theme-options').delay(2000).trigger('click');
 		});
+		
+		function vid(){
+
+				$('#file').prop('required', false);
+				
+			}
 	</script>
 </body>
 </html>

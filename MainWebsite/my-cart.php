@@ -1,4 +1,4 @@
-	<?php 
+<?php 
 session_start();
 error_reporting(0);
 include('includes/config.php');
@@ -40,32 +40,22 @@ if(strlen($_SESSION['login'])==0)
 header('location:login.php');
 }
 else{
+    date_default_timezone_set('Asia/Taipei');
+    $date = date("Y-m-d G:i:s");
 	$quantity=$_POST['quantity'];
 	$pdd=$_SESSION['pid'];
-	mysqli_query($con,"insert into order_header(userId, grandTotal) values('".$_SESSION['id']."', '".$_SESSION['tp']."')");
+	mysqli_query($con,"insert into order_header(userId,dateCreated, grandTotal) values('".$_SESSION['id']."','$date' ,'".$_SESSION['tp']."')");
 	$transactionId = mysqli_insert_id($con);
 	$value=array_combine($pdd,$quantity);
 	foreach($value as $qty=> $val34){
-		mysqli_query($con,"update products set productAvailability=productavailability-$val34 where id='".$_SESSION['sid']."'");
-		mysqli_query($con,"insert into orders(userId,productId,quantity,transactionId) values('".$_SESSION['id']."','$qty','$val34','$transactionId')");
+// 		mysqli_query($con,"update products set productAvailability=productavailability-$val34 where id='".$_SESSION['sid']."'");
+		mysqli_query($con,"insert into orders(userId,productId,quantity,transactionId,orderDate) values('".$_SESSION['id']."','$qty','$val34','$transactionId', '$date')");
 		header('location:payment-method.php?transactionId='.$transactionId);
 	}
 }
 }
 
-// code for billing address updation
-	if(isset($_POST['update']))
-	{
-		$baddress=$_POST['billingaddress'];
-		$bstate=$_POST['bilingstate'];
-		$bcity=$_POST['billingcity'];
-		$bpincode=$_POST['billingpincode'];
-		$query=mysqli_query($con,"update users set billingAddress='$baddress',billingState='$bstate',billingCity='$bcity',billingPincode='$bpincode' where id='".$_SESSION['id']."'");
-// 		if($query)
-// 		{
-// echo "<script>alert('Billing Address has been updated');</script>";
-// 		}
-	}
+
 
 
 // code for Shipping address updation
@@ -97,34 +87,7 @@ else{
 	    <meta name="robots" content="all">
 
 	    <title>My Cart</title>
-				<!-- Start of Async Drift Code -->
-				<script>
-"use strict";
-
-!function() {
-  var t = window.driftt = window.drift = window.driftt || [];
-  if (!t.init) {
-    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-    t.factory = function(e) {
-      return function() {
-        var n = Array.prototype.slice.call(arguments);
-        return n.unshift(e), t.push(n), t;
-      };
-    }, t.methods.forEach(function(e) {
-      t[e] = t.factory(e);
-    }), t.load = function(t) {
-      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-      var i = document.getElementsByTagName("script")[0];
-      i.parentNode.insertBefore(o, i);
-    };
-  }
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('mfzdw3bw9zcu');
-</script>
-<!-- End of Async Drift Code -->
+		
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -166,6 +129,37 @@ drift.load('mfzdw3bw9zcu');
 
 	</head>
     <body class="cnt-home">
+        
+        <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100776989531652");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 	
 		
 	
@@ -195,17 +189,17 @@ drift.load('mfzdw3bw9zcu');
 	<div class="table-responsive">
 <form name="cart" method="post">	
 <?php
-if(!empty($_SESSION['cart'])){
+if(!empty($_SESSION['cart']))
+{
 	?>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th class="cart-description item">Image</th>
+					<th class="cart-description item">Images</th>
 					<th class="cart-product-name item">Product Name</th>
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
-					<th class="cart-sub-total item">Shipping Charge</th>
-					<th class="cart-total last-item">Grandtotal</th>
+					<th class="cart-total last-item">Subtotal</th>
 					<th class="cart-romove item">Remove</th>
 				</tr>
 			</thead><!-- /thead -->
@@ -235,12 +229,12 @@ if(!empty($_SESSION['cart'])){
 			if(!empty($query)){
 			while($row = mysqli_fetch_array($query)){
 				$quantity=$_SESSION['cart'][$row['id']]['quantity'];
-				$subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge'];
+				$subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice'];
 				$totalprice += $subtotal;
 				$_SESSION['qnty']=$totalqunty+=$quantity;
 
 				array_push($pdtid,$row['id']);
-// print_r($_SESSION['pid'])=$pdtid;exit;
+ // print_r($_SESSION['pid'])=$pdtid;exit;
 	?>
 
 
@@ -253,84 +247,37 @@ if(!empty($_SESSION['cart'])){
 					<td class="cart-product-name-info">
 						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo htmlentities($pd=$row['id']);?>" ><?php echo $row['productName'];
 
-$_SESSION['sid']=$pd;
+ $_SESSION['sid']=$pd;
 						 ?></a></h4>
 						
 					</td>
 					<td class="cart-product-quantity">
 						<div class="quant-input">
-				                <div class="arrows">
-				                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-				                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-				                </div>
-				             <input type="text" value="<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>"  name="quantity[<?php echo $row['id']; ?>]" onchange="calculateTotal()">
+				                
+				                <?php $max =$row['productAvailability']; 
+				                    $qty = $_SESSION['cart'][$row['id']]['quantity'];
+				                echo '<input type="number" value="'.$qty.'"  name="quantity['.$row['id'].']" onchange="calculateTotal()" min="0" max="'.$max.'" value="1" oninput="'; ?>this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">'; ?>
+				             
 				             
 			              </div>
 		            </td>
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['productPrice']; ?>.00</span></td>
-					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "₱"." ".$row['shippingCharge']; ?>.00</span></td>
 
-					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge']); ?>.00</span></td>
+					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo "₱"." ".($_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']); ?>.00</span></td>
 					<td class="romove-item" ><button style="font-size:20px" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>"  class="fa fa-trash-o"></button></td>
 				</tr>
 
-				<?php } }
-$_SESSION['pid']=$pdtid;
+				<?php 
+                }
+             }
+ $_SESSION['pid']=$pdtid;
 				?>
 				
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
 		
 	</div>
-</div><!-- /.shopping-cart-table -->			<div class="col-md-4 col-sm-12 estimate-ship-tax">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>
-					<span class="estimate-title">Shipping Address</span>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-				<tr>
-					<td>
-						<div class="form-group">
-<?php
-$query=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
-while($row=mysqli_fetch_array($query))
-{
-?>
-
-<div class="form-group">
-					    <label class="info-title" for="Billing Address">Address<span>*</span></label>
-					    <textarea class="form-control unicase-form-control text-input"  name="billingaddress" required="required"><?php echo $row['billingAddress'];?></textarea>
-					  </div>
-						<div class="form-group">
-					    <label class="info-title" for="Billing State ">Baranggay<span>*</span></label>
-			 <input type="text" class="form-control unicase-form-control text-input" id="bilingstate" name="bilingstate" value="<?php echo $row['billingState'];?>" required>
-					  </div>
-					  <div class="form-group">
-					    <label class="info-title" for="Billing City">City<span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="billingcity" name="billingcity" required="required" value="Valenzuela City" readonly >
-					  </div>
- <div class="form-group">
-					    <label class="info-title" for="Billing Pincode">Baranggay Zip Code<span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="billingpincode" name="billingpincode" required="required" value="<?php echo $row['billingPincode'];?>" >
-					  </div>
-
-
-					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
-			
-					<?php } ?>
-		
-						</div>
-					
-					</td>
-				</tr>
-		</tbody><!-- /tbody -->
-	</table><!-- /table -->
-</div>
-
+</div><!-- /.shopping-cart-table -->
 <div class="col-md-4 col-sm-12 cart-shopping-total">
 	<table class="table table-bordered">
 		<thead>
@@ -338,7 +285,7 @@ while($row=mysqli_fetch_array($query))
 				<th>
 					
 					<div class="cart-grand-total">
-						Grand Total<span class="inner-left-md"><?php echo "&#8369"." ".$_SESSION['tp']="$totalprice". ".00"; ?></span>
+						Total<span class="inner-left-md"><?php echo "&#8369"." ".$_SESSION['tp']="$totalprice". ".00"; ?></span>
 					</div>
 				</th>
 			</tr>
@@ -354,10 +301,18 @@ while($row=mysqli_fetch_array($query))
 				</tr>
 		</tbody><!-- /tbody -->
 	</table>
-	<?php } else {
-echo "Your shopping Cart is empty";
-		}?>
-</div>			</div>
+	<?php 
+    } 
+    else
+     {
+            echo "Your shopping Cart is empty";
+            
+    }
+    ?>
+</div>			
+			
+</div>
+
 </div> 
 		</div> 
 </div> 
@@ -414,6 +369,7 @@ echo "Your shopping Cart is empty";
 	<!-- For demo purposes – can be removed on production : End -->
 </div>
 </div>
-<?php include('includes/footer.php');?>
+<?php include('includes/footer.php');
+?>
 </body>
 </html>

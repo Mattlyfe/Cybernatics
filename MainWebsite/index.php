@@ -36,35 +36,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
 
-	    <title>Shopping Portal Home Page</title>
-		<!-- Start of Async Drift Code -->
-<script>
-"use strict";
-
-!function() {
-  var t = window.driftt = window.drift = window.driftt || [];
-  if (!t.init) {
-    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-    t.factory = function(e) {
-      return function() {
-        var n = Array.prototype.slice.call(arguments);
-        return n.unshift(e), t.push(n), t;
-      };
-    }, t.methods.forEach(function(e) {
-      t[e] = t.factory(e);
-    }), t.load = function(t) {
-      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-      var i = document.getElementsByTagName("script")[0];
-      i.parentNode.insertBefore(o, i);
-    };
-  }
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('mfzdw3bw9zcu');
-</script>
-<!-- End of Async Drift Code -->
+	    <title>Sandra Store</title>
 
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -96,6 +68,37 @@ drift.load('mfzdw3bw9zcu');
 
 	</head>
     <body class="cnt-home">
+        
+        <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100776989531652");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 	
 		
 	
@@ -118,15 +121,21 @@ drift.load('mfzdw3bw9zcu');
 <div id="hero" class="homepage-slider3">
 	<div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
 		<div class="full-width-slider">	
-			<div class="item" style="background-image: url(assets/images/sliders/grocery.jpg);">
+			<div class="item" style="background-image: url(assets/images/sliders/pic1.jpg);">
 				<!-- /.container-fluid -->
 			</div><!-- /.item -->
 		</div><!-- /.full-width-slider -->
 	    
 	    <div class="full-width-slider">
-			<div class="item full-width-slider" style="background-image: url(assets/images/sliders/grocery2.jpg);">
+			<div class="item full-width-slider" style="background-image: url(assets/images/sliders/pic2.jpg);">
 			</div><!-- /.item -->
 		</div><!-- /.full-width-slider -->
+
+		<div class="full-width-slider">
+			<div class="item full-width-slider" style="background-image: url(assets/images/sliders/pic3.jpg);">
+			</div><!-- /.item -->
+		</div><!-- /.full-width-slider -->
+
 
 	</div><!-- /.owl-carousel -->
 </div>
@@ -146,7 +155,7 @@ drift.load('mfzdw3bw9zcu');
 							<h4 class="info-box-heading green">Buy</h4>
 						</div>
 					</div>	
-					<h6 class="text">30 Day Money Back Guarantee.</h6>
+					
 				</div>
 			</div><!-- .col -->
 
@@ -160,7 +169,7 @@ drift.load('mfzdw3bw9zcu');
 							<h4 class="info-box-heading orange">Deliver</h4>
 						</div>
 					</div>
-					<h6 class="text">free ship-on oder over PHP 600.00</h6>	
+						
 				</div>
 			</div><!-- .col -->
 
@@ -174,7 +183,7 @@ drift.load('mfzdw3bw9zcu');
 							<h4 class="info-box-heading red">Sale</h4>
 						</div>
 					</div>
-					<h6 class="text">All items-sale up to 20% off </h6>	
+					
 				</div>
 			</div><!-- .col -->
 		</div><!-- /.row -->
@@ -217,7 +226,7 @@ while ($row=mysqli_fetch_array($ret))
 		<div class="product-image">
 			<div class="image">
 				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-				<img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="180" height="300" alt=""></a>
+				<img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="200" height="150" alt=""></a>
 			</div><!-- /.image -->			
 
 			                        		   
@@ -273,7 +282,7 @@ while ($row=mysqli_fetch_array($ret))
 		<div class="product-image">
 			<div class="image">
 				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-				<img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="180" height="300" alt=""></a>
+				<img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="200" height="150" alt=""></a>
 			</div><!-- /.image -->			
 
 			                        		   
@@ -329,7 +338,7 @@ while ($row=mysqli_fetch_array($ret))
 		<div class="product-image">
 			<div class="image">
 				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>">
-				<img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="180" height="300" alt=""></a>
+				<img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="200" height="150" alt=""></a>
 			</div>		
 
 			                        		   
@@ -371,11 +380,11 @@ while ($row=mysqli_fetch_array($ret))
 				<div class="row">
 					<div class="col-md-6">
 	                   <section class="section">
-	                   	<h3 class="section-title">Condiments</h3>
+	                   	<h3 class="section-title">Products Added this Month</h3>
 	                   	<div class="owl-carousel homepage-owl-carousel custom-carousel outer-top-xs owl-theme" data-item="2">
 	   
 <?php
-$ret=mysqli_query($con,"select * from products where category=3");
+$ret=mysqli_query($con,"select * from products where MONTH(postingDate)=MONTH(now()) and YEAR(postingDate)=YEAR(now())");
 while ($row=mysqli_fetch_array($ret)) 
 {
 ?>
@@ -388,7 +397,7 @@ while ($row=mysqli_fetch_array($ret))
 	<div class="product">		
 		<div class="product-image">
 			<div class="image">
-				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="180" height="300"></a>
+				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="200" height="150"></a>
 			</div><!-- /.image -->			                        		   
 		</div><!-- /.product-image -->
 			
@@ -436,7 +445,7 @@ while ($row=mysqli_fetch_array($ret))
 	<div class="product">		
 		<div class="product-image">
 			<div class="image">
-				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="300" height="300"></a>
+				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img  src="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" data-echo="admin/POS/MainPOS/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>"  width="200" height="150"></a>
 			</div><!-- /.image -->			                        		   
 		</div><!-- /.product-image -->
 			

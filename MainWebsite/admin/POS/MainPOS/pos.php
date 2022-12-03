@@ -283,7 +283,7 @@ else{
                         <td><?php echo $row['productName']; ?></td>
                                 
                         <td><?php $quantity = $row['quantity']; echo $quantity; ?></td>
-                        <td>
+                        <td> PHP
                         <?php
                        
                         array_push($item_codes,$row['productCode']);
@@ -299,7 +299,7 @@ else{
                             
                         ?>
                         </td>
-                        <td>
+                        <td>  PHP
                         <?php 
                             if($row['price'] == 0){
                                 echo $quantity * $row['productPrice']; 
@@ -314,7 +314,7 @@ else{
                         }
                         ?>
                         <tr>
-                        <td style="text-align:right"colspan='6'>Total Amount : <?php echo $total_amount_due.".00"?></td>
+                        <td style="text-align:right"colspan='6'>Total Amount : PHP <?php echo $total_amount_due.".00"?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -345,7 +345,7 @@ else{
                                     <label class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                         <input type="radio" name="options" id="options2" autocomplete="off" value="Gcash">GCASH
                                     </label>
-                                    <label class="btn btn-success">
+                                    <label class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                                         <input type="radio" name="options" id="options3" autocomplete="off" value="Paymaya">PAYMAYA
                                     </label>
                                 </div>
@@ -532,6 +532,14 @@ else{
                             });
                         });
                         if (willPrint) {
+                            <?php 
+                            $getlastId = $db->prepare("SELECT id FROM transactions ORDER BY id DESC LIMIT 1");
+                            $getlastId->execute(); 
+                            $row = $getlastId->fetch();
+
+                            $lastid = $row['id'];
+                            $newid = ($lastid + 1);
+                            ?>
                             var doc = new jsPDF('p', 'pt', 'letter');
                             var y = 20;
                             var currentdate = new Date(); 
@@ -543,11 +551,14 @@ else{
                                             + currentdate.getMinutes() + ":" 
                                             + currentdate.getSeconds();
                             let cashier = '<?php echo $name ?>'
+                            let lastid = '<?php echo $newid ?>'
                             doc.setLineWidth(2);
                             doc.setFont(undefined, 'bold').text(250,50, "SANDRA STORE");
                             doc.text(170,70, "6017 Gen. T. De Leon, Valenzuela City");
-                            doc.text(155,90, `Transaction Stamp: ${datetime}`);
-                            doc.text(230,110, "Cashier: "+cashier);
+                            doc.text(155,90, `Transaction Stamp: ${datetime} TR#`+lastid);
+                            doc.text(350,110, "Cashier: "+cashier);
+                            doc.text(100,110, "Cash Tendered: PHP "+ cash_tendered);
+                            doc.text(100,130, "Change: PHP "+ changed);
                            
                             doc.autoTable({
                                 html: '#table',

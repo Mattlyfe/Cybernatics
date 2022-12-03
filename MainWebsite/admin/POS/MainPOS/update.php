@@ -1,12 +1,14 @@
 <?php
 	include('config.php');
-	$id=$_GET['id'];
+	$id = $_GET['id'];
 	$result = $db->prepare("SELECT * FROM users_be WHERE id= :userid");
 	$result->bindParam(':userid', $id);
 	$result->execute();
 	for($i=0; $row = $result->fetch(); $i++){
 ?>
-<link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+<html>
+    <body>
+<link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
 <form action="saveeditaccount.php" method="post">
 <center><h4><i class="icon-edit icon-large"></i> Edit Account:</h4></center>
 <hr>
@@ -31,6 +33,8 @@
 </div>
 </div>
 </form>
+</body>
+</html>
 <?php
 }
 ?>

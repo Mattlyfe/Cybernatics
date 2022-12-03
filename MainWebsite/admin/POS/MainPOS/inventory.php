@@ -18,14 +18,21 @@ if($_SESSION['role'] == "supplier" ){
 }
 
 else{
+
 ?>
 <html>
     <head>
 	<title>Admin| Inventory</title>
-	<link rel="shortcut icon" href="image/icon logo.png">
+	<link rel="shortcut icon" href="img/icon logo.png">
     <link href="css/bootstrap.css" rel="stylesheet">
-
-<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
+<!--link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css"-->
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <style type="text/css">
@@ -78,36 +85,16 @@ else{
 <!-- profit compu -->
 <script>
 function sum() {
-            var txtFirstNumberValue = document.getElementById('txt1').value;
-            var txtSecondNumberValue = document.getElementById('txt2').value;
-            var result = parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue);
-            if (!isNaN(result)) {
-                document.getElementById('txt3').value = result;
-				
-            }
-			
-			 var txtFirstNumberValue = document.getElementById('txt11').value;
-            var result = parseInt(txtFirstNumberValue);
-            if (!isNaN(result)) {
-                document.getElementById('txt22').value = result;				
-            }
-			
-			 var txtFirstNumberValue = document.getElementById('txt11').value;
-            var txtSecondNumberValue = document.getElementById('txt33').value;
-            var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
-            if (!isNaN(result)) {
-                document.getElementById('txt55').value = result;
-				
-            }
-			
-			 var txtFirstNumberValue = document.getElementById('txt4').value;
-			 var result = parseInt(txtFirstNumberValue);
-            if (!isNaN(result)) {
-                document.getElementById('txt5').value = result;
-				}
-			
-        }
+	var txtFirstNumberValue = document.getElementById('txt1').value;
+	var txtSecondNumberValue = document.getElementById('txt2').value;
+	var result = parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue);
+	if (!isNaN(result)) {
+		document.getElementById('txt3').value = result;
+	}		
+}
 </script>
+
+
     <!-- end of profit compu -->
 <div class="invetb">
 <div style="margin-top: -19px; margin-bottom: 21px;">
@@ -115,14 +102,14 @@ function sum() {
 		</div>	
 <div style="margin-top: -19px; margin-bottom: 21px;">
 			<?php 
-			include('../MainPOS/connect.php');
-				$result = $db->prepare("SELECT * FROM products ORDER BY id LIMIT 10 OFFSET 10");
+			include('connect.php');
+				$result = $db->prepare("SELECT * FROM products ORDER BY id");
 				$result->execute();
 				$rowcount = $result->rowcount();
 			?>
 
 			<?php 
-			include('../MainPOS/connect.php');
+			include('connect.php');
 				$result = $db->prepare("SELECT * FROM products where productAvailability < 10 ORDER BY id DESC");
 				$result->execute();
 				$rowcount123 = $result->rowcount();
@@ -137,7 +124,73 @@ function sum() {
 			</div>
 </div>
 <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
-<a rel="facebox" href="addproduct.php"><Button type="submit" class="btn btn-info" style="float:right; width:230px; height:35px;" /><i class="bi bi-plus-circle-fill"></i> Add Product</button></a><br><br>
+<button id="addBtn" data-toggle="modal" data-target="#addModal" class="btn btn-info" style="float:right; width:230px; height:35px;" ><i class="bi bi-plus-circle-fill"></i></button>
+<br><br>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column text-center">
+				<form method="post">
+				<span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="genCode" id="genCode"><br>
+					<?php 
+					if(isset($_POST['codeSubmit'])){
+						$code = $_POST['genCode']; ?>
+						
+						<script>
+							
+							let codeSubmit = document.getElementById('codeSubmit');
+
+							codeSubmit.onClick = window.open('barcode_gen.php?genCode=<?php echo $code;?>','popUpWindow','height=500,width=400,left=100,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=yes');
+
+							
+						</script>
+
+					<?php 
+					} 
+					?>
+
+					<br>
+				<button class="btn btn-success btn-block btn-large" style="width:267px;" name="codeSubmit" id="codeSumbit"><i class="icon icon-save icon-large"></i> Save</button>
+				</form>
+               <form action="saveproduct.php" method="post">
+<center><h4><i class="icon-plus-sign icon-large"></i> Add Product</h4></center>
+<hr>
+<div id="ac">
+
+
+<span>Product Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" ><br>
+<span>Generic Name : </span><input type="text" style="width:359px; height:40px;" name="genName" Required/><br>
+<span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"> </textarea><br>
+<span>Category : </span><select name ="category" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+    <option selected hidden>Choose...</option>
+    <option value="3">Condiments</option>
+    <option value="4">Cookies and Crackers</option>
+    <option value="5">Dairy</option>
+    <option  value="6">Beverages</option>
+  </select><br>
+<span>Selling Price : </span><br><input type="text" id="txt1" style="width:359px; height:40px;" name="productPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+<span>Before Price : </span><br><input type="text" id="txtB" style="width:359px; height:40px;" name="productPriceBeforeDiscount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+<span>Original Price : </span><input type="text" id="txt2" style="width:359px; height:40px;" name="oPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+<span>Profit : </span><br><input type="text" id="txt3" style="width:359px; height:40px;" name="profit" readonly><br>
+
+<span>Quantity : </span><br><input type="number" style="width:359px; height:40px;" min="0" name="qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required ><br>
+<span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
+<div style="text-align: center; margin-top: 10px">
+<button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save</button>
+</div>
+</div>
+
+</form>
+            </div>
+        </div>
+    </div>
+  </div>
 <div class="row" style="height:500px; overflow-y: scroll;">
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
@@ -149,6 +202,7 @@ function sum() {
 			<th width="9%"> Date Added </th>
 			<th width="6%"> Original Price </th>
 			<th width="6%"> Selling Price </th>
+			<th width="6%"> Before Price </th>
 			<th width="6%"> QTY </th>
 			<th width="6%"> Total </th>
 			<th width="8%"> Action </th>
@@ -171,7 +225,7 @@ function sum() {
 					}
 					return $number;
 				}
-				include('../MainPOS/connect.php');
+				include('connect.php');
 				$result = $db->prepare("SELECT *, productPrice * productAvailability as total FROM products ORDER BY id DESC");
 				$result->execute();
 				for($i=0; $row = $result->fetch(); $i++){
@@ -193,7 +247,7 @@ function sum() {
 				}
 
 				if ($category == 6){
-					$categoryName = 'Fashion';
+					$categoryName = 'Beverages';
 				}
 
 				if ($availableqty < 10) {
@@ -218,23 +272,124 @@ function sum() {
 			$pprice=$row['productPrice'];
 			echo formatMoney($pprice, true);
 			?></td>
+			<td>
+			<?php
+			$total=$row['productPriceBeforeDiscount'];
+			echo formatMoney($total, true);
+			?>
+			</td>
 			<td><?php echo $row['productAvailability']; ?></td>
 			<td>
 			<?php
 			$total=$row['total'];
 			echo formatMoney($total, true);
 			?>
-			</td>			
+			</td>
+			<!-- Action button-->
 			<td>
 			<a rel="facebox" title="Click to upload Image" href="uploadImage.php?id=<?php echo $row['id']; ?>"><button class="btn btn-success"><i class="bi bi-card-image"></i></button></a>
-			<a rel="facebox" title="Click to edit the product" href="editproduct.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning"><i class="bi bi-pass"></i></button></a>
+
+			<button id="editBtn<?php echo $row['id']; ?>" data-toggle="modal" data-target="#editModal<?php echo $row['id']; ?>" class="btn btn-warning"><i class="bi bi-pass"></i></button>
 			<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 			</tr>
+		
+			
+	<div class="modal fade" id="editModal<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle">Edit Product</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body d-flex flex-column text-center">
+			  <form action="saveeditproduct.php" method="post">
+					<center><h4><i class="icon-edit icon-large"></i> Edit Product</h4></center>
+					<hr>
+					<div id="ac">
+						<input type="hidden" name="memi" value="<?php echo $row['id']; ?>" />
+						<span>Product Code : </span><input type="text" style="width:359px; height:40px;"  name="productCode" value="<?php echo $row['productCode']; ?>" Required/><br>
+						<span>Generic Name : </span><input type="text" style="width:359px; height:40px;"  name="genName" value="<?php echo $row['genName']; ?>" /><br>
+						<span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"><?php echo $row['productName']; ?> </textarea><br>
+						<span>Category : </span><select name="category" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+							<?php
+							$cat=$row['category'];
+							if($cat== 3)
+							{
+								?>
+									<option value="3" selected>Condiments</option>
+									<option value="4" >Cookies and Crackers</option>
+									<option value="5">Dairy</option>
+									<option  value="6">Beverages</option>
+								<?php
+							}
+							?>
+							<?php
+							if($cat== 4)
+							{
+								?>
+									<option value="3">Condiments</option>
+									<option value="4" selected>Cookies and Crackers</option>
+									<option value="5">Dairy</option>
+									<option  value="6">Beverages</option>
+								<?php
+							}
+							?>
+
+							<?php
+							if($cat== 5)
+							{
+								?>
+									<option value="3">Condiments</option>
+									<option value="4">Cookies and Crackers</option>
+									<option value="5" selected>Dairy</option>
+									<option  value="6">Beverages</option>
+								<?php
+							}
+							?>
+							
+							<?php
+							if($cat== 6)
+							{
+								?>
+									<option value="3">Condiments</option>
+									<option value="4">Cookies and Crackers</option>
+									<option value="5">Dairy</option>
+									<option  value="6" selected>Beverages</option>
+								<?php
+							}
+							?>
+						</select><br>
+						<span>Selling Price : </span><br><input type="text" style="width:359px; height:40px;" id="txt1<?php echo $row['id']; ?>" value="<?php echo $row['productPrice']; ?>" name="productPrice" onkeyup="sum<?php echo $row['id']; ?>();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/><br>
+						<span>Before Price : </span><br><input type="text" style="width:359px; height:40px;" id="txtB" name="productPriceBeforeDiscount" value="<?php echo $row['productPriceBeforeDiscount']; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/><br>
+						<span>Original Price : </span><br><input type="text" style="width:359px; height:40px;" id="txt2<?php echo $row['id']; ?>" value="<?php echo $row['oPrice']; ?>" name="oPrice" onkeyup="sum<?php echo $row['id']; ?>();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/><br>
+						<span>Profit : </span><br><input type="text" style="width:359px; height:40px;" id="txt3<?php echo $row['id']; ?>" value="<?php echo $row['profit']; ?>" name="profit"  readonly><br>
+						<span>QTY: </span><br><input type="number" style="width:359px; height:40px;" name="productAvailability"  value="<?php echo $row['productAvailability']; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/><br>
+						<div style="text-align: center; margin-top: 10px">
+
+							<button type="submit" class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
+						</div>
+					</div>
+				</form>
+              </div>
+          </div>
+      </div>
+    </div>
+	<script>
+	function sum<?php echo $row['id']; ?>() {
+		var txtFirstNumberValue<?php echo $row['id']; ?> = document.getElementById('txt1<?php echo $row['id']; ?>').value;
+		var txtSecondNumberValue<?php echo $row['id']; ?> = document.getElementById('txt2<?php echo $row['id']; ?>').value;
+		var result<?php echo $row['id']; ?> = parseInt(txtFirstNumberValue<?php echo $row['id']; ?>) - parseInt(txtSecondNumberValue<?php echo $row['id']; ?>);
+		if (!isNaN(result<?php echo $row['id']; ?>)) {
+			document.getElementById('txt3<?php echo $row['id']; ?>').value = result<?php echo $row['id']; ?>;
+		}
+				
+	}
+	</script>
 			<?php
                 }
 			?>
-		
-		
 		
 	</tbody>
 </table>
@@ -244,6 +399,11 @@ function sum() {
 </div>
 </div>
 </div>
+
+
+ 
+	
+
 <script src="js/jquery.js"></script>
   <script type="text/javascript">
 $(function() {
@@ -281,7 +441,23 @@ return false;
 
 });
 </script>
+
+<script language="javascript" type="text/javascript">
+var popUpWin=0;
+function popUpWindow(URLStr, left, top, width, height)
+{
+ if(popUpWin)
+{
+if(!popUpWin.closed) popUpWin.close();
+}
+popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+}
+
+</script>
+
 </body>
 </html>
-<?php } 
-}?>
+<?php 
+} 
+}
+?>

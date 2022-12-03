@@ -1,5 +1,5 @@
 <?php
-	include('../MainPOS/connect.php');
+	include('connect.php');
 	$id=$_GET['id'];
 	$result = $db->prepare("SELECT * FROM products WHERE id= :userid");
 	$result->bindParam(':userid', $id);
@@ -13,6 +13,7 @@
 <div id="ac">
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
 <span>Image (3 Images only): </span><input type="file" name="file[]" id="file" required="required" multiple><br>
+<h6>Note: Please only upload image files (.jpg, .png, .jpeg)</h6>
 
 <div style="float:right; margin-right:10px;">
 

@@ -21,6 +21,39 @@
 <span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
 <div style="text-align: center; margin-top: 10px">
 <button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save</button>
+  <script>
+function sum() {
+            var txtFirstNumberValue = document.getElementById('txt1').value;
+            var txtSecondNumberValue = document.getElementById('txt2').value;
+            var result = parseInt(txtFirstNumberValue) - parseInt(txtSecondNumberValue);
+            if (!isNaN(result)) {
+                document.getElementById('txt3').value = result;
+				
+            }
+			
+			 var txtFirstNumberValue = document.getElementById('txt11').value;
+            var result = parseInt(txtFirstNumberValue);
+            if (!isNaN(result)) {
+                document.getElementById('txt22').value = result;				
+            }
+			
+			 var txtFirstNumberValue = document.getElementById('txt11').value;
+            var txtSecondNumberValue = document.getElementById('txt33').value;
+            var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
+            if (!isNaN(result)) {
+                document.getElementById('txt55').value = result;
+				
+            }
+			
+			 var txtFirstNumberValue = document.getElementById('txt4').value;
+			 var result = parseInt(txtFirstNumberValue);
+            if (!isNaN(result)) {
+                document.getElementById('txt5').value = result;
+				}
+			
+        }
+</script>
+
 </div>
 </div>
 </form>

@@ -30,7 +30,14 @@ else{
 <link rel="shortcut icon" href="img/icon logo.png">
 <link href="css/bootstrap.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
+<!--link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css"-->
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
@@ -157,11 +164,72 @@ while($row=mysqli_fetch_array($query))
                     <?php }?>
 
 					<td>
-					<a rel="facebox" title="Click to check reciept" href="updateCusAcc.php?id=<?php echo $id; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					<button id="editBtn<?php echo $row['id']; ?>" data-toggle="modal" data-target="#editModal<?php echo $row['id']; ?>" class="btn btn-warning"><i class="bi bi-pass"></i></button>
+
 					
                     <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete the product"><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></a></td>
 				</tr>
-
+<div class="modal fade" id="editModal<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column text-center">
+                
+                <form action="saveeditcusacc.php" method="post">
+                    <center><h4><i class="icon-edit icon-large"></i> Edit Account:</h4></center>
+                    <hr>
+                    <div id="ac">
+                    <input type="hidden" name="memi" value="<?php echo $row['id']; ?>" />
+                    <input type="hidden" name="pass" value="<?php echo $row['password']; ?>" />
+                    <span>Name : </span><br><input type="text" style="width:359px; height:40px;"  name="name" value="<?php echo $row['name']; ?>" Required/><br>
+                    <span>E-Mail : </span><br><input type="text" style="width:359px; height:40px;"  name="email" value="<?php echo $row['email']; ?>" /><br>
+                    <span>Contact Number : </span><input type="text" style="width:359px; height:40px;" name="contactno" value="<?php echo $row['contactno']; ?>" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" /> <br>
+                    <span>Password : </span><br><input type="password" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>
+                    <span>Valid : </span><select name ="valid" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <?php
+                        $val= $row['valid'];
+                        if($val== 0){?>
+                        <option value="0" selected>No Valid ID's Submitted</option>
+                        <option value="1" >Validation on-going</option>
+                        <option value="2">Account Validated</option>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if($val== 1){?>
+                        <option value="0" >No Valid ID's Submitted</option>
+                        <option value="1" selected>Validation on-going</option>
+                        <option value="2">Account Validated</option>
+                        <?php
+                        }
+                        ?>
+                    
+                        <?php
+                        if($val== 2){?>
+                        <option value="0" >No Valid ID's Submitted</option>
+                        <option value="1" >Validation on-going</option>
+                        <option value="2" selected>Account Validated</option>
+                        <?php
+                        }
+                        ?>
+                        
+                      </select><br>
+                    
+                    <div style="text-align: center; margin-top: 10px">
+                    
+                    <button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
+                    </div>
+                    </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+  </div>
 
 <?php } ?>
 	

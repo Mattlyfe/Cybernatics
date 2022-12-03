@@ -28,19 +28,22 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		if ($result->rowCount() > 0) {
             if ($row['user_name'] === $uname && $row['password'] === $pass) {
             	$_SESSION['user_name'] = $row['user_name'];
-            	$_SESSION['name'] = $row['name'];
-            	$_SESSION['uid'] = $row['id'];
+            	$_SESSION['name'] = $row['first_name'].' '.$row['last_name'];
+            	$_SESSION['uid'] = $row['ID'];
 				$_SESSION['role'] = $row['role'];
 
 				if($row['role'] == "supplier"){
             	header("Location: purchaseorder.php");
+            	exit;
 			}
 
-			else{
+			else
+			{
 				header("Location: index.php");
-			}
 		        exit();
-            }else{
+			}
+            }
+            else{
 				header("Location: login.php?error=Incorect User name or password");
 		        exit();
 			}
