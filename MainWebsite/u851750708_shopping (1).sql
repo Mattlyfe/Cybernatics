@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 03, 2022 at 09:24 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 04, 2022 at 10:35 AM
+-- Server version: 10.5.17-MariaDB-cll-lve
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shopping`
+-- Database: `u851750708_shopping`
 --
 
 -- --------------------------------------------------------
@@ -369,7 +369,10 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (331, 11, '1', 1, '2022-11-28 12:18:22', NULL, 233, NULL),
 (332, 11, '1', 1, '2022-11-28 12:23:39', NULL, 234, NULL),
 (333, 11, '1', 1, '2022-11-28 12:27:27', NULL, 235, NULL),
-(334, 11, '6', 1, '2022-11-28 12:27:27', NULL, 235, NULL);
+(334, 11, '6', 1, '2022-11-28 12:27:27', NULL, 235, NULL),
+(335, 23, '1', 1, '2022-12-04 08:26:36', NULL, 236, NULL),
+(336, 23, '1', 1, '2022-12-04 09:28:18', NULL, 237, NULL),
+(337, 23, '1', 1, '2022-12-04 09:37:28', NULL, 238, NULL);
 
 -- --------------------------------------------------------
 
@@ -615,7 +618,10 @@ INSERT INTO `order_header` (`transactionId`, `userId`, `referenceNo`, `rNoImg`, 
 (232, 11, 'COD #232', NULL, 76, '2022-11-28 10:43:43', 'Pending Payment'),
 (233, 11, NULL, NULL, 0, '2022-11-28 12:18:22', NULL),
 (234, 11, NULL, NULL, 0, '2022-11-28 12:23:39', NULL),
-(235, 11, NULL, NULL, 16, '2022-11-28 12:27:27', NULL);
+(235, 11, NULL, NULL, 16, '2022-11-28 12:27:27', NULL),
+(236, 23, NULL, NULL, 7, '2022-12-04 08:26:36', NULL),
+(237, 23, NULL, NULL, 7, '2022-12-04 09:28:18', NULL),
+(238, 23, NULL, NULL, 7, '2022-12-04 09:37:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -1272,7 +1278,14 @@ INSERT INTO `userlog` (`id`, `userEmail`, `userip`, `loginTime`, `logout`, `stat
 (252, 'bedia@gmail.com', 0x3139332e33372e3235342e3137320000, '2022-11-25 09:21:10', '25-11-2022 03:42:53 PM', 1),
 (253, 'bedia@gmail.com', 0x3139332e33372e3235342e3137320000, '2022-11-25 10:16:43', NULL, 1),
 (254, 'charlessanchez20@gmail.com', 0x3a3a3100000000000000000000000000, '2022-11-27 11:25:08', NULL, 1),
-(255, 'charlessanchez20@gmail.com', 0x3a3a3100000000000000000000000000, '2022-11-28 10:11:00', '28-11-2022 07:54:23 PM', 1);
+(255, 'charlessanchez20@gmail.com', 0x3a3a3100000000000000000000000000, '2022-11-28 10:11:00', '28-11-2022 07:54:23 PM', 1),
+(256, 'lejarde@gmail.com', 0x3138302e3139312e3136322e32303600, '2022-12-04 00:09:12', NULL, 1),
+(257, 'lejarde@gmail.com', 0x3138302e3139312e3136322e32303600, '2022-12-04 01:12:34', '04-12-2022 06:44:49 AM', 1),
+(258, 'lejarde@gmail.com', 0x3138302e3139312e3136322e32303600, '2022-12-04 01:18:25', NULL, 1),
+(259, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:52:48', NULL, 0),
+(260, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:52:56', '04-12-2022 03:23:20 PM', 1),
+(261, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:57:18', '04-12-2022 03:28:28 PM', 1),
+(262, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:58:37', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1283,6 +1296,8 @@ INSERT INTO `userlog` (`id`, `userEmail`, `userip`, `loginTime`, `logout`, `stat
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `contactno` bigint(11) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -1301,26 +1316,26 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `contactno`, `password`, `billingAddress`, `billingState`, `billingCity`, `billingPincode`, `regDate`, `updationDate`, `valid`, `validPicFront`, `validPicBack`) VALUES
-(4, 'matt', 'pogi@123.com', 9562331515, 'cd49847b46a4e64d3cb193f3bb8f2ea2', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-10-16 12:46:02', '14-11-2022 08:27:36 PM', 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
-(10, 'Matthew ', 'sanchezcharlesmatthew@gmail.com', 9297603186, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-12 15:03:35', NULL, 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
-(11, 'Matthew ', 'charlessanchez20@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1441, '2022-11-13 08:54:57', NULL, 0, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
-(12, 'Jeong Jaehyun', 'chienimaesanchez@gmail.com', 9988670903, '59ff7b5980ddf19995e3058ff3a0b049', '177 Joaquin St.', 'Gen T', 'Valenzuela City', 1442, '2022-11-13 10:16:15', NULL, 0, NULL, NULL),
-(13, 'Cyber Popanes', 'cyberp17400@gmail.com', 9981833176, 'd8ff74690808c03e5772aac118b4594e', '72 Pateros St ', 'Barangay 35', 'Valenzuela City', 1410, '2022-11-13 10:51:55', NULL, 0, NULL, NULL),
-(14, 'Marks Bryan Quilala', 'natskiedagreat18@gmail.com', 9654334058, '8cba0fd0e0dfb08e3646ecca3d02acd9', '#04 Bernadettet St. Gabriel Subd.1', 'Hulong-Duhat', 'Valenzuela City', 1442, '2022-11-13 12:02:12', NULL, 0, NULL, NULL),
-(15, 'coco martin', 'coco@gmail.com', 9123456789, '48b67c1a1c8ba94ff6e5bd067643081d', NULL, NULL, NULL, NULL, '2022-11-13 12:20:16', NULL, 0, NULL, NULL),
-(16, 'John Lyod Miranda', 'lyod@gmail.com', 9123456789, 'a11ff5b70e10a02cc1c546e745a8cfde', NULL, NULL, NULL, NULL, '2022-11-13 14:01:58', NULL, 0, NULL, NULL),
-(17, 'Nero angelo', 'tracymcgray69@gmail.com', 9776005128, '662af1cd1976f09a9f8cecc868ccc0a2', '1103 Huntington beach', 'UG', 'Valenzuela City', 1442, '2022-11-13 23:53:41', NULL, 0, NULL, NULL),
-(18, 'Mark Dizon', 'markdizon@gmail.com', 9981833178, '5c2da6ce54cfc462906f7cec364b8671', '78 Pateros Street', '72', 'Valenzuela City', 1420, '2022-11-14 15:11:05', NULL, 0, NULL, NULL),
-(19, 'JLyod', 'John@gmail.com', 9123456789, '798ab565ce13bd5ba3d7ada8a0e8b6ea', '456 Mapulang Lupa', 'Mapulang Lupa', 'Valenzuela City', 1446, '2022-11-16 13:59:55', NULL, 0, NULL, NULL),
-(21, 'Charles Matthew Sanchez', 'sanchezcharles@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-17 01:20:08', NULL, 0, NULL, NULL),
-(23, 'Charles Lejarde', 'lejarde@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong', 'Ugong', 'Valenzuela City', 1441, '2022-11-18 09:09:50', NULL, 0, NULL, NULL),
-(24, 'Sharian Pascasio', 'cesharian@gmail.com', 9453240065, '3c4d3d628de986ffbfe54d07f398722a', NULL, NULL, NULL, NULL, '2022-11-18 10:48:43', NULL, 0, NULL, NULL),
-(25, 'Cyber Popanes', 'cyberpopanes@gmail.com', 9981833177, 'd8ff74690808c03e5772aac118b4594e', 'dfdsfds', 'Barangay 32', 'Valenzuela City', 1410, '2022-11-19 02:43:57', NULL, 2, 'Screenshot (6).png', 'Screenshot (8).png'),
-(26, 'pepito manaloto', 'pepito@gmail.com', 9123456789, '7cee197bc6de4288b3682c6a4a47f0fe', NULL, NULL, NULL, NULL, '2022-11-23 06:18:08', NULL, 0, NULL, NULL),
-(27, 'John Ryan Dela Cruz', 'test2@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Ugong', 'Valenzuela City', 1441, '2022-11-23 14:25:56', NULL, 2, 'Screenshot_20221025_092458.png', 'Screenshot_20221025_092756.png'),
-(28, 'Mark Bryan Quilala', 'quilala@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Gen. T De Leon', 'Gen. T De Leon', 'Valenzuela City', 4141, '2022-11-25 08:10:55', NULL, 1, 'Screenshot (6).png', 'Screenshot (7).png'),
-(29, 'James Bedia', 'bedia@gmail.com', 9562331515, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Marulas', 'Valenzuela City', 4141, '2022-11-25 09:20:55', NULL, 2, 'Screenshot (8).png', 'Screenshot (9).png');
+INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `email`, `contactno`, `password`, `billingAddress`, `billingState`, `billingCity`, `billingPincode`, `regDate`, `updationDate`, `valid`, `validPicFront`, `validPicBack`) VALUES
+(4, 'matt', NULL, NULL, 'pogi@123.com', 9562331515, 'cd49847b46a4e64d3cb193f3bb8f2ea2', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-10-16 12:46:02', '14-11-2022 08:27:36 PM', 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
+(10, 'Matthew ', NULL, NULL, 'sanchezcharlesmatthew@gmail.com', 9297603186, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-12 15:03:35', NULL, 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
+(11, 'Matthew ', 'Charles Matthew', 'Sanchez', 'charlessanchez20@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1441, '2022-11-13 08:54:57', NULL, 0, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
+(12, 'Jeong Jaehyun', NULL, NULL, 'chienimaesanchez@gmail.com', 9988670903, '59ff7b5980ddf19995e3058ff3a0b049', '177 Joaquin St.', 'Gen T', 'Valenzuela City', 1442, '2022-11-13 10:16:15', NULL, 0, NULL, NULL),
+(13, 'Cyber Popanes', NULL, NULL, 'cyberp17400@gmail.com', 9981833176, 'd8ff74690808c03e5772aac118b4594e', '72 Pateros St ', 'Barangay 35', 'Valenzuela City', 1410, '2022-11-13 10:51:55', NULL, 0, NULL, NULL),
+(14, 'Marks Bryan Quilala', NULL, NULL, 'natskiedagreat18@gmail.com', 9654334058, '8cba0fd0e0dfb08e3646ecca3d02acd9', '#04 Bernadettet St. Gabriel Subd.1', 'Hulong-Duhat', 'Valenzuela City', 1442, '2022-11-13 12:02:12', NULL, 0, NULL, NULL),
+(15, 'coco martin', NULL, NULL, 'coco@gmail.com', 9123456789, '48b67c1a1c8ba94ff6e5bd067643081d', NULL, NULL, NULL, NULL, '2022-11-13 12:20:16', NULL, 0, NULL, NULL),
+(16, 'John Lyod Miranda', NULL, NULL, 'lyod@gmail.com', 9123456789, 'a11ff5b70e10a02cc1c546e745a8cfde', NULL, NULL, NULL, NULL, '2022-11-13 14:01:58', NULL, 0, NULL, NULL),
+(17, 'Nero angelo', NULL, NULL, 'tracymcgray69@gmail.com', 9776005128, '662af1cd1976f09a9f8cecc868ccc0a2', '1103 Huntington beach', 'UG', 'Valenzuela City', 1442, '2022-11-13 23:53:41', NULL, 0, NULL, NULL),
+(18, 'Mark Dizon', NULL, NULL, 'markdizon@gmail.com', 9981833178, '5c2da6ce54cfc462906f7cec364b8671', '78 Pateros Street', '72', 'Valenzuela City', 1420, '2022-11-14 15:11:05', NULL, 0, NULL, NULL),
+(19, 'JLyod', NULL, NULL, 'John@gmail.com', 9123456789, '798ab565ce13bd5ba3d7ada8a0e8b6ea', '456 Mapulang Lupa', 'Mapulang Lupa', 'Valenzuela City', 1446, '2022-11-16 13:59:55', NULL, 0, NULL, NULL),
+(21, 'Charles Matthew Sanchez', NULL, NULL, 'sanchezcharles@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-17 01:20:08', NULL, 0, NULL, NULL),
+(23, 'Charles Lejarde', NULL, NULL, 'lejarde@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong', 'Ugong', 'Valenzuela City', 1441, '2022-11-18 09:09:50', NULL, 0, NULL, NULL),
+(24, 'Sharian Pascasio', NULL, NULL, 'cesharian@gmail.com', 9453240065, '3c4d3d628de986ffbfe54d07f398722a', NULL, NULL, NULL, NULL, '2022-11-18 10:48:43', NULL, 0, NULL, NULL),
+(25, 'Cyber Popanes', NULL, NULL, 'cyberpopanes@gmail.com', 9981833177, 'd8ff74690808c03e5772aac118b4594e', 'dfdsfds', 'Barangay 32', 'Valenzuela City', 1410, '2022-11-19 02:43:57', NULL, 2, 'Screenshot (6).png', 'Screenshot (8).png'),
+(26, 'pepito manaloto', NULL, NULL, 'pepito@gmail.com', 9123456789, '7cee197bc6de4288b3682c6a4a47f0fe', NULL, NULL, NULL, NULL, '2022-11-23 06:18:08', NULL, 0, NULL, NULL),
+(27, 'John Ryan Dela Cruz', NULL, NULL, 'test2@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Ugong', 'Valenzuela City', 1441, '2022-11-23 14:25:56', NULL, 2, 'Screenshot_20221025_092458.png', 'Screenshot_20221025_092756.png'),
+(28, 'Mark Bryan Quilala', NULL, NULL, 'quilala@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Gen. T De Leon', 'Gen. T De Leon', 'Valenzuela City', 4141, '2022-11-25 08:10:55', NULL, 1, 'Screenshot (6).png', 'Screenshot (7).png'),
+(29, 'James Bedia', NULL, NULL, 'bedia@gmail.com', 9562331515, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Marulas', 'Valenzuela City', 4141, '2022-11-25 09:20:55', NULL, 2, 'Screenshot (8).png', 'Screenshot (9).png');
 
 -- --------------------------------------------------------
 
@@ -1474,7 +1489,7 @@ ALTER TABLE `item_container`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=338;
 
 --
 -- AUTO_INCREMENT for table `ordertrackhistory`
@@ -1486,13 +1501,13 @@ ALTER TABLE `ordertrackhistory`
 -- AUTO_INCREMENT for table `order_header`
 --
 ALTER TABLE `order_header`
-  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `purchase_orders`
@@ -1522,7 +1537,7 @@ ALTER TABLE `transaction_items`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT for table `users`
