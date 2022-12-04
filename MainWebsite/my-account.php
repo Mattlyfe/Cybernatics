@@ -161,7 +161,7 @@ return true;
 	<div class="container">
 		<div class="checkout-box inner-bottom-sm">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-3">
 					<div class="panel-group checkout-steps" id="accordion">
 						<!-- checkout-step-01  -->
 <div class="panel panel-default checkout-step-01">

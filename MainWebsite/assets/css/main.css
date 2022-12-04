@@ -4240,6 +4240,14 @@ a {
   .product-comparison .compare-table tr td .product .product-image .image img {
     width: auto;
   }
+  .checkout-box .panel-group .panel {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    position: relative;
+    right: 50%;
+    margin: 50px;
+  }
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {
@@ -4313,6 +4321,14 @@ a {
   .main-header .contact-row {
     text-align: center;
   }
+  .checkout-box .panel-group .panel {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    position: relative;
+    right: 40%;
+
+  }
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -4347,6 +4363,14 @@ a {
   .wrapper .box .wrapper-inner .container {
     width: auto !important;
   }
+  .checkout-box .panel-group .panel {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    position: relative;
+    right: 50%;
+  }
+
 }
 /* Large devices (large desktops, 1200px and up) */
 .blog-page .blog-post h1 {
@@ -4641,6 +4665,7 @@ a {
 .blog-page .blog-post-author-details .author-social-network .dropdown-menu > li > a:focus {
   background: rgba(0, 0, 0, 0);
 }
+
 .checkout-box .checkout-steps .checkout-step-01 .already-registered-login form .form-group .info-title {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
@@ -4694,6 +4719,7 @@ a {
   -webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
+
 }
 .checkout-box .checkout-progress-sidebar .panel-body ul li a {
   color: #666666;
