@@ -34,7 +34,6 @@
 			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
-					<th class="cart-sub-total item">Shipping Charge</th>
 					<th class="cart-total item">Sub-total</th>
 					<th class="cart-total item">Payment Method</th>
 					<th class="cart-description item">Order Date</th>
@@ -46,7 +45,7 @@
 			
 			<tbody>
             <?php include('config1.php');
- $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
+ $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
 <?php
 while($row=mysqli_fetch_array($query))
 {$gtotal = $row['gtotal'];
@@ -66,8 +65,7 @@ while($row=mysqli_fetch_array($query))
 						<?php echo $qty=$row['qty']; ?>   
 		            </td>
 					<td class="cart-product-sub-total">₱ <?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-sub-total">₱ <?php echo $shippcharge=$row['shippingcharge']; ?>  </td>
-					<td class="cart-product-grand-total">₱ <?php echo (($qty*$price)+$shippcharge);?></td>
+					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
 					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
@@ -99,13 +97,14 @@ while($row=mysqli_fetch_array($query))
 			
 			<tbody>
             <?php
- $query1=mysqli_query($con,"select distinct users.id as id,users.name as name, users.billingAddress addr, users.billingState as brgy, users.billingCity as city, orders.userid as uid from users join orders on orders.userid=users.id where orders.transactionId=$id");?>
+ $query1=mysqli_query($con,"select distinct users.id as id,users.first_name as fname,users.last_name as lname, users.billingAddress addr, users.billingState as brgy, users.billingCity as city, orders.userid as uid from users join orders on orders.userid=users.id where orders.transactionId=$id");?>
 <?php
 while($row=mysqli_fetch_array($query1))
 {
 ?>
 				<tr>
-					<td># <?php echo $uId=$row['id']; ?></td>
+					<?php $name = $row['lname']. ', ' . $row['fname']?>
+					<td># <?php echo $uId=$row['id']. ' ' .$name?></td>
 					<td><?php echo $row['addr']; ?></td>    
 					<td><?php echo $row['brgy']; ?></td> 
 					<td><?php echo $row['city']; ?></td>    

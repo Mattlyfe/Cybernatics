@@ -105,7 +105,7 @@ else{
 	</thead>
 	<tbody>
 	<?php include('config1.php');
-	$query=mysqli_query($con,"select distinct orders.userId as uid, users.name as uname, order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId  join users on users.id=orders.userId where order_header.referenceNo is not null order by transId DESC");
+	$query=mysqli_query($con,"select distinct orders.userId as uid, users.first_name as fname,users.last_name as lname, order_header.transactionId as transId, order_header.dateCreated as date, order_header.referenceNo as refNo,orders.paymentMethod as paym, order_header.grandTotal as gTotal from order_header join orders on orders.transactionId=order_header.transactionId  join users on users.id=orders.userId where order_header.referenceNo is not null order by transId DESC");
 
 
 while($row=mysqli_fetch_array($query))
@@ -114,7 +114,8 @@ while($row=mysqli_fetch_array($query))
 
 				<tr>
 					<td class="cart-product-name-info"> OL-0<?php echo $tId = $row['transId'] ?></td>
-          <td class="cart-product-name-info"> ID<?php echo $uId = $row['uid'] ?> - <?php echo $row['uname'] ?></td>
+					<?php $name = $row['lname']. ', ' . $row['fname']?>
+          			<td class="cart-product-name-info"> ID<?php echo $uId = $row['uid'] ?> - <?php echo $name ?></td>
 
 					<td class="cart-product-name-info">
 						

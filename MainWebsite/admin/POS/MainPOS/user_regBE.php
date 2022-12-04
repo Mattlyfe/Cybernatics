@@ -56,7 +56,8 @@ else{
                         <input class="form-control" type="text" name="last_name" id="last_name" maxlength="16" required onkeydown="return /[a-z ]/i.test(event.key)">
 
                         <label for="user_name"><b>User Name</b></label>
-                        <input class="form-control" type="text" name="user_name" id="user_name" maxlength="16" required>
+                        <input class="form-control" type="text" name="user_name" id="user_name" maxlength="16" oninput="userAvailability()" required>
+                        <span id="user-availability-status" style="font-size:12px;"></span><br>
 
                         <label for="role"><b>Role</b></label>
                         <select name="role" class="custom-select my-1 mr-sm-2" id="role">
@@ -65,18 +66,18 @@ else{
                         </select><br>
                         <br>
                         <label for="password"><b>Password</b>
-                        <input class="form-control" type="password" name="password" id="password" maxlength="16" required onkeyup='check();' /> 
+                        <input class="form-control" type="password" name="password" id="password" maxlength="16" required onkeyup='check();' oninput="userAvailability()"/> 
                         <input type="checkbox" onclick="myFunction()">Show Password             
                         </label>
                         <label for="confirmpassword"><b>Confirm Password</b>
-                        <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" maxlength="16" required onkeyup='check();' />
+                        <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" maxlength="16" required onkeyup='check();' oninput="userAvailability()"/>
                         <span id='message'></span>
                         </label>
                         <hr class="mb-3">
                         <input class="btn btn-primary" type="submit" name="sbmt_btn" id="accregister" value="Register" disabled>
                     </div>
                     </div>
-
+                    <script src="js/jquery.js"></script>
                     <script>
                         function myFunction() {
                         var x = document.getElementById("password");
@@ -100,7 +101,29 @@ else{
                         document.getElementById('message').innerHTML = 'Password not match';
                         document.querySelector('#accregister').disabled = true;
                     }
-                }</script>
+                    }
+                    </script>
+
+                    <script>
+                    function userAvailability() {
+                        $("#loaderIcon").show();
+                            jQuery.ajax({
+                                url: "checkers/check_username.php",
+                                data:'username='+$("#user_name").val(),
+                                type: "POST",
+
+                            success:function(data){
+
+                                $("#user-availability-status").html(data);
+                                $("#loaderIcon").hide();
+
+                            },
+
+                            error:function (){}
+                            });
+                    }
+                    </script>
+
                 </div>
             </form>
         </div>

@@ -34,7 +34,6 @@
 			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
-					<th class="cart-sub-total item">Shipping Charge</th>
 					<th class="cart-total item">Sub-total</th>
 					<th class="cart-total item">Payment Method</th>
 					<th class="cart-description item">Order Date</th>
@@ -47,7 +46,7 @@
 			<tbody>
             
 		<?php include('config1.php');
- $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.productCode as proid,transaction_items.product_code as opid,transaction_items.transaction_id as tId,transaction_items.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,transactions.mop as paym,transactions.date_created as odate,transaction_items.id as orderid, transactions.total_amount as gtotal, transactions.user_id as uid from transaction_items join products on transaction_items.product_code=products.productCode join transactions on transaction_items.transaction_id=transactions.id where transaction_items.transaction_id=$id");?>
+ $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.productCode as proid,transaction_items.product_code as opid,transaction_items.transaction_id as tId,transaction_items.quantity as qty,products.productPrice as pprice,transactions.mop as paym,transactions.date_created as odate,transaction_items.id as orderid, transactions.total_amount as gtotal, transactions.user_id as uid from transaction_items join products on transaction_items.product_code=products.productCode join transactions on transaction_items.transaction_id=transactions.id where transaction_items.transaction_id=$id");?>
 <?php
 while($row=mysqli_fetch_array($query))
 {$gtotal = $row['gtotal'];
@@ -67,8 +66,7 @@ while($row=mysqli_fetch_array($query))
 						<?php echo $qty=$row['qty']; ?>   
 		            </td>
 					<td class="cart-product-sub-total">₱ <?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-sub-total">₱ <?php echo $shippcharge=$row['shippingcharge']; ?>  </td>
-					<td class="cart-product-grand-total">₱ <?php echo (($qty*$price)+$shippcharge);?></td>
+					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
 					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 				</tr>

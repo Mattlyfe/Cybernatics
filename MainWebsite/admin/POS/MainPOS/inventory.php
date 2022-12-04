@@ -124,8 +124,9 @@ function sum() {
 			</div>
 </div>
 <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Product..." autocomplete="off" />
-<button id="addBtn" data-toggle="modal" data-target="#addModal" class="btn btn-info" style="float:right; width:230px; height:35px;" ><i class="bi bi-plus-circle-fill"></i></button>
+<button id="addBtn" data-toggle="modal" data-target="#addModal" class="btn btn-info" style="float:right; width:230px; height:35px;" ><i class="bi bi-plus-circle-fill"></i> Add Product</button>
 <br><br>
+
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -136,8 +137,56 @@ function sum() {
                 </button>
             </div>
             <div class="modal-body d-flex flex-column text-center">
+				
+               <form action="saveproduct.php" method="post">
+				<center><h4><i class="icon-plus-sign icon-large"></i> Add Product</h4></center>
+				<hr>
+				<div id="ac">
+				<span>Product Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" id="productCode" onblur="addprodCAvailability()"><br>
+				<span id="additem-availability-status" style="font-size:12px;"></span><br>
+				<span>Generic Name : </span><input type="text" style="width:359px; height:40px;" name="genName" Required/><br>
+				<span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"> </textarea><br>
+				<span>Category : </span><select name ="category" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+					<option selected hidden>Choose...</option>
+					<option value="3">Condiments</option>
+					<option value="4">Cookies and Crackers</option>
+					<option value="5">Dairy</option>
+					<option  value="6">Beverages</option>
+				</select><br>
+				<span>Selling Price : </span><br><input type="text" id="txt1" style="width:359px; height:40px;" name="productPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+				<span>Before Price : </span><br><input type="text" id="txtB" style="width:359px; height:40px;" name="productPriceBeforeDiscount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+				<span>Original Price : </span><input type="text" id="txt2" style="width:359px; height:40px;" name="oPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
+				<span>Profit : </span><br><input type="text" id="txt3" style="width:359px; height:40px;" name="profit" readonly><br>
+
+				<span>Quantity : </span><br><input type="number" style="width:359px; height:40px;" min="0" name="qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required ><br>
+				<span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
+				<div style="text-align: center; margin-top: 10px">
+				<button class="btn btn-success btn-block btn-large" style="width:267px;" id="saveProd"><i class="icon icon-save icon-large"></i> Save</button>
+				</div>
+				</div>
+
+				</form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <button id="genBtn" data-toggle="modal" data-target="#genBModal" class="btn btn-success" style="float:right; width:230px; height:35px;" ><i class="bi bi-upc"></i> Generate Barcode</button>
+<br><br>
+<div class="modal fade" id="genBModal" tabindex= "-1" role="dialog" aria-labelledby="addAnnouncementCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle">Generate Barcode</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column text-center">
 				<form method="post">
-				<span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="genCode" id="genCode"><br>
+				<span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="genCode" id="genCode" onblur ="prodCAvailability()">
+				<input type="text" id="stopper" hidden required><br>
+				<span id="item-availability-status" style="font-size:12px;"></span>
 					<?php 
 					if(isset($_POST['codeSubmit'])){
 						$code = $_POST['genCode']; ?>
@@ -156,37 +205,9 @@ function sum() {
 					?>
 
 					<br>
-				<button class="btn btn-success btn-block btn-large" style="width:267px;" name="codeSubmit" id="codeSumbit"><i class="icon icon-save icon-large"></i> Save</button>
+				<button class="btn btn-success btn-block btn-large" style="width:267px;" name="codeSubmit" id="codeSubmit" disabled><i class="icon icon-save icon-large"></i> Submit</button>
 				</form>
-               <form action="saveproduct.php" method="post">
-<center><h4><i class="icon-plus-sign icon-large"></i> Add Product</h4></center>
-<hr>
-<div id="ac">
-
-
-<span>Product Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" ><br>
-<span>Generic Name : </span><input type="text" style="width:359px; height:40px;" name="genName" Required/><br>
-<span>Product Name : </span><textarea style="width:359px; height:40px;" name="productName"> </textarea><br>
-<span>Category : </span><select name ="category" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-    <option selected hidden>Choose...</option>
-    <option value="3">Condiments</option>
-    <option value="4">Cookies and Crackers</option>
-    <option value="5">Dairy</option>
-    <option  value="6">Beverages</option>
-  </select><br>
-<span>Selling Price : </span><br><input type="text" id="txt1" style="width:359px; height:40px;" name="productPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
-<span>Before Price : </span><br><input type="text" id="txtB" style="width:359px; height:40px;" name="productPriceBeforeDiscount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
-<span>Original Price : </span><input type="text" id="txt2" style="width:359px; height:40px;" name="oPrice" onkeyup="sum();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required><br>
-<span>Profit : </span><br><input type="text" id="txt3" style="width:359px; height:40px;" name="profit" readonly><br>
-
-<span>Quantity : </span><br><input type="number" style="width:359px; height:40px;" min="0" name="qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required ><br>
-<span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
-<div style="text-align: center; margin-top: 10px">
-<button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save</button>
-</div>
-</div>
-
-</form>
+               
             </div>
         </div>
     </div>
@@ -453,6 +474,46 @@ if(!popUpWin.closed) popUpWin.close();
 popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
 }
 
+</script>
+
+<script>
+	function prodCAvailability() {
+		$("#loaderIcon").show();
+			jQuery.ajax({
+				url: "checkers/check_productCode.php",
+				data:'code='+$("#genCode").val(),
+				type: "POST",
+
+			success:function(data){
+
+				$("#item-availability-status").html(data);
+				$("#loaderIcon").hide();
+
+			},
+
+			error:function (){}
+			});
+	}
+</script>
+
+<script>
+	function addprodCAvailability() {
+		$("#loaderIcon").show();
+			jQuery.ajax({
+				url: "checkers/check_addproductCode.php",
+				data:'code='+$("#productCode").val(),
+				type: "POST",
+
+			success:function(data){
+
+				$("#additem-availability-status").html(data);
+				$("#loaderIcon").hide();
+
+			},
+
+			error:function (){}
+			});
+	}
 </script>
 
 </body>
