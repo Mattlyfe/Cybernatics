@@ -14,7 +14,7 @@ if($count>0)
 	
 	echo "<span style='color:green'> Product available for Registration.</span>";
  	echo "<script>document.querySelector('#codeSubmit').disabled = false;</script>";
-	 echo "<script>document.getElementById('#stopper').required = false;</script>";
+	 echo "<script>document.querySelector('#stopper').required = false;</script>";
 }
 }
 
