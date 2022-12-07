@@ -63,7 +63,7 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
 
         while($rows=mysqli_fetch_array($q)){
           if($rows['productAvailability'] > 0 && $qty < $rows['productAvailability']){
-            echo '<script>alert("test");</script>';
+           
             mysqli_query($con,"update products set productAvailability=(productAvailability - $qty) where id= '$prodid'");
 
           }
