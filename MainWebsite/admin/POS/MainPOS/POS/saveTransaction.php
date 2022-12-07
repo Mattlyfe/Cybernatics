@@ -60,7 +60,7 @@ foreach($output as $e){
         $rows = $q1->fetchAll();
 
             foreach ($rows as $row){
-                if($row['productAvailability'] > 0){
+                if($row['productAvailability'] > 0 && $qty < $row['productAvailability']){
                     $query = "UPDATE products set productAvailability = (productAvailability - $qty) where productCode = $code";
                     $q = $db->prepare($query);
                     $q->execute();
