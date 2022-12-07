@@ -329,8 +329,10 @@ if (empty($_SESSION['user_name'])) {
     														</tr>
     													</thead>
     													<tbody>
+															
     													<?php
-    														$po_id = $row['id'];
+														if($_SESSION['role'] != "supplier"){
+															$po_id = $row['id'];
     														$result = $db->prepare("SELECT 
     														products.id as p_id,
     														products.productAvailability,
@@ -348,13 +350,48 @@ if (empty($_SESSION['user_name'])) {
     														where purchase_orders.id = $po_id;");
     
     														$result->execute();
+														 }
+														 else{
+															$po_id = $row['id'];
+    														$result = $db->prepare("SELECT 
+    														products.id as p_id,
+    														products.productAvailability,
+    														products.category,
+    														products.productCode,
+    														products.productName,
+    														products.genName,
+    														products.oPrice,
+    														products.productPrice,
+    														purchase_order_items.quantity,
+    														purchase_orders.total_amount
+    														FROM products 
+    														left join purchase_order_items on purchase_order_items.product_id = products.id
+    														left join purchase_orders on purchase_orders.id = purchase_order_items.purchase_order_id
+    														where purchase_orders.id = $po_id and purchase_order_items.quantity != '0';");
+    
+    														$result->execute();
+														}
+    														
     														for($y=0; $row = $result->fetch(); $y++){
     															$availableqty=$row['productAvailability'];
     															$category = $row['category'];
     
-    															if ($category == 4){
-    																$categoryName = 'Bisucits';
-    															}
+    															if ($category == 3){
+																	$categoryName = 'Condiments';
+																}
+												
+																if ($category == 4){
+																	$categoryName = 'Cookies and Crackers';
+																}
+												
+																if ($category == 5){
+																	$categoryName = 'Dairy';
+																}
+												
+																if ($category == 6){
+																	$categoryName = 'Beverages';
+																}
+
     															if ($availableqty < 10) {
     																echo '<tr class="alert alert-warning record" style="color: #fff; background:rgb(255, 95, 66);">';
     															}
@@ -364,8 +401,8 @@ if (empty($_SESSION['user_name'])) {
     															?>
     															<td style="display:none"><input type="text" name='p_id[]' value='<?php echo $row['p_id'];?>'></td>
     															<td><?php echo $row['productCode'];?></td>
+    															<td><?php echo 	$categoryName; ?></td>
     															<td><?php echo $row['productName']; ?></td>
-    															<td><?php echo $row['genName']; ?></td>
     															<?php if($_SESSION['role'] != "supplier"){?>
     															<td><input name='ordered_quantity[]' style="text-align:right; width:100%;" oninput="compute(<?php echo $row['p_id']; ?>,<?php echo $row['oPrice']; ?>,'Edit')" id="editQuantity_<?php echo $row['p_id']; ?>" type="number" value="<?php echo $row['quantity']; ?>"></td>
     															<?php } else{?>

@@ -13,7 +13,7 @@ $q = $db->prepare($query);
 $q->execute();
 
 
-$query1 = "SELECT users.name,order_header.transactionId, users.contactno FROM users 
+$query1 = "SELECT users.first_name,users.last_name,order_header.transactionId, users.contactno FROM users 
 LEFT JOIN orders ON orders.userId = users.id
 LEFT JOIN order_header ON order_header.transactionId = orders.transactionId 
 WHERE order_header.transactionId = '$id'
@@ -23,7 +23,7 @@ $q1->execute();
 
 $jsonArray = array();
 for($i=0; $row = $q1->fetch(); $i++){
-    $jsonArray = array('name' => $row['name'], 'contactno' => $row['contactno']);
+    $jsonArray = array('first_name' => $row['first_name'],'last_name' => $row['last_name'], 'contactno' => $row['contactno']);
 }
 
 $to = "+63".$jsonArray['contactno'];
@@ -35,7 +35,7 @@ $message = $twilio->messages
                   ->create($to, // to 
                            array(      
                               "from"=>$from,  
-                               "body" => "Hi ".$jsonArray['name'].", Your Order #OL-0".$id." status is ".$status 
+                               "body" => "Hi ".$jsonArray['last_name'].", ".$jsonArray['first_name'].", Your Order #OL-0".$id." status is ".$status 
                            ) 
                   ); 
 
