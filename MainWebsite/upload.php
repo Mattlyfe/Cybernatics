@@ -57,7 +57,21 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
     while($row=mysqli_fetch_array($que)){
         $qty =$row['quantity'];
         $prodid = $row['productId'];
-        mysqli_query($con,"update products set productAvailability=productavailability- $qty where id= '$prodid'");
+
+        $q=mysqli_query($con,"select * from products where id='$prodid'");
+
+        while($rows=mysqli_fetch_array($q)){
+          if($rows['productAvailability'] > 0 && $qty < $rows['productAvailability']){
+
+            mysqli_query($con,"update products set productAvailability=(productAvailability - $qty) where id= '$prodid'");
+
+          }
+
+          else{
+            mysqli_query($con,"update products set productAvailability=(productAvailability- productAvailability) where id= '$prodid'");
+
+          }
+        }
     }
       unset($_SESSION['cart']);
       
@@ -77,8 +91,21 @@ else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Cash on Delivery"){
     while($row=mysqli_fetch_array($que)){
         $qty =$row['quantity'];
         $prodid = $row['productId'];
-        mysqli_query($con,"update products set productAvailability=productavailability- $qty where id= '$prodid'");
-    }
+        
+        $q=mysqli_query($con,"select * from products where id='$prodid'");
+
+        while($rows=mysqli_fetch_array($q)){
+          if($rows['productAvailability'] > 0 && $qty < $rows['productAvailability']){
+
+            mysqli_query($con,"update products set productAvailability=(productAvailability - $qty) where id= '$prodid'");
+
+          }
+
+          else{
+            mysqli_query($con,"update products set productAvailability=(productAvailability- productAvailability) where id= '$prodid'");
+
+          }
+        }    }
 
   mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
   unset($_SESSION['cart']);
@@ -121,8 +148,20 @@ else if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
                     while($row=mysqli_fetch_array($que)){
                         $qty =$row['quantity'];
                         $prodid = $row['productId'];
-                        mysqli_query($con,"update products set productAvailability=productavailability- $qty where id= '$prodid'");
-                    }
+                        $q=mysqli_query($con,"select * from products where id='$prodid'");
+
+                        while($rows=mysqli_fetch_array($q)){
+                          if($rows['productAvailability'] > 0 && $qty < $rows['productAvailability']){
+                
+                            mysqli_query($con,"update products set productAvailability=(productAvailability - $qty) where id= '$prodid'");
+                
+                          }
+                
+                          else{
+                            mysqli_query($con,"update products set productAvailability=(productAvailability- productAvailability) where id= '$prodid'");
+                
+                          }
+                        }                    }
                   
                     mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
                     

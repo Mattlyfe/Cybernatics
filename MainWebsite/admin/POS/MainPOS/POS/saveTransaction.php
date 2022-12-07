@@ -65,6 +65,12 @@ foreach($output as $e){
                     $q = $db->prepare($query);
                     $q->execute();
                 }
+
+                else{
+                    $query = "UPDATE products set productAvailability = (productAvailability - productAvailability) where productCode = $code";
+                    $q = $db->prepare($query);
+                    $q->execute();
+                }
             }  
 }
 
