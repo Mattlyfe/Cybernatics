@@ -42,7 +42,6 @@ else{
 	$gtotal = ($pr * $quantity);
 	mysqli_query($con,"insert into order_header(userId, grandTotal, dateCreated) values('".$_SESSION['id']."', '$gtotal', '$date')");
 	$transactionId = mysqli_insert_id($con);
-	mysqli_query($con,"update products set productAvailability=productavailability-$quantity where id='$pid'");
 	mysqli_query($con,"insert into orders(userId,productId,quantity,transactionId,orderDate) values('".$_SESSION['id']."','$pid','$quantity','$transactionId', '$date')");
 	header('location:payment-method.php?transactionId='.$transactionId);
 }

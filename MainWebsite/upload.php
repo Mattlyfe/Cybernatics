@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
+error_reporting(0);
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
@@ -62,7 +63,7 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
 
         while($rows=mysqli_fetch_array($q)){
           if($rows['productAvailability'] > 0 && $qty < $rows['productAvailability']){
-
+            echo '<script>alert("test");</script>';
             mysqli_query($con,"update products set productAvailability=(productAvailability - $qty) where id= '$prodid'");
 
           }
@@ -82,6 +83,7 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
     }
   }
 }
+
 else if(isset($_POST["submit"]) && $_POST['paymethod'] == "Cash on Delivery"){
   $tNo = $_POST['transactionNo'];
   $ttl = $_POST['gTotal1'];

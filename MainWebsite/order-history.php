@@ -147,7 +147,7 @@ while($row=mysqli_fetch_array($query))
 				<tr>
 					<td># <?php echo $tId=$row['tId']; ?></td>
 					<td class="cart-image">
-						<a class="entry-thumbnail" href="detail.html">
+						<a class="entry-thumbnail" href="product-details.php?pid=<?php echo $row['proid'];?>/">
 						    <img src="admin/POS/MainPOS/productimages/<?php echo $row['proid'];?>/<?php echo $row['pimg1'];?>" alt="" width="84" height="146">
 						</a>
 					</td>
