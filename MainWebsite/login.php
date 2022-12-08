@@ -354,6 +354,9 @@ echo htmlentities($_SESSION['errmsg']="");
 
 
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button" id="submit">Sign Up</button>
+		<br>
+		<br>
+		<p>By clicking SIGN UP, you agree to our <a href="/MainWebsite/terms-and-conditions.php">Terms & Conditions</a></p>
 
 		  <script>
                     var check = function() {
