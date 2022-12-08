@@ -88,9 +88,14 @@ else{
 <div class="mb-4">
 		<span>Transaction No. :</span> 
 		<i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search Order..." autocomplete="off" />
-		
+		<label for="">Date From:</label>
+				<input type="date" id="datefrom" name="date">
+				<label for="">Date To:</label>
+				<input type="date" id="dateto" name="date">
+				<button class="btn btn-primary btn-sm" id="generate" type="button" name="search">Generate</button>
 		</div><br><br>
-<div class="row" style="height:500px; overflow-y: scroll;">
+
+		<div class="row" style="height:500px; overflow-y: scroll;">
 <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
 	<thead>
 		<tr>
@@ -168,6 +173,41 @@ while($row=mysqli_fetch_array($query))
 				
 <?php 
 } 
+	if(isset($_GET['startdate']) && isset($_GET['enddate'])){
+		$startdate = $_GET['startdate'];
+		$enddate = $_GET['enddate'];
+
+		$query = mysqli_query($con, "SELECT * FROM purchase_orders WHERE date_created BETWEEN '$startdate' AND '$enddate' ORDER BY DESC");
+		if(mysqli_num_rows($query) > 0){
+			foreach($query as $row){
+				?>
+				<tr>
+					<td class="cart-product-name-info"> TR#<?php echo $row['transId']; ?></td>
+          			<td class="cart-product-name-info"> Instore</td>
+
+					<td class="cart-product-name-info">
+						
+						<?php echo $row['date'];?></a></h4>
+						
+					</td>
+
+					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
+
+					<td class="cart-product-sub-total">In-Store #<?php echo $tId; ?>  </td>
+
+					<td class="cart-product-sub-total">₱<?php echo $row['gTotal']; ?>  </td>
+
+					<td>
+					<a rel="facebox" title="Click to check reciept" href="showProdHistoryIS.php?id=<?php echo $row['transId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a>
+					</td>
+				</tr>
+				<?php
+			}
+		}
+		else{
+			echo "No Record Found";
+		}
+	}
 ?>
 	</tbody>
 </table>

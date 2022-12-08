@@ -156,6 +156,11 @@ else{
 		<span>Transaction No. :</span> 
 		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Transaction Number" autocomplete="off" />
 		
+        <label for="">Date From:</label>
+				<input type="date" id="datefrom" name="date">
+				<label for="">Date To:</label>
+				<input type="date" id="dateto" name="date">
+				<button class="btn btn-primary btn-sm" id="generate" type="button">Generate</button>
 		</div>
         <div class="row" style="height:500px; overflow-y: scroll;">
             <div class="col-12"> 

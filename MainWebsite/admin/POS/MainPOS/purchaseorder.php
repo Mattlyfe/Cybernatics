@@ -135,6 +135,14 @@ if (empty($_SESSION['user_name'])) {
 		<span>Order No. :</span>
 		
 		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Order Number" autocomplete="off" />
+		
+		<label for="">Date From:</label>
+				<input type="date" id="datefrom" name="date">
+				<label for="">Date To:</label>
+				<input type="date" id="dateto" name="date">
+				<button class="btn btn-primary btn-sm" id="generate" type="button">Generate</button>
+		<?php
+		?>
 		<?php if($_SESSION['role'] != "supplier"){?>
 		<button type="button" class="btn btn-info" style="float:right" data-toggle="modal" data-target="#exampleModal">
 			<i class="bi bi-plus-circle-fill"></i> Add Order
