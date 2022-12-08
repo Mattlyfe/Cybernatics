@@ -235,6 +235,34 @@ else{
                     </div>
                 </div>
             </div>
+            
+            <div class="col-3">
+                <button type="button" data-toggle="modal" data-target="#checkPrice" class="btn btn-secondary w-100"><i class="bi bi-tags-fill"></i> Check Price</button>
+            </div>
+            <div class="modal fade" id="checkPrice" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                
+                    <div class="modal-content">
+                    
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Check Price </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    <span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" id="productCode" onblur ="checkPrice()">
+                    <span id="item-price-status" style="font-size:12px;"></span>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row mt-5">
             <div class="col-6">
@@ -621,6 +649,26 @@ else{
             
         })
     </script>
+
+<script>
+	function checkPrice() {
+		$("#loaderIcon").show();
+			jQuery.ajax({
+				url: "checkers/check_Price.php",
+				data:'code='+$("#productCode").val(),
+				type: "POST",
+
+			success:function(data){
+
+				$("#item-price-status").html(data);
+				$("#loaderIcon").hide();
+
+			},
+
+			error:function (){}
+			});
+	}
+</script>
     <style>
     td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
 
