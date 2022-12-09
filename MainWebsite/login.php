@@ -361,13 +361,22 @@ echo htmlentities($_SESSION['errmsg']="");
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle">Terms and Condition</h5>
+                <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle"><b>Terms and Condition</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body d-flex flex-column text-center">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere delectus blanditiis ex deserunt earum quidem. Nulla rem, corrupti ducimus voluptatibus similique natus eius, optio labore mollitia, officiis exercitationem blanditiis est?</p>
+				<p>1.Users information from their registered account are stored such as name, e-mail address, contact number, and password. </p>
+				<p>2.The shipping fee is displayed after the users proceed to checking out their order(s). </p>
+				<p>3.The total amount of the shipping fee will not vary on the time and location of the user and the amount is fixed to ₱60. </p>
+				<p>4.Users can view the products, details of the products, and can add to cart without an account, but a registered account is needed when checking out the orders from the cart.</p>
+				<p>5.The coverage area of the delivery that Sandra Store cover is limited only around the Valenzuela City.</p>
+				<p>6.Users cannot proceed on creation of another account with the existing e-mail address.</p>
+				<p>7.Cancellation of order(s) from the users will be done when the users' request a cancellation of their order thru messaging the admin/cashier on messenger.</p>
+				<p>8.Users can use the "Cash on Delivery" payment method when they provide the necessary information (image of valid id) and after the admin verified their valid id.</p>
+				<p>9.Users will be able to view the order status of their created orders using the "Track Order" module and when their order status has beed updated, the store will also send a text message about their updated delivery status. </p>
+				<p>10.For users who choose e-wallet payment method, they will need to provide the official receipt from the Gcash or Paymaya and input the right reference number of the receipt to be validated by the admin.</p>
 			</div>
         </div>
     </div>
