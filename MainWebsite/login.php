@@ -97,7 +97,6 @@ exit();
 		<link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
 		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
 		<!-- Demo Purpose Only. Should be removed in production : END -->
-
 		
 		<!-- Icons/Glyphs -->
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -356,8 +355,23 @@ echo htmlentities($_SESSION['errmsg']="");
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button" id="submit">Sign Up</button>
 		<br>
 		<br>
-		<p>By clicking SIGN UP, you agree to our <a href="/MainWebsite/terms-and-conditions.php">Terms & Conditions</a></p>
-
+		<p>By clicking SIGN UP, you agree to our <a id="addBtn" data-toggle="modal" data-target="#showTermModal">Terms & Conditions</a></p>
+			
+		<div class="modal fade" id="showTermModal" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" id="addAnnouncementLongTitle">Terms and Condition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column text-center">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere delectus blanditiis ex deserunt earum quidem. Nulla rem, corrupti ducimus voluptatibus similique natus eius, optio labore mollitia, officiis exercitationem blanditiis est?</p>
+			</div>
+        </div>
+    </div>
+  </div>
 		  <script>
                     var check = function() {
                     if (document.getElementById('password').value ==
