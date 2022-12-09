@@ -366,7 +366,7 @@ echo htmlentities($_SESSION['errmsg']="");
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body d-flex flex-column text-center">
+            <div class="modal-body d-flex flex-column">
 				<p>1.Users information from their registered account are stored such as name, e-mail address, contact number, and password. </p>
 				<p>2.The shipping fee is displayed after the users proceed to checking out their order(s). </p>
 				<p>3.The total amount of the shipping fee will not vary on the time and location of the user and the amount is fixed to ₱60. </p>
