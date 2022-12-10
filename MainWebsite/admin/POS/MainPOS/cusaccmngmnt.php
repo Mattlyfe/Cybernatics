@@ -103,7 +103,8 @@ else{
 	<thead>
 		<tr>
 			<th width="12%"> User ID</th>
-			<th width="9%"> Name </th>
+			<th width="9%"> Last Name </th>
+            <th width="9%"> First Name </th>
 			<th width="14%"> E-Mail </th>
             <th width="14%"> Contact No. </th>
 			<th width="13%"> Validity </th>
@@ -125,9 +126,15 @@ while($row=mysqli_fetch_array($query))
                 <tr class="record">
 					<td class="cart-product-name-info"> #<?php echo $id = $row['id'] ?></td>
 
+                    <td class="cart-product-name-info">
+						
+						<?php echo $row['last_name'];?></a></h4>
+						
+					</td>
+
 					<td class="cart-product-name-info">
 						
-						<?php echo $row['name'];?></a></h4>
+						<?php echo $row['first_name'];?></a></h4>
 						
 					</td>
 
@@ -186,7 +193,8 @@ while($row=mysqli_fetch_array($query))
                     <div id="ac">
                     <input type="hidden" name="memi" value="<?php echo $row['id']; ?>" />
                     <input type="hidden" name="pass" value="<?php echo $row['password']; ?>" />
-                    <span>Name : </span><br><input type="text" style="width:359px; height:40px;"  name="name" value="<?php echo $row['name']; ?>" Required/><br>
+                    <span>Last Name : </span><br><input type="text" style="width:359px; height:40px;"  name="lname" value="<?php echo $row['last_name']; ?>" Required/><br>
+                    <span>First Name : </span><br><input type="text" style="width:359px; height:40px;"  name="fname" value="<?php echo $row['first_name']; ?>" Required/><br>
                     <span>E-Mail : </span><br><input type="text" style="width:359px; height:40px;"  name="email" value="<?php echo $row['email']; ?>" /><br>
                     <span>Contact Number : </span><input type="text" style="width:359px; height:40px;" name="contactno" value="<?php echo $row['contactno']; ?>" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" /> <br>
                     <span>Password : </span><br><input type="password" style="width:359px; height:40px;" name="password" value="<?php echo $row['password']; ?>"/><br>

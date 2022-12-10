@@ -3,30 +3,31 @@
 include('../MainPOS/connect.php');
 // new data
 $id = $_POST['memi'];
-$a = $_POST['name'];
+$a = $_POST['lname'];
+$b = $_POST['fname'];
 $z = $_POST['email'];
-$b = $_POST['contactno'];
-$c = $_POST['password'];
-$d = $_POST['valid'];
+$c = $_POST['contactno'];
+$d = $_POST['password'];
+$e = $_POST['valid'];
 
 $pw = $_POST['pass'];
 
 // query
-if($c == $pw){
+if($d == $pw){
     $sql = "UPDATE users 
-    SET name=?, email=?, contactno=?, valid=?
+    SET last_name=?, first_name=?, email=?, contactno=?, valid=?
     WHERE id=?";
     $q = $db->prepare($sql);
-    $q->execute(array($a,$z,$b,$d,$id));
+    $q->execute(array($a,$b,$z,$c,$e,$id));
     header("location: cusaccmngmnt.php");
 }
 
 else{
     $sql = "UPDATE users 
-            SET name=?, email=?, contactno=?, password=?, valid=?
+            SET last_name=?, first_name=?, email=?, contactno=?, password=?, valid=?
             WHERE id=?";
     $q = $db->prepare($sql);
-    $q->execute(array($a,$z,$b,md5($c),$d,$id));
+    $q->execute(array($a,$b,$z,$c,md5($d),$e,$id));
     header("location: cusaccmngmnt.php");
 }
 

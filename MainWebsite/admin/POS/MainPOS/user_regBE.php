@@ -68,7 +68,7 @@ else{
                         <label for="password"><b>Password</b>
                         <input class="form-control" type="password" name="password" id="password" maxlength="16" required onkeyup='check();' oninput="userAvailability()"/> 
                         <input type="checkbox" onclick="myFunction()">Show Password             
-                        </label>
+                        </label><br>
                         <label for="confirmpassword"><b>Confirm Password</b>
                         <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" maxlength="16" required onkeyup='check();' oninput="userAvailability()"/>
                         <span id='message'></span>
