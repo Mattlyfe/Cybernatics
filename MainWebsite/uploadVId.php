@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
+error_reporting(0);
 
 
 // Check if image file is a actual image or fake image
@@ -44,7 +45,7 @@ if(isset($_POST["imgSubmit"])) {
       } 
       
       else {
-        echo "Sorry, there was an error uploading your file.";
+        // echo "Sorry, there was an error uploading your file.";
         echo '<script>window.location = "my-account.php"</script>';
       }
     }
@@ -56,7 +57,7 @@ if(isset($_POST["imgSubmit"])) {
 if(isset($_POST['update']))
 	{
 		$first_name=$_POST['first_name'];
-    $last_name=$_POST['last_name'];
+        $last_name=$_POST['last_name'];
 		$contactno=$_POST['contactno'];
 		$email=$_POST['email'];
 		$query=mysqli_query($con,"update users set first_name='$first_name', last_name='$last_name',contactno='$contactno', email='$email' where id='".$_SESSION['id']."'");

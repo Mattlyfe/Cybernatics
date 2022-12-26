@@ -137,7 +137,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th class="cart-romove item">orderID</th>
+				<th class="cart-romove item">orderID</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
 			
@@ -179,21 +179,7 @@ while($row=mysqli_fetch_array($query))
 				<?php } ?>
 				</tbody><!-- /tbody -->
 		</table><!-- /table -->	
-
-		<!-- 
-		<?php
-		if($row = intval(mysqli_num_rows($query)) != 1){ 
-			?>
-			<h2>Shipping Fee: ₱ 60.00 </h2>
-			<h1>Grand total: ₱ <?php echo $total = (intval($_SESSION['tp'])+60); ?>.00</h1>
-		
-		<?php }
-		else{ $g1total = ($gtotal + 60);?>
-			<h2>Shipping Fee: ₱ 60.00 </h2><s></s>
-			<h1>Grand total: ₱ <?php echo $total = $g1total; ?>.00</h1>
-		<?php } ?> -->
-	</div>
-	<div class="col-md-4 cart-shopping-total">
+<div class="col-md-4 cart-shopping-total">
 	<table class="table table-bordered">
 			
 				<th>
@@ -214,6 +200,7 @@ while($row=mysqli_fetch_array($query))
 
 	</table>
 		</div>	
+	</div>
 </div>
 <form name="ship" method="post">
 	<div class="col-md-4 col-sm-12 estimate-ship-tax">

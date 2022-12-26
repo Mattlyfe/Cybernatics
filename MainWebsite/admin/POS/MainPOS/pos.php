@@ -156,7 +156,7 @@ else{
             </div>
             <div class="col-3">
                 <button type="button" data-toggle="modal" data-target="#changePrice" class="btn btn-secondary w-100"><i class="bi bi-tags-fill"></i> Change Price</button>
-            </div>
+            </div> <br><br>
             <div class="modal fade" id="changePrice" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 
@@ -252,7 +252,7 @@ else{
                     </div>
                     <div class="modal-body">
 
-                    <span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" id="productCode" onblur ="checkPrice()">
+                    <span>Enter Item Code Code : </span><input type="text" style="width:359px; height:40px;" name="productCode" id="productCode" onblur ="checkPrice()"><br>
                     <span id="item-price-status" style="font-size:12px;"></span>
                         
                     </div>

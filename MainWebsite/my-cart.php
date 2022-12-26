@@ -277,7 +277,9 @@ if(!empty($_SESSION['cart']))
 		</table><!-- /table -->
 		
 	</div>
-</div><!-- /.shopping-cart-table -->
+</div><!-- /.shopping-cart-table -->			
+
+
 <div class="col-md-4 col-sm-12 cart-shopping-total">
 	<table class="table table-bordered">
 		<thead>
@@ -309,10 +311,7 @@ if(!empty($_SESSION['cart']))
             
     }
     ?>
-</div>			
-			
-</div>
-
+</div>			</div>
 </div> 
 		</div> 
 </div> 

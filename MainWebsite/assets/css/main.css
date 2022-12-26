@@ -2478,9 +2478,6 @@ a {
 }
 .product .product-image .tag {
   position: absolute;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .product .product-info .name {
   font-size: 16px;
@@ -2606,9 +2603,6 @@ a {
   left: 45%;
   position: relative;
   right: 40%;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .product-micro .product-image .image a .zoom-overlay {
   height: 100%;
@@ -2622,16 +2616,10 @@ a {
   transition: all 0.2s linear 0s;
   width: 100%;
   z-index: 99;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .product-micro .product-image .image a .zoom-overlay:hover,
 .product-micro .product-image .image a .zoom-overlay:focus {
   opacity: 1;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .cnt-home .product-micro .tag-micro {
   width: 30px;
@@ -3324,9 +3312,6 @@ a {
   line-height: 55px;
   font-size: 17px;
   right: 14px;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .search-result-container .category-product .product .cart {
   opacity: 1;
@@ -3963,17 +3948,11 @@ a {
   /*11px;*/
   text-align: center;
   position: absolute;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .homepage-container .product .product-image .tag span {
   position: relative;
   z-index: 100;
   line-height: 48px;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .homepage-container .product .product-image .tag.new {
   background: #46aad7;
@@ -4187,9 +4166,6 @@ a {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
-    aspect-ratio: 3/2;
-    mix-blend-mode: color-burn;
   }
   .header-nav .yamm .dropdown-menu {
     background: #fff;
@@ -4241,9 +4217,6 @@ a {
     width: auto;
   }
   .checkout-box .panel-group .panel {
-    -webkit-border-radius: 0px !important;
-    -moz-border-radius: 0px !important;
-    border-radius: 0px !important;
     position: relative;
     right: 70%;
     margin: 50px;
@@ -4285,9 +4258,6 @@ a {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
-    aspect-ratio: 3/2;
-    mix-blend-mode: color-burn;
   }
   .blog-slider .image img {
     width: 100%;
@@ -4322,9 +4292,6 @@ a {
     text-align: center;
   }
   .checkout-box .panel-group .panel {
-    -webkit-border-radius: 0px !important;
-    -moz-border-radius: 0px !important;
-    border-radius: 0px !important;
     position: relative;
     right: 40%;
 
@@ -4364,13 +4331,9 @@ a {
     width: auto !important;
   }
   .checkout-box .panel-group .panel {
-    -webkit-border-radius: 0px !important;
-    -moz-border-radius: 0px !important;
-    border-radius: 0px !important;
     position: relative;
     right: 50%;
   }
-
 }
 /* Large devices (large desktops, 1200px and up) */
 .blog-page .blog-post h1 {
@@ -4665,7 +4628,6 @@ a {
 .blog-page .blog-post-author-details .author-social-network .dropdown-menu > li > a:focus {
   background: rgba(0, 0, 0, 0);
 }
-
 .checkout-box .checkout-steps .checkout-step-01 .already-registered-login form .form-group .info-title {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
@@ -4719,7 +4681,6 @@ a {
   -webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
-
 }
 .checkout-box .checkout-progress-sidebar .panel-body ul li a {
   color: #666666;
@@ -4745,7 +4706,6 @@ a {
   -moz-border-radius: 0px;
   border-radius: 0px;
   text-transform: uppercase;
-  
 }
 .checkout-box .checkout-steps .guest-login .title-tag-line,
 .checkout-box .checkout-steps .already-registered-login .title-tag-line {
@@ -5028,9 +4988,6 @@ a {
 .product-comparison .compare-table tr td .product .product-image .image a {
   display: block;
   text-align: center;
-  object-fit: contain;
-  aspect-ratio: 3/2;
-  mix-blend-mode: color-burn;
 }
 .product-comparison .compare-table tr td .product-price .price {
   font-size: 16px;

@@ -63,7 +63,7 @@ if(isset($_POST["submit"]) && $_POST['paymethod'] == "E-Wallet") {
 
         while($rows=mysqli_fetch_array($q)){
           if($rows['productAvailability'] > 0 && $qty < $rows['productAvailability']){
-           
+            
             mysqli_query($con,"update products set productAvailability=(productAvailability - $qty) where id= '$prodid'");
 
           }
@@ -167,11 +167,9 @@ else if (isset($_POST['nameOnCard'])&& isset($_POST['cardNo'])
                   
                     mysqli_query($con,"update orders set 	orderStatus='Pending', paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and transactionId='".$_POST['transactionNo']."'");
                     
-                    $amount = $row['card_amount'];
                     $gtotal = $_POST['gTotal1'];
-                    $total = $amount - $gtotal;
                     
-                    mysqli_query($con, "update card_account set card_amount = '$total'");
+                    mysqli_query($con, "update card_account set card_amount = (card_amount - $gtotal)");
 
                     unset($_SESSION['cart']);
       

@@ -156,11 +156,6 @@ else{
 		<span>Transaction No. :</span> 
 		<input type="text" id="myInput" onkeyup="search()" style="padding:2px;" name="filter" value="" placeholder="Transaction Number" autocomplete="off" />
 		
-        <label for="">Date From:</label>
-				<input type="date" id="datefrom" name="date">
-				<label for="">Date To:</label>
-				<input type="date" id="dateto" name="date">
-				<button class="btn btn-primary btn-sm" id="generate" type="button">Generate</button>
 		</div>
         <div class="row" style="height:500px; overflow-y: scroll;">
             <div class="col-12"> 
@@ -179,7 +174,7 @@ else{
                 <tbody>
                         <?php
                             include('../MainPOS/connect.php');
-                            $res = $db->prepare("SELECT orders.transactionId,date_format(order_header.dateCreated,'%Y-%m-%d') as 'date_created',sum(products.productPrice) as 'total',orders.orderStatus,orders.orderDate,order_header.remark from orders
+                            $res = $db->prepare("SELECT orders.transactionId,date_format(order_header.dateCreated,'%Y-%m-%d') as 'date_created',sum(products.productPrice) as 'total',orders.orderStatus,orders.orderDate,order_header.remark, order_header.grandTotal as gtotal from orders
                             left join products on products.id = orders.productId 
                             left join order_header on order_header.transactionId = orders.transactionId
                             where orders.orderStatus<>'Received'
@@ -193,7 +188,7 @@ else{
                                     <td><?php echo 'OL-0'.$row['transactionId']; ?></td>
                                     <td><?php echo $row['date_created']; ?></td>
                                     <td><?php echo $row['remark'] ?></td>
-                                    <td><?php echo formatMoney($row['total'], true) ?></td>
+                                    <td>₱ <?php echo $row['gtotal'] ?></td>
                                     <td><?php echo $row['orderStatus']; ?></td>
                                     <td><a rel="facebox" title="Click to check reciept" href="showProdHistory.php?id=<?php echo $row['transactionId']; ?>"><button class="btn btn-warning"><i class="bi bi-receipt"></i></button></a></td>
                                     <td>

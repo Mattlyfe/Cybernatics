@@ -185,7 +185,7 @@ function sum() {
             <div class="modal-body d-flex flex-column text-center">
 				<form method="post">
 				<span>Generate New Code : </span><input type="text" style="width:359px; height:40px;" name="genCode" id="genCode" onblur ="prodCAvailability()">
-				<input type="text" id="stopper" hidden required><br>
+				<input type="text" id="stopper" name="stopper" hidden required><br>
 				<span id="item-availability-status" style="font-size:12px;"></span>
 					<?php 
 					if(isset($_POST['codeSubmit'])){
