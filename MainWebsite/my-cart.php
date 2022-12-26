@@ -295,10 +295,20 @@ if(!empty($_SESSION['cart']))
 		<tbody>
 				<tr>
 					<td>
+					<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
+						$row = mysqli_fetch_assoc($valid);
+						if ($row['valid'] == 2){ ?>
 						<div class="cart-checkout-btn pull-right">
-							<button type="submit" name="ordersubmit" class="btn btn-primary">PROCEED TO CHECKOUT</button>
+							<button type="submit" name="ordersubmit" class="btn btn-primary" disabled>PROCEED TO CHECKOUT</button>
 						
 						</div>
+						<?php 
+						} else if($row['valid'] == 0) {?><br>
+							<li>Please <b><a href="my-account.php">Verify</a></b> your Account to <b>Proceed Checkout</b></li><br /><br />
+						<?php } else if($row['valid'] == 1) {?><br>
+							<li>Please wait for your account to be <b>Validated</b> to <b>Proceed Checkout</b></li><br /><br />
+						<?php } ?>
+						
 					</td>
 				</tr>
 		</tbody><!-- /tbody -->

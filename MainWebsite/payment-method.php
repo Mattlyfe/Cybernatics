@@ -284,29 +284,10 @@ while($row=mysqli_fetch_array($query))
 				
 				<input type="text" name="gTotal1" id="gTotal1" value="<?php echo $total; ?>" readonly hidden>
 			<link rel="stylesheet" href="css/qr.css">
-			<link rel="stylesheet" href="css/credit.css">
-			<li><input type="radio" name="paymethod" id="paymethod" value="Debit/Credit Card" onclick="closePopup(); cardPopup(); debit()" required> Debit/Credit Card</li>
-				<li>
-					<div class="cardbox">
-					<div class="cardPaymentpopUp" id="cardPaymentpopUp">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-					<div class="icon-container">
-						<i class="fa fa-cc-visa" style="color:blue;"></i>
-						<i class="fa fa-cc-mastercard" style="color:red;"></i>
-					</div>
-								<label class="info-title">Name on Card</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="nameOnCard" name="nameOnCard"  required>
-								<label class="info-title">Credit Card Number</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="cardNo" name="cardNo" onkeypress='validate(event)' maxlength="19" required>
-								<label class="info-title">CVV</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="cvv" name="cvv" onkeypress='validate(event)' maxlength="3" required>
-								<label class="info-title">Exp Year</label>
-								<input type="text" class="form-control unicase-form-control text-input" id="expYear" name="expYear" onkeypress='validate(event)'  onkeyup="modifyInput(this)" maxlength="5" required>
-							</table>
-						</div>
-					</div>
-				</li>
-
+			
+				<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
+				$row = mysqli_fetch_assoc($valid);
+				if ($row['valid'] == 2){ ?>
 				<li>
 					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); closeCardPopup(); ewallet()" required> E-Wallet</li>
 				<li>
@@ -390,9 +371,7 @@ while($row=mysqli_fetch_array($query))
 					</script>
 				
 				</li>
-				<?php $valid = mysqli_query($con,"select * from users where id = '".$_SESSION['id']."'");
-				$row = mysqli_fetch_assoc($valid);
-				if ($row['valid'] == 2){ ?>
+				
 				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup(); closeCardPopup(); cod()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
@@ -401,9 +380,9 @@ while($row=mysqli_fetch_array($query))
 				</li>
 				
 			</ul><?php } else if($row['valid'] == 0) {?><br>
-				<li>Please <b><a href="my-account.php">Verify</a></b> your Account to do <b>Cash on Delivery</b></li><br /><br />
+				<li>Please <b><a href="my-account.php">Verify</a></b> your Account to <b>Pay</b></li><br /><br />
 			<?php } else if($row['valid'] == 1) {?><br>
-				<li>Please wait for your account to be <b>Validated</b> to do <b>Cash on Delivery</b></li><br /><br />
+				<li>Please wait for your account to be <b>Validated</b> to <b>Pay</b></li><br /><br />
 			<?php } ?>
 
 			<script>
@@ -437,8 +416,10 @@ while($row=mysqli_fetch_array($query))
 				$('#expYear').prop('required', false);
 			}
 			</script>
-			
+			<?php
+			if ($row['valid'] == 2){ ?>
 	     <input type="submit" value="Proceed Payment" name="submit" class="btn btn-primary">
+		 <?php } ?>
 	    </form>		
 		</div>
 		<!-- panel-body  -->
