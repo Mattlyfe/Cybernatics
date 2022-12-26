@@ -1041,6 +1041,7 @@ a {
 }
 .main-header {
   padding: 10px 0px 20px 0px;
+  background: #4db6ac;
 }
 .main-header .logo-holder {
   margin-top: 10px;
@@ -1160,6 +1161,7 @@ a {
   font-family: 'FjallaOneRegular';
   text-transform: uppercase;
   float: left;
+  background: #fff;
 }
 .top-cart-row .dropdown-cart .lnk-cart .items-cart-inner .basket {
   float: right;
