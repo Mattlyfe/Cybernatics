@@ -300,7 +300,6 @@ if(!empty($_SESSION['cart']))
 						if ($row['valid'] == 2){ ?>
 						<div class="cart-checkout-btn pull-right">
 							<button type="submit" name="ordersubmit" class="btn btn-primary" disabled>PROCEED TO CHECKOUT</button>
-						
 						</div>
 						<?php 
 						} else if($row['valid'] == 0) {?><br>
