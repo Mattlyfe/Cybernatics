@@ -160,6 +160,7 @@ function sum() {
 
 				<span>Quantity : </span><br><input type="number" style="width:359px; height:40px;" min="0" name="qty" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required ><br>
 				<span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
+				<span>Expiration date : </span><br><input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="expDate" id="expDate" placeholder="MM-DD-YYYY" required>
 				<div style="text-align: center; margin-top: 10px">
 				<button class="btn btn-success btn-block btn-large" style="width:267px;" id="saveProd"><i class="icon icon-save icon-large"></i> Save</button>
 				</div>
@@ -221,6 +222,7 @@ function sum() {
 			<th width="14%"> Generic Name </th>
 			<th width="13%"> Category / Description </th>
 			<th width="9%"> Date Added </th>
+			<th width="9%"> Expiration Date </th>
 			<th width="6%"> Original Price </th>
 			<th width="6%"> Selling Price </th>
 			<th width="6%"> Before Price </th>
@@ -284,6 +286,7 @@ function sum() {
 					
 			<td><?php echo $categoryName; ?></td>
 			<td><?php echo $row['postingDate']; ?></td>
+			<td><?php echo $row['expDate']; ?></td>
 
 			<td><?php
 			$oprice=$row['oPrice'];
@@ -387,6 +390,7 @@ function sum() {
 						<span>Original Price : </span><br><input type="text" style="width:359px; height:40px;" id="txt2<?php echo $row['id']; ?>" value="<?php echo $row['oPrice']; ?>" name="oPrice" onkeyup="sum<?php echo $row['id']; ?>();" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" Required/><br>
 						<span>Profit : </span><br><input type="text" style="width:359px; height:40px;" id="txt3<?php echo $row['id']; ?>" value="<?php echo $row['profit']; ?>" name="profit"  readonly><br>
 						<span>QTY: </span><br><input type="number" style="width:359px; height:40px;" name="productAvailability"  value="<?php echo $row['productAvailability']; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/><br>
+						<span>Expiration date : </span><br><input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="expDate" id="expDate" placeholder="MM-DD-YYYY" required>
 						<div style="text-align: center; margin-top: 10px">
 
 							<button type="submit" class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
