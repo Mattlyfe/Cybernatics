@@ -126,28 +126,13 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 </div><!-- /.breadcrumb -->
 <div class="body-content outer-top-xs">
 	<div class='container'>
-		<div class='row outer-bottom-sm'>
-			<div class='col-md-3 sidebar'>
-	            <!-- ================================== TOP NAVIGATION ================================== -->
-<!--Deleted Sub Categories Part-->
-<!-- ================================== TOP NAVIGATION : END ================================== -->	            <div class="sidebar-module-container">
-<!--DELETED NA YUNG TOP CATEGORY SA GILID-->
-
-
-
-    
-<!-- ============================================== COLOR: END ============================================== -->
-
-	            	</div><!-- /.sidebar-filter -->
-	            </div><!-- /.sidebar-module-container -->
-            </div><!-- /.sidebar -->
 			<div class='col-md-9'>
 					<!-- ========================================== SECTION – HERO ========================================= -->
 
 	<div id="category" class="category-carousel hidden-xs">
 		<div class="item">	
 			<div class="image">
-				<img src="assets/images/banners/cat-banner-1.jpg" alt="" class="img-responsive">
+				<img src="assets/images/banners/cat-banner-1.png" alt="" class="img-responsive">
 			</div>
 			<div class="container-fluid">
 				<div class="caption vertical-top text-left">

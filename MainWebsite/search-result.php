@@ -132,7 +132,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 	<div id="category" class="category-carousel hidden-xs">
 		<div class="item">	
 			<div class="image">
-				<img src="assets/images/banners/cat-banner-3.jpg" alt="" class="img-responsive">
+				<img src="assets/images/banners/cat-banner-3.png" alt="" class="img-responsive">
 			</div>
 			<div class="container-fluid">
 				<div class="caption vertical-top text-left">

@@ -3139,7 +3139,7 @@ a {
 }
 .category-carousel .item .caption {
   color: #636363;
-  left: 20%;
+  left: 25%;
   letter-spacing: -3px;
   position: absolute;
   top: 10%;
@@ -3155,7 +3155,8 @@ a {
 }
 .category-carousel .item .caption .excerpt {
   font-size: 40px;
-  letter-spacing: -1px;
+  margin-left: 10px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #ff6c6c;
 }
