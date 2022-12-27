@@ -20,8 +20,8 @@
 <div class="logo">
 	<a href="index.php">
 		
-		<h2>Sandra Store</h2>
-
+		<!--<h2>Sandra Store</h2>-->
+		<img src="/MainWebsite/assets/images/storelogo.png" style="width: 225px; height: 91px;">
 	</a>
 </div>		
 </div>

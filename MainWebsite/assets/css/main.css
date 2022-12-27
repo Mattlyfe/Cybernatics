@@ -957,7 +957,7 @@ a {
 /*  DARK GREEN Color
 /*===================================================================================*/
 .top-bar {
-  background: #f4f4f4;
+  background-image: linear-gradient(135deg, #FEB692 10%, #EA5455 100%);
   padding: 10px 0 9px;
   font-size: 12px;
 }
@@ -978,7 +978,7 @@ a {
   border-right: 1px solid #e2e2e2;
 }
 .top-bar .cnt-account ul > li a {
-  color: #888888;
+  color: #fff;
   padding: 0px;
   font-weight: 400;
   -webkit-transition: all 0.2s linear 0s;
@@ -991,6 +991,7 @@ a {
   float: left;
   padding-right: 6px;
   font-size: 11px;
+  color: #fff;
 }
 .top-bar .cnt-account ul > li a:hover,
 .top-bar .cnt-account ul > li a:focus {
@@ -1007,12 +1008,12 @@ a {
 }
 .top-bar .cnt-block .list-inline > li > a {
   padding: 6px 15px;
-  border: 1px solid #d4d4d4;
+  border: 1px solid white;
   -webkit-transition: all 0.2s linear 0s;
   -moz-transition: all 0.2s linear 0s;
   -o-transition: all 0.2s linear 0s;
   transition: all 0.2s linear 0s;
-  color: #888;
+  color: #fff;
   display: inline-block;
 }
 .top-bar .cnt-block .list-inline > li > a .value {
