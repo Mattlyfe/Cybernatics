@@ -245,11 +245,13 @@ while($row=mysqli_fetch_array($ret))
 									<div class="col-sm-3">
 										<div class="stock-box">
 											<span class="label">Availability :</span>
+											<span class="label">Expiration Date :</span>
 										</div>	
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
-											<span class="value"><?php echo htmlentities($row['productAvailability']);?></span>
+											<span class="value"><?php echo htmlentities($row['productAvailability']);?></span></br>
+											<span class="value"><?php echo htmlentities($row['expDate']);?></span>
 										</div>	
 									</div>
 								</div><!-- /.row -->	

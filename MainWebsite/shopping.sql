@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 26, 2022 at 09:08 AM
--- Server version: 10.5.17-MariaDB-cll-lve
--- PHP Version: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: Dec 27, 2022 at 06:18 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `u851750708_shopping`
+-- Database: `shopping`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE `card_account` (
 --
 
 INSERT INTO `card_account` (`id`, `card_name`, `card_number`, `card_cvv`, `card_expire`, `card_amount`) VALUES
-(1, 'Cyber Popanes', '3141 5926 5358 9805', 166, '12/23', 99999866);
+(1, 'Cyber Popanes', '3141 5926 5358 9805', 166, '12/23', -44);
 
 -- --------------------------------------------------------
 
@@ -204,7 +204,7 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (163, 4, '2', 1, '2022-11-12 18:28:53', 'Debit/Credit Card', 108, 'Pending'),
 (164, 4, '3', 1, '2022-11-12 18:32:38', 'Debit/Credit Card', 109, 'Pending'),
 (165, 4, '3', 1, '2022-11-13 10:16:07', 'E-Wallet', 110, 'Pending'),
-(166, 12, '4', 1, '2022-11-13 10:18:43', 'E-Wallet', 111, 'Preparing'),
+(166, 12, '4', 1, '2022-11-13 10:18:43', 'E-Wallet', 111, 'Pending'),
 (167, 11, '2', 1, '2022-11-13 10:26:45', 'E-Wallet', 112, 'Pending'),
 (168, 4, '2', 1, '2022-11-13 10:40:36', 'Cash on Delivery', 113, 'Pending'),
 (169, 4, '3', 8, '2022-11-13 10:40:36', 'Cash on Delivery', 113, 'Pending'),
@@ -234,7 +234,7 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (193, 18, '2', 1, '2022-11-16 11:50:46', 'Debit/Credit Card', 126, 'Out For Delivery'),
 (194, 19, '1', 1, '2022-11-16 14:00:37', 'E-Wallet', 127, 'Received'),
 (195, 19, '3', 5, '2022-11-16 14:10:45', 'E-Wallet', 128, 'Received'),
-(196, 19, '3', 5, '2022-11-16 14:57:52', 'E-Wallet', 129, 'Preparing'),
+(196, 19, '3', 5, '2022-11-16 14:57:52', 'E-Wallet', 129, 'For Delivery'),
 (197, 11, '2', 5, '2022-11-16 15:51:04', 'Cash on Delivery', 130, 'For Delivery'),
 (198, 11, '1', 6, '2022-11-16 15:54:22', 'Cash on Delivery', 131, 'Received'),
 (199, 12, '3', 5, '2022-11-16 16:01:12', NULL, 132, NULL),
@@ -279,7 +279,7 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (240, 11, '2', 5, '2022-11-19 11:27:27', NULL, 165, NULL),
 (241, 11, '3', 1, '2022-11-19 11:29:45', 'Cash on Delivery', 166, 'Pending'),
 (242, 11, '2', 7, '2022-11-19 11:30:01', 'Cash on Delivery', 167, 'Pending'),
-(243, 23, '2', 2, '2022-11-19 19:56:07', 'Debit/Credit Card', 168, 'Packing'),
+(243, 23, '2', 2, '2022-11-19 19:56:07', 'Debit/Credit Card', 168, 'Pending'),
 (244, 11, '2', 5, '2022-11-19 20:05:00', 'Debit/Credit Card', 169, 'Pending'),
 (245, 11, '2', 1, '2022-11-19 20:10:43', 'Cash on Delivery', 170, 'Pending'),
 (246, 11, '2', 1, '2022-11-19 20:19:12', NULL, 171, NULL),
@@ -294,8 +294,8 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (255, 11, '3', 1, '2022-11-19 21:36:11', 'Cash on Delivery', 178, 'Pending'),
 (256, 11, '1', 1, '2022-11-19 21:43:18', 'Cash on Delivery', 179, 'Pending'),
 (257, 11, '3', 1, '2022-11-19 21:43:18', 'Cash on Delivery', 179, 'Pending'),
-(258, 11, '1', 1, '2022-11-19 21:47:47', 'Cash on Delivery', 180, 'Preparing'),
-(259, 11, '3', 1, '2022-11-19 21:47:47', 'Cash on Delivery', 180, 'Preparing'),
+(258, 11, '1', 1, '2022-11-19 21:47:47', 'Cash on Delivery', 180, 'Pending'),
+(259, 11, '3', 1, '2022-11-19 21:47:47', 'Cash on Delivery', 180, 'Pending'),
 (260, 11, '1', 1, '2022-11-19 21:52:39', NULL, 181, NULL),
 (261, 11, '1', 1, '2022-11-19 22:05:00', 'Cash on Delivery', 182, 'Pending'),
 (262, 11, '1', 3, '2022-11-19 22:05:45', 'Cash on Delivery', 183, 'Pending'),
@@ -324,12 +324,12 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (285, 23, '1', 1, '2022-11-22 19:45:34', NULL, 201, NULL),
 (286, 27, '1', 5, '2022-11-23 22:26:58', 'E-Wallet', 202, 'Pending'),
 (287, 27, '1', 5, '2022-11-23 22:29:17', NULL, 203, NULL),
-(289, 28, '5', 9, '2022-11-25 16:11:46', 'E-Wallet', 205, 'Packing'),
+(289, 28, '5', 9, '2022-11-25 16:11:46', 'E-Wallet', 205, 'Pending'),
 (290, 29, '1', 8, '2022-11-25 17:21:56', 'E-Wallet', 206, 'Pending'),
 (291, 29, '48', 7, '2022-11-25 17:31:09', 'E-Wallet', 207, 'Pending'),
 (292, 29, '48', 5, '2022-11-25 17:34:06', NULL, 208, NULL),
 (293, 29, '1', 10, '2022-11-25 18:17:19', 'Cash on Delivery', 209, 'Pending'),
-(294, 11, '1', 6, '2022-11-27 11:25:58', 'Cash on Delivery', 210, 'Preparing'),
+(294, 11, '1', 6, '2022-11-27 11:25:58', 'Cash on Delivery', 210, 'Pending'),
 (295, 11, '1', 1, '2022-11-27 14:23:09', NULL, 211, NULL),
 (296, 11, '1', 1, '2022-11-27 14:26:23', NULL, 212, NULL),
 (297, 11, '1', 1, '2022-11-27 14:28:15', NULL, 213, NULL),
@@ -364,42 +364,15 @@ INSERT INTO `orders` (`id`, `userId`, `productId`, `quantity`, `orderDate`, `pay
 (326, 11, '1', 1, '2022-11-28 10:43:08', NULL, 230, NULL),
 (327, 11, '1', 1, '2022-11-28 10:43:20', NULL, 231, NULL),
 (328, 11, '6', 1, '2022-11-28 10:43:20', NULL, 231, NULL),
-(329, 11, '1', 1, '2022-11-28 10:43:43', 'Cash on Delivery', 232, 'Packing'),
-(330, 11, '6', 1, '2022-11-28 10:43:43', 'Cash on Delivery', 232, 'Packing'),
+(329, 11, '1', 1, '2022-11-28 10:43:43', 'Cash on Delivery', 232, 'Pending'),
+(330, 11, '6', 1, '2022-11-28 10:43:43', 'Cash on Delivery', 232, 'Pending'),
 (331, 11, '1', 1, '2022-11-28 12:18:22', NULL, 233, NULL),
 (332, 11, '1', 1, '2022-11-28 12:23:39', NULL, 234, NULL),
 (333, 11, '1', 1, '2022-11-28 12:27:27', NULL, 235, NULL),
 (334, 11, '6', 1, '2022-11-28 12:27:27', NULL, 235, NULL),
 (335, 23, '1', 1, '2022-12-04 08:26:36', NULL, 236, NULL),
 (336, 23, '1', 1, '2022-12-04 09:28:18', NULL, 237, NULL),
-(337, 23, '1', 1, '2022-12-04 09:37:28', NULL, 238, NULL),
-(338, 23, '1', 1, '2022-12-05 07:14:23', NULL, 239, NULL),
-(339, 11, '6', 1, '2022-12-07 19:13:36', 'E-Wallet', 240, 'Preparing'),
-(340, 30, '1', 1, '2022-12-08 14:39:56', NULL, 241, NULL),
-(341, 32, '6', 1, '2022-12-09 20:37:06', NULL, 242, NULL),
-(342, 33, '1', 1, '2022-12-10 09:08:53', NULL, 243, NULL),
-(343, 33, '1', 10, '2022-12-10 09:10:41', NULL, 244, NULL),
-(344, 35, '44', 5, '2022-12-10 09:20:30', 'E-Wallet', 245, 'Pending'),
-(345, 36, '6', 1, '2022-12-10 09:33:04', 'E-Wallet', 246, 'For Delivery'),
-(346, 37, '6', 6, '2022-12-12 09:33:12', 'E-Wallet', 247, 'Received'),
-(347, 37, '1', 5, '2022-12-12 09:47:44', NULL, 248, NULL),
-(348, 23, '49', 5, '2022-12-16 07:52:53', NULL, 249, NULL),
-(349, 23, '49', 5, '2022-12-16 07:53:51', 'Cash on Delivery', 250, 'Preparing'),
-(350, 23, '6', 6, '2022-12-16 08:03:03', 'Cash on Delivery', 251, 'Out For Delivery'),
-(351, 23, '50', 6, '2022-12-16 08:03:03', 'Cash on Delivery', 251, 'Out For Delivery'),
-(352, 38, '1', 2, '2022-12-16 10:29:25', NULL, 252, NULL),
-(353, 38, '1', 1, '2022-12-16 11:47:01', 'E-Wallet', 253, 'Preparing'),
-(354, 39, '1', 10, '2022-12-17 12:00:17', NULL, 254, NULL),
-(355, 38, '1', 10, '2022-12-17 12:02:55', NULL, 255, NULL),
-(356, 38, '1', 10, '2022-12-17 12:06:23', 'E-Wallet', 256, 'Pending'),
-(357, 38, '7', 1, '2022-12-17 12:31:41', 'Debit/Credit Card', 257, 'Pending'),
-(358, 38, '1', 2, '2022-12-17 12:37:32', 'Debit/Credit Card', 258, 'Pending'),
-(359, 38, '1', 1, '2022-12-17 12:39:25', 'Debit/Credit Card', 259, 'Pending'),
-(360, 38, '1', 1, '2022-12-17 12:41:33', 'Debit/Credit Card', 260, 'Pending'),
-(361, 38, '1', 1, '2022-12-17 12:42:49', 'Debit/Credit Card', 261, 'Pending'),
-(362, 38, '1', 1, '2022-12-17 12:43:44', 'Debit/Credit Card', 262, 'Pending'),
-(363, 38, '1', 1, '2022-12-17 12:47:01', 'Debit/Credit Card', 263, 'Packing'),
-(364, 39, '1', 1, '2022-12-17 16:58:10', 'E-Wallet', 264, 'Pending');
+(337, 23, '1', 1, '2022-12-04 09:37:28', NULL, 238, NULL);
 
 -- --------------------------------------------------------
 
@@ -648,33 +621,7 @@ INSERT INTO `order_header` (`transactionId`, `userId`, `referenceNo`, `rNoImg`, 
 (235, 11, NULL, NULL, 16, '2022-11-28 12:27:27', NULL),
 (236, 23, NULL, NULL, 7, '2022-12-04 08:26:36', NULL),
 (237, 23, NULL, NULL, 7, '2022-12-04 09:28:18', NULL),
-(238, 23, NULL, NULL, 7, '2022-12-04 09:37:28', NULL),
-(239, 23, NULL, NULL, 7, '2022-12-05 07:14:23', NULL),
-(240, 11, '123112', '119925032_2093501477449600_4108970047863147300_n.jpg', 69, '2022-12-07 19:13:36', 'Pending Payment'),
-(241, 30, NULL, NULL, 7, '2022-12-08 14:39:56', NULL),
-(242, 32, NULL, NULL, 9, '2022-12-09 20:37:06', NULL),
-(243, 33, NULL, NULL, 7, '2022-12-10 09:08:53', NULL),
-(244, 33, NULL, NULL, 70, '2022-12-10 09:10:41', NULL),
-(245, 35, '99887536', 'hello-world.png', 135, '2022-12-10 09:20:30', 'Pending Payment'),
-(246, 36, '99887536', 'payment-receipt-template-0e3ccaba6f92f75d3825f6ddc0709d44.png', 69, '2022-12-10 09:33:04', 'Paid'),
-(247, 37, '123124121', 'SAMLE RESIBO.jpg', 114, '2022-12-12 09:33:12', 'Paid'),
-(248, 37, NULL, NULL, 0, '2022-12-12 09:47:44', NULL),
-(249, 23, NULL, NULL, 0, '2022-12-16 07:52:53', NULL),
-(250, 23, 'COD #250', NULL, 765, '2022-12-16 07:53:51', 'Paid'),
-(251, 23, 'COD #251', NULL, 174, '2022-12-16 08:03:03', 'Paid'),
-(252, 38, NULL, NULL, 14, '2022-12-16 10:29:25', NULL),
-(253, 38, '11423', 'sample resibo.png', 67, '2022-12-16 11:47:01', 'Paid'),
-(254, 39, NULL, NULL, 70, '2022-12-17 12:00:17', NULL),
-(255, 38, NULL, NULL, 70, '2022-12-17 12:02:55', NULL),
-(256, 38, '445568', 'sample resibo.png', 130, '2022-12-17 12:06:23', 'Pending Payment'),
-(257, 38, 'Credit/Debit #257', NULL, 68, '2022-12-17 12:31:41', 'Pending Payment'),
-(258, 38, 'Credit/Debit #258', NULL, 74, '2022-12-17 12:37:32', 'Pending Payment'),
-(259, 38, 'Credit/Debit #259', NULL, 67, '2022-12-17 12:39:25', 'Pending Payment'),
-(260, 38, 'Credit/Debit #260', NULL, 67, '2022-12-17 12:41:33', 'Pending Payment'),
-(261, 38, 'Credit/Debit #261', NULL, 67, '2022-12-17 12:42:49', 'Pending Payment'),
-(262, 38, 'Credit/Debit #262', NULL, 67, '2022-12-17 12:43:44', 'Pending Payment'),
-(263, 38, 'Credit/Debit #263', NULL, 67, '2022-12-17 12:47:01', 'Paid'),
-(264, 39, '224556', 'SAMLE RESIBO.jpg', 67, '2022-12-17 16:58:10', 'Pending Payment');
+(238, 23, NULL, NULL, 7, '2022-12-04 09:37:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -699,28 +646,28 @@ CREATE TABLE `products` (
   `productImage3` varchar(255) DEFAULT NULL,
   `productAvailability` int(255) DEFAULT NULL,
   `postingDate` timestamp NULL DEFAULT current_timestamp(),
-  `updationDate` varchar(255) DEFAULT NULL
+  `updationDate` varchar(255) DEFAULT NULL,
+  `expDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `productCode`, `category`, `productName`, `genName`, `productCompany`, `oPrice`, `productPrice`, `profit`, `productPriceBeforeDiscount`, `productDescription`, `productImage1`, `productImage2`, `productImage3`, `productAvailability`, `postingDate`, `updationDate`) VALUES
-(1, '4800092113363', 4, 'Bear Brand Swak', 'Bear Brand', 'Bear Brand', 5, 7, 0, 0, '', 'BearBrand.jpeg', 'BearBrand.jpeg', 'BearBrand.jpeg', 105, '2017-01-30 16:54:35', ''),
-(4, '1312313131', 4, 'Oreo  ', 'Oreo', 'Oreo', 5, 15, 0, 17, '', 'oreo 2.png', 'oreo 3.png', 'oreo.png', 0, '2017-02-04 04:04:43', ''),
-(5, '4800092113345', 4, 'Fita ', 'Fita', 'Rebisco', 5, 7, 0, 0, '', 'fitabisc.png', 'lenovo-k5-note-pa330116in-2.jpeg', 'lenovo-k5-note-pa330116in-3.jpeg', 0, '2017-02-04 04:06:17', ''),
-(6, '4800092113334', 4, 'Hansel', 'Hansel', 'Hansel', 5, 9, 0, 0, '', 'hanselbisc.jpg', 'micromax-canvas-mega-4g-2.jpeg', 'micromax-canvas-mega-4g-3.jpeg', 233, '2017-02-04 04:08:07', ''),
-(7, '4800092113338', 4, 'Rebisco  ', 'Rebisco', 'Rebisco', 5, 8, 3, 0, '', 'magicflakesbisc.png', 'samsung-galaxy-on5-sm-2.jpeg', 'samsung-galaxy-on5-sm-3.jpeg', 44, '2017-02-04 04:10:17', ''),
-(30, '4800361415293', 5, ' Milo Twin Pack ', 'Milo', NULL, 5, 10, 5, NULL, NULL, 'mil twin pack 2.png', 'mil twin pack 3.png', 'mil twin pack.png', 14, '2022-11-11 14:48:22', NULL),
-(31, '4800575144491', 5, ' Alaska Evaporada Sulit Litro Pack', 'Evaporada', NULL, 40, 50, 10, NULL, NULL, 'alaska 2.png', 'alaska 3.png', 'alaska.png', 150, '2022-11-11 14:54:27', NULL),
-(34, '4800092113277', 4, 'Rebisco Strawberry', 'Rebisco Strawberry', NULL, 5, 10, 5, 20, NULL, 'rebisco-sandwich-strawberry 2.jpg', 'rebisco-sandwich-strawberry 3.jpg', 'rebisco-sandwich-strawberry.jpg', 870, '2022-11-13 08:27:21', NULL),
-(44, '4800016112140', 4, 'Overload                             ', 'Overload', NULL, 5, 15, 10, 15, NULL, 'IMG_9486-700x700_0.jpg', 'QUAKE_OVERLOAD_CHOCO_STRAWBERRY__30GX10_.jpg', '5b7b8be3ca2c493104fb4a9338a71aea_large.png', 150, '2022-11-19 10:52:04', NULL),
-(48, '9780123456786', 4, 'Marie ', 'Marie', NULL, 55, 60, 5, 50, NULL, 'rebisco-marie-time 2.jpg', 'rebisco-marie-time 3.jpg', 'rebisco-marie-time.jpg', 81, '2022-11-25 13:58:30', NULL),
-(49, '0293647028392', 6, ' Emperador Lights 1L', 'Emperador Lights', NULL, 120, 141, 21, 150, NULL, 'empelight_750ml - Copy (2).png', 'empelight_750ml - Copy.png', 'empelight_750ml.png', 95, '2022-11-25 14:13:15', NULL),
-(50, '4800049721142', 6, ' 7/11 Bottled Water  ', 'Bottled Water', NULL, 5, 10, 5, 15, NULL, '7-Eleven-7-Select-alkaline-water.jpg', 'Langdon_WebAssets_7E_Water_1.png', 'water-bottle-bcfedf5e71a4c2cc.jpg', 94, '2022-11-25 17:38:17', NULL),
-(52, '4800092551604', 4, 'Dowee Donut ', 'Dowee', NULL, 20, 45, 25, 50, NULL, 'dowee.jpg', 'doweee.jpg', 'doweeee.jpg', 96, '2022-12-17 16:39:08', NULL),
-(53, '4800016078811', 4, ' Cream-o Cake bar Vanilla', 'Cream-o Cake bar Vanilla', NULL, 10, 15, 5, 15, NULL, NULL, NULL, NULL, 499, '2022-12-17 17:10:22', NULL);
+INSERT INTO `products` (`id`, `productCode`, `category`, `productName`, `genName`, `productCompany`, `oPrice`, `productPrice`, `profit`, `productPriceBeforeDiscount`, `productDescription`, `productImage1`, `productImage2`, `productImage3`, `productAvailability`, `postingDate`, `updationDate`, `expDate`) VALUES
+(1, '4800092113363', 4, 'Bear Brand Swak', 'Bear Brand', 'Bear Brand', 5, 7, 0, 0, '', 'BearBrand.jpeg', 'BearBrand.jpeg', 'BearBrand.jpeg', 124, '2017-01-30 16:54:35', '', NULL),
+(4, '1312313131', 4, 'Oreo  ', 'Oreo', 'Oreo', 5, 15, 0, 17, '', 'oreo 2.png', 'oreo 3.png', 'oreo.png', 0, '2017-02-04 04:04:43', '', NULL),
+(5, '4800092113345', 4, 'Fita ', 'Fita', 'Rebisco', 5, 7, 0, 0, '', 'fitabisc.png', 'lenovo-k5-note-pa330116in-2.jpeg', 'lenovo-k5-note-pa330116in-3.jpeg', 0, '2017-02-04 04:06:17', '', NULL),
+(6, '4800092113334', 4, 'Hansel', 'Hansel', 'Hansel', 5, 9, 0, 0, '', 'hanselbisc.jpg', 'micromax-canvas-mega-4g-2.jpeg', 'micromax-canvas-mega-4g-3.jpeg', 247, '2017-02-04 04:08:07', '', NULL),
+(7, '4800092113338', 4, 'Rebisco  ', 'Rebisco', 'Rebisco', 5, 8, 3, 0, '', 'magicflakesbisc.png', 'samsung-galaxy-on5-sm-2.jpeg', 'samsung-galaxy-on5-sm-3.jpeg', 45, '2017-02-04 04:10:17', '', NULL),
+(30, '4800361415293', 5, ' Milo Twin Pack ', 'Milo', NULL, 5, 10, 5, NULL, NULL, 'mil twin pack 2.png', 'mil twin pack 3.png', 'mil twin pack.png', 14, '2022-11-11 14:48:22', NULL, NULL),
+(31, '4800575144491', 5, ' Alaska Evaporada Sulit Litro Pack', 'Evaporada', NULL, 40, 50, 10, NULL, NULL, 'alaska 2.png', 'alaska 3.png', 'alaska.png', 150, '2022-11-11 14:54:27', NULL, NULL),
+(34, '4800092113277', 4, 'Rebisco Strawberry', 'Rebisco Strawberry', NULL, 5, 10, 5, 20, NULL, 'rebisco-sandwich-strawberry 2.jpg', 'rebisco-sandwich-strawberry 3.jpg', 'rebisco-sandwich-strawberry.jpg', 870, '2022-11-13 08:27:21', NULL, NULL),
+(44, '4800016112140', 4, 'Overload                             ', 'Overload', NULL, 5, 15, 10, 15, NULL, 'IMG_9486-700x700_0.jpg', 'QUAKE_OVERLOAD_CHOCO_STRAWBERRY__30GX10_.jpg', '5b7b8be3ca2c493104fb4a9338a71aea_large.png', 155, '2022-11-19 10:52:04', NULL, NULL),
+(48, '9780123456786', 4, 'Marie ', 'Marie', NULL, 55, 60, 5, 50, NULL, 'rebisco-marie-time 2.jpg', 'rebisco-marie-time 3.jpg', 'rebisco-marie-time.jpg', 81, '2022-11-25 13:58:30', NULL, NULL),
+(49, '0293647028392', 6, ' Emperador Lights 1L', 'Emperador Lights', NULL, 120, 141, 21, 150, NULL, 'empelight_750ml - Copy (2).png', 'empelight_750ml - Copy.png', 'empelight_750ml.png', 100, '2022-11-25 14:13:15', NULL, NULL),
+(50, '4800049721142', 6, ' 7/11 Bottled Water  ', 'Bottled Water', NULL, 5, 10, 5, 15, NULL, '7-Eleven-7-Select-alkaline-water.jpg', 'Langdon_WebAssets_7E_Water_1.png', 'water-bottle-bcfedf5e71a4c2cc.jpg', 1000, '2022-11-25 17:38:17', NULL, '2022-12-29'),
+(52, '1', 3, ' test ', 'test', NULL, 2, 12, 10, 12, NULL, NULL, NULL, NULL, 1000, '2022-12-27 04:18:04', NULL, '2022-12-23');
 
 -- --------------------------------------------------------
 
@@ -744,41 +691,43 @@ CREATE TABLE `purchase_orders` (
 --
 
 INSERT INTO `purchase_orders` (`id`, `supplier_name`, `mop`, `date_created`, `po_status`, `total_amount`, `user_id`, `delivery_date`) VALUES
-(25, 'SupplierOne', 'Cash', '2022-11-12 12:22:02', 'Pending', '128', NULL, '2022-11-12'),
-(27, 'SupplierOne', 'Gcash', '2022-11-13 11:01:08', 'Pending', '15', NULL, '2022-11-13'),
-(30, 'SupplierOne', 'Paymaya', '2022-11-13 11:10:29', 'Pending', '10', NULL, '2022-11-13'),
-(31, 'SupplierOne', 'Cash', '2022-11-13 11:12:24', 'Pending', '5', NULL, '2022-11-13'),
-(32, 'SupplierOne', 'Cash', '2022-11-13 11:12:55', 'Pending', '5', NULL, '2022-11-13'),
-(33, 'SupplierOne', 'Gcash', '2022-11-13 11:16:21', 'Pending', '97', NULL, '2022-11-13'),
-(34, 'SupplierOne', 'Paymaya', '2022-11-13 11:17:04', 'Pending', '5', NULL, '2022-11-13'),
-(35, 'SupplierOne', 'Cash', '2022-11-13 13:15:45', 'Pending', '12', NULL, '2022-06-29'),
-(36, 'SupplierOne', NULL, '2022-11-13 13:15:57', 'Pending', '0', NULL, NULL),
-(37, 'SupplierOne', 'Paymaya', '2022-11-13 13:16:51', 'Pending', '10', NULL, '2022-09-09'),
-(38, 'SupplierOne', 'Paymaya', '2022-11-13 13:17:44', 'Pending', '10', NULL, '2022-09-09'),
-(39, 'SupplierOne', NULL, '2022-11-13 13:18:20', 'Pending', '0', NULL, NULL),
-(40, 'SupplierOne', 'Paymaya', '2022-11-13 13:22:17', 'Pending', '10', NULL, '2022-09-09'),
-(41, 'SupplierOne', 'Paymaya', '2022-11-13 13:29:44', 'Pending', '10', NULL, '2022-09-09'),
-(42, 'SupplierOne', 'Gcash', '2022-11-13 13:30:15', 'Pending', '10', NULL, '2022-01-01'),
-(43, 'SupplierOne', NULL, '2022-11-13 13:30:42', 'Pending', '0', NULL, NULL),
-(45, 'SupplierOne', 'Gcash', '2022-11-13 13:32:07', 'Pending', '30', NULL, '2022-01-01'),
-(46, 'SupplierOne', 'Gcash', '2022-11-13 14:20:48', 'Pending', '50', 30, '2022-02-02'),
-(47, 'SupplierOne', 'Cash', '2022-11-13 14:27:20', 'Pending', '260', 30, '2022-01-01'),
-(48, 'SupplierOne', 'Gcash', '2022-11-13 14:31:07', 'Pending', '5', 30, '2022-01-01'),
-(49, 'SupplierOne', 'Paymaya', '2022-11-13 14:56:15', 'Pending', '300', 30, '2022-02-02'),
-(50, 'SupplierOne', 'Paymaya', '2022-11-13 14:59:40', 'Pending', '0', 30, '2022-01-01'),
-(51, 'SupplierOne', 'Paymaya', '2022-11-13 14:59:43', 'Pending', '0', 30, '2022-01-01'),
-(52, 'SupplierOne', 'Cash', '2022-11-13 15:16:35', 'Pending', '250', 30, '2022-01-10'),
-(53, 'SupplierOne', 'Cash', '2022-11-13 15:17:42', 'Pending', '250', 30, '2022-01-10'),
-(54, 'SupplierOne', 'Gcash', '2022-11-13 15:19:02', 'Pending', '0', 30, '2022-01-01'),
-(55, 'SupplierOne', 'Gcash', '2022-11-13 15:23:04', 'Pending', '0', 30, '2022-01-01'),
-(56, 'SupplierOne', 'Gcash', '2022-11-13 15:24:09', 'Pending', '550', 30, '2022-01-01'),
-(57, 'SupplierOne', 'Cash', '2022-11-13 15:25:42', 'Preparing', '10', 30, '2022-01-01'),
+(25, 'Test', 'Cash', '2022-11-12 12:22:02', 'Pending', '128', NULL, '2022-11-12'),
+(27, 'online test', 'Gcash', '2022-11-13 11:01:08', 'Pending', '15', NULL, '2022-11-13'),
+(30, 'online test', 'Paymaya', '2022-11-13 11:10:29', 'Pending', '10', NULL, '2022-11-13'),
+(31, 'online test', 'Cash', '2022-11-13 11:12:24', 'Pending', '5', NULL, '2022-11-13'),
+(32, 'online test', 'Cash', '2022-11-13 11:12:55', 'Pending', '5', NULL, '2022-11-13'),
+(33, 'online test1', 'Gcash', '2022-11-13 11:16:21', 'Pending', '97', NULL, '2022-11-13'),
+(34, 'online test2', 'Paymaya', '2022-11-13 11:17:04', 'Pending', '5', NULL, '2022-11-13'),
+(35, 'testing po', 'Cash', '2022-11-13 13:15:45', 'Pending', '12', NULL, '2022-06-29'),
+(36, NULL, NULL, '2022-11-13 13:15:57', 'Pending', '0', NULL, NULL),
+(37, 'test', 'Paymaya', '2022-11-13 13:16:51', 'Pending', '10', NULL, '2022-09-09'),
+(38, 'test', 'Paymaya', '2022-11-13 13:17:44', 'Pending', '10', NULL, '2022-09-09'),
+(39, NULL, NULL, '2022-11-13 13:18:20', 'Pending', '0', NULL, NULL),
+(40, 'test', 'Paymaya', '2022-11-13 13:22:17', 'Pending', '10', NULL, '2022-09-09'),
+(41, 'test', 'Paymaya', '2022-11-13 13:29:44', 'Pending', '10', NULL, '2022-09-09'),
+(42, 'test 1', 'Gcash', '2022-11-13 13:30:15', 'Pending', '10', NULL, '2022-01-01'),
+(43, NULL, NULL, '2022-11-13 13:30:42', 'Pending', '0', NULL, NULL),
+(45, 'test 2', 'Gcash', '2022-11-13 13:32:07', 'Pending', '30', NULL, '2022-01-01'),
+(46, '1231231231', 'Gcash', '2022-11-13 14:20:48', 'Pending', '50', 30, '2022-02-02'),
+(47, 'bago to', 'Cash', '2022-11-13 14:27:20', 'Pending', '260', 30, '2022-01-01'),
+(48, 'Sample supplier', 'Gcash', '2022-11-13 14:31:07', 'Pending', '5', 30, '2022-01-01'),
+(49, 'ulit', 'Paymaya', '2022-11-13 14:56:15', 'Pending', '300', 30, '2022-02-02'),
+(50, 'testsssssssssssss', 'Paymaya', '2022-11-13 14:59:40', 'Pending', '0', 30, '2022-01-01'),
+(51, 'testsssssssssssss', 'Paymaya', '2022-11-13 14:59:43', 'Pending', '0', 30, '2022-01-01'),
+(52, 'test ulit', 'Cash', '2022-11-13 15:16:35', 'Pending', '250', 30, '2022-01-10'),
+(53, 'test ulit', 'Cash', '2022-11-13 15:17:42', 'Pending', '250', 30, '2022-01-10'),
+(54, 'test ulitasda', 'Gcash', '2022-11-13 15:19:02', 'Pending', '0', 30, '2022-01-01'),
+(55, 'test ulitasda', 'Gcash', '2022-11-13 15:23:04', 'Pending', '0', 30, '2022-01-01'),
+(56, 'Last sss', 'Gcash', '2022-11-13 15:24:09', 'Pending', '550', 30, '2022-01-01'),
+(57, 'last uliy', 'Cash', '2022-11-13 15:25:42', 'Pending', '10', 30, '2022-01-01'),
 (59, 'lyodsupplier', 'Cash', '2022-11-18 09:52:17', 'Pending', '250', 30, '2022-11-18'),
 (60, 'lyodsupplier', 'Gcash', '2022-11-18 22:31:50', 'Pending', '8', 30, '2022-11-18'),
 (61, 'lyodsupplier', 'Cash', '2022-11-18 22:33:16', 'Pending', '32', 30, '2022-11-19'),
 (62, 'SupplierOne', 'Cash', '2022-11-19 10:56:36', 'Pending', '1710', 30, '2022-11-30'),
+(63, 'SupplierOne', 'Cash', '2022-11-23 22:39:45', 'Received', '215', 30, '2022-11-26'),
 (64, 'bry', 'Cash', '2022-11-25 16:19:53', 'Pending', '510', 30, '2022-11-26'),
-(66, 'lyodsupplier', 'Gcash', '2022-12-08 15:34:09', 'Pending', '505', 30, '2022-12-09');
+(66, 'lyodsupplier', 'Cash', '2022-12-08 06:21:06', 'Pending', '5', 30, '2022-12-16'),
+(67, 'lyodsupplier', 'Gcash', '2022-12-08 07:30:58', 'Pending', '15', 30, '2022-12-09');
 
 -- --------------------------------------------------------
 
@@ -953,6 +902,21 @@ INSERT INTO `purchase_order_items` (`id`, `purchase_order_id`, `product_id`, `qu
 (303, 62, 3, 0, '2022-11-19 10:56:36'),
 (304, 62, 2, 0, '2022-11-19 10:56:36'),
 (305, 62, 1, 0, '2022-11-19 10:56:36'),
+(306, 63, 46, 3, '2022-11-23 22:39:45'),
+(307, 63, 44, 0, '2022-11-23 22:39:45'),
+(308, 63, 38, 1, '2022-11-23 22:39:45'),
+(309, 63, 36, 0, '2022-11-23 22:39:45'),
+(310, 63, 34, 1, '2022-11-23 22:39:45'),
+(311, 63, 33, 0, '2022-11-23 22:39:45'),
+(312, 63, 31, 0, '2022-11-23 22:39:45'),
+(313, 63, 30, 4, '2022-11-23 22:39:45'),
+(314, 63, 7, 3, '2022-11-23 22:39:45'),
+(315, 63, 6, 0, '2022-11-23 22:39:45'),
+(316, 63, 5, 0, '2022-11-23 22:39:45'),
+(317, 63, 4, 1, '2022-11-23 22:39:45'),
+(318, 63, 3, 0, '2022-11-23 22:39:45'),
+(319, 63, 2, 1, '2022-11-23 22:39:45'),
+(320, 63, 1, 1, '2022-11-23 22:39:45'),
 (321, 64, 49, 3, '2022-11-25 16:19:53'),
 (322, 64, 48, 2, '2022-11-25 16:19:53'),
 (323, 64, 44, 1, '2022-11-25 16:19:53'),
@@ -964,18 +928,30 @@ INSERT INTO `purchase_order_items` (`id`, `purchase_order_id`, `product_id`, `qu
 (329, 64, 5, 4, '2022-11-25 16:19:53'),
 (330, 64, 4, 3, '2022-11-25 16:19:53'),
 (331, 64, 1, 0, '2022-11-25 16:19:53'),
-(344, 66, 50, 5, '2022-12-08 15:34:09'),
-(345, 66, 49, 4, '2022-12-08 15:34:09'),
-(346, 66, 48, 0, '2022-12-08 15:34:09'),
-(347, 66, 44, 0, '2022-12-08 15:34:09'),
-(348, 66, 34, 0, '2022-12-08 15:34:09'),
-(349, 66, 31, 0, '2022-12-08 15:34:09'),
-(350, 66, 30, 0, '2022-12-08 15:34:09'),
-(351, 66, 7, 0, '2022-12-08 15:34:09'),
-(352, 66, 6, 0, '2022-12-08 15:34:09'),
-(353, 66, 5, 0, '2022-12-08 15:34:09'),
-(354, 66, 4, 0, '2022-12-08 15:34:09'),
-(355, 66, 1, 0, '2022-12-08 15:34:09');
+(344, 66, 50, 1, '2022-12-08 06:21:06'),
+(345, 66, 49, 0, '2022-12-08 06:21:06'),
+(346, 66, 48, 0, '2022-12-08 06:21:06'),
+(347, 66, 44, 0, '2022-12-08 06:21:06'),
+(348, 66, 34, 0, '2022-12-08 06:21:06'),
+(349, 66, 31, 0, '2022-12-08 06:21:06'),
+(350, 66, 30, 0, '2022-12-08 06:21:06'),
+(351, 66, 7, 0, '2022-12-08 06:21:06'),
+(352, 66, 6, 0, '2022-12-08 06:21:06'),
+(353, 66, 5, 0, '2022-12-08 06:21:06'),
+(354, 66, 4, 0, '2022-12-08 06:21:06'),
+(355, 66, 1, 0, '2022-12-08 06:21:06'),
+(356, 67, 50, 3, '2022-12-08 07:30:58'),
+(357, 67, 49, 0, '2022-12-08 07:30:58'),
+(358, 67, 48, 0, '2022-12-08 07:30:58'),
+(359, 67, 44, 0, '2022-12-08 07:30:58'),
+(360, 67, 34, 0, '2022-12-08 07:30:58'),
+(361, 67, 31, 0, '2022-12-08 07:30:58'),
+(362, 67, 30, 0, '2022-12-08 07:30:58'),
+(363, 67, 7, 0, '2022-12-08 07:30:58'),
+(364, 67, 6, 0, '2022-12-08 07:30:58'),
+(365, 67, 5, 0, '2022-12-08 07:30:58'),
+(366, 67, 4, 0, '2022-12-08 07:30:58'),
+(367, 67, 1, 0, '2022-12-08 07:30:58');
 
 -- --------------------------------------------------------
 
@@ -1025,8 +1001,7 @@ INSERT INTO `transactions` (`id`, `total_amount`, `cash_tendered`, `changed`, `m
 (271, 10, 50, 40, 'Cash', 30, '2022-11-21 07:45:43'),
 (272, 150, 200, 50, 'Cash', 30, '2022-11-23 22:44:37'),
 (273, 240, 240, 0, 'Cash', 30, '2022-11-25 13:40:03'),
-(274, 510, 510, 0, 'Cash', 30, '2022-11-25 17:56:27'),
-(275, 75, 75, 0, 'Cash', 30, '2022-12-17 17:11:54');
+(274, 510, 510, 0, 'Cash', 30, '2022-11-25 17:56:27');
 
 -- --------------------------------------------------------
 
@@ -1078,9 +1053,7 @@ INSERT INTO `transaction_items` (`id`, `transaction_id`, `product_code`, `produc
 (223, 272, '4800417005256', 75, 2, '2022-11-23 22:44:37'),
 (224, 273, '4800417005249', 80, 3, '2022-11-25 13:40:03'),
 (225, 274, '0293647028392', 100, 5, '2022-11-25 17:56:27'),
-(226, 274, '4800049721142', 10, 1, '2022-11-25 17:56:27'),
-(227, 275, '4800092551604', 15, 4, '2022-12-17 17:11:54'),
-(228, 275, '4800016078811', 15, 1, '2022-12-17 17:11:54');
+(226, 274, '4800049721142', 10, 1, '2022-11-25 17:56:27');
 
 -- --------------------------------------------------------
 
@@ -1340,29 +1313,7 @@ INSERT INTO `userlog` (`id`, `userEmail`, `userip`, `loginTime`, `logout`, `stat
 (259, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:52:48', NULL, 0),
 (260, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:52:56', '04-12-2022 03:23:20 PM', 1),
 (261, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:57:18', '04-12-2022 03:28:28 PM', 1),
-(262, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:58:37', NULL, 1),
-(263, 'lejarde@gmail.com', 0x3137352e3137362e32342e3234300000, '2022-12-04 23:13:24', '08-12-2022 11:14:15 AM', 1),
-(264, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-07 11:11:52', NULL, 1),
-(265, 'dennis@email.com', 0x3138302e3139312e3137362e35320000, '2022-12-08 05:45:18', NULL, 1),
-(266, 'testing123@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-09 12:36:22', NULL, 1),
-(267, 'test123@gmail.com', 0x3132322e332e322e3138330000000000, '2022-12-10 01:07:26', NULL, 0),
-(268, 'test123@gmail.com', 0x3132322e332e322e3138330000000000, '2022-12-10 01:07:41', NULL, 0),
-(269, 'cocomartin@gmail.com', 0x3230332e3136302e3136312e31340000, '2022-12-10 01:07:57', '10-12-2022 06:46:38 AM', 1),
-(270, 'test123@gmail.com', 0x3132322e332e322e3138330000000000, '2022-12-10 01:07:58', NULL, 0),
-(271, 'charlessanchez20@gmail.com', 0x3132322e332e322e3138330000000000, '2022-12-10 01:08:10', NULL, 1),
-(272, 'jhayr.naguit@yahoo.com', 0x3132322e332e322e3138330000000000, '2022-12-10 01:19:13', '10-12-2022 06:58:21 AM', 1),
-(273, 'jhayr.naguit@yahoo.com', 0x3132322e332e322e3138330000000000, '2022-12-10 01:32:57', '10-12-2022 07:17:47 AM', 1),
-(274, 'puffycake16@gmail.com', 0x3131322e3139382e32372e3200000000, '2022-12-12 01:32:07', '12-12-2022 07:37:48 AM', 1),
-(275, 'puffycake16@gmail.com', 0x3131322e3139382e32372e3200000000, '2022-12-12 02:09:56', NULL, 1),
-(276, 'lejarde@gmail.com', 0x3132322e332e322e3138330000000000, '2022-12-15 23:52:38', NULL, 1),
-(277, 'jlyod@gmail.com', 0x3137352e3137362e32342e3435000000, '2022-12-16 02:28:51', '16-12-2022 08:00:40 AM', 1),
-(278, 'jlyod@gmail.com', 0x3137352e3137362e32342e3135380000, '2022-12-16 03:45:43', NULL, 1),
-(279, 'angel@gmail.com', 0x3137352e3137362e32342e3230000000, '2022-12-17 01:02:32', '17-12-2022 06:34:40 AM', 1),
-(280, 'angel@gma', 0x3137352e3137362e32342e3230000000, '2022-12-17 03:57:36', NULL, 0),
-(281, 'angel@gmail.com', 0x3137352e3137362e32342e3230000000, '2022-12-17 03:57:50', '17-12-2022 09:31:33 AM', 1),
-(282, 'jlyod@gmail.com', 0x3137352e3137362e32342e3230000000, '2022-12-17 04:02:09', '17-12-2022 01:34:01 PM', 1),
-(283, 'angel@gmail.com', 0x3137352e3137362e32342e3230000000, '2022-12-17 08:04:54', '17-12-2022 01:35:07 PM', 1),
-(284, 'angel@gmail.com', 0x3133312e3232362e3130312e31350000, '2022-12-17 08:57:10', NULL, 1);
+(262, 'charlessanchez20@gmail.com', 0x3138302e3139312e3231302e34320000, '2022-12-04 09:58:37', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1394,34 +1345,25 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `email`, `contactno`, `password`, `billingAddress`, `billingState`, `billingCity`, `billingPincode`, `regDate`, `updationDate`, `valid`, `validPicFront`, `validPicBack`) VALUES
-(4, 'matt', 'Matt', 'Sanchez', 'pogi@123.com', 9562331515, 'cd49847b46a4e64d3cb193f3bb8f2ea2', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-10-16 12:46:02', '14-11-2022 08:27:36 PM', 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
-(10, 'Matthew ', 'Matthew', 'Sanchez', 'sanchezcharlesmatthew@gmail.com', 9297603186, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-12 15:03:35', NULL, 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
-(11, 'Matthew ', 'Charles Matthew', 'Sanchez', 'charlessanchez20@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1441, '2022-11-13 08:54:57', NULL, 1, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
-(12, 'Jeong Jaehyun', 'Chieni', 'Sanchez', 'chienimaesanchez@gmail.com', 9988670903, '59ff7b5980ddf19995e3058ff3a0b049', '177 Joaquin St.', 'Gen T', 'Valenzuela City', 1442, '2022-11-13 10:16:15', NULL, 0, NULL, NULL),
-(13, 'Cyber Popanes', 'Cyber', 'Popanes', 'cyberp17400@gmail.com', 9981833176, 'd8ff74690808c03e5772aac118b4594e', '72 Pateros St ', 'Barangay 35', 'Valenzuela City', 1410, '2022-11-13 10:51:55', NULL, 0, NULL, NULL),
-(14, 'Marks Bryan Quilala', 'Mark Bryan', 'Quilala', 'natskiedagreat18@gmail.com', 9654334058, '8cba0fd0e0dfb08e3646ecca3d02acd9', '#04 Bernadettet St. Gabriel Subd.1', 'Hulong-Duhat', 'Valenzuela City', 1442, '2022-11-13 12:02:12', NULL, 0, NULL, NULL),
-(15, 'coco martin', 'Coco', 'Martin', 'coco@gmail.com', 9123456789, '48b67c1a1c8ba94ff6e5bd067643081d', NULL, NULL, NULL, NULL, '2022-11-13 12:20:16', NULL, 0, NULL, NULL),
-(16, 'John Lyod Miranda', 'John Lyod', 'Miranda', 'lyod@gmail.com', 9123456789, 'a11ff5b70e10a02cc1c546e745a8cfde', NULL, NULL, NULL, NULL, '2022-11-13 14:01:58', NULL, 0, NULL, NULL),
-(17, 'Nero angelo', 'Nero', 'Angelo', 'tracymcgray69@gmail.com', 9776005128, '662af1cd1976f09a9f8cecc868ccc0a2', '1103 Huntington beach', 'UG', 'Valenzuela City', 1442, '2022-11-13 23:53:41', NULL, 0, NULL, NULL),
-(18, 'Mark Dizon', 'Mark', 'Dizon', 'markdizon@gmail.com', 9981833178, '5c2da6ce54cfc462906f7cec364b8671', '78 Pateros Street', '72', 'Valenzuela City', 1420, '2022-11-14 15:11:05', NULL, 0, NULL, NULL),
-(19, 'JLyod', 'John', 'Lyod', 'John@gmail.com', 9603121444, '798ab565ce13bd5ba3d7ada8a0e8b6ea', '456 Mapulang Lupa', 'Mapulang Lupa', 'Valenzuela City', 1446, '2022-11-16 13:59:55', NULL, 0, NULL, NULL),
-(21, 'Charles Matthew Sanchez', 'Charles Matthew', 'Sanchez', 'sanchezcharles@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-17 01:20:08', NULL, 0, NULL, NULL),
-(23, 'Charles Lejarde', 'Charles', 'Lejarde', 'lejarde@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong', 'Ugong', 'Valenzuela City', 1441, '2022-11-18 09:09:50', NULL, 2, NULL, NULL),
-(24, 'Sharian Pascasio', 'Sharian', 'Pascasio', 'cesharian@gmail.com', 9453240065, '3c4d3d628de986ffbfe54d07f398722a', NULL, NULL, NULL, NULL, '2022-11-18 10:48:43', NULL, 0, NULL, NULL),
-(25, 'Cyber Popanes', 'Cyber', 'Popanes', 'cyberpopanes@gmail.com', 9981833177, 'd8ff74690808c03e5772aac118b4594e', 'dfdsfds', 'Barangay 32', 'Valenzuela City', 1410, '2022-11-19 02:43:57', NULL, 2, 'Screenshot (6).png', 'Screenshot (8).png'),
-(26, 'pepito manaloto', 'Pepito', 'Manaloto', 'pepito@gmail.com', 9123456789, '7cee197bc6de4288b3682c6a4a47f0fe', NULL, NULL, NULL, NULL, '2022-11-23 06:18:08', NULL, 0, NULL, NULL),
-(27, 'John Ryan Dela Cruz', 'John Ryan', 'Dela Cruz', 'test2@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Ugong', 'Valenzuela City', 1441, '2022-11-23 14:25:56', NULL, 2, 'Screenshot_20221025_092458.png', 'Screenshot_20221025_092756.png'),
-(28, 'Mark Bryan Quilala', 'Mark Bryan', 'Quilala', 'quilala@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Gen. T De Leon', 'Gen. T De Leon', 'Valenzuela City', 4141, '2022-11-25 08:10:55', NULL, 1, 'Screenshot (6).png', 'Screenshot (7).png'),
-(29, 'James Bedia', 'James', 'Bedia', 'bedia@gmail.com', 9562331515, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Marulas', 'Valenzuela City', 4141, '2022-11-25 09:20:55', NULL, 2, 'Screenshot (8).png', 'Screenshot (9).png'),
-(30, NULL, 'Dennis', 'Lejarde', 'dennis@email.com', 9084310585, '9cf8999ae45f9b63a3a381f8a759202c', NULL, NULL, NULL, NULL, '2022-12-08 05:45:09', NULL, 0, NULL, NULL),
-(31, NULL, 'John Lyod', 'Miranda', 'miranda@gmail.com', 9603121444, 'a88df5fb0d3ec3f694684765f47c3f24', NULL, NULL, NULL, NULL, '2022-12-08 23:25:22', NULL, 0, NULL, NULL),
-(32, NULL, 'charles', 'sanchez', 'testing123@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', NULL, NULL, NULL, NULL, '2022-12-09 12:35:48', NULL, 0, NULL, NULL),
-(33, NULL, 'Coco', 'Martin', 'cocomartin@gmail.com', 9123456789, '7e3e21575b1eb3e5febcc79254ca42f5', NULL, NULL, NULL, NULL, '2022-12-10 01:03:21', NULL, 0, NULL, NULL),
-(34, NULL, 'Coco', 'Martin', 'cocomartin@gmail.com', 9123456789, '7e3e21575b1eb3e5febcc79254ca42f5', NULL, NULL, NULL, NULL, '2022-12-10 01:04:02', NULL, 0, NULL, NULL),
-(36, NULL, 'Jarl', 'Naguit', 'jhayr.naguit@yahoo.com', 9954506612, 'f27f0dbb4fccafcdfd7b73480b6c787d', '19 BBB Valenzuela', 'Marulas', 'Valenzuela City', 1440, '2022-12-10 01:32:47', NULL, 0, NULL, NULL),
-(37, NULL, 'Charles Matthew', 'Matunan', 'puffycake16@gmail.com', 9297603186, 'bb916d5e7355cb6ac162e56ae115ae32', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-12-12 01:31:53', NULL, 2, 'back.png', 'front.png'),
-(38, NULL, 'John Lyod', 'Miranda', 'jlyod@gmail.com', 9603121444, 'a9cceb79eb69aaf70f09ca563b0028e9', 'Gen T De Leon', 'Gen T De Leon', 'Valenzuela City', 1442, '2022-12-16 02:28:33', NULL, 1, 'back.png', 'front.png'),
-(39, NULL, 'Angel ', 'Locsin', 'angel@gmail.com', 9603121444, '6b1d1b9cbe286351486b78c7a2371f8e', 'Gen T. De Leon', 'Gen T. De Leon', 'Valenzuela City', 1442, '2022-12-17 01:01:45', NULL, 0, NULL, NULL);
+(4, 'matt', NULL, NULL, 'pogi@123.com', 9562331515, 'cd49847b46a4e64d3cb193f3bb8f2ea2', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-10-16 12:46:02', '14-11-2022 08:27:36 PM', 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
+(10, 'Matthew ', NULL, NULL, 'sanchezcharlesmatthew@gmail.com', 9297603186, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-12 15:03:35', NULL, 2, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
+(11, 'Matthew ', 'Charles Matthew', 'Sanchez', 'charlessanchez20@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1441, '2022-11-13 08:54:57', NULL, 0, '310335562_567267905204629_7049844939608816694_n.jpg', '313196272_691204045766977_3578913808528365872_n.jpg'),
+(12, 'Jeong Jaehyun', NULL, NULL, 'chienimaesanchez@gmail.com', 9988670903, '59ff7b5980ddf19995e3058ff3a0b049', '177 Joaquin St.', 'Gen T', 'Valenzuela City', 1442, '2022-11-13 10:16:15', NULL, 0, NULL, NULL),
+(13, 'Cyber Popanes', NULL, NULL, 'cyberp17400@gmail.com', 9981833176, 'd8ff74690808c03e5772aac118b4594e', '72 Pateros St ', 'Barangay 35', 'Valenzuela City', 1410, '2022-11-13 10:51:55', NULL, 0, NULL, NULL),
+(14, 'Marks Bryan Quilala', NULL, NULL, 'natskiedagreat18@gmail.com', 9654334058, '8cba0fd0e0dfb08e3646ecca3d02acd9', '#04 Bernadettet St. Gabriel Subd.1', 'Hulong-Duhat', 'Valenzuela City', 1442, '2022-11-13 12:02:12', NULL, 0, NULL, NULL),
+(15, 'coco martin', NULL, NULL, 'coco@gmail.com', 9123456789, '48b67c1a1c8ba94ff6e5bd067643081d', NULL, NULL, NULL, NULL, '2022-11-13 12:20:16', NULL, 0, NULL, NULL),
+(16, 'John Lyod Miranda', NULL, NULL, 'lyod@gmail.com', 9123456789, 'a11ff5b70e10a02cc1c546e745a8cfde', NULL, NULL, NULL, NULL, '2022-11-13 14:01:58', NULL, 0, NULL, NULL),
+(17, 'Nero angelo', NULL, NULL, 'tracymcgray69@gmail.com', 9776005128, '662af1cd1976f09a9f8cecc868ccc0a2', '1103 Huntington beach', 'UG', 'Valenzuela City', 1442, '2022-11-13 23:53:41', NULL, 0, NULL, NULL),
+(18, 'Mark Dizon', NULL, NULL, 'markdizon@gmail.com', 9981833178, '5c2da6ce54cfc462906f7cec364b8671', '78 Pateros Street', '72', 'Valenzuela City', 1420, '2022-11-14 15:11:05', NULL, 0, NULL, NULL),
+(19, 'JLyod', NULL, NULL, 'John@gmail.com', 9123456789, '798ab565ce13bd5ba3d7ada8a0e8b6ea', '456 Mapulang Lupa', 'Mapulang Lupa', 'Valenzuela City', 1446, '2022-11-16 13:59:55', NULL, 0, NULL, NULL),
+(21, 'Charles Matthew Sanchez', NULL, NULL, 'sanchezcharles@gmail.com', 9562331515, '28a255fee2ddbffdd7338025ff896cf0', '177 Joaquin St. Gen. T. De Leon Valenzuela City', 'Gen. T. De Leon', 'Valenzuela City', 1442, '2022-11-17 01:20:08', NULL, 0, NULL, NULL),
+(23, 'Charles Lejarde', NULL, NULL, 'lejarde@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong', 'Ugong', 'Valenzuela City', 1441, '2022-11-18 09:09:50', NULL, 0, NULL, NULL),
+(24, 'Sharian Pascasio', NULL, NULL, 'cesharian@gmail.com', 9453240065, '3c4d3d628de986ffbfe54d07f398722a', NULL, NULL, NULL, NULL, '2022-11-18 10:48:43', NULL, 0, NULL, NULL),
+(25, 'Cyber Popanes', NULL, NULL, 'cyberpopanes@gmail.com', 9981833177, 'd8ff74690808c03e5772aac118b4594e', 'dfdsfds', 'Barangay 32', 'Valenzuela City', 1410, '2022-11-19 02:43:57', NULL, 2, 'Screenshot (6).png', 'Screenshot (8).png'),
+(26, 'pepito manaloto', NULL, NULL, 'pepito@gmail.com', 9123456789, '7cee197bc6de4288b3682c6a4a47f0fe', NULL, NULL, NULL, NULL, '2022-11-23 06:18:08', NULL, 0, NULL, NULL),
+(27, 'John Ryan Dela Cruz', NULL, NULL, 'test2@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Ugong', 'Valenzuela City', 1441, '2022-11-23 14:25:56', NULL, 2, 'Screenshot_20221025_092458.png', 'Screenshot_20221025_092756.png'),
+(28, 'Mark Bryan Quilala', NULL, NULL, 'quilala@gmail.com', 9204549598, '9cf8999ae45f9b63a3a381f8a759202c', 'Gen. T De Leon', 'Gen. T De Leon', 'Valenzuela City', 4141, '2022-11-25 08:10:55', NULL, 1, 'Screenshot (6).png', 'Screenshot (7).png'),
+(29, 'James Bedia', NULL, NULL, 'bedia@gmail.com', 9562331515, '9cf8999ae45f9b63a3a381f8a759202c', 'Ugong ', 'Marulas', 'Valenzuela City', 4141, '2022-11-25 09:20:55', NULL, 2, 'Screenshot (8).png', 'Screenshot (9).png');
 
 -- --------------------------------------------------------
 
@@ -1444,18 +1386,22 @@ CREATE TABLE `users_be` (
 
 INSERT INTO `users_be` (`ID`, `first_name`, `last_name`, `user_name`, `password`, `role`) VALUES
 (30, 'admin', 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(62, 'Matthew', 'Sanchez', 'Mattlyfe', '473e1a35c874f72fad4ff77b2f242bf8', 'admin'),
 (64, 'sup', 'sup', 'Supplier', '2eeecd72c567401e6988624b179d0b14', 'supplier'),
 (66, 'Cashier', 'Cashier', 'Cashier', '93585797569d208d914078d513c8c55a', 'cashier'),
+(70, 'lawrence', 'canlas', 's', '21232f297a57a5a743894a0e4a801fc3', 'cashier'),
+(72, 'final', 'test', 'finaltest', '098f6bcd4621d373cade4e832627b4f6', 'admin'),
+(73, 'Cyber', 'Dizon', 'Zyver', '81dc9bdb52d04dc20036dbd8313ed055', 'cashier'),
 (74, 'Mark', 'Dizon', 'Mark', '81dc9bdb52d04dc20036dbd8313ed055', 'supplier'),
 (75, 'Supplier', 'BastSupp', 'SupplierOne', '087e1c29263a271e297a19dd843ce86f', 'supplier'),
 (76, 'lyodsupplier', 'lyodsupplier', 'lyodsupplier', '187605de1b23057e147d78d47be89ea1', 'supplier'),
 (77, 'John', 'Miranda', 'Miranda', '441ee11ea25f56f702131a08c6bcf508', 'cashier'),
-(78, 'SupplierOne', 'Supplier', 'SupplierOne', '2eeecd72c567401e6988624b179d0b14', 'supplier'),
+(78, 'SupplierOne', 'Supplier', 'SupplierOne', 'ec136b444eede3bc85639fac0dd06229', 'supplier'),
 (79, 'Supplier', 'Sample', 'SupplierTwo', '81dc9bdb52d04dc20036dbd8313ed055', 'supplier'),
 (80, 'Rain', 'Man', 'RainCashier', '81dc9bdb52d04dc20036dbd8313ed055', 'cashier'),
 (81, 'Cashier', '2', 'Cashier2', '93585797569d208d914078d513c8c55a', 'cashier'),
 (82, 'Mark Bryan', 'Quilala', 'bry', 'a02f3c4dd24a836ce1aa36c461b71e7e', 'supplier'),
-(112, 'Clang', 'Guanzon', 'Auyan', '9cf8999ae45f9b63a3a381f8a759202c', 'cashier');
+(83, 'Agaw', 'Manlapat', 'agaw', '49375313ae9e075247b1dada362090c5', 'supplier');
 
 --
 -- Indexes for dumped tables
@@ -1565,13 +1511,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `item_container`
 --
 ALTER TABLE `item_container`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=330;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=338;
 
 --
 -- AUTO_INCREMENT for table `ordertrackhistory`
@@ -1583,55 +1529,55 @@ ALTER TABLE `ordertrackhistory`
 -- AUTO_INCREMENT for table `order_header`
 --
 ALTER TABLE `order_header`
-  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
+  MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `purchase_orders`
 --
 ALTER TABLE `purchase_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `purchase_order_items`
 --
 ALTER TABLE `purchase_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=356;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=368;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
 
 --
 -- AUTO_INCREMENT for table `transaction_items`
 --
 ALTER TABLE `transaction_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 
 --
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users_be`
 --
 ALTER TABLE `users_be`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
