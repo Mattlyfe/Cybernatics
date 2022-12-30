@@ -93,7 +93,7 @@ else{
 		</div>		
         <i class="bi bi-search" style="font-size:26px;"></i> <input type="text" style="padding:15px;" name="filter" value="" id="filter" placeholder="Search..." autocomplete="off" />
         <br><br>
-        <div class="row" style="height:500px; overflow-y: scroll;">
+        <div class="row" style="height:700px; overflow-y: scroll;">
                 <div class="col-md-12">
                 
                     <div class="table-responsive"> 
