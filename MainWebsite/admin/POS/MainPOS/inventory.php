@@ -162,7 +162,7 @@ function sum() {
 				<span></span><input type="hidden" style="width:359px; height:40px;" id="txt22" name="qty_sold" Required ><br>
 				<span>Expiration date : </span><br><input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="expDate" id="expDate" placeholder="MM-DD-YYYY" required>
 				<div style="text-align: center; margin-top: 10px">
-				<button class="btn btn-success btn-block btn-large" style="width:267px;" id="saveProd"><i class="icon icon-save icon-large"></i> Save</button>
+				<button class="btn btn-success btn-block btn-large" style="width:267px; margin-left: 96px" id="saveProd"><i class="icon icon-save icon-large"></i> Save</button>
 				</div>
 				</div>
 
@@ -206,7 +206,7 @@ function sum() {
 					?>
 
 					<br>
-				<button class="btn btn-success btn-block btn-large" style="width:267px;" name="codeSubmit" id="codeSubmit" disabled><i class="icon icon-save icon-large"></i> Submit</button>
+				<button class="btn btn-success btn-block btn-large" style="width:267px; margin-left: 96px;" name="codeSubmit" id="codeSubmit" disabled><i class="icon icon-save icon-large"></i> Submit</button>
 				</form>
                
             </div>

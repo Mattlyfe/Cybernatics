@@ -138,7 +138,7 @@ while($row=mysqli_fetch_array($query1))
 				.then(willPrint => {
 					if (willPrint){
 						<?php
-						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.productName as ")
+						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ")
 						?>
 						var doc = new jsPDF('p','pt','letter');
 						var body = [
