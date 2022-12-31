@@ -90,14 +90,14 @@ while($row=mysqli_fetch_array($query))
 		<table class="table table-bordered" id="table" hidden>
 			<thead>
 				<tr>
-					<th class="cart-romove item">orderID</th>
+					<!-- <th class="cart-romove item">orderID</th> -->
 					<th class="cart-product-name item">Product Name</th>
 			
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
 					<th class="cart-total item">Sub-total</th>
-					<th class="cart-total item">Payment Method</th>
-					<th class="cart-description item">Order Date</th>
+					<!-- <th class="cart-total item">Payment Method</th>
+					<th class="cart-description item">Order Date</th> -->
 					
 				</tr>
 			</thead><!-- /thead -->
@@ -110,7 +110,7 @@ while($row=mysqli_fetch_array($query))
 {$gtotal = $row['gtotal'];
 ?>
 				<tr>
-					<td># <?php echo $tId=$row['tId']; ?></td>
+					<!-- <td># <?php echo $tId=$row['tId']; ?></td> -->
 					
 					<td class="cart-product-name-info">
 						
@@ -121,10 +121,10 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-quantity">
 						<?php echo $qty=$row['qty']; ?>   
 		            </td>
-					<td class="cart-product-sub-total">₱ <?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
-					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
-					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
+					<td class="cart-product-sub-total">₱<?php echo $price=$row['pprice']; ?>  </td>
+					<td class="cart-product-grand-total">₱<?php echo ($qty*$price);?></td>
+					<!-- <td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
+					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td> -->
 					
 					
 				</tr>
@@ -136,8 +136,8 @@ while($row=mysqli_fetch_array($query))
 			<td> </td>
 			<td> </td>
 			<td> </td>
+			<td>Grand total: ₱<?php echo $gtotal?></td>
 			<td> </td>
-			<td>Grand total: ₱ <?php echo $gtotal?></td>
 		</table><!-- /table -->
 
         <center><h4><i class="icon-edit icon-large"></i> Order # <?php echo$id?> Shipping Address</h4></center>
@@ -183,7 +183,8 @@ while($row=mysqli_fetch_array($query1))
 			}
 			$('#checkout').click(function(){
 						<?php
-						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ")
+						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ");
+
 						?>
 						var doc = new jsPDF('p', 'mm', [88, 210]);
 						var body = [
@@ -191,14 +192,7 @@ while($row=mysqli_fetch_array($query1))
 						]
 						var y = 20;
 
-						var currentdate = new Date(); 
-                        var datetime = 
-                                        (currentdate.getMonth()+1)  + "/" 
-                                        +currentdate.getDate() + "/"
-                                        + currentdate.getFullYear() + " @ "  
-                                        + currentdate.getHours() + ":"  
-                                        + currentdate.getMinutes() + ":" 
-                                        + currentdate.getSeconds();
+
 										
 						doc.setLineWidth(1.5);
 						doc.setFontSize(13);
@@ -206,10 +200,9 @@ while($row=mysqli_fetch_array($query1))
 						doc.setFontSize(10);
 						doc.text(15,14, "6017 Gen. T. De Leon, Valenzuela City");
                         doc.text(28,18, "TIN #: 226-120-535");
-						doc.text(11,23, `Transaction Stamp: ${datetime}`);
+						doc.text(15,23, "Order Date: ");
 						doc.text(11,28, "Payment Method: ");
 						doc.text(11,33, "Order ID: ");
-
 						doc.autoTable({
 							html: '#table',
 							body: body,
@@ -217,8 +210,9 @@ while($row=mysqli_fetch_array($query1))
 							theme: 'plain',
 							headStyles:{halign:'center'},
 							styles:{
-								fontSize: 5,
-								cellWidth: 'wrap'
+								fontSize: 9,
+								cellWidth: 'auto',
+								margin: Margin = 0
 							},
 							columnStyles: {
 								0:{
@@ -241,24 +235,24 @@ while($row=mysqli_fetch_array($query1))
 							theme: 'plain',
 							headStyles:{
 								halign:'center',
-								fontSize: 10
+								fontSize: 8
 							},
 							styles:{
-								fontSize: 8,
+								fontSize: 7,
 								cellWidth: 'auto'
 							},
 							columnStyles: {
 								0:{
-									halign: 'center',
-									tableWidth: 100,
+									halign: 'right',
+
 								},
 								1:{
 									halign: 'center',
-									tableWidth: 100,
+
 								},
 								2:{
 									halign: 'center',
-									tableWidth: 100,
+
 								}
 							}
 						})
