@@ -187,13 +187,13 @@ while($row=mysqli_fetch_array($query))
 					<?php
 					if($row = intval(mysqli_num_rows($query)) != 1){ 
 						?>
-						<h4>Shipping Fee: ₱ 60.00 </h4>
-						<h2>Grand total: ₱ <?php echo $total = (intval($_SESSION['tp'])+60); ?>.00</h2>
+						
+						<h1>Grand total: ₱ <?php echo $total = ($_SESSION['tp']); ?></h1>
 					
 					<?php }
-					else{ $g1total = ($gtotal + 60);?>
-						<h4>Shipping Fee: ₱ 60.00 </h4><s></s>
-						<h2>Grand total: ₱ <?php echo $total = $g1total; ?>.00</h2>
+					else{?>
+						
+						<h1>Grand total: ₱ <?php echo $total = $gtotal; ?>.00</h1>
 					<?php } ?>
 					</div>
 				</th>

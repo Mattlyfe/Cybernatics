@@ -28,7 +28,7 @@
 <form name ="submit" method="post">
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
 <center><h4><i class="icon-edit icon-large"></i> Order # <?php echo$id?> Receipt</h4></center>
-<table class="table table-bordered" >
+<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th class="cart-romove item">orderID</th>
@@ -87,8 +87,57 @@ while($row=mysqli_fetch_array($query))
 		</table><!-- /table -->
 		<h1>Grand total: ₱ <?php echo $gtotal?><h1>
 
+		<table class="table table-bordered" id="table" hidden>
+			<thead>
+				<tr>
+					<th class="cart-romove item">orderID</th>
+					<th class="cart-product-name item">Product Name</th>
+			
+					<th class="cart-qty item">Quantity</th>
+					<th class="cart-sub-total item">Price Per unit</th>
+					<th class="cart-total item">Sub-total</th>
+					<th class="cart-total item">Payment Method</th>
+					<th class="cart-description item">Order Date</th>
+                    <th class="cart-description item">Order Status</th>
+					
+				</tr>
+			</thead><!-- /thead -->
+			
+			<tbody>
+            <?php 
+ $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
+<?php
+while($row=mysqli_fetch_array($query))
+{$gtotal = $row['gtotal'];
+?>
+				<tr>
+					<td># <?php echo $tId=$row['tId']; ?></td>
+					
+					<td class="cart-product-name-info">
+						
+						<?php echo $row['pname'];?></a></h4>
+						
+						
+					</td>
+					<td class="cart-product-quantity">
+						<?php echo $qty=$row['qty']; ?>   
+		            </td>
+					<td class="cart-product-sub-total">₱ <?php echo $price=$row['pprice']; ?>  </td>
+					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
+					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
+					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
+					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
+					
+				</tr>
+                
+<?php } $query -> close();?>
+
+				
+			</tbody><!-- /tbody -->
+		</table><!-- /table -->
+
         <center><h4><i class="icon-edit icon-large"></i> Order # <?php echo$id?> Shipping Address</h4></center>
-<table class="table table-bordered">
+<table class="table table-bordered" id="table1">
 			<thead>
 				<tr>
 					<th class="cart-romove item">Name</th>
@@ -121,62 +170,70 @@ while($row=mysqli_fetch_array($query1))
         <input type="submit" name="submit" value="Go back" class="btn btn-warning">
 		<button id="checkout" style="background: red;"type="button" class="btn btn-warning btn-lg">Print Receipt</button>
 	</form>
+	<script src="js/jquery.js">
+    </script>
 	<script type="text/javascript">
 			function createPDF(){
 				var win = window.open('','','height=700,width=700');
 				win.print();   //PRINT CONTENTS.
 			}
 			$('#checkout').click(function(){
-				swal({
-					title: "Print Order Reciept?",
-					text: "Print the order receipt?",
-					icon: "warning",
-					dangermode: true,
-					closeOnClickOutside: false,
-                    buttons:["No","Yes"]
-				});
-				.then(willPrint => {
-					if (willPrint){
 						<?php
 						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ")
 						?>
-						var doc = new jsPDF('p','pt','letter');
+						var doc = new jsPDF('p', 'mm', [88, 210]);
 						var body = [
 							['Item', 'Quantity', 'Price']
 						]
 						var y = 20;
 						doc.setLineWidth(1.5);
-						doc.setFont(undefined, 'bold').text(250, 50, "SANDRA'S STORE");
+						doc.setFont(undefined, 'bold').text(1, 1, "SANDRA'S STORE");
 						doc.text(170,70, "6017 Gen. T. De Leon, Valenzuela City");
                         doc.text(155,90, "TIN #: SAMPLE TIN NUMBER");
-						doc.text(100,110, "Order Date: " +);
-						doc.text(100,130, "Order ID: " +);
 
 						doc.autoTable({
+							html: '#table',
 							body: body,
-							startY: 150,
+							
 							theme: 'plain',
 							headStyles:{halign:'center'},
 							columnStyles: {
 								0:{
 									halign: 'right',
-									tableWidth: 100,
+									tableWidth: 5,
 								},
 								1:{
 									halign: 'center',
-									tableWidth: 100,
+									tableWidth: 5,
 								},
 								2:{
 									halign: 'center',
-									tableWidth: 100,
+									tableWidth: 5,
+								}
+							}
+						})
+						doc.autoTable({
+							html: '#table1',
+							body: body,
+							theme: 'plain',
+							headStyles:{halign:'center'},
+							columnStyles: {
+								0:{
+									halign: 'right',
+									tableWidth: 5,
+								},
+								1:{
+									halign: 'center',
+									tableWidth: 5,
+								},
+								2:{
+									halign: 'center',
+									tableWidth: 5,
 								}
 							}
 						})
 						doc.autoPrint();
 						window.open(doc.output('bloburl'))
-					}
-				})
-
-			});
+		});
 	</script>
 		

@@ -10,12 +10,15 @@ else
 }
 
 if($_SESSION['role'] == "supplier" ){
+    header("location:javascript://history.go(-1)");
     header("Location: purchaseorder.php");
 }
 
 else{
 ?>
-<html>
+<html> <?php
+    header("location:javascript://history.go(-1)");
+    ?>
 		<head>
 		<link href="css/bootstrap.css" rel="stylesheet">
         <title>Admin| Point of Sales</title>

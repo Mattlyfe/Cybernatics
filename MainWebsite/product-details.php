@@ -288,7 +288,7 @@ while($row=mysqli_fetch_array($ret))
 										<div class="cart-quantity">
 											<div class="quant-input">    
 											<?php $max =$row['productAvailability'];
-												 echo '<input type="number" name="quantity" min="0" max="'.$max.'" value="1" oninput="'; ?>this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+												 echo '<input type="number" name="quantity" min="1" max="'.$max.'" value="1" oninput="'; ?>this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
 							              </div>
 							            </div>
 									</div>
@@ -300,7 +300,7 @@ while($row=mysqli_fetch_array($ret))
 										<div class="action" style="color:red">Out of Stock</div>
 										
 													<?php } else {?>
-														<button type="submit" name="buynow" class="btn btn-primary">Buy now!</button>
+														
 														<button type="submit" name="add" class="btn btn-primary">Add to Cart</button>
 					<?php } ?>
 									</div>
