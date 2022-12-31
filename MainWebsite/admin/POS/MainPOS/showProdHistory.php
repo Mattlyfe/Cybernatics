@@ -98,7 +98,6 @@ while($row=mysqli_fetch_array($query))
 					<th class="cart-total item">Sub-total</th>
 					<th class="cart-total item">Payment Method</th>
 					<th class="cart-description item">Order Date</th>
-                    <th class="cart-description item">Order Status</th>
 					
 				</tr>
 			</thead><!-- /thead -->
@@ -126,7 +125,6 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
 					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
-					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
 					
 					
 				</tr>
@@ -192,17 +190,36 @@ while($row=mysqli_fetch_array($query1))
 							['Item', 'Quantity', 'Price']
 						]
 						var y = 20;
+
+						var currentdate = new Date(); 
+                        var datetime = 
+                                        (currentdate.getMonth()+1)  + "/" 
+                                        +currentdate.getDate() + "/"
+                                        + currentdate.getFullYear() + " @ "  
+                                        + currentdate.getHours() + ":"  
+                                        + currentdate.getMinutes() + ":" 
+                                        + currentdate.getSeconds();
+										
 						doc.setLineWidth(1.5);
-						doc.setFont(undefined, 'bold').text(1, 1, "SANDRA'S STORE");
-						doc.text(170,70, "6017 Gen. T. De Leon, Valenzuela City");
-                        doc.text(155,90, "TIN #: SAMPLE TIN NUMBER");
+						doc.setFontSize(13);
+						doc.setFont(undefined, 'bold').text(25, 10, "SANDRA'S STORE");
+						doc.setFontSize(10);
+						doc.text(15,14, "6017 Gen. T. De Leon, Valenzuela City");
+                        doc.text(28,18, "TIN #: 226-120-535");
+						doc.text(11,23, `Transaction Stamp: ${datetime}`);
+						doc.text(11,28, "Payment Method: ");
+						doc.text(11,33, "Order ID: ");
 
 						doc.autoTable({
 							html: '#table',
 							body: body,
-							
+							startY: 40,
 							theme: 'plain',
 							headStyles:{halign:'center'},
+							styles:{
+								fontSize: 5,
+								cellWidth: 'wrap'
+							},
 							columnStyles: {
 								0:{
 									halign: 'right',
@@ -222,19 +239,26 @@ while($row=mysqli_fetch_array($query1))
 							html: '#table1',
 							body: body,
 							theme: 'plain',
-							headStyles:{halign:'center'},
+							headStyles:{
+								halign:'center',
+								fontSize: 10
+							},
+							styles:{
+								fontSize: 8,
+								cellWidth: 'auto'
+							},
 							columnStyles: {
 								0:{
-									halign: 'right',
-									tableWidth: 5,
+									halign: 'center',
+									tableWidth: 100,
 								},
 								1:{
 									halign: 'center',
-									tableWidth: 5,
+									tableWidth: 100,
 								},
 								2:{
 									halign: 'center',
-									tableWidth: 5,
+									tableWidth: 100,
 								}
 							}
 						})
