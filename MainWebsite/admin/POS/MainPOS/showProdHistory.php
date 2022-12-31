@@ -128,12 +128,18 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
 					
+					
 				</tr>
                 
 <?php } $query -> close();?>
 
 				
 			</tbody><!-- /tbody -->
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td>Grand total: ₱ <?php echo $gtotal?></td>
 		</table><!-- /table -->
 
         <center><h4><i class="icon-edit icon-large"></i> Order # <?php echo$id?> Shipping Address</h4></center>
