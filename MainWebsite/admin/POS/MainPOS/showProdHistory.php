@@ -121,8 +121,8 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-quantity">
 						<?php echo $qty=$row['qty']; ?>   
 		            </td>
-					<td class="cart-product-sub-total">₱<?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-grand-total">₱<?php echo ($qty*$price);?></td>
+					<td class="cart-product-sub-total">P<?php echo $price=$row['pprice']; ?>  </td>
+					<td class="cart-product-grand-total">P<?php echo ($qty*$price);?></td>
 					<!-- <td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td> -->
 					
@@ -136,7 +136,7 @@ while($row=mysqli_fetch_array($query))
 			<td> </td>
 			<td> </td>
 			<td> </td>
-			<td>Grand total: ₱<?php echo $gtotal?></td>
+			<td>Grand total: P<?php echo $gtotal?></td>
 			<td> </td>
 		</table><!-- /table -->
 
@@ -201,9 +201,9 @@ while($row=mysqli_fetch_array($query1))
 						doc.setFontSize(10);
 						doc.text(15,14, "6017 Gen. T. De Leon, Valenzuela City");
                         doc.text(28,18, "TIN #: 226-120-535");
-						doc.text(15,23, "Order Date: " + date);
-						doc.text(11,28, "Payment Method: " + mop);
-						doc.text(11,33, "Order ID: #" + id);
+						doc.text(18,23, "Order Date: " + date);
+						doc.text(16,28, "Payment Method: " + mop);
+						doc.text(33,33, "Order ID: #" + id);
 						doc.autoTable({
 							html: '#table',
 							body: body,
