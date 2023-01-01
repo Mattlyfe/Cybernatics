@@ -69,8 +69,8 @@ while($row=mysqli_fetch_array($query))
 		            </td>
 					<td class="cart-product-sub-total">₱ <?php echo $price=$row['pprice']; ?>  </td>
 					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
-					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
-					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
+					<td class="cart-product-sub-total"><?php echo $mop = $row['paym']; ?>  </td>
+					<td class="cart-product-sub-total"><?php echo $date = $row['odate']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
 					<?php if($row['paym']  == "E-Wallet"){?>
                     <td class="cart-product-sub-total"><a rel="facebox" title="Click to check reciept" href="showReciept.php?id=<?php echo$tId; ?>" ><img  src="referenceno/user id - <?php echo htmlentities($row['uid']);?>/<?php echo htmlentities($row['rNo']);?>/<?php echo htmlentities($row['rnoimg']);?>" alt="" width="200" height="150"></a>  </td>
@@ -191,18 +191,19 @@ while($row=mysqli_fetch_array($query1))
 							['Item', 'Quantity', 'Price']
 						]
 						var y = 20;
+						var mop = <?php echo json_encode($mop); ?>;
+                        var date = <?php echo json_encode($date); ?>;
+						var id = <?php echo json_encode($tId); ?>;
 
-
-										
 						doc.setLineWidth(1.5);
 						doc.setFontSize(13);
 						doc.setFont(undefined, 'bold').text(25, 10, "SANDRA'S STORE");
 						doc.setFontSize(10);
 						doc.text(15,14, "6017 Gen. T. De Leon, Valenzuela City");
                         doc.text(28,18, "TIN #: 226-120-535");
-						doc.text(15,23, "Order Date: ");
-						doc.text(11,28, "Payment Method: ");
-						doc.text(11,33, "Order ID: ");
+						doc.text(15,23, "Order Date: " + date);
+						doc.text(11,28, "Payment Method: " + mop);
+						doc.text(11,33, "Order ID: #" + id);
 						doc.autoTable({
 							html: '#table',
 							body: body,
