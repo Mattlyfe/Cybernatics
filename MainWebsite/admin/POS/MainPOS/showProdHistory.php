@@ -85,7 +85,7 @@ while($row=mysqli_fetch_array($query))
 				
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
-		<h1>Grand total: ₱ <?php echo $gtotal?><h1>
+		<h1>Grand Total: ₱ <?php echo $gtotal?><h1>
 
 		<table class="table table-bordered" id="table" hidden>
 			<thead>
@@ -121,8 +121,8 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-quantity">
 						<?php echo $qty=$row['qty']; ?>   
 		            </td>
-					<td class="cart-product-sub-total">P<?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-grand-total">P<?php echo ($qty*$price);?></td>
+					<td class="cart-product-sub-total">P <?php echo $price=$row['pprice']; ?>  </td>
+					<td class="cart-product-grand-total">P <?php echo ($qty*$price);?></td>
 					<!-- <td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td> -->
 					
@@ -197,7 +197,7 @@ while($row=mysqli_fetch_array($query1))
 
 						doc.setLineWidth(1.5);
 						doc.setFontSize(13);
-						doc.setFont(undefined, 'bold').text(25, 10, "SANDRA'S STORE");
+						doc.setFont("times", 'bold').text(25, 10, "SANDRA'S STORE");
 						doc.setFontSize(10);
 						doc.text(15,14, "6017 Gen. T. De Leon, Valenzuela City");
                         doc.text(28,18, "TIN #: 226-120-535");
@@ -230,6 +230,7 @@ while($row=mysqli_fetch_array($query1))
 								}
 							}
 						})
+						doc.text(28, 86, "SHIPPING DETAILS");
 						doc.autoTable({
 							html: '#table1',
 							body: body,
@@ -257,6 +258,10 @@ while($row=mysqli_fetch_array($query1))
 								}
 							}
 						})
+						doc.text(12, 120, "************************************");
+						doc.text(12, 130, "Thank You for Ordering on Sandra’s Store");
+						doc.text(14, 140, "Please keep this as your Official Receipt");
+						doc.text(12, 150, "************************************");
 						doc.autoPrint();
 						window.open(doc.output('bloburl'))
 		});
