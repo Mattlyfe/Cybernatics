@@ -155,10 +155,26 @@ if (empty($_SESSION['user_name'])) {
 			<div class="modal-body">
 				<form action="PurchaseOrder/addOrder.php" method="POST">
 				<div class="row mb-3">
-					
+						<?php
+						require_once('config.php');
+						?>
+						<?php
+						$query = "SELECT * FROM users_be WHERE role = 'supplier'";
+						$suppliers = mysqli_query($con, $query);
+						?>
 						<div class="col-6">
 						Supplier:
-						<input type="" style="width:100%; border:solid black 1px; border-radius:5px" name="supplier_name" placeholder="Supplier Name" required>
+						<select style="width:100%; border:solid black 1px; border-radius:5px" class="form-control form-control-sm" name="supplier_name" required>
+						<option>Select Supplier</option>
+						<?php
+						foreach ($suppliers as $sups){
+						?>
+							<option><?php echo $sups['user_name']; ?></option>
+							<?php
+							}
+							?>
+						</select>
+						<!--<input type="" style="width:100%; border:solid black 1px; border-radius:5px" name="supplier_name" placeholder="Supplier Name" required>-->
 						</div>
 					</div>
 					<div class="row mb-3">
