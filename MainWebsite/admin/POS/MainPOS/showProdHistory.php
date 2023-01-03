@@ -48,7 +48,7 @@
 			
 			<tbody>
             <?php include('config1.php');
- $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
+ $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.genName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
 <?php
 while($row=mysqli_fetch_array($query))
 {$gtotal = $row['gtotal'];
@@ -67,8 +67,8 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-quantity">
 						<?php echo $qty=$row['qty']; ?>   
 		            </td>
-					<td class="cart-product-sub-total">₱ <?php echo $price=$row['pprice']; ?>  </td>
-					<td class="cart-product-grand-total">₱ <?php echo ($qty*$price);?></td>
+					<td class="cart-product-sub-total">₱<?php echo $price=$row['pprice']; ?>  </td>
+					<td class="cart-product-grand-total">₱<?php echo ($qty*$price);?></td>
 					<td class="cart-product-sub-total"><?php echo $mop = $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $date = $row['odate']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['oStatus']; ?>  </td>
@@ -104,7 +104,7 @@ while($row=mysqli_fetch_array($query))
 			
 			<tbody>
             <?php 
- $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
+ $query=mysqli_query($con,"select distinct products.productImage1 as pimg1,products.genName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null");?>
 <?php
 while($row=mysqli_fetch_array($query))
 {$gtotal = $row['gtotal'];
@@ -136,7 +136,7 @@ while($row=mysqli_fetch_array($query))
 			<td> </td>
 			<td> </td>
 			<td> </td>
-			<td>Grand total: P<?php echo $gtotal?></td>
+			<td>Total: P<?php echo $gtotal?></td>
 			<td> </td>
 		</table><!-- /table -->
 
@@ -183,10 +183,10 @@ while($row=mysqli_fetch_array($query1))
 			}
 			$('#checkout').click(function(){
 						<?php
-						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.productName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ");
+						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.genName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ");
 
 						?>
-						var doc = new jsPDF('p', 'mm', [88, 210]);
+						var doc = new jsPDF('p', 'mm', [100, 297]);
 						var body = [
 							['Item', 'Quantity', 'Price']
 						]
@@ -196,72 +196,72 @@ while($row=mysqli_fetch_array($query1))
 						var id = <?php echo json_encode($tId); ?>;
 
 						doc.setLineWidth(1.5);
-						doc.setFontSize(13);
-						doc.setFont("times", 'bold').text(25, 10, "SANDRA'S STORE");
-						doc.setFontSize(10);
-						doc.text(15,14, "6017 Gen. T. De Leon, Valenzuela City");
-                        doc.text(28,18, "TIN #: 226-120-535");
-						doc.text(18,23, "Order Date: " + date);
-						doc.text(16,28, "Payment Method: " + mop);
-						doc.text(33,33, "Order ID: #" + id);
+						doc.setFontSize(20);
+						doc.setFont("times", 'bold').text(23, 10, "SANDRA'S STORE");
+						doc.setFontSize(15);
+						doc.text(11,16, "6017 Gen. T. De Leon, Valenzuela City");
+                        doc.text(28,22, "TIN #: 226-120-535");
+						doc.text(18,28, "Order Date: " + date);
+						doc.text(13,34, "Payment Method: " + mop);
+						doc.text(33,40, "Order ID: #" + id);
 						doc.autoTable({
 							html: '#table',
-							body: body,
-							startY: 40,
+							startY: 45,
 							theme: 'plain',
 							headStyles:{halign:'center'},
 							styles:{
-								fontSize: 9,
-								cellWidth: 'auto',
+								fontSize: 11,
+								cellWidth: 20,
 								margin: Margin = 0
 							},
 							columnStyles: {
 								0:{
-									halign: 'right',
-									tableWidth: 5,
+									halign: 'left',
+									tableWidth: 2,
 								},
 								1:{
 									halign: 'center',
-									tableWidth: 5,
+									tableWidth: 2,
 								},
 								2:{
 									halign: 'center',
-									tableWidth: 5,
+									tableWidth: 2,
 								}
 							}
 						})
-						doc.text(28, 86, "SHIPPING DETAILS");
+						//doc.text(28, 86, "SHIPPING DETAILS");
 						doc.autoTable({
 							html: '#table1',
 							body: body,
 							theme: 'plain',
 							headStyles:{
 								halign:'center',
-								fontSize: 8
+								fontSize: 11
 							},
 							styles:{
-								fontSize: 7,
-								cellWidth: 'auto'
+								fontSize: 10,
+								cellWidth: 21
 							},
 							columnStyles: {
 								0:{
 									halign: 'right',
-
+									tableWidth: 2,
 								},
 								1:{
 									halign: 'center',
-
+									tableWidth: 2,
 								},
 								2:{
 									halign: 'center',
-
+									tableWidth: 2,
 								}
 							}
 						})
-						doc.text(12, 120, "************************************");
-						doc.text(12, 130, "Thank You for Ordering on Sandra’s Store");
-						doc.text(14, 140, "Please keep this as your Official Receipt");
-						doc.text(12, 150, "************************************");
+						doc.setFontSize(12);
+						doc.text(12, 180, "************************************");
+						doc.text(12, 185, "Thank You for Ordering on Sandra’s Store");
+						doc.text(14, 195, "Please keep this as your Official Receipt");
+						doc.text(12, 200, "************************************");
 						doc.autoPrint();
 						window.open(doc.output('bloburl'))
 		});
