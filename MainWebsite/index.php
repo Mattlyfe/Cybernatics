@@ -115,7 +115,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 		<div class="furniture-container homepage-container">
 		<div class="row">
 			
-			<div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
+			<div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
 				<!-- ========================================== SECTION – HERO ========================================= -->
 			
 <div id="hero" class="homepage-slider3">
