@@ -1,0 +1,29 @@
+#message {
+    background: 	#fff8dc;
+    display:none;
+    color: #000;
+    position: relative;
+    padding: 5px;
+    margin-top: 10px;
+  }
+#message p {
+    padding: 5px 35px;
+    font-size: 17px;
+  }
+.valid {
+    color: #008000 !important;
+  }
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+  }
+.invalid {
+    color: #ff0000 !important;
+  }
+  
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+  }
