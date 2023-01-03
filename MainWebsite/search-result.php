@@ -126,7 +126,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 <div class="body-content outer-top-xs">
 	<div class='container'>
 		<div class='row outer-bottom-sm'>
-			<div class='col-md-9'>
+			<div class='col-md-12'>
 					<!-- ========================================== SECTION – HERO ========================================= -->
 
 	<div id="category" class="category-carousel hidden-xs">

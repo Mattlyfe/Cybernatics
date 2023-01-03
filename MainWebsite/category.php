@@ -126,7 +126,7 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 </div><!-- /.breadcrumb -->
 <div class="body-content outer-top-xs">
 	<div class='container'>
-			<div class='col-md-9'>
+			<div class='col-md-12'>
 					<!-- ========================================== SECTION – HERO ========================================= -->
 
 	<div id="category" class="category-carousel hidden-xs">
@@ -144,8 +144,8 @@ if(isset($_GET['action']) && $_GET['action']=="add"){
 while($row=mysqli_fetch_array($sql))
 {
     ?>
-
-					<div class="excerpt hidden-sm hidden-md">
+					</br>
+					<div class="excerpt hidden-sm hidden-md col-sm-12">
 						<?php echo htmlentities($row['categoryName']);?>
 					</div>
 			<?php } ?>
@@ -155,7 +155,7 @@ while($row=mysqli_fetch_array($sql))
 		</div>
 </div>
 
-				<div class="search-result-container">
+				<div class="search-result-container col-sm-12">
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane active " id="grid-container">
 							<div class="category-product  inner-top-vs">
