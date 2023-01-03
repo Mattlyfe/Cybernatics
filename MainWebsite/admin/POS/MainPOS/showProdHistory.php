@@ -187,9 +187,6 @@ while($row=mysqli_fetch_array($query1))
 
 						?>
 						var doc = new jsPDF('p', 'mm', [100, 297]);
-						var body = [
-							['Item', 'Quantity', 'Price']
-						]
 						var y = 20;
 						var mop = <?php echo json_encode($mop); ?>;
                         var date = <?php echo json_encode($date); ?>;
@@ -208,10 +205,10 @@ while($row=mysqli_fetch_array($query1))
 							html: '#table',
 							startY: 45,
 							theme: 'plain',
-							headStyles:{halign:'center'},
+							headStyles:{halign:'center',fontSize: 11},
 							styles:{
-								fontSize: 11,
-								cellWidth: 20,
+								fontSize: 10,
+								cellWidth: 21,
 								margin: Margin = 0
 							},
 							columnStyles: {
@@ -258,10 +255,10 @@ while($row=mysqli_fetch_array($query1))
 							}
 						})
 						doc.setFontSize(12);
-						doc.text(12, 180, "************************************");
-						doc.text(12, 185, "Thank You for Ordering on Sandra’s Store");
-						doc.text(14, 195, "Please keep this as your Official Receipt");
-						doc.text(12, 200, "************************************");
+						doc.text(12, 250, "************************************");
+						doc.text(12, 255, "Thank You for Ordering on Sandra’s Store");
+						doc.text(14, 265, "Please keep this as your Official Receipt");
+						doc.text(12, 270, "************************************");
 						doc.autoPrint();
 						window.open(doc.output('bloburl'))
 		});

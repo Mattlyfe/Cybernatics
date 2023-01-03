@@ -964,9 +964,11 @@ a {
 .top-bar .cnt-account {
   float: left;
   padding: 6px 0px;
+  color: #fff;
 }
 .top-bar .cnt-account ul {
   margin: 0px;
+  color: #fff;
 }
 .top-bar .cnt-account ul > li {
   display: inline-block;
