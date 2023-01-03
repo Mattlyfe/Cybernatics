@@ -289,7 +289,7 @@ while($row=mysqli_fetch_array($query))
 				$row = mysqli_fetch_assoc($valid);
 				if ($row['valid'] == 2){ ?>
 				<li>
-					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); closeCardPopup(); ewallet()" required> E-Wallet</li>
+					<input type="radio" name="paymethod" value="E-Wallet" onclick="openPopup(); ewallet()" required> E-Wallet</li>
 				<li>
 					
 					<div class="cardbox">
@@ -372,7 +372,7 @@ while($row=mysqli_fetch_array($query))
 				
 				</li>
 				
-				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup(); closeCardPopup(); cod()" required> Cash on Delivery</li>
+				<li><input type="radio" name="paymethod" id="paymethod" value="Cash on Delivery" onclick="closePopup(); cod()" required> Cash on Delivery</li>
 				<li>
 					<div class="cardbox">
 					<img class="cod" src="image/cardsimage/cod.jpg" > <br /><br />
@@ -386,34 +386,15 @@ while($row=mysqli_fetch_array($query))
 			<?php } ?>
 
 			<script>
-			function debit(){
-				$('#referenceno').prop('required', false);
-				$('#fileToUpload').prop('required', false);
-
-				$('#nameOnCard').prop('required', true);
-				$('#cardNo').prop('required', true);
-				$('#cvv').prop('required', true);
-				$('#expYear').prop('required', true);
-			}
 
 			function ewallet(){
 				$('#referenceno').prop('required', true);
 				$('#fileToUpload').prop('required', true);
 
-				$('#nameOnCard').prop('required', false);
-				$('#cardNo').prop('required', false);
-				$('#cvv').prop('required', false);
-				$('#expYear').prop('required', false);
 			}
 			function cod(){
-
 				$('#referenceno').prop('required', false);
 				$('#fileToUpload').prop('required', false);
-					
-				$('#nameOnCard').prop('required', false);
-				$('#cardNo').prop('required', false);
-				$('#cvv').prop('required', false);
-				$('#expYear').prop('required', false);
 			}
 			</script>
 			<?php
