@@ -172,7 +172,7 @@ while($row=mysqli_fetch_array($query1))
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
         <input type="submit" name="submit" value="Go back" class="btn btn-warning">
-		<button id="checkout" style="background: red;"type="button" class="btn btn-warning btn-lg">Print Receipt</button>
+		<button id="checkout<?php echo$id?>" style="background: red;"type="button" class="btn btn-warning btn-lg">Print Receipt</button>
 	</form>
 	<script src="js/jquery.js">
     </script>
@@ -181,11 +181,7 @@ while($row=mysqli_fetch_array($query1))
 				var win = window.open('','','height=700,width=700');
 				win.print();   //PRINT CONTENTS.
 			}
-			$('#checkout').click(function(){
-						<?php
-						$getOrderId = mysqli_query($con, "SELECT DISTINCT products.genName as pname,products.id as proid,orders.productId as opid,orders.transactionId as tId,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid, orders.orderStatus as oStatus, order_header.grandTotal as gtotal, order_header.referenceNo as rNo, order_header.rNoImg as rnoimg, orders.userid as uid from orders join products on orders.productId=products.id join order_header on orders.transactionId=order_header.transactionId where orders.transactionId=$id and orders.paymentMethod is not null ");
-
-						?>
+			$('#checkout<?php echo$id?>').click(function(){
 						var doc = new jsPDF('p', 'mm', [100, 297]);
 						var y = 20;
 						var mop = <?php echo json_encode($mop); ?>;
@@ -229,7 +225,6 @@ while($row=mysqli_fetch_array($query1))
 						//doc.text(28, 86, "SHIPPING DETAILS");
 						doc.autoTable({
 							html: '#table1',
-							body: body,
 							theme: 'plain',
 							headStyles:{
 								halign:'center',
@@ -256,7 +251,7 @@ while($row=mysqli_fetch_array($query1))
 						})
 						doc.setFontSize(12);
 						doc.text(12, 250, "************************************");
-						doc.text(12, 255, "Thank You for Ordering on Sandra’s Store");
+						doc.text(12, 255, "Thank You for Ordering on Sandra's Store");
 						doc.text(14, 265, "Please keep this as your Official Receipt");
 						doc.text(12, 270, "************************************");
 						doc.autoPrint();
