@@ -12,6 +12,10 @@
     align-items: center;
     justify-content: center;
 }
+.tableArrange{
+    text-align: center;
+    padding-left: 50;
+}
 .btn{
     padding: 10px 60px;
     background: #fff;

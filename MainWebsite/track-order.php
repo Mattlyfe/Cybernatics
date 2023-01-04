@@ -22,6 +22,8 @@ window.print();
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="anuj.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="css/trackPopup.css">
+<link rel="stylesheet" href="new-delivery-status.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body onload="openPopup()">
     
@@ -56,19 +58,22 @@ window.print();
       }(document, 'script', 'facebook-jssdk'));
     </script>
     
-<div class="pop-upContainer">
-            <div class="popup" id="popup">
-                <img src="image/trackIcon.png">
-                <div style="margin-left:50px;">
- <form name="updateticket" id="updateticket" method="post"> 
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-    <tr height="50">
-      <td colspan="2" class="fontkink2" style="padding-left:0px;"><div class="fontpink2"> <b>Order Tracking Details !</b></div></td>
-      
-    </tr>
+            
+ <form name="updateticket" id="updateticket" method="post"> 
+
+            <div class="header">
+                <h2>Delivery Status</h2>
+            </div>
+            <i class="fa-solid fa-truck-fast"></i>
+<table width="100%" cellspacing="0" cellpadding="0" class="tableArrange">
+
+<br>
+<br>    
+<br>
+
     <tr height="30">
-      <td  class="fontkink1"><b>order Id:</b></td>
+      <td  class="fontkink1"><b>Order Id:</b></td>
       <td  class="fontkink"><?php echo $tId;?></td>
     </tr>
     <?php 
@@ -80,22 +85,22 @@ while($row=mysqli_fetch_array($ret))
       {
      ?>
 
-      <tr height="20">
+      <tr height="25">
       <td class="fontkink1" ><b>At Date:</b></td>
       <td  class="fontkink"><?php echo $row['dateC'];?></td>
     </tr>
-     <tr height="20">
+     <tr height="25">
       <td  class="fontkink1"><b>Status:</b></td>
       <td  class="fontkink"><?php echo $row['orderS'];?></td>
     </tr>
-     <tr height="20">
+     <tr height="25">
       <td  class="fontkink1"><b>Remark:</b></td>
       <td  class="fontkink"><?php echo $row['remark'];?></td>
     </tr>
 
    
     <tr>
-      <td colspan="2"><hr /></td>
+      <!-- <td colspan="2"><hr /></td> -->
     </tr>
    <?php } }
 else{
@@ -117,23 +122,10 @@ $st='Delivered';
    <?php } 
  
   ?>
+
 </table>
  </form>
 </div>
-                <button type="button" onclick="self.close()">Ok</button>
-            </div>
-        </div>
-        <script>
-            let popup = document.getElementById("popup");
-
-            function openPopup(){
-                popup.classList.add("open-popup");
-            }
-            function closePopup(){
-                popup.classList.remove("open-popup");
-            }
-        </script>
-
 
 </body>
 </html>
