@@ -397,7 +397,7 @@ while($row=mysqli_fetch_array($query))
     <script src="assets/js/wow.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
 
-	<!-- For demo purposes – can be removed on production -->
+
 	
 	<script src="switchstylesheet/switchstylesheet.js"></script>
 	

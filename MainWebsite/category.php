@@ -247,10 +247,7 @@ while ($row=mysqli_fetch_array($ret))
     <script src="assets/js/wow.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
 
-	<!-- For demo purposes – can be removed on production -->
-	
-	
-	<!-- For demo purposes – can be removed on production : End -->
+
 
 </body>
 </html>

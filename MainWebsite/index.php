@@ -502,7 +502,7 @@ while ($row=mysqli_fetch_array($ret))
     <script src="assets/js/wow.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
 
-	<!-- For demo purposes – can be removed on production -->
+
 	
 	<script src="switchstylesheet/switchstylesheet.js"></script>
 	
@@ -519,7 +519,7 @@ while ($row=mysqli_fetch_array($ret))
 		   $('.show-theme-options').delay(2000).trigger('click');
 		});
 	</script>
-	<!-- For demo purposes – can be removed on production : End -->
+
 
 	
 
