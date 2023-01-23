@@ -393,7 +393,7 @@ function sum() {
 						<span>Expiration date : </span><br><input type="date" style="width:100%; border:solid black 1px; border-radius:5px" name="expDate" id="expDate" placeholder="MM-DD-YYYY" required>
 						<div style="text-align: center; margin-top: 10px">
 
-							<button type="submit" class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
+							<button type="submit" class="btn btn-success btn-block btn-large" style="width:267px;margin-left:95px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
 						</div>
 					</div>
 				</form>

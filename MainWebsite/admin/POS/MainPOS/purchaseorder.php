@@ -532,51 +532,7 @@ if (empty($_SESSION['user_name'])) {
                                         </div>
                                     </div>
                                     
-            <!--                        <button type="button" data-toggle="modal" data-target="<?php echo '#showModal'.$row['id']; ?>" class="btn btn-success"><i class="bi bi-receipt"></i></button>-->
-    								<!--<div class="modal fade" id="<?php echo 'showModal'.$row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
-    								<!--	<div class="modal-dialog modal-xl modal-dialog-centered" role="document">-->
-    								<!--		<div class="modal-content">-->
-    											
-    								<!--				<div class="modal-header">-->
-    								<!--					<h5 class="modal-title" id="exampleModalLongTitle">Breakdown</h5>-->
-    								<!--					<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-    								<!--					<span aria-hidden="true">&times;</span>-->
-    								<!--					</button>-->
-    								<!--				</div>-->
-    								<!--				<div class="modal-body">-->
-    								<!--				<table class="hoverTable w-100" id="resultEdit" data-responsive="table" style="text-align: left;">-->
-    								<!--					<thead>-->
-    								<!--						<tr>-->
-    								<!--							<th > Product Code </th>-->
-    								<!--							<th > Category </th>-->
-    								<!--							<th > Product Name </th>-->
-    								<!--							<th > Quantity </th>-->
-    								<!--							<th > Price </th>-->
-    								<!--							<th > Amount </th>-->
-																
-    														
-    								<!--						</tr>-->
-    								<!--					</thead>-->
-    								<!--					<tbody>-->
-															
-    								<!--					<?php-->
-														
-												<!--			$po_id = $row['id'];-->
-    								<!--						$result = $db->prepare("SELECT -->
-    								<!--						products.id as p_id,-->
-    								<!--						products.productAvailability,-->
-    								<!--						products.category,-->
-    								<!--						products.productCode,-->
-    								<!--						products.productName,-->
-    								<!--						products.genName,-->
-    								<!--						products.oPrice,-->
-    								<!--						products.productPrice,-->
-    								<!--						purchase_order_items.quantity,-->
-    								<!--						purchase_orders.total_amount-->
-    								<!--						FROM products -->
-    								<!--						left join purchase_order_items on purchase_order_items.product_id = products.id-->
-    								<!--						left join purchase_orders on purchase_orders.id = purchase_order_items.purchase_order_id-->
-    								<!--						where purchase_orders.id = $po_id and purchase_order_items.quantity != '0';");-->
+
     
     								<!--						$result->execute();-->
 														 
@@ -623,7 +579,7 @@ if (empty($_SESSION['user_name'])) {
     								<!--								<input type="text" name='po_id' value='<?php echo $po_id;?>'>-->
     								<!--							</div>-->
     								<!--							<?php-->
-    								<!--						}-->
+    								<!--						}
     								<!--					?>-->
     								<!--					</tbody>-->
 												<!--		<td> </td>-->

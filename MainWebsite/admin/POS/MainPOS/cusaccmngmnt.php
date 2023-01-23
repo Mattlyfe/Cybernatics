@@ -230,7 +230,7 @@ while($row=mysqli_fetch_array($query))
                     
                     <div style="text-align: center; margin-top: 10px">
                     
-                    <button class="btn btn-success btn-block btn-large" style="width:267px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
+                    <button class="btn btn-success btn-block btn-large" style="width:267px;margin-left:95px;"><i class="icon icon-save icon-large"></i> Save Changes</button>
                     </div>
                     </div>
                     </form>
